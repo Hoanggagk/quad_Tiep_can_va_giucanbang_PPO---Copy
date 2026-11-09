@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-11-02T03:52:51.717452+00:00",
+  "scene_config": "scene_basic_drone_motor.jsonc",
+  "actuator_order": [
+    "Prop_FL_actuator",
+    "Prop_FR_actuator",
+    "Prop_RL_actuator",
+    "Prop_RR_actuator"
+  ],
+  "max_rpm": 6396.667,
+  "hover_control_signal": 0.640625,
+  "hover_rpm": 5119.831688310858,
+  "rpm_conversion": "control_signal = (rpm / max_rpm)^2",
+  "verification": {
+    "mean_vertical_velocity_mps": 0.05168644587198893,
+    "std_vertical_velocity_mps": 0.02789896588229127,
+    "tolerance_mps": 0.08,
+    "search_velocity_span_mps": 2.094417095184326,
+    "passed": true
+  },
+  "settings": {
+    "lower_signal": 0.4,
+    "upper_signal": 0.95,
+    "iterations": 9,
+    "warmup_seconds": 0.1,
+    "measure_seconds": 0.25,
+    "verification_trials": 3,
+    "velocity_tolerance_mps": 0.08,
+    "start_altitude_m": 2.0
+  },
+  "search_trials": [
+    {
+      "control_signal": 0.4,
+      "start_z_m": -1.9532102346420288,
+      "end_z_m": -1.7013275623321533,
+      "vertical_velocity_mps": 1.007530689239502
+    },
+    {
+      "control_signal": 0.95,
+      "start_z_m": -2.0038888454437256,
+      "end_z_m": -2.2756104469299316,
+      "vertical_velocity_mps": -1.0868864059448242
+    },
+    {
+      "control_signal": 0.675,
+      "start_z_m": -1.987187385559082,
+      "end_z_m": -2.015573263168335,
+      "vertical_velocity_mps": -0.11354351043701172
+    },
+    {
+      "control_signal": 0.5375000000000001,
+      "start_z_m": -1.963229775428772,
+      "end_z_m": -1.8364708423614502,
+      "vertical_velocity_mps": 0.5070357322692871
+    },
+    {
+      "control_signal": 0.6062500000000001,
+      "start_z_m": -1.9788234233856201,
+      "end_z_m": -1.9369425773620605,
+      "vertical_velocity_mps": 0.16752338409423828
+    },
+    {
+      "control_signal": 0.640625,
+      "start_z_m": -1.987945318222046,
+      "end_z_m": -1.9922908544540405,
+      "vertical_velocity_mps": -0.017382144927978516
+    },
+    {
+      "control_signal": 0.6234375000000001,
+      "start_z_m": -1.9800763130187988,
+      "end_z_m": -1.953903317451477,
+      "vertical_velocity_mps": 0.10469198226928711
+    },
+    {
+      "control_signal": 0.63203125,
+      "start_z_m": -1.9701204299926758,
+      "end_z_m": -1.9296343326568604,
+      "vertical_velocity_mps": 0.16194438934326172
+    },
+    {
+      "control_signal": 0.636328125,
+      "start_z_m": -1.9704333543777466,
+      "end_z_m": -1.933872938156128,
+      "vertical_velocity_mps": 0.1462416648864746
+    },
+    {
+      "control_signal": 0.6384765625,
+      "start_z_m": -1.977732539176941,
+      "end_z_m": -1.9579135179519653,
+      "vertical_velocity_mps": 0.07927608489990234
+    },
+    {
+      "control_signal": 0.63955078125,
+      "start_z_m": -1.9706686735153198,
+      "end_z_m": -1.9370530843734741,
+      "vertical_velocity_mps": 0.1344623565673828
+    }
+  ],
+  "verification_trials": [
+    {
+      "control_signal": 0.640625,
+      "start_z_m": -1.977889895439148,
+      "end_z_m": -1.9600363969802856,
+      "vertical_velocity_mps": 0.07141399383544922
+    },
+    {
+      "control_signal": 0.640625,
+      "start_z_m": -1.9846813678741455,
+      "end_z_m": -1.9816235303878784,
+      "vertical_velocity_mps": 0.01223134994506836
+    },
+    {
+      "control_signal": 0.640625,
+      "start_z_m": -1.977889895439148,
+      "end_z_m": -1.9600363969802856,
+      "vertical_velocity_mps": 0.07141399383544922
+    }
+  ]
+}

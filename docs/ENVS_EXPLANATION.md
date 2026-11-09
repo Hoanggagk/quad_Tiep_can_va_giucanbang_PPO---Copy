@@ -1,8 +1,11 @@
-# Giải thích file envs.py
+# Giải thích NED velocity environment
 
 ## Tổng quan
 
-`envs.py` định nghĩa lớp `DroneHoveringEnv` - một môi trường mô phỏng máy bay drone bay lơ lửng (hovering) sử dụng ProjectAirSim. Đây là một môi trường tuân theo tiêu chuẩn Gymnasium dùng để huấn luyện các agent RL (Reinforcement Learning) bằng PPO.
+`drone_control/action_spaces/velocity_ned/env.py` định nghĩa lớp
+`DroneHoveringEnv` - một môi trường mô phỏng drone hover sử dụng
+ProjectAirSim. Đây là môi trường theo chuẩn Gymnasium dùng để huấn
+luyện agent RL bằng PPO.
 
 ---
 
@@ -242,7 +245,9 @@ Tránh race condition giữa main thread (RL) và callback thread (sim updates)
 
 ## Tích hợp với PPO Training
 
-File này được sử dụng cùng với `ppo.py` & `train_hover.py`:
+Environment này được sử dụng cùng với
+`drone_control/algorithms/ppo.py` và
+`drone_control/action_spaces/velocity_ned/train.py`:
 
 - PPO agent gọi `step(action)` ở mỗi bước
 - Agent học tối ưu hóa reward

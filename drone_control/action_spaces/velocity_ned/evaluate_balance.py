@@ -11,12 +11,9 @@ Kết quả:
   - Bảng tóm tắt in ra console
   - CSV chi tiết + biểu đồ PNG lưu vào --save-dir
 
-Sử dụng:
-  python evaluate_balance.py                         # Cấu hình mặc định
-  python evaluate_balance.py --model <path.pth>
-  python evaluate_balance.py --trials 5              # 5 lần thử mỗi cấu hình
-  python evaluate_balance.py --save-dir eval_out/
-  python evaluate_balance.py --no-plot
+Sử dụng (từ thư mục gốc):
+  python -m drone_control.action_spaces.velocity_ned.evaluate_balance
+  python -m drone_control.action_spaces.velocity_ned.evaluate_balance --model <path.pth>
 """
 
 import os
@@ -26,23 +23,23 @@ import argparse
 import csv
 from datetime import datetime
 from dataclasses import dataclass, field
+from pathlib import Path
 
 import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
-
-from envs import DroneHoveringEnv
-from ppo import PPO
+from drone_control.action_spaces.velocity_ned.env import DroneHoveringEnv
+from drone_control.algorithms.ppo import PPO
 
 # ═══════════════════════════════════════════════════════════════════
 # CẤU HÌNH
 # ═══════════════════════════════════════════════════════════════════
 
+PROJECT_ROOT = Path(__file__).resolve().parents[3]
 DEFAULT_MODEL_PATH = os.path.join(
-    os.path.dirname(os.path.abspath(__file__)),
+    PROJECT_ROOT,
     "Ketquahuanluyen", "3_4_2026", "model", "ep2006_step100000.pth",
 )
 DEFAULT_SAVE_DIR      = "balance_eval_results"

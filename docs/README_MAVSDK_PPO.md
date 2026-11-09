@@ -2,7 +2,9 @@
 
 ## Mô tả
 
-File `test_control_mav.py` triển khai điều khiển drone bằng mô hình PPO đã huấn luyện thông qua MAVSDK, sử dụng lệnh `set_velocity_ned()` để điều khiển vận tốc trong hệ tọa độ NED.
+Module `drone_control.action_spaces.velocity_ned.control_mavsdk` triển khai
+điều khiển drone bằng mô hình PPO đã huấn luyện thông qua MAVSDK,
+sử dụng lệnh `set_velocity_ned()` trong hệ tọa độ NED.
 
 ## Yêu cầu
 
@@ -19,12 +21,12 @@ pip install mavsdk numpy torch
 
 ### 3. Mô hình PPO đã huấn luyện
 
-- Đảm bảo đã chạy `train_hover.py` để tạo checkpoint
+- Đảm bảo đã chạy module `velocity_ned.train` để tạo checkpoint
 - Checkpoint mặc định: `log_dir/hover_projectairsim/ppo_hover_final.pth`
 
 ## Cấu hình
 
-Mở file `test_control_mav.py` và điều chỉnh các tham số:
+Mở file `drone_control/action_spaces/velocity_ned/control_mavsdk.py` và điều chỉnh các tham số:
 
 ```python
 # Đường dẫn checkpoint PPO
@@ -52,7 +54,7 @@ make px4_sitl gazebo
 
 ```bash
 # Terminal 2: Chạy script điều khiển
-python test_control_mav.py
+python -m drone_control.action_spaces.velocity_ned.control_mavsdk
 ```
 
 ## Quy trình hoạt động
@@ -139,7 +141,7 @@ Các kết nối phổ biến:
 
 ### Lỗi: "Không tìm thấy checkpoint"
 
-- Chạy `train_hover.py` trước để tạo model
+- Chạy module `velocity_ned.train` trước để tạo model
 - Hoặc thay đổi `CHECKPOINT_PATH` đến checkpoint có sẵn
 
 ### Lỗi: "Không lấy được telemetry"
@@ -162,7 +164,7 @@ Các kết nối phổ biến:
 
 ## So sánh với ProjectAirSim
 
-| Khía cạnh  | ProjectAirSim (train_hover.py) | MAVSDK (test_control_mav.py)     |
+| Khía cạnh  | ProjectAirSim (`velocity_ned.train`) | MAVSDK (`velocity_ned.control_mavsdk`) |
 | ---------- | ------------------------------ | -------------------------------- |
 | Môi trường | Unity simulation               | PX4 SITL/Gazebo hoặc drone thực  |
 | Kết nối    | HTTP API                       | MAVSDK (gRPC)                    |

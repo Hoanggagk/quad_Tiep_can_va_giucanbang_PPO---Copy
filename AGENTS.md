@@ -24,11 +24,12 @@ When locating or understanding code:
 
 ## Project architecture
 
-- `ppo.py`: PPO and Actor-Critic implementation.
-- `envs.py`, `envs_100.py`: ProjectAirSim environments.
-- `train_hover.py`, `train_hover_100.py`: training entry points.
-- `ControlDrone*.py`: trained-policy control workflows.
-- `evaluate_balance.py`: disturbance and recovery evaluation.
+- `drone_control/algorithms/ppo.py`: shared PPO and Actor-Critic implementation.
+- `drone_control/action_spaces/velocity_ned/`: 3D NED velocity method.
+- `drone_control/action_spaces/motor_residual/`: 4-rotor residual motor method.
+- `tools/`: visualization and simulator diagnostics.
+- `analysis/legacy/`: legacy result-analysis scripts.
+- `tests/`: test tree mirroring the source tree.
 
 ## Safety
 

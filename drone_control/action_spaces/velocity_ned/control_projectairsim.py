@@ -1,12 +1,9 @@
 """
 Điều khiển drone bằng mô hình PPO đã huấn luyện.
 
-Sử dụng:
-  python ControlDrone.py                              # Dùng model mặc định, 5 episode
-  python ControlDrone.py --model <đường_dẫn.pth>     # Chỉ định model khác
-  python ControlDrone.py --episodes 10               # Chạy 10 episode
-  python ControlDrone.py --save-dir results/         # Thư mục lưu kết quả
-  python ControlDrone.py --no-plot                   # Không vẽ đồ thị
+Sử dụng (từ thư mục gốc):
+  python -m drone_control.action_spaces.velocity_ned.control_projectairsim
+  python -m drone_control.action_spaces.velocity_ned.control_projectairsim --model <path.pth>
 """
 
 import os
@@ -14,23 +11,23 @@ import sys
 import asyncio
 import argparse
 from datetime import datetime
+from pathlib import Path
 
 import numpy as np
 import matplotlib
 matplotlib.use("Agg")   # Backend không cần GUI
 import matplotlib.pyplot as plt
 
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
-
-from envs import DroneHoveringEnv
-from ppo import PPO
+from drone_control.action_spaces.velocity_ned.env import DroneHoveringEnv
+from drone_control.algorithms.ppo import PPO
 
 # ═══════════════════════════════════════════════════════════════════
 # CẤU HÌNH MẶC ĐỊNH
 # ═══════════════════════════════════════════════════════════════════
 
+PROJECT_ROOT = Path(__file__).resolve().parents[3]
 DEFAULT_MODEL_PATH  = os.path.join(
-    os.path.dirname(os.path.abspath(__file__)),
+    PROJECT_ROOT,
     "Ketquahuanluyen", "11_6_2026", "ppo_hover_final.pth",
 )
 DEFAULT_NUM_EPISODES   = 5

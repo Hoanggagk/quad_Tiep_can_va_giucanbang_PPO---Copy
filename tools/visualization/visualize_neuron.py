@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 from matplotlib.patches import FancyBboxPatch, FancyArrowPatch
 import numpy as np
-from ppo import ActorCritic, device
+from drone_control.algorithms.ppo import ActorCritic, device
 import os
 
 class NeuronVisualizer:

@@ -5,14 +5,38 @@ from torch.distributions import Categorical
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 
+def _normalize_action_bound(bound, action_dim, name):
+    """Chuẩn hóa scalar/vector bound thành tuple có action_dim phần tử."""
+    values = torch.as_tensor(bound, dtype=torch.float32).flatten()
+    if values.numel() == 1:
+        values = values.repeat(action_dim)
+    if values.numel() != action_dim:
+        raise ValueError(
+            f"{name} phải là scalar hoặc có {action_dim} phần tử, "
+            f"nhận được {values.numel()}"
+        )
+    if not torch.isfinite(values).all():
+        raise ValueError(f"{name} chứa NaN hoặc infinity")
+    return tuple(float(value) for value in values.tolist())
+
+
 class ScaleAction(nn.Module):
-    """Nhân output của Tanh với scale để đổi (-1,1) thành (-scale, scale)."""
-    def __init__(self, scale: float):
+    """Ánh xạ output Tanh từ [-1, 1] sang action bounds cấu hình."""
+    def __init__(self, action_low, action_high, action_dim):
         super().__init__()
-        self.scale = scale
+        self.action_low = _normalize_action_bound(
+            action_low, action_dim, "action_low"
+        )
+        self.action_high = _normalize_action_bound(
+            action_high, action_dim, "action_high"
+        )
+        if any(low >= high for low, high in zip(self.action_low, self.action_high)):
+            raise ValueError("Mỗi action_low phải nhỏ hơn action_high tương ứng")
 
     def forward(self, x):
-        return x * self.scale
+        low = torch.as_tensor(self.action_low, dtype=x.dtype, device=x.device)
+        high = torch.as_tensor(self.action_high, dtype=x.dtype, device=x.device)
+        return low + 0.5 * (x + 1.0) * (high - low)
 
 class RolloutBuffer:
     def __init__(self):
@@ -32,10 +56,25 @@ class RolloutBuffer:
         del self.is_terminals[:]
 
 class ActorCritic(nn.Module):
-    def __init__(self, state_dim, action_dim, action_std_init):
+    def __init__(
+        self,
+        state_dim,
+        action_dim,
+        action_std_init,
+        action_low=-1.5,
+        action_high=1.5,
+    ):
         super(ActorCritic, self).__init__()
 
         self.action_dim = action_dim
+        self.action_low = _normalize_action_bound(
+            action_low, action_dim, "action_low"
+        )
+        self.action_high = _normalize_action_bound(
+            action_high, action_dim, "action_high"
+        )
+        if any(low >= high for low, high in zip(self.action_low, self.action_high)):
+            raise ValueError("Mỗi action_low phải nhỏ hơn action_high tương ứng")
         self.action_var = torch.full((action_dim,), action_std_init * action_std_init).to(device)
 
         # Chuẩn hóa đầu vào: giảm bão hòa Tanh khi state có giá trị lớn (x,y,z tính bằng mét)
@@ -50,7 +89,11 @@ class ActorCritic(nn.Module):
                         nn.Tanh(),
                         nn.Linear(64, action_dim),
                         nn.Tanh(),            # output ∈ (-1, 1)
-                        ScaleAction(1.5),     # scale lên (-1.5, 1.5) để khớp action_space
+                        ScaleAction(
+                            self.action_low,
+                            self.action_high,
+                            action_dim,
+                        ),
                     )
         # critic
         self.critic = nn.Sequential(
@@ -72,7 +115,13 @@ class ActorCritic(nn.Module):
         dist = MultivariateNormal(action_mean, cov_mat)
 
         action = dist.sample()
-        action = action.clamp(-1.5, 1.5)    # giới hạn trong action_space
+        action_low = torch.as_tensor(
+            self.action_low, dtype=action.dtype, device=action.device
+        )
+        action_high = torch.as_tensor(
+            self.action_high, dtype=action.dtype, device=action.device
+        )
+        action = torch.maximum(torch.minimum(action, action_high), action_low)
         action_logprob = dist.log_prob(action)  # logprob của action đã clamp → khớp với buffer
         state_val = self.critic(state)  # state đã được norm ở đầu act()
 
@@ -100,23 +149,53 @@ class ActorCritic(nn.Module):
 
 
 class PPO:
-    def __init__(self, state_dim, action_dim, lr_actor, lr_critic, gamma, K_epochs, eps_clip, action_std_init=0.6):
+    def __init__(
+        self,
+        state_dim,
+        action_dim,
+        lr_actor,
+        lr_critic,
+        gamma,
+        K_epochs,
+        eps_clip,
+        action_std_init=0.6,
+        action_low=-1.5,
+        action_high=1.5,
+    ):
 
         self.action_std = action_std_init
         self.gamma = gamma
         self.eps_clip = eps_clip
         self.K_epochs = K_epochs
+        self.action_low = _normalize_action_bound(
+            action_low, action_dim, "action_low"
+        )
+        self.action_high = _normalize_action_bound(
+            action_high, action_dim, "action_high"
+        )
 
         self.buffer = RolloutBuffer()
 
-        self.policy = ActorCritic(state_dim, action_dim, action_std_init).to(device)
+        self.policy = ActorCritic(
+            state_dim,
+            action_dim,
+            action_std_init,
+            self.action_low,
+            self.action_high,
+        ).to(device)
         self.optimizer = torch.optim.Adam([
                         {'params': self.policy.state_norm.parameters(), 'lr': lr_actor},
                         {'params': self.policy.actor.parameters(), 'lr': lr_actor},
                         {'params': self.policy.critic.parameters(), 'lr': lr_critic}
                     ])
 
-        self.policy_old = ActorCritic(state_dim, action_dim, action_std_init).to(device)
+        self.policy_old = ActorCritic(
+            state_dim,
+            action_dim,
+            action_std_init,
+            self.action_low,
+            self.action_high,
+        ).to(device)
         self.policy_old.load_state_dict(self.policy.state_dict())
 
         self.MseLoss = nn.MSELoss()

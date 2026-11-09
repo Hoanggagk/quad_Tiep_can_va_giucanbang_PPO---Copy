@@ -1,6 +1,5 @@
 import asyncio
 import os
-import sys
 import numpy as np
 import math
 import time
@@ -12,8 +11,7 @@ from mavsdk.offboard import (
 from mavsdk.action import ActionError
 
 # Import PPO agent
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
-from ppo import PPO
+from drone_control.algorithms.ppo import PPO
 
 # ═══════════════════════════════════════════════════════════════════
 # CẤU HÌNH PPO VÀ DRONE
@@ -47,11 +45,11 @@ async def run():
     """
     
     # ── Khởi tạo PPO Agent ────────────────────────────────────────
-    # State history để tính vi phân hữu hạn (giống envs.py trong training)
+    # State history để tính vi phân hữu hạn (giống velocity_ned.env)
     print(f"[PPO] Đang nạp model từ: {CHECKPOINT_PATH}")
     if not os.path.exists(CHECKPOINT_PATH):
         print(f"[ERROR] Không tìm thấy checkpoint: {CHECKPOINT_PATH}")
-        print("[INFO] Hãy chạy train_hover.py trước để tạo model.")
+        print("[INFO] Hãy chạy module velocity_ned.train trước để tạo model.")
         return
     
     ppo_agent = PPO(

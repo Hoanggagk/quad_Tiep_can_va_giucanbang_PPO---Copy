@@ -2,14 +2,13 @@
 Huấn luyện PPO giữ quadcopter ổn định tại điểm mục tiêu (hover)
 trong môi trường ProjectAirSim, có xử lý nhiễu gió và va chạm.
 
-Cách dùng:
-  python train_hover.py                      # Huấn luyện từ đầu
-  python  train_hover.py --resume<ckpt.pth>  # Tiếp tục từ checkpoint
-  python train_hover.py --test <ckpt.pth>    # Chỉ kiểm tra
+Cách dùng (từ thư mục gốc):
+  python -m drone_control.action_spaces.velocity_ned.train
+  python -m drone_control.action_spaces.velocity_ned.train --resume <ckpt.pth>
+  python -m drone_control.action_spaces.velocity_ned.train --test <ckpt.pth>
 """
 
 import os
-import sys
 import asyncio
 import argparse
 from datetime import datetime
@@ -19,10 +18,8 @@ import matplotlib
 matplotlib.use("Agg")          # backend không cần GUI (an toàn khi chạy headless)
 import matplotlib.pyplot as plt
 
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
-
-from envs import DroneHoveringEnv
-from ppo import PPO
+from drone_control.action_spaces.velocity_ned.env import DroneHoveringEnv
+from drone_control.algorithms.ppo import PPO
 
 # ═══════════════════════════════════════════════════════════════════
 # THAM SỐ CẤU HÌNH

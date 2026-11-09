@@ -3,22 +3,22 @@ Visualization tool for drone PPO training and evaluation results.
 
 Usage examples:
   # Plot training learning curve from a log CSV
-  python visualize_results.py --training-log log_dir/PPO_log_hover_projectairsim.csv
+  python -m tools.visualization.visualize_results --training-log log_dir/PPO_log_hover_projectairsim.csv
 
   # Plot trajectories from a folder (test_results/Co_nhieu, control_results, ...)
-    python visualize_results.py --trajectories control_results --goal 0 0 -2
+    python -m tools.visualization.visualize_results --trajectories control_results --goal 0 0 -2
 
   # Compare two trajectory folders side by side
-  python visualize_results.py --compare test_results/Co_nhieu test_results/Khong_co_nhieu
+  python -m tools.visualization.visualize_results --compare test_results/Co_nhieu test_results/Khong_co_nhieu
 
   # Plot balance / robustness evaluation summary
-  python visualize_results.py --balance balance_eval_results/balance_eval_summary.csv
+  python -m tools.visualization.visualize_results --balance balance_eval_results/balance_eval_summary.csv
 
   # Plot a single balance evaluation trajectory
-  python visualize_results.py --balance-traj balance_eval_results/trajectories/traj_push_north_trial01.csv
+  python -m tools.visualization.visualize_results --balance-traj balance_eval_results/trajectories/traj_push_north_trial01.csv
 
   # Combine multiple options in one call
-  python visualize_results.py --training-log log_dir/PPO_log_hover_projectairsim.csv \
+  python -m tools.visualization.visualize_results --training-log log_dir/PPO_log_hover_projectairsim.csv \
       --trajectories control_results --balance balance_eval_results/balance_eval_summary.csv
 """
 
