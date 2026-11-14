@@ -21,6 +21,7 @@ from drone_control.action_spaces.motor_residual.env import (
     ACTUATOR_ORDER,
     DroneMotorHoverEnv,
 )
+from drone_control.action_spaces.motor_residual.monitoring import TrainingMonitor
 
 
 STATE_DIM = 17
@@ -45,6 +46,8 @@ MAX_TRAINING_TIMESTEPS = 500_000
 UPDATE_TIMESTEP = 2_000
 SAVE_MODEL_FREQ = 50_000
 STEPS_PER_EPISODE = 500
+MONITOR_EVERY_EPISODES = 10
+MONITOR_ROLLING_WINDOW = 20
 
 K_EPOCHS = 30
 EPS_CLIP = 0.2
@@ -161,12 +164,19 @@ async def train(
     resume_path: Path | None = None,
     max_timesteps: int = MAX_TRAINING_TIMESTEPS,
     seed: int | None = None,
+    monitor_every_episodes: int = MONITOR_EVERY_EPISODES,
+    monitor_rolling_window: int = MONITOR_ROLLING_WINDOW,
+    monitor_enabled: bool = True,
 ) -> Path:
     # Import trễ để các công cụ kiểm tra metadata không bắt buộc cài PyTorch.
     from drone_control.algorithms.ppo import PPO
 
     if max_timesteps <= 0:
         raise ValueError("max_timesteps phải lớn hơn 0")
+    if monitor_every_episodes <= 0:
+        raise ValueError("monitor_every_episodes phải lớn hơn 0")
+    if monitor_rolling_window <= 0:
+        raise ValueError("monitor_rolling_window phải lớn hơn 0")
     resume_metadata = (
         validate_resume_checkpoint(resume_path) if resume_path is not None else None
     )
@@ -199,6 +209,14 @@ async def train(
         agent.load(str(resume_path))
 
     log_path = log_dir / "training.csv"
+    monitor = TrainingMonitor(
+        run_id=run_id,
+        max_timesteps=max_timesteps,
+        status_path=log_dir / "training_status.json",
+        report_every_episodes=monitor_every_episodes,
+        rolling_window=monitor_rolling_window,
+        enabled=monitor_enabled,
+    )
     timestep = 0
     episode = 0
     last_checkpoint: Path | None = None
@@ -210,6 +228,10 @@ async def train(
                     "episode", "timestep", "reward", "steps", "survived",
                     "stage_index", "stage_name", "survival_rate",
                     "position_rmse_m", "attitude_rmse_rad",
+                    "progress_percent", "elapsed_seconds", "timesteps_per_second",
+                    "eta_seconds", "reward_mean_window",
+                    "survival_fraction_window", "position_rmse_mean_window_m",
+                    "attitude_rmse_mean_window_rad", "action_std",
                 ),
             )
             writer.writeheader()
@@ -239,6 +261,7 @@ async def train(
                             ),
                         )
                         last_checkpoint = path
+                        monitor.record_checkpoint(path)
                     if done or timestep >= max_timesteps:
                         break
 
@@ -246,50 +269,103 @@ async def train(
                 curriculum_info = final_info.get(
                     "curriculum", reset_info.get("curriculum", {})
                 )
-                writer.writerow(
-                    {
-                        "episode": episode,
-                        "timestep": timestep,
-                        "reward": f"{episode_reward:.9g}",
-                        "steps": step_count,
-                        "survived": curriculum_result.get("survived", False),
-                        "stage_index": curriculum_info.get("stage_index"),
-                        "stage_name": curriculum_info.get("stage_name"),
-                        "survival_rate": curriculum_result.get("survival_rate"),
-                        "position_rmse_m": curriculum_result.get("position_rmse_m"),
-                        "attitude_rmse_rad": curriculum_result.get("attitude_rmse_rad"),
-                    }
+                episode_data = {
+                    "episode": episode,
+                    "timestep": timestep,
+                    "reward": f"{episode_reward:.9g}",
+                    "steps": step_count,
+                    "survived": curriculum_result.get("survived", False),
+                    "stage_index": curriculum_info.get("stage_index"),
+                    "stage_name": curriculum_info.get("stage_name"),
+                    "survival_rate": curriculum_result.get("survival_rate"),
+                    "position_rmse_m": curriculum_result.get("position_rmse_m"),
+                    "attitude_rmse_rad": curriculum_result.get("attitude_rmse_rad"),
+                }
+                episode_data.update(
+                    monitor.record_episode(
+                        episode=episode,
+                        timestep=timestep,
+                        reward=episode_reward,
+                        steps=step_count,
+                        survived=bool(episode_data["survived"]),
+                        stage_index=episode_data["stage_index"],
+                        stage_name=episode_data["stage_name"],
+                        survival_rate=episode_data["survival_rate"],
+                        position_rmse_m=episode_data["position_rmse_m"],
+                        attitude_rmse_rad=episode_data["attitude_rmse_rad"],
+                        action_std=agent.action_std,
+                    )
                 )
+                writer.writerow(episode_data)
                 log_file.flush()
                 episode += 1
                 if episode % ACTION_STD_DECAY_FREQ_EPISODES == 0:
                     agent.decay_action_std(ACTION_STD_DECAY_RATE, MIN_ACTION_STD)
+    except BaseException as error:
+        monitor.finish(
+            "interrupted" if isinstance(error, KeyboardInterrupt) else "failed",
+            error=f"{type(error).__name__}: {error}",
+        )
+        raise
     finally:
         env.close()
 
     final_path = checkpoint_dir / f"final_episode_{episode:06d}_step_{timestep:09d}.pth"
-    save_checkpoint_with_metadata(
-        agent,
-        final_path,
-        build_checkpoint_metadata(
-            env, curriculum, run_id=run_id, episode=episode, timestep=timestep
-        ),
-    )
+    try:
+        save_checkpoint_with_metadata(
+            agent,
+            final_path,
+            build_checkpoint_metadata(
+                env, curriculum, run_id=run_id, episode=episode, timestep=timestep
+            ),
+        )
+        monitor.record_checkpoint(final_path)
+        monitor.finish("completed", final_checkpoint=final_path)
+    except BaseException as error:
+        monitor.finish("failed", error=f"{type(error).__name__}: {error}")
+        raise
     return final_path
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Huấn luyện PPO motor-level cho quadrotor")
+    # Giữ help CLI ở ASCII để hoạt động cả trên Windows console dùng cp1252.
+    parser = argparse.ArgumentParser(
+        description="Train the motor-level PPO policy for the quadrotor"
+    )
     parser.add_argument("--resume", type=Path, default=None, metavar="CHECKPOINT")
     parser.add_argument("--max-timesteps", type=int, default=MAX_TRAINING_TIMESTEPS)
     parser.add_argument("--seed", type=int, default=None)
+    parser.add_argument(
+        "--monitor-every",
+        type=int,
+        default=MONITOR_EVERY_EPISODES,
+        metavar="EPISODES",
+        help="Print a monitoring summary every N episodes (default: %(default)s)",
+    )
+    parser.add_argument(
+        "--monitor-window",
+        type=int,
+        default=MONITOR_ROLLING_WINDOW,
+        metavar="EPISODES",
+        help="Rolling metric window in episodes (default: %(default)s)",
+    )
+    parser.add_argument(
+        "--quiet-monitor",
+        action="store_true",
+        help="Disable console reports; still update CSV and training_status.json",
+    )
     return parser.parse_args()
 
 
 async def main() -> None:
     args = parse_args()
     final_path = await train(
-        resume_path=args.resume, max_timesteps=args.max_timesteps, seed=args.seed
+        resume_path=args.resume,
+        max_timesteps=args.max_timesteps,
+        seed=args.seed,
+        monitor_every_episodes=args.monitor_every,
+        monitor_rolling_window=args.monitor_window,
+        monitor_enabled=not args.quiet_monitor,
     )
     print(f"[DONE] Checkpoint motor-level cuối: {final_path}")
 

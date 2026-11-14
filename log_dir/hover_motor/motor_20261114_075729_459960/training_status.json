@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "run_id": "motor_20261114_075729_459960",
+  "state": "interrupted",
+  "episode": 3652,
+  "timestep": 240384,
+  "max_timesteps": 500000,
+  "progress_percent": 48.0768,
+  "elapsed_seconds": 23616.858345600078,
+  "timesteps_per_second": 10.178491841815386,
+  "eta_seconds": 25506.332768617336,
+  "reward": 55.350049281261526,
+  "steps": 94,
+  "survived": false,
+  "stage_index": 0,
+  "stage_name": "attitude_hover",
+  "survival_rate": 0.0,
+  "position_rmse_m": 0.5074994740482554,
+  "attitude_rmse_rad": 0.45949710930278564,
+  "action_std": 0.05,
+  "rolling": {
+    "window_episodes": 20,
+    "reward_mean": 53.40042993763183,
+    "survival_fraction": 0.0,
+    "position_rmse_mean_m": 0.5076173894647572,
+    "attitude_rmse_mean_rad": 0.4596913874530665
+  },
+  "last_checkpoint": "checkpoints_motor\\motor_20261114_075729_459960\\episode_003197_step_000200000.pth",
+  "updated_at": "2026-11-14T14:31:13.370139+07:00",
+  "final_checkpoint": null,
+  "error": "KeyboardInterrupt: "
+}
