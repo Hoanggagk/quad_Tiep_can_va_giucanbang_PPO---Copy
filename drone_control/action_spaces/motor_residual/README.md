@@ -4,6 +4,9 @@ Policy sinh bốn residual action chuẩn hóa trong `[-1, 1]^4`. Environment á
 xạ chúng thành RPM quanh operating point hover đã hiệu chuẩn trong
 `config/motor_control.json`.
 
+Xem bảng cấu hình đầy đủ về state/action, siêu tham số PPO, reward, curriculum
+và checkpoint tại [`docs/PPO_CONFIG_TABLE.md`](../../../docs/PPO_CONFIG_TABLE.md#10-cấu-hình-ppo-cho-không-gian-hành-động-4-động-cơ).
+
 - `env.py`: environment và action-to-motor mapping.
 - `curriculum.py`: curriculum và domain randomization.
 - `train.py`: entry point huấn luyện, checkpoint kèm metadata.
