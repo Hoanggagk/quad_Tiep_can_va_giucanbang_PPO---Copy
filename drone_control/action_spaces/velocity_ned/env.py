@@ -52,7 +52,6 @@ class DroneHoveringEnv(ProjectAirSimEnv):
 
         # Khởi tạo giá trị mặc định để tránh AttributeError trước reset()
         self.goal_pose = list(task_contract.goal_position_m)
-        self._hover_steps = 0
         self._pose_lock = threading.Lock()
         self._subscribed_topics = []
         self._init_episode_state()
@@ -75,7 +74,6 @@ class DroneHoveringEnv(ProjectAirSimEnv):
         self.angular_velocity = (0.0, 0.0, 0.0)
         self.prev_action = np.zeros(3)
         self.prev_state = None
-        self._hover_steps = 0
         self._step_count = 0
         self.last_task_status = None
         self.success_tracker.reset()
@@ -116,9 +114,7 @@ class DroneHoveringEnv(ProjectAirSimEnv):
         obs = self.get_observation()
         return obs, {}
     async def step(self, action):
-        if isinstance(action, np.ndarray):
-            action = action.tolist()
-        action = np.clip(np.array(action, dtype=np.float32), -1.5, 1.5)
+        action = np.clip(np.asarray(action, dtype=np.float32), -1.5, 1.5)
         v_north = float(action[0])
         v_east = float(action[1])
         v_down = float(action[2])

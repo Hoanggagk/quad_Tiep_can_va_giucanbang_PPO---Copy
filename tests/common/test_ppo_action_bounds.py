@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import unittest
+from unittest.mock import patch
 
 import numpy as np
 
@@ -185,6 +186,18 @@ class TestPPOConfigurations(unittest.TestCase):
         self.assertEqual(len(losses), 3)
         self.assertTrue(all(np.isfinite(value) for value in losses))
         self.assertEqual(agent.buffer.actions, [])
+
+    def test_load_reads_checkpoint_once_for_both_policies(self) -> None:
+        agent = self.make_ppo(13, 3)
+        state_dict = agent.policy.state_dict()
+        with patch(
+            "drone_control.algorithms.ppo.torch.load", return_value=state_dict
+        ) as load_checkpoint:
+            agent.load("checkpoint.pth")
+        load_checkpoint.assert_called_once()
+        for key, value in state_dict.items():
+            torch.testing.assert_close(agent.policy_old.state_dict()[key], value)
+            torch.testing.assert_close(agent.policy.state_dict()[key], value)
 
 
 if __name__ == "__main__":

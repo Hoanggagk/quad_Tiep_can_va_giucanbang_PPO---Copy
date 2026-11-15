@@ -297,7 +297,6 @@ class DroneMotorHoverEnv(Env):
         self._prev_t_ns: int | None = None
         self._target_simtime_ns = 0
         self._step_count = 0
-        self._hover_steps = 0
         self.last_task_status = None
         self.success_tracker.reset()
         self.termination_reason: str | None = None
@@ -845,9 +844,6 @@ class DroneMotorHoverEnv(Env):
             and attitude_norm < config.hover_attitude_tolerance_rad
         ):
             terms["hover_bonus"] = time_scale * config.hover_bonus
-            self._hover_steps += 1
-        else:
-            self._hover_steps = 0
 
         total = float(sum(terms.values()))
         terms["total"] = total
