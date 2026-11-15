@@ -36,7 +36,7 @@ control không cần xử lý trực tiếp.
 | -------------- | ------- | ----------- | ------------------------------------------------------------------------------------------------------------------- |
 | `STATE_DIM`    | $N_s$   | 13          | Chiều không gian trạng thái: [x, y, z, roll, pitch, yaw, vx, vy, vz, roll_rate, pitch_rate, yaw_rate, dist_to_goal] |
 | `ACTION_DIM`   | $N_a$   | 3           | Chiều không gian hành động: [v_north, v_east, v_down]                                                               |
-| `Action Range` | $A$     | [-1.5, 1.5] | c động                                                                                           |
+| `Action Range` | $A$     | [-1.5, 1.5] m/s | Velocity setpoint NED theo từng trục |
 
 ---
 
@@ -44,7 +44,7 @@ control không cần xử lý trực tiếp.
 
 | Tham Số                 | Ký Hiệu        | Giá Trị     | Ý Nghĩa                                                             |
 | ----------------------- | -------------- | ----------- | ------------------------------------------------------------------- |
-| `ACTION_STD_INIT`       | $\sigma_0$     | 0.5         | Độ lệch chuẩn ban đầu (~33% của range ±1.5)                         |
+| `ACTION_STD_INIT`       | $\sigma_0$     | 1.5         | Profile chính `velocity_ned.train`; short-episode là profile riêng |
 | `MIN_ACTION_STD`        | $\sigma_{min}$ | 0.01        | Độ lệch chuẩn tối thiểu (~1.7% của range, ≈±0.15 m/s khi khai thác) |
 | `ACTION_STD_DECAY_RATE` | $\beta$        | 0.01        | Tốc độ giảm std mỗi lần giảm                                        |
 | `ACTION_STD_DECAY_FREQ` | $F_\sigma$     | 50 episodes | Tần suất giảm action_std (cứ 50 episode)                            |
@@ -58,14 +58,14 @@ control không cần xử lý trực tiếp.
 | Tham Số                  | Ký Hiệu   | Giá Trị         | Ý Nghĩa                                              |
 | ------------------------ | --------- | --------------- | ---------------------------------------------------- |
 | `MAX_TRAINING_TIMESTEPS` | $T_{max}$ | 5×10⁵ (500,000) | Tổng số timestep tối đa                              |
-| `STEPS_PER_EPISODE`      | $S_e$     | 50              | Số bước tối đa mỗi episode (50 × 0.1s = 5s thực)     |
+| `STEPS_PER_EPISODE`      | $S_e$     | 150             | Số bước tối đa mỗi episode (150 × 0.1s = 15s mô phỏng) |
 | `UPDATE_TIMESTEP`        | $T_{up}$  | 2,000           | Cập nhật PPO sau mỗi N timestep                      |
 | `K_EPOCHS`               | $K$       | 30              | Số epoch per update (lặp trên dữ liệu trong 1 batch) |
 
 **Giải thích**:
 
-- Mỗi episode chịu tối đa 50 bước
-- Sau mỗi 2,000 timestep (≈40 episodes), cập nhật network PPO
+- Mỗi episode chịu tối đa 150 bước
+- Sau mỗi 2,000 timestep, cập nhật network PPO
 - Mỗi lần update, lặp 30 lần trên dữ liệu batch
 
 ---
@@ -78,6 +78,8 @@ control không cần xử lý trực tiếp.
 | `GAMMA`     | $\gamma$   | 0.99            | Hệ số chiết khấu (discount factor) - giá trị tương lai |
 | `LR_ACTOR`  | $\alpha_a$ | 3×10⁻⁴ (0.0003) | Learning rate cho Actor network                        |
 | `LR_CRITIC` | $\alpha_c$ | 1×10⁻³ (0.001)  | Learning rate cho Critic network                       |
+| `GAE_LAMBDA` | $\lambda$ | 0.95 | GAE; bootstrap ở truncation, không bootstrap terminal vật lý |
+| `TARGET_KL` | — | 0.02 | Dừng sớm epoch PPO khi approximate KL vượt ngưỡng |
 
 **Giải thích**:
 
@@ -91,8 +93,8 @@ control không cần xử lý trực tiếp.
 
 | Tham Số           | Ký Hiệu | Giá Trị               | Ý Nghĩa                             |
 | ----------------- | ------- | --------------------- | ----------------------------------- |
-| `PRINT_FREQ`      | $F_p$   | 1,000 timesteps       | In log console mỗi N timestep       |
-| `LOG_FREQ`        | $F_l$   | 250 timesteps         | Ghi CSV log mỗi N timestep          |
+| `PRINT_FREQ`      | $F_p$   | 3,000 timesteps       | In log console mỗi N timestep       |
+| `LOG_FREQ`        | $F_l$   | 750 timesteps         | Ghi CSV log mỗi N timestep          |
 | `SAVE_MODEL_FREQ` | $F_s$   | 50,000 timesteps      | Lưu checkpoint mỗi N timestep       |
 | `LOG_DIR`         | —       | "log_dir/"            | Thư mục lưu trữ logs và checkpoints |
 | `RUN_NAME`        | —       | "hover_projectairsim" | Tên run (tạo subfolder)             |
@@ -104,7 +106,7 @@ control không cần xử lý trực tiếp.
 | Tham Số                 | Ký Hiệu      | Giá Trị     | Ý Nghĩa                                   |
 | ----------------------- | ------------ | ----------- | ----------------------------------------- |
 | `dt`                    | $\Delta t$   | 0.1 seconds | Thời gian giữa các lần gửi lệnh hành động |
-| `MAX_STEPS_PER_EPISODE` | $S_{max}$    | 50 bước     | = 50 × 0.1s = 5s thực                     |
+| `MAX_STEPS_PER_EPISODE` | $S_{max}$    | 150 bước    | = 150 × 0.1s = 15s mô phỏng               |
 | `Goal Pose`             | $\mathbf{g}$ | [0, 0, -2]  | Mục tiêu bay: NED (North, East, Down)     |
 
 ---
@@ -122,7 +124,7 @@ control không cần xử lý trực tiếp.
 | `r_att` weight      | $w_{att}$  | -0.1    | Phạt nếu drone nghiêng quá nhiều                         |
 | `survival bonus`    | $r_s$      | 0.01    | Thưởng sống sót mỗi bước                                 |
 | `hover bonus`       | $r_h$      | 0.5     | Thưởng khi hover ở vị trí (<0.2m, <0.2m/s)               |
-| `success bonus`     | $r_{succ}$ | 5.0     | Thưởng khi hover thành công >20 bước                     |
+| `success bonus`     | $r_{succ}$ | 5.0     | Chỉ phát một lần sau 2 s hover liên tục rồi terminate success |
 | `crash penalty`     | $r_c$      | -2.0    | Phạt khi va chạm hoặc quá xa                             |
 | `ground penalty`    | $r_g$      | -2.0    | Phạt khi chạm mặt đất                                    |
 
@@ -182,7 +184,7 @@ action và ý nghĩa đầu ra policy khác nhau.
 
 ### 10.2. Không gian trạng thái
 
-`STATE_DIM = 17`. Thứ tự các phần tử phải được giữ nguyên khi huấn luyện,
+`STATE_DIM = 20` và `observation_schema_version = 2`. Thứ tự các phần tử phải được giữ nguyên khi huấn luyện,
 resume hoặc triển khai policy:
 
 | Chỉ số | Tên trong metadata | Đại lượng |
@@ -193,8 +195,9 @@ resume hoặc triển khai policy:
 | 9–11 | `roll_rate_radps`, `pitch_rate_radps`, `yaw_rate_radps` | Vận tốc góc, đơn vị rad/s |
 | 12 | `distance_to_goal_m` | Khoảng cách Euclid tới mục tiêu, đơn vị m |
 | 13–16 | `motor_fl_signal`, `motor_fr_signal`, `motor_rl_signal`, `motor_rr_signal` | Control signal hiện tại của bốn động cơ |
+| 17–19 | `goal_error_x_m`, `goal_error_y_m`, `goal_error_z_m` | Vector `goal - position` trong NED, đơn vị m |
 
-`LayerNorm(17)` được áp dụng trước Actor và Critic trong implementation PPO dùng
+`LayerNorm(20)` được áp dụng trước Actor và Critic trong implementation PPO dùng
 chung. Việc đổi thứ tự hoặc bỏ các motor signal sẽ làm checkpoint hiện tại
 không còn tương thích.
 
@@ -247,6 +250,8 @@ lượng, thrust model hoặc scene vật lý.
 | `GAMMA` | 0.99 | Hệ số chiết khấu |
 | `LR_ACTOR` | 3×10⁻⁴ | Learning rate của Actor |
 | `LR_CRITIC` | 1×10⁻³ | Learning rate của Critic |
+| `GAE_LAMBDA` | 0.95 | GAE có bootstrap đúng ở time-limit truncation |
+| `TARGET_KL` | 0.02 | Early-stop epoch nếu approximate KL vượt ngưỡng |
 | `SAVE_MODEL_FREQ` | 50,000 timestep | Chu kỳ lưu checkpoint |
 
 Với `CONTROL_FREQUENCY_HZ = 50`, ta có `dt = 0.02 s`; horizon 500 bước tương
@@ -256,10 +261,10 @@ Với `CONTROL_FREQUENCY_HZ = 50`, ta có `dt = 0.02 s`; horizon 500 bước tư
 ### 10.5. Kiến trúc Actor-Critic
 
 ```text
-State 17D → LayerNorm
-  ├─ Actor mean: 17 → 64 → Tanh → 64 → Tanh → 4 (latent mean)
+State 20D → LayerNorm
+  ├─ Actor mean: 20 → 64 → Tanh → 64 → Tanh → 4 (latent mean)
   │             z ~ Normal(mean, std), action = tanh(z)
-  └─ Critic: 17 → 64 → Tanh → 64 → Tanh → 1
+  └─ Critic: 20 → 64 → Tanh → 64 → Tanh → 1
 ```
 
 Actor motor sử dụng `tanh-squashed Gaussian` có hiệu chỉnh Jacobian trong
@@ -306,15 +311,16 @@ Episode kết thúc sớm khi xảy ra một trong các điều kiện:
 - khoảng cách tới mục tiêu lớn hơn `5 m`;
 - chuẩn vận tốc lớn hơn `5 m/s`.
 
-Curriculum mặc định tiến qua bảy stage:
+Curriculum mặc định tiến qua tám stage:
 
 ```text
 attitude_hover → random_attitude → random_position_velocity
-→ altitude_change → takeoff → disturbance → domain_randomization
+→ altitude_change → takeoff → target_reaching → disturbance
+→ domain_randomization
 ```
 
 Stage chỉ được nâng khi đủ số episode đánh giá và đồng thời đạt các ngưỡng về
-survival rate, position RMSE và attitude RMSE. Khi resume, stage hiện tại được
+survival rate, reach/sustained success rate, position RMSE và attitude RMSE. Khi resume, stage hiện tại được
 khôi phục từ metadata của checkpoint.
 
 ### 10.8. Logging, checkpoint và tương thích
@@ -328,14 +334,17 @@ Mỗi lần chạy tạo `run_id` riêng:
 | Checkpoint | `checkpoints_motor/<run_id>/*.pth` |
 | Metadata checkpoint | file `*.pth.json` nằm cạnh checkpoint |
 
-Metadata ghi lại `state_dim`, `action_dim`, action bounds, actuator order,
-observation layout, calibration RPM, reward, tần số điều khiển và curriculum.
+Metadata schema v3 ghi lại `state_dim`, `action_dim`, action bounds, actuator order,
+observation schema/layout, task contract v1, reward version, PPO/GAE config,
+calibration RPM, tần số điều khiển và curriculum.
 Resume chỉ được chấp nhận khi sidecar tồn tại và tối thiểu khớp:
 
 ```text
 policy_type = motor_level_ppo
-state_dim = 17
+schema_version = 3
+state_dim = 20
 action_dim = 4
+observation_schema_version = 2
 actuator_order = [FL, FR, RL, RR]
 action_mapping = hover_centered_full_signal
 action_mapping_version = 2
@@ -345,6 +354,10 @@ policy_distribution = tanh_squashed_gaussian
 Checkpoint motor tạo trước mapping version 2 không được resume vì cùng một
 action nay tạo control signal khác. Luôn lưu file `.pth` cùng file `.pth.json`;
 không đổi tên hoặc tráo sidecar giữa các run.
+
+Checkpoint state 17 / observation schema v1 cũng không được resume vào policy
+state 20. Chúng chỉ là artifact lịch sử và không được dùng để kết luận hiệu
+năng của observation v2.
 
 ### 10.9. Lệnh chạy và các tham số có thể cấu hình từ CLI
 
@@ -374,3 +387,19 @@ python -m drone_control.action_spaces.motor_residual.train `
 hằng số trong `motor_residual/train.py`; nếu thay đổi chúng cho một thí nghiệm,
 cần lưu cấu hình thí nghiệm và không giả định checkpoint cũ còn tương thích chỉ
 vì cùng `state_dim` và `action_dim`.
+
+### 10.10. Manifest đánh giá độc lập
+
+Tạo manifest frozen cho Test A–D mà không khởi động simulator:
+
+```powershell
+python tools/create_evaluation_manifest.py `
+  --action-space motor_residual `
+  --checkpoint "checkpoints_motor\<run_id>\final.pth" `
+  --seeds 11 22 33 44 55 `
+  --output "evaluation_results\motor_manifest.json"
+```
+
+Tool từ chối overwrite manifest hiện có. Protocol và bộ metric nằm trong
+`drone_control/evaluation_protocol.py`; chạy simulator/evaluation thật vẫn là
+một bước có chủ đích và không được tự động kích hoạt bởi lệnh tạo manifest.

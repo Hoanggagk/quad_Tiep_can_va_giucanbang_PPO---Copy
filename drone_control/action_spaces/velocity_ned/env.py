@@ -7,14 +7,42 @@ from gymnasium.spaces import Box
 from projectairsim.gym_envs.gym_env import ProjectAirSimEnv
 from projectairsim import Drone
 from projectairsim.utils import quaternion_to_rpy, load_scene_config_as_dict
+from drone_control.task_contract import (
+    DEFAULT_TASK_CONTRACT,
+    SuccessStatus,
+    SuccessTracker,
+    TaskContract,
+)
 
 class DroneHoveringEnv(ProjectAirSimEnv):
-    MAX_STEPS_PER_EPISODE = 1000   # Số bước tối đa: 50 × 0.1s = 5s thực
+    REWARD_VERSION = 2
+    MAX_STEPS_PER_EPISODE = round(
+        DEFAULT_TASK_CONTRACT.velocity_episode_seconds / 0.1
+    )
 
-    def __init__(self):
+    def __init__(
+        self,
+        *,
+        task_contract: TaskContract = DEFAULT_TASK_CONTRACT,
+        pose_timeout_seconds: float = 5.0,
+        max_steps_per_episode: int | None = None,
+    ):
         self.sim_config_fname = "scene_basic_drone.jsonc"
         # Thời gian giữa các lần gửi lệnh hành động (> 20ms của flight controller 50Hz)
         self.dt = 0.1
+        task_contract.validate()
+        if pose_timeout_seconds <= 0.0:
+            raise ValueError("pose_timeout_seconds phải lớn hơn 0")
+        self.task_contract = task_contract
+        self.pose_timeout_seconds = float(pose_timeout_seconds)
+        self.MAX_STEPS_PER_EPISODE = (
+            self.MAX_STEPS_PER_EPISODE
+            if max_steps_per_episode is None
+            else int(max_steps_per_episode)
+        )
+        if self.MAX_STEPS_PER_EPISODE <= 0:
+            raise ValueError("max_steps_per_episode phải lớn hơn 0")
+        self.success_tracker = SuccessTracker(task_contract, dt=self.dt)
         super().__init__(self.sim_config_fname)
         self.observation_shape = (13,)
         self.action_shape = (3,)
@@ -23,7 +51,7 @@ class DroneHoveringEnv(ProjectAirSimEnv):
         self.action_space = Box(-1.5, 1.5, shape=self.action_shape, dtype=np.float32)
 
         # Khởi tạo giá trị mặc định để tránh AttributeError trước reset()
-        self.goal_pose = [0, 0, -2]
+        self.goal_pose = list(task_contract.goal_position_m)
         self._hover_steps = 0
         self._pose_lock = threading.Lock()
         self._subscribed_topics = []
@@ -37,6 +65,7 @@ class DroneHoveringEnv(ProjectAirSimEnv):
         self.actor_pose = None
         self.observation = None
         self.collision_info = None
+        self.termination_reason = None
         self._prev_pos = None
         self._prev_rpy = None
         self._prev_t = None        # nanosec sim timestamp (thay wall-clock)
@@ -48,6 +77,8 @@ class DroneHoveringEnv(ProjectAirSimEnv):
         self.prev_state = None
         self._hover_steps = 0
         self._step_count = 0
+        self.last_task_status = None
+        self.success_tracker.reset()
 
     def set_target_sim_time(self, t_tgt):
         """Đặt mốc sim time cần đợi, reset cờ sync cho lock-step."""
@@ -72,7 +103,7 @@ class DroneHoveringEnv(ProjectAirSimEnv):
             self.world.enable_weather_visual_effects()
             self.actor = Drone(self.client, self.world, "Drone1")
 
-        self.goal_pose = [0, 0, -2]  # Mục tiêu: bay lên cao 2m so với vị trí xuất phát
+        self.goal_pose = list(self.task_contract.goal_position_m)
 
         pose_topic = self.actor.robot_info["actual_pose"]
         self.client.subscribe(pose_topic, lambda _, pose: self.pose_callback(pose))
@@ -106,21 +137,73 @@ class DroneHoveringEnv(ProjectAirSimEnv):
         self.world.continue_for_sim_time(self.dt * 1e9, wait_until_complete=False)
 
         # Spin đến khi nhận được pose với đúng sim timestamp
+        loop = asyncio.get_running_loop()
+        deadline = loop.time() + self.pose_timeout_seconds
         while not self.is_pose_synced():
+            if loop.time() >= deadline:
+                self.crashed = True
+                self.done = True
+                self.termination_reason = "pose_timeout"
+                await self._stop_velocity_command()
+                raise TimeoutError(
+                    f"Không nhận được actual_pose trong {self.pose_timeout_seconds:.1f}s"
+                )
             await asyncio.sleep(0.001)
 
         next_obs = self.get_observation()
         self._check_termination()
-        reward = self.get_reward(action)
+        task_status = self._update_task_status()
+        if task_status.success_event and not self.crashed:
+            self.done = True
+            self.termination_reason = "success"
+        reward = self.get_reward(action, task_status)
         terminated = self.done
         self._step_count += 1
         truncated = self._step_count >= self.MAX_STEPS_PER_EPISODE
-        info = {"status": "Running"}
+        info = {
+            "status": "Terminated" if terminated else "Running",
+            "termination_reason": self.termination_reason,
+            "time_limit": bool(truncated and not terminated),
+            "is_success": task_status.success,
+            "task": task_status.to_info(),
+        }
+        if terminated or truncated:
+            info["final_observation"] = next_obs.copy()
 
         self.prev_state = next_obs.copy() if next_obs is not None else None
         self.prev_action = action.copy()
 
         return (next_obs, reward, terminated, truncated, info)
+
+    async def _stop_velocity_command(self) -> None:
+        """Neutralize the command on timeout without hiding the root failure."""
+        try:
+            await self.actor.move_by_velocity_async(
+                0.0, 0.0, 0.0, duration=self.dt, yaw_is_rate=True, yaw=0.0
+            )
+        except Exception:
+            pass
+
+    def _update_task_status(self) -> SuccessStatus:
+        pose = np.asarray(self.actor_pose, dtype=np.float64)
+        position_error = float(
+            np.linalg.norm(pose[:3] - np.asarray(self.goal_pose, dtype=np.float64))
+        )
+        velocity_norm = float(np.linalg.norm(self.linear_velocity))
+        attitude_norm = float(np.linalg.norm(pose[3:5]))
+        yaw_error = abs(
+            math.atan2(
+                math.sin(float(pose[5]) - self.task_contract.yaw_target_rad),
+                math.cos(float(pose[5]) - self.task_contract.yaw_target_rad),
+            )
+        )
+        self.last_task_status = self.success_tracker.update(
+            position_error_m=position_error,
+            velocity_norm_mps=velocity_norm,
+            attitude_norm_rad=attitude_norm,
+            yaw_error_rad=yaw_error,
+        )
+        return self.last_task_status
 
     def render(self):
         if self.observation is not None:
@@ -192,6 +275,7 @@ class DroneHoveringEnv(ProjectAirSimEnv):
         self.collision_info = collision_info
         self.crashed = True
         self.done = True
+        self.termination_reason = "collision"
         print(f"[TERM] Va chạm phát hiện: {collision_info}")
 
     def _check_termination(self):
@@ -209,6 +293,7 @@ class DroneHoveringEnv(ProjectAirSimEnv):
             print("[TERM] Drone đang lật (attitude out of bounds).")
             self.crashed = True
             self.done = True
+            self.termination_reason = "attitude_limit"
             return
 
         # 2. Drone rơi gần mặt đất (NED: z=0 là mặt đất, z âm là lên cao)
@@ -217,25 +302,28 @@ class DroneHoveringEnv(ProjectAirSimEnv):
             self.ground_touch = True
             self.crashed = True
             self.done = True
+            self.termination_reason = "ground_touch"
             return
 
         # 3. Quá xa mục tiêu
         target = np.array(self.goal_pose)
         pos_err = np.linalg.norm(np.array([x, y, z]) - target)
-        if pos_err > 5.0:
+        if pos_err > self.task_contract.max_position_error_m:
             print(f"[TERM] Quá xa mục tiêu (pos_err={pos_err:.1f}m).")
             self.crashed = True
             self.done = True
+            self.termination_reason = "position_limit"
             return
 
         # 4. Vận tốc nguy hiểm
         vel_norm = math.sqrt(vx**2 + vy**2 + vz**2)
-        if vel_norm > 5.0:
+        if vel_norm > self.task_contract.max_velocity_mps:
             print(f"[TERM] Vận tốc quá cao (vel={vel_norm:.1f} m/s).")
             self.crashed = True
             self.done = True
+            self.termination_reason = "velocity_limit"
 
-    def get_reward(self, action):
+    def get_reward(self, action, task_status: SuccessStatus | None = None):
         if self.actor_pose is None: return 0.0
         
         # 1. Tính toán các thông số cơ bản
@@ -245,8 +333,8 @@ class DroneHoveringEnv(ProjectAirSimEnv):
         vel_norm = np.linalg.norm(self.linear_velocity)
         
         # 2. Phạt kết thúc (Termination)
-        if self.ground_touch: return -2.0
-        if pos_err > 5.0: return -2.0
+        if self.crashed:
+            return -2.0
 
         # 3. Thành phần Reward chính (đã đơn giản hóa)
         # Vị trí: 1.0 khi ở tâm, giảm dần ra xa
@@ -268,15 +356,11 @@ class DroneHoveringEnv(ProjectAirSimEnv):
         # Tổng này thường nằm trong khoảng [0, 1] cho mỗi bước
         reward = r_pos + r_approach + r_vel + r_att + 0.01 # survival
 
-        # 5. Bonus dừng hẳn (Hover success)
-        if pos_err < 0.2 and vel_norm < 0.2:
+        # 5. Hover shaping và success bonus chỉ phát một lần theo event.
+        if task_status is not None and task_status.sustaining:
             reward += 0.5
-            self._hover_steps += 1
-            if self._hover_steps > 20:
-                reward += 5.0 # Thắng lợi hoàn toàn
-                # self.done = True
-        else:
-            self._hover_steps = 0
+        if task_status is not None and task_status.success_event:
+            reward += 5.0
 
         return float(reward)
 

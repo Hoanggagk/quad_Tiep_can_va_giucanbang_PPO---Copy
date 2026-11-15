@@ -37,7 +37,7 @@ class TestMotorTrainingEntryPoint(unittest.TestCase):
         self.env.close()
 
     def test_motor_dimensions_and_observation_layout(self) -> None:
-        self.assertEqual(STATE_DIM, 17)
+        self.assertEqual(STATE_DIM, 20)
         self.assertEqual(ACTION_DIM, 4)
         self.assertEqual(len(OBSERVATION_LAYOUT), STATE_DIM)
 
@@ -70,15 +70,19 @@ class TestMotorTrainingEntryPoint(unittest.TestCase):
             "hover_rpm",
             "hover_control_signal",
             "observation_layout",
+            "observation_schema_version",
+            "task_contract",
+            "ppo_config",
             "reward_weights",
             "control_frequency_hz",
             "source_id",
         }
         self.assertTrue(required.issubset(metadata))
         self.assertEqual(metadata["actuator_order"], list(ACTUATOR_ORDER))
-        self.assertEqual(metadata["state_dim"], 17)
+        self.assertEqual(metadata["state_dim"], 20)
         self.assertEqual(metadata["action_dim"], 4)
-        self.assertEqual(metadata["schema_version"], 2)
+        self.assertEqual(metadata["schema_version"], 3)
+        self.assertEqual(metadata["observation_schema_version"], 2)
         self.assertEqual(metadata["action_mapping_version"], 2)
         self.assertEqual(metadata["policy_distribution"], "tanh_squashed_gaussian")
         self.assertTrue(metadata["source_id"].startswith("sha256:"))
@@ -133,6 +137,20 @@ class TestMotorTrainingEntryPoint(unittest.TestCase):
                 json.dumps(metadata), encoding="utf-8"
             )
             with self.assertRaisesRegex(ValueError, "action_mapping_version"):
+                validate_resume_checkpoint(checkpoint)
+
+    def test_resume_rejects_legacy_observation_schema(self) -> None:
+        metadata = build_checkpoint_metadata(
+            self.env, self.curriculum, run_id="motor_test", episode=0, timestep=0
+        )
+        metadata["observation_schema_version"] = 1
+        with tempfile.TemporaryDirectory() as temporary_directory:
+            checkpoint = Path(temporary_directory) / "legacy_observation.pth"
+            checkpoint.write_bytes(b"legacy observation checkpoint")
+            metadata_path_for(checkpoint).write_text(
+                json.dumps(metadata), encoding="utf-8"
+            )
+            with self.assertRaisesRegex(ValueError, "observation_schema_version"):
                 validate_resume_checkpoint(checkpoint)
 
 

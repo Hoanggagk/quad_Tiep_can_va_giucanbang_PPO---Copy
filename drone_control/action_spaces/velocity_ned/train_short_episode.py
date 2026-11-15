@@ -18,7 +18,7 @@ import matplotlib
 matplotlib.use("Agg")          # backend không cần GUI (an toàn khi chạy headless)
 import matplotlib.pyplot as plt
 
-from drone_control.action_spaces.velocity_ned.env_short_episode import DroneHoveringEnv
+from drone_control.action_spaces.velocity_ned.env import DroneHoveringEnv
 from drone_control.algorithms.ppo import PPO
 
 # ═══════════════════════════════════════════════════════════════════
@@ -27,7 +27,7 @@ from drone_control.algorithms.ppo import PPO
 
 # Không gian trạng thái và hành động
 STATE_DIM  = 13   # [x, y, z, roll, pitch, yaw, vx, vy, vz, roll_rate, pitch_rate, yaw_rate, dist_to_goal]
-ACTION_DIM = 3    # [v_north, v_east, v_down] ∈ [-3, 3]
+ACTION_DIM = 3    # [v_north, v_east, v_down] ∈ [-1.5, 1.5] m/s
 
 # Cấu hình PPO
 # Action space là [-1.5, 1.5]
@@ -37,13 +37,15 @@ MIN_ACTION_STD        = 0.01      # Ngưỡng dưới (~1.7% của range, ≈±0
 ACTION_STD_DECAY_FREQ = 50        # Giảm action_std cứ 50 episode (nhanh hơn)
 
 MAX_TRAINING_TIMESTEPS = int(1e5)   # Tổng số timestep tối đa (giảm từ 3e6 → 5e5 = 6x nhanh hơn)
-STEPS_PER_EPISODE      = 100         # Số bước tối đa mỗi episode (50 × 0.1s = 5s thực, giảm từ 100 để tăng tốc)
+STEPS_PER_EPISODE      = 100         # Profile ngắn: 100 × 0.1 s = 10 s mô phỏng
 UPDATE_TIMESTEP        = 2000       # Cập nhật PPO sau mỗi N timestep (giữ nguyên)
 K_EPOCHS               = 10         # Số epoch per update (giảm từ 40 → 25 để tránh overfit)
 EPS_CLIP               = 0.2
 GAMMA                  = 0.99
 LR_ACTOR               = 3e-4
 LR_CRITIC              = 1e-3
+GAE_LAMBDA             = 0.95
+TARGET_KL              = 0.02
 
 # Cấu hình log và lưu model
 LOG_DIR        = "log_dir/"
@@ -53,7 +55,7 @@ LOG_FREQ       = STEPS_PER_EPISODE * 5   # Ghi CSV ít hơn (từ ×2 → ×5)
 SAVE_MODEL_FREQ = int(5e4)                # Lưu checkpoint ít hơn (từ 1e5 → 5e4)
 
 # ── Điều kiện dừng sớm ──────────────────────────────────────────
-# Bài toán: DUY TRÌ VÀ CÂN BẰNG tại [0,0,-3] — drone khởi động tại mục tiêu.
+# Bài toán: DUY TRÌ VÀ CÂN BẰNG tại [0,0,-2].
 # Mỗi episode chạy đầy đủ STEPS_PER_EPISODE bước, không dừng sớm theo reward.
 # Dừng chỉ khi đạt MAX_TRAINING_TIMESTEPS hoặc Ctrl+C.
 
@@ -128,7 +130,7 @@ async def train(resume_path: str = None):
 
     # ── Khởi tạo môi trường ───────────────────────────────────────
     print("[ENV] Đang kết nối ProjectAirSim...")
-    env = DroneHoveringEnv()
+    env = DroneHoveringEnv(max_steps_per_episode=STEPS_PER_EPISODE)
     print("[ENV] Kết nối thành công.")
 
     # ── Khởi tạo PPO ──────────────────────────────────────────────
@@ -137,6 +139,8 @@ async def train(resume_path: str = None):
         LR_ACTOR, LR_CRITIC,
         GAMMA, K_EPOCHS, EPS_CLIP,
         ACTION_STD_INIT,
+        gae_lambda=GAE_LAMBDA,
+        target_kl=TARGET_KL,
     )
 
     if resume_path is not None:
@@ -164,7 +168,7 @@ async def train(resume_path: str = None):
 
     try:
         # ── Vòng lặp huấn luyện ────────────────────────────────────
-        while time_step <= MAX_TRAINING_TIMESTEPS:
+        while time_step < MAX_TRAINING_TIMESTEPS:
             obs, _ = env.reset()
             current_ep_reward = 0
 
@@ -174,11 +178,14 @@ async def train(resume_path: str = None):
 
                 # Thực thi bước (async)
                 obs, reward, terminated, truncated, info = await env.step(action)
+                budget_truncated = (
+                    time_step + 1 >= MAX_TRAINING_TIMESTEPS and not terminated
+                )
+                truncated = truncated or budget_truncated
                 done = terminated or truncated
 
-                # Ghi vào buffer
-                ppo_agent.buffer.rewards.append(reward)
-                ppo_agent.buffer.is_terminals.append(done)
+                # Ghi reward và bootstrap semantics vào buffer.
+                ppo_agent.record_outcome(reward, terminated, truncated, obs)
 
                 time_step         += 1
                 current_ep_reward += reward
@@ -382,7 +389,7 @@ async def test(checkpoint_path: str, num_episodes: int = 5):
     ppo_agent.load(checkpoint_path)
     print("[TEST] Đã nạp model.")
 
-    env = DroneHoveringEnv()
+    env = DroneHoveringEnv(max_steps_per_episode=STEPS_PER_EPISODE)
     goal = list(env.goal_pose) if hasattr(env, "goal_pose") else [0.0, 0.0, -5.0]
 
     for ep in range(num_episodes):

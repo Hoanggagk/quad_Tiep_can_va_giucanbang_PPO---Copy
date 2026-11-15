@@ -21,6 +21,7 @@ class TestMotorCurriculum(unittest.TestCase):
                 "random_position_velocity",
                 "altitude_change",
                 "takeoff",
+                "target_reaching",
                 "disturbance",
                 "domain_randomization",
             ],
@@ -42,7 +43,7 @@ class TestMotorCurriculum(unittest.TestCase):
         self.assertLessEqual(conditions.goal_position_m[2], -1.5)
 
     def test_domain_randomization_ranges(self) -> None:
-        conditions = MotorCurriculum(initial_stage=6, seed=8).sample_episode()
+        conditions = MotorCurriculum(initial_stage=7, seed=8).sample_episode()
         for scale in (
             conditions.mass_scale,
             conditions.thrust_scale,
@@ -55,7 +56,7 @@ class TestMotorCurriculum(unittest.TestCase):
         self.assertLessEqual(abs(conditions.hover_signal_bias), 0.03)
 
     def test_physical_domain_randomization_is_applied_to_robot_config(self) -> None:
-        conditions = MotorCurriculum(initial_stage=6, seed=8).sample_episode()
+        conditions = MotorCurriculum(initial_stage=7, seed=8).sample_episode()
         scene = {
             "actors": [
                 {
@@ -104,6 +105,7 @@ class TestMotorCurriculum(unittest.TestCase):
         for _ in range(2):
             curriculum.record_episode(
                 survived=True,
+                success=True,
                 position_errors_m=np.array([0.1, 0.1]),
                 attitude_errors_rad=np.array([0.05, 0.05]),
             )
@@ -120,6 +122,7 @@ class TestMotorCurriculum(unittest.TestCase):
         curriculum = MotorCurriculum(stages=stages)
         curriculum.record_episode(
             survived=False,
+            success=False,
             position_errors_m=np.array([0.01]),
             attitude_errors_rad=np.array([0.01]),
         )
@@ -141,12 +144,12 @@ class TestMotorCurriculum(unittest.TestCase):
         try:
             env._episode_position_errors_m = [0.1, 0.1]
             env._episode_attitude_errors_rad = [0.05, 0.05]
-            result = env._record_curriculum_episode(survived=True)
+            result = env._record_curriculum_episode(survived=True, success=True)
             self.assertTrue(result["recorded"])
             self.assertTrue(result["stage_advanced"])
             self.assertEqual(result["next_stage_name"], "second")
             self.assertFalse(
-                env._record_curriculum_episode(survived=True)["recorded"]
+                env._record_curriculum_episode(survived=True, success=True)["recorded"]
             )
         finally:
             env.close()

@@ -43,8 +43,14 @@ class TestPPOActionBoundsSourceContract(unittest.TestCase):
     def test_ppo_appends_distribution_after_configurable_bounds(self) -> None:
         arguments = self.get_init_argument_names("PPO")
         self.assertEqual(
-            arguments[-3:],
-            ["action_low", "action_high", "action_distribution"],
+            arguments[-5:],
+            [
+                "action_low",
+                "action_high",
+                "action_distribution",
+                "gae_lambda",
+                "target_kl",
+            ],
         )
 
     def test_old_hardcoded_scaling_and_clamp_are_removed(self) -> None:

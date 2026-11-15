@@ -172,9 +172,15 @@ class TestPPOConfigurations(unittest.TestCase):
             action_distribution=TANH_SQUASHED_GAUSSIAN,
         )
         for index in range(4):
-            agent.select_action(np.full(17, index * 0.01, dtype=np.float32))
-            agent.buffer.rewards.append(float(index + 1))
-            agent.buffer.is_terminals.append(index == 3)
+            state = np.full(17, index * 0.01, dtype=np.float32)
+            next_state = np.full(17, (index + 1) * 0.01, dtype=np.float32)
+            agent.select_action(state)
+            agent.record_outcome(
+                float(index + 1),
+                terminated=index == 3,
+                truncated=False,
+                next_state=next_state,
+            )
         losses = agent.update()
         self.assertEqual(len(losses), 3)
         self.assertTrue(all(np.isfinite(value) for value in losses))

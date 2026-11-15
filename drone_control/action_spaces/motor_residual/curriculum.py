@@ -16,6 +16,7 @@ import numpy as np
 class CurriculumStage:
     name: str
     position_range_m: float = 0.0
+    goal_xy_range_m: float = 0.0
     tilt_range_rad: float = 0.0
     velocity_range_mps: float = 0.0
     target_z_range_m: tuple[float, float] = (-2.0, -2.0)
@@ -28,6 +29,7 @@ class CurriculumStage:
     action_delay_steps: int = 0
     hover_signal_bias_range: float = 0.0
     min_survival_rate: float = 0.90
+    min_success_rate: float = 0.80
     max_position_rmse_m: float = 0.30
     max_attitude_rmse_rad: float = math.radians(12.0)
     min_evaluation_episodes: int = 20
@@ -54,6 +56,7 @@ class EpisodeConditions:
 class CurriculumMetrics:
     episode_count: int
     survival_rate: float
+    success_rate: float
     position_rmse_m: float
     attitude_rmse_rad: float
 
@@ -61,6 +64,7 @@ class CurriculumMetrics:
 @dataclass
 class CurriculumWindow:
     survived: list[bool] = field(default_factory=list)
+    successes: list[bool] = field(default_factory=list)
     squared_position_errors: list[float] = field(default_factory=list)
     squared_attitude_errors: list[float] = field(default_factory=list)
 
@@ -68,6 +72,7 @@ class CurriculumWindow:
         self,
         *,
         survived: bool,
+        success: bool,
         position_errors_m: np.ndarray,
         attitude_errors_rad: np.ndarray,
     ) -> None:
@@ -78,27 +83,30 @@ class CurriculumWindow:
         if not np.all(np.isfinite(position)) or not np.all(np.isfinite(attitude)):
             raise ValueError("Metric episode phải hữu hạn")
         self.survived.append(bool(survived))
+        self.successes.append(bool(success))
         self.squared_position_errors.append(float(np.mean(np.square(position))))
         self.squared_attitude_errors.append(float(np.mean(np.square(attitude))))
 
     def summarize(self) -> CurriculumMetrics:
         if not self.survived:
-            return CurriculumMetrics(0, 0.0, math.inf, math.inf)
+            return CurriculumMetrics(0, 0.0, 0.0, math.inf, math.inf)
         return CurriculumMetrics(
             episode_count=len(self.survived),
             survival_rate=float(np.mean(self.survived)),
+            success_rate=float(np.mean(self.successes)),
             position_rmse_m=math.sqrt(float(np.mean(self.squared_position_errors))),
             attitude_rmse_rad=math.sqrt(float(np.mean(self.squared_attitude_errors))),
         )
 
     def clear(self) -> None:
         self.survived.clear()
+        self.successes.clear()
         self.squared_position_errors.clear()
         self.squared_attitude_errors.clear()
 
 
 def default_motor_curriculum() -> tuple[CurriculumStage, ...]:
-    """Bảy stage theo đúng thứ tự tăng độ khó của kế hoạch triển khai."""
+    """Tám stage theo đúng thứ tự tăng độ khó của kế hoạch triển khai."""
     return (
         CurriculumStage(name="attitude_hover"),
         CurriculumStage(name="random_attitude", tilt_range_rad=math.radians(8.0)),
@@ -123,8 +131,17 @@ def default_motor_curriculum() -> tuple[CurriculumStage, ...]:
             target_z_range_m=(-2.5, -1.5),
         ),
         CurriculumStage(
+            name="target_reaching",
+            position_range_m=1.50,
+            goal_xy_range_m=0.50,
+            tilt_range_rad=math.radians(10.0),
+            velocity_range_mps=0.30,
+            target_z_range_m=(-3.0, -1.0),
+        ),
+        CurriculumStage(
             name="disturbance",
-            position_range_m=0.35,
+            position_range_m=1.00,
+            goal_xy_range_m=0.50,
             tilt_range_rad=math.radians(12.0),
             velocity_range_mps=0.40,
             target_z_range_m=(-3.0, -1.0),
@@ -132,7 +149,8 @@ def default_motor_curriculum() -> tuple[CurriculumStage, ...]:
         ),
         CurriculumStage(
             name="domain_randomization",
-            position_range_m=0.40,
+            position_range_m=1.50,
+            goal_xy_range_m=1.00,
             tilt_range_rad=math.radians(15.0),
             velocity_range_mps=0.50,
             target_z_range_m=(-3.0, -1.0),
@@ -175,6 +193,7 @@ class MotorCurriculum:
         roll_pitch = self.rng.uniform(-stage.tilt_range_rad, stage.tilt_range_rad, 2)
         velocity = self.rng.uniform(-stage.velocity_range_mps, stage.velocity_range_mps, 3)
         target_z = self.rng.uniform(*stage.target_z_range_m)
+        goal_xy = self.rng.uniform(-stage.goal_xy_range_m, stage.goal_xy_range_m, 2)
         force = self.rng.uniform(
             -stage.disturbance_force_range_n, stage.disturbance_force_range_n, 3
         )
@@ -184,7 +203,7 @@ class MotorCurriculum:
             initial_position_m=np.array([xy[0], xy[1], initial_z]),
             initial_rpy_rad=np.array([roll_pitch[0], roll_pitch[1], 0.0]),
             initial_velocity_mps=velocity,
-            goal_position_m=np.array([0.0, 0.0, target_z]),
+            goal_position_m=np.array([goal_xy[0], goal_xy[1], target_z]),
             disturbance_force_n=force,
             mass_scale=float(self.rng.uniform(*stage.mass_scale_range)),
             thrust_scale=float(self.rng.uniform(*stage.thrust_scale_range)),
@@ -211,6 +230,7 @@ class MotorCurriculum:
             self.stage_index < len(self.stages) - 1
             and metrics.episode_count >= stage.min_evaluation_episodes
             and metrics.survival_rate >= stage.min_survival_rate
+            and metrics.success_rate >= stage.min_success_rate
             and metrics.position_rmse_m <= stage.max_position_rmse_m
             and metrics.attitude_rmse_rad <= stage.max_attitude_rmse_rad
         )

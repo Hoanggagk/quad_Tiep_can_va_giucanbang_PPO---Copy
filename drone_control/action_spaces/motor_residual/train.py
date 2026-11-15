@@ -16,25 +16,23 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any
 
+import numpy as np
+
 from drone_control.action_spaces.motor_residual.curriculum import MotorCurriculum
 from drone_control.action_spaces.motor_residual.env import (
     ACTION_MAPPING,
     ACTION_MAPPING_VERSION,
     ACTUATOR_ORDER,
     DroneMotorHoverEnv,
+    OBSERVATION_LAYOUT,
+    OBSERVATION_SCHEMA_VERSION,
     PROJECTAIRSIM_SIGNAL_BOUNDS,
 )
 from drone_control.action_spaces.motor_residual.monitoring import TrainingMonitor
 
 
-STATE_DIM = 17
+STATE_DIM = len(OBSERVATION_LAYOUT)
 ACTION_DIM = 4
-OBSERVATION_LAYOUT = (
-    "x_m", "y_m", "z_m", "roll_rad", "pitch_rad", "yaw_rad",
-    "vx_mps", "vy_mps", "vz_mps", "roll_rate_radps",
-    "pitch_rate_radps", "yaw_rate_radps", "distance_to_goal_m",
-    "motor_fl_signal", "motor_fr_signal", "motor_rl_signal", "motor_rr_signal",
-)
 CONTROL_FREQUENCY_HZ = 50.0
 CONTROL_DT = 1.0 / CONTROL_FREQUENCY_HZ
 POLICY_DISTRIBUTION = "tanh_squashed_gaussian"
@@ -58,6 +56,8 @@ EPS_CLIP = 0.2
 GAMMA = 0.99
 LR_ACTOR = 3e-4
 LR_CRITIC = 1e-3
+GAE_LAMBDA = 0.95
+TARGET_KL = 0.02
 
 
 def make_run_id(now: datetime | None = None) -> str:
@@ -89,7 +89,7 @@ def build_checkpoint_metadata(
     timestep: int,
 ) -> dict[str, Any]:
     return {
-        "schema_version": 2,
+        "schema_version": 3,
         "policy_type": "motor_level_ppo",
         "run_id": run_id,
         "episode": episode,
@@ -109,9 +109,21 @@ def build_checkpoint_metadata(
         "hover_rpm": env.hover_rpm,
         "hover_control_signal": env.hover_control_signal,
         "observation_layout": list(OBSERVATION_LAYOUT),
+        "observation_schema_version": OBSERVATION_SCHEMA_VERSION,
+        "task_contract": env.task_contract.to_metadata(),
+        "reward_version": env.REWARD_VERSION,
         "reward_weights": asdict(env.reward_config),
         "control_frequency_hz": 1.0 / env.dt,
         "control_dt_seconds": env.dt,
+        "ppo_config": {
+            "gamma": GAMMA,
+            "gae_lambda": GAE_LAMBDA,
+            "target_kl": TARGET_KL,
+            "k_epochs": K_EPOCHS,
+            "eps_clip": EPS_CLIP,
+            "lr_actor": LR_ACTOR,
+            "lr_critic": LR_CRITIC,
+        },
         "curriculum": {
             "stage_index": curriculum.stage_index,
             "stage_name": curriculum.current_stage.name,
@@ -156,6 +168,7 @@ def validate_resume_checkpoint(checkpoint_path: Path) -> dict[str, Any]:
         raise ValueError("Checkpoint resume thiếu metadata motor-level")
     metadata = json.loads(sidecar.read_text(encoding="utf-8"))
     expected = {
+        "schema_version": 3,
         "policy_type": "motor_level_ppo",
         "state_dim": STATE_DIM,
         "action_dim": ACTION_DIM,
@@ -163,6 +176,9 @@ def validate_resume_checkpoint(checkpoint_path: Path) -> dict[str, Any]:
         "action_mapping": ACTION_MAPPING,
         "action_mapping_version": ACTION_MAPPING_VERSION,
         "policy_distribution": POLICY_DISTRIBUTION,
+        "observation_schema_version": OBSERVATION_SCHEMA_VERSION,
+        "observation_layout": list(OBSERVATION_LAYOUT),
+        "reward_version": DroneMotorHoverEnv.REWARD_VERSION,
         "projectairsim_signal_bounds": {
             "low": PROJECTAIRSIM_SIGNAL_BOUNDS[0],
             "high": PROJECTAIRSIM_SIGNAL_BOUNDS[1],
@@ -174,6 +190,12 @@ def validate_resume_checkpoint(checkpoint_path: Path) -> dict[str, Any]:
                 f"Checkpoint không tương thích: {key}={metadata.get(key)!r}, "
                 f"cần {value!r}"
             )
+    task_contract = metadata.get("task_contract", {})
+    if task_contract.get("version") != 1:
+        raise ValueError(
+            "Checkpoint không tương thích: task_contract.version="
+            f"{task_contract.get('version')!r}, cần 1"
+        )
     return metadata
 
 
@@ -223,6 +245,8 @@ async def train(
         action_low=-1.0,
         action_high=1.0,
         action_distribution=POLICY_DISTRIBUTION,
+        gae_lambda=GAE_LAMBDA,
+        target_kl=TARGET_KL,
     )
     if resume_path is not None:
         agent.load(str(resume_path))
@@ -239,18 +263,26 @@ async def train(
     timestep = 0
     episode = 0
     last_checkpoint: Path | None = None
+    last_update_metrics: dict[str, Any] = {}
     try:
         with log_path.open("x", newline="", encoding="utf-8") as log_file:
             writer = csv.DictWriter(
                 log_file,
                 fieldnames=(
                     "episode", "timestep", "reward", "steps", "survived",
-                    "stage_index", "stage_name", "survival_rate",
+                    "success", "stage_index", "stage_name", "survival_rate",
+                    "success_rate",
                     "position_rmse_m", "attitude_rmse_rad",
                     "progress_percent", "elapsed_seconds", "timesteps_per_second",
                     "eta_seconds", "reward_mean_window",
-                    "survival_fraction_window", "position_rmse_mean_window_m",
+                    "survival_fraction_window", "success_fraction_window",
+                    "position_rmse_mean_window_m",
                     "attitude_rmse_mean_window_rad", "action_std",
+                    "ppo_policy_loss", "ppo_value_loss", "ppo_entropy",
+                    "ppo_approx_kl", "ppo_clip_fraction",
+                    "ppo_explained_variance", "ppo_actor_grad_norm",
+                    "ppo_critic_grad_norm", "ppo_epochs_completed",
+                    "action_near_bound_fraction",
                 ),
             )
             writer.writeheader()
@@ -259,16 +291,22 @@ async def train(
                 episode_reward = 0.0
                 final_info: dict[str, Any] = {}
                 step_count = 0
+                episode_actions: list[np.ndarray] = []
                 for step_count in range(1, STEPS_PER_EPISODE + 1):
                     action = agent.select_action(observation)
+                    episode_actions.append(np.asarray(action, dtype=np.float64))
                     observation, reward, terminated, truncated, final_info = await env.step(action)
+                    budget_truncated = timestep + 1 >= max_timesteps and not terminated
+                    truncated = truncated or budget_truncated
                     done = terminated or truncated
-                    agent.buffer.rewards.append(reward)
-                    agent.buffer.is_terminals.append(done)
+                    agent.record_outcome(
+                        reward, terminated, truncated, observation
+                    )
                     episode_reward += reward
                     timestep += 1
                     if timestep % UPDATE_TIMESTEP == 0:
                         agent.update()
+                        last_update_metrics = dict(agent.last_update_metrics)
                     if timestep % SAVE_MODEL_FREQ == 0:
                         path = checkpoint_dir / f"episode_{episode:06d}_step_{timestep:09d}.pth"
                         save_checkpoint_with_metadata(
@@ -297,8 +335,24 @@ async def train(
                     "stage_index": curriculum_info.get("stage_index"),
                     "stage_name": curriculum_info.get("stage_name"),
                     "survival_rate": curriculum_result.get("survival_rate"),
+                    "success": curriculum_result.get("success", False),
+                    "success_rate": curriculum_result.get("success_rate"),
                     "position_rmse_m": curriculum_result.get("position_rmse_m"),
                     "attitude_rmse_rad": curriculum_result.get("attitude_rmse_rad"),
+                    "ppo_policy_loss": last_update_metrics.get("policy_loss"),
+                    "ppo_value_loss": last_update_metrics.get("value_loss"),
+                    "ppo_entropy": last_update_metrics.get("entropy"),
+                    "ppo_approx_kl": last_update_metrics.get("approx_kl"),
+                    "ppo_clip_fraction": last_update_metrics.get("clip_fraction"),
+                    "ppo_explained_variance": last_update_metrics.get("explained_variance"),
+                    "ppo_actor_grad_norm": last_update_metrics.get("actor_grad_norm"),
+                    "ppo_critic_grad_norm": last_update_metrics.get("critic_grad_norm"),
+                    "ppo_epochs_completed": last_update_metrics.get("epochs_completed"),
+                    "action_near_bound_fraction": (
+                        float(np.mean(np.abs(np.asarray(episode_actions)) >= 0.95))
+                        if episode_actions
+                        else None
+                    ),
                 }
                 episode_data.update(
                     monitor.record_episode(
@@ -313,6 +367,12 @@ async def train(
                         position_rmse_m=episode_data["position_rmse_m"],
                         attitude_rmse_rad=episode_data["attitude_rmse_rad"],
                         action_std=agent.action_std,
+                        success=bool(episode_data["success"]),
+                        success_rate=episode_data["success_rate"],
+                        ppo_metrics=last_update_metrics,
+                        action_near_bound_fraction=episode_data[
+                            "action_near_bound_fraction"
+                        ],
                     )
                 )
                 writer.writerow(episode_data)

@@ -71,6 +71,7 @@ class TrainingMonitor:
         self._started_at = clock()
         self._reward_window: deque[float] = deque(maxlen=rolling_window)
         self._survival_window: deque[float] = deque(maxlen=rolling_window)
+        self._success_window: deque[float] = deque(maxlen=rolling_window)
         self._position_rmse_window: deque[float] = deque(maxlen=rolling_window)
         self._attitude_rmse_window: deque[float] = deque(maxlen=rolling_window)
         self._last_stage_index: int | None = None
@@ -106,11 +107,16 @@ class TrainingMonitor:
         position_rmse_m: Any,
         attitude_rmse_rad: Any,
         action_std: Any,
+        success: bool = False,
+        success_rate: Any = None,
+        ppo_metrics: dict[str, Any] | None = None,
+        action_near_bound_fraction: Any = None,
     ) -> dict[str, Any]:
         """Ghi nhận một episode và trả về các trường monitoring để ghi CSV."""
         reward = float(reward)
         self._reward_window.append(reward)
         self._survival_window.append(float(bool(survived)))
+        self._success_window.append(float(bool(success)))
         position_rmse = _optional_float(position_rmse_m)
         attitude_rmse = _optional_float(attitude_rmse_rad)
         if position_rmse is not None:
@@ -125,6 +131,7 @@ class TrainingMonitor:
         progress = min(100.0, max(0.0, timestep / self.max_timesteps * 100.0))
         rolling_reward = _mean(self._reward_window)
         rolling_survival = _mean(self._survival_window)
+        rolling_success = _mean(self._success_window)
         rolling_position_rmse = _mean(self._position_rmse_window)
         rolling_attitude_rmse = _mean(self._attitude_rmse_window)
 
@@ -145,13 +152,23 @@ class TrainingMonitor:
             "stage_index": stage_index,
             "stage_name": stage_name,
             "survival_rate": _optional_float(survival_rate),
+            "success": bool(success),
+            "success_rate": _optional_float(success_rate),
             "position_rmse_m": position_rmse,
             "attitude_rmse_rad": attitude_rmse,
             "action_std": _optional_float(action_std),
+            "action_near_bound_fraction": _optional_float(
+                action_near_bound_fraction
+            ),
+            "ppo": {
+                key: _optional_float(value)
+                for key, value in (ppo_metrics or {}).items()
+            },
             "rolling": {
                 "window_episodes": len(self._reward_window),
                 "reward_mean": rolling_reward,
                 "survival_fraction": rolling_survival,
+                "success_fraction": rolling_success,
                 "position_rmse_mean_m": rolling_position_rmse,
                 "attitude_rmse_mean_rad": rolling_attitude_rmse,
             },
@@ -209,6 +226,9 @@ class TrainingMonitor:
             ),
             "survival_fraction_window": (
                 "" if rolling_survival is None else f"{rolling_survival:.9g}"
+            ),
+            "success_fraction_window": (
+                "" if rolling_success is None else f"{rolling_success:.9g}"
             ),
             "position_rmse_mean_window_m": (
                 "" if rolling_position_rmse is None else f"{rolling_position_rmse:.9g}"

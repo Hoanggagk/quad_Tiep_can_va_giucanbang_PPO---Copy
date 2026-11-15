@@ -23,6 +23,11 @@ from drone_control.action_spaces.motor_residual.curriculum import (
     EpisodeConditions,
     MotorCurriculum,
 )
+from drone_control.task_contract import (
+    DEFAULT_TASK_CONTRACT,
+    SuccessTracker,
+    TaskContract,
+)
 
 try:
     from gymnasium import Env
@@ -83,6 +88,14 @@ NANOSECONDS_PER_SECOND = 1_000_000_000
 ACTION_MAPPING = "hover_centered_full_signal"
 ACTION_MAPPING_VERSION = 2
 PROJECTAIRSIM_SIGNAL_BOUNDS = (0.0, 1.0)
+OBSERVATION_SCHEMA_VERSION = 2
+OBSERVATION_LAYOUT = (
+    "x_m", "y_m", "z_m", "roll_rad", "pitch_rad", "yaw_rad",
+    "vx_mps", "vy_mps", "vz_mps", "roll_rate_radps",
+    "pitch_rate_radps", "yaw_rate_radps", "distance_to_goal_m",
+    "motor_fl_signal", "motor_fr_signal", "motor_rl_signal", "motor_rr_signal",
+    "goal_error_x_m", "goal_error_y_m", "goal_error_z_m",
+)
 
 
 @dataclass(frozen=True)
@@ -166,8 +179,11 @@ def load_motor_calibration(path: Path = MOTOR_CONFIG_PATH) -> dict[str, Any]:
 class DroneMotorHoverEnv(Env):
     """Environment hover với residual action của bốn rotor độc lập."""
 
+    REWARD_VERSION = 1
     metadata = {"render_modes": ["human"]}
-    MAX_STEPS_PER_EPISODE = 500
+    MAX_STEPS_PER_EPISODE = round(
+        DEFAULT_TASK_CONTRACT.motor_episode_seconds / 0.02
+    )
 
     def __init__(
         self,
@@ -175,10 +191,12 @@ class DroneMotorHoverEnv(Env):
         sim_config_fname: str = SCENE_CONFIG,
         motor_config_path: Path = MOTOR_CONFIG_PATH,
         dt: float = 0.02,
-        goal_pose: tuple[float, float, float] = (0.0, 0.0, -2.0),
+        goal_pose: tuple[float, float, float] | None = None,
         pose_timeout_seconds: float = 5.0,
+        max_steps_per_episode: int | None = None,
         reward_config: RewardConfig | None = None,
         curriculum: MotorCurriculum | None = None,
+        task_contract: TaskContract = DEFAULT_TASK_CONTRACT,
         connect: bool = True,
     ) -> None:
         super().__init__()
@@ -188,9 +206,21 @@ class DroneMotorHoverEnv(Env):
             raise ValueError("pose_timeout_seconds phải lớn hơn 0")
 
         calibration = load_motor_calibration(Path(motor_config_path))
+        task_contract.validate()
+        self.task_contract = task_contract
         self.sim_config_fname = sim_config_fname
         self.dt = float(dt)
-        self.goal_pose = np.asarray(goal_pose, dtype=np.float64)
+        self.goal_pose = np.asarray(
+            task_contract.goal_position_m if goal_pose is None else goal_pose,
+            dtype=np.float64,
+        )
+        self.MAX_STEPS_PER_EPISODE = (
+            round(task_contract.motor_episode_seconds / self.dt)
+            if max_steps_per_episode is None
+            else int(max_steps_per_episode)
+        )
+        if self.MAX_STEPS_PER_EPISODE <= 0:
+            raise ValueError("max_steps_per_episode phải lớn hơn 0")
         self.min_rpm = 0.0
         self.max_rpm = float(calibration["max_rpm"])
         self.hover_rpm = float(calibration["hover_rpm"])
@@ -199,6 +229,7 @@ class DroneMotorHoverEnv(Env):
         self.reward_config = reward_config or RewardConfig()
         self.reward_config.validate()
         self.curriculum = curriculum
+        self.success_tracker = SuccessTracker(task_contract, dt=self.dt)
         self.episode_conditions: EpisodeConditions | None = None
         self.sensor_noise_std = 0.0
         self.hover_signal_bias = 0.0
@@ -217,7 +248,7 @@ class DroneMotorHoverEnv(Env):
                 "max_rpm * sqrt(hover_control_signal)"
             )
 
-        self.observation_shape = (17,)
+        self.observation_shape = (len(OBSERVATION_LAYOUT),)
         self.action_shape = (4,)
         self.observation_space = Box(
             -math.inf, math.inf, shape=self.observation_shape, dtype=np.float32
@@ -267,6 +298,8 @@ class DroneMotorHoverEnv(Env):
         self._target_simtime_ns = 0
         self._step_count = 0
         self._hover_steps = 0
+        self.last_task_status = None
+        self.success_tracker.reset()
         self.termination_reason: str | None = None
         self.last_reward_terms: dict[str, float] = {}
         self._episode_position_errors_m: list[float] = []
@@ -550,6 +583,10 @@ class DroneMotorHoverEnv(Env):
             self.prev_motor_signal = command.control_signal.astype(np.float64)
             observation = self.get_observation()
             self._check_termination()
+            task_status = self._update_task_status()
+            if task_status.success_event and not self.crashed:
+                self.done = True
+                self.termination_reason = "success"
             reward, reward_terms = self.calculate_reward(
                 command.control_signal,
                 previous_motor_signal,
@@ -578,23 +615,32 @@ class DroneMotorHoverEnv(Env):
                 "requested_action": requested_action.astype(np.float32),
                 "reward_terms": reward_terms.copy(),
                 "termination_reason": self.termination_reason,
+                "time_limit": bool(truncated and not terminated),
+                "is_success": task_status.success,
+                "task": task_status.to_info(),
             }
+            if terminated or truncated:
+                info["final_observation"] = observation.copy()
             if self.episode_conditions is not None:
                 info["curriculum"] = self._curriculum_info()
                 if terminated or truncated:
                     info["curriculum_result"] = self._record_curriculum_episode(
-                        survived=truncated and not self.crashed
+                        survived=not self.crashed and (truncated or task_status.success),
+                        success=task_status.success,
                     )
             return observation, reward, terminated, truncated, info
         except Exception:
             self._stop_all_rotors(raise_on_failure=False)
             raise
 
-    def _record_curriculum_episode(self, *, survived: bool) -> dict[str, Any]:
+    def _record_curriculum_episode(
+        self, *, survived: bool, success: bool
+    ) -> dict[str, Any]:
         if self.curriculum is None or self._curriculum_episode_recorded:
             return {"recorded": False, "stage_advanced": False}
         metrics = self.curriculum.record_episode(
             survived=survived,
+            success=success,
             position_errors_m=np.asarray(self._episode_position_errors_m),
             attitude_errors_rad=np.asarray(self._episode_attitude_errors_rad),
         )
@@ -603,8 +649,10 @@ class DroneMotorHoverEnv(Env):
         return {
             "recorded": True,
             "survived": survived,
+            "success": success,
             "episode_count": metrics.episode_count,
             "survival_rate": metrics.survival_rate,
+            "success_rate": metrics.success_rate,
             "position_rmse_m": metrics.position_rmse_m,
             "attitude_rmse_rad": metrics.attitude_rmse_rad,
             "stage_advanced": stage_advanced,
@@ -666,6 +714,7 @@ class DroneMotorHoverEnv(Env):
             angular_velocity = self.angular_velocity.copy()
 
         distance_to_goal = float(np.linalg.norm(pose[:3] - self.goal_pose))
+        goal_error = self.goal_pose - pose[:3]
         observation = np.concatenate(
             (
                 pose,
@@ -673,6 +722,7 @@ class DroneMotorHoverEnv(Env):
                 angular_velocity,
                 np.array([distance_to_goal], dtype=np.float64),
                 self.prev_motor_signal,
+                goal_error,
             )
         ).astype(np.float32)
         if self.sensor_noise_std > 0.0:
@@ -683,6 +733,22 @@ class DroneMotorHoverEnv(Env):
             raise RuntimeError(f"Observation sai shape: {observation.shape}")
         self.observation = observation
         return observation.copy()
+
+    def _update_task_status(self):
+        pose = np.asarray(self.actor_pose, dtype=np.float64)
+        yaw_error = abs(
+            math.atan2(
+                math.sin(float(pose[5]) - self.task_contract.yaw_target_rad),
+                math.cos(float(pose[5]) - self.task_contract.yaw_target_rad),
+            )
+        )
+        self.last_task_status = self.success_tracker.update(
+            position_error_m=float(np.linalg.norm(pose[:3] - self.goal_pose)),
+            velocity_norm_mps=float(np.linalg.norm(self.linear_velocity)),
+            attitude_norm_rad=float(np.linalg.norm(pose[3:5])),
+            yaw_error_rad=yaw_error,
+        )
+        return self.last_task_status
 
     def _check_termination(self) -> None:
         if self.actor_pose is None:
@@ -704,11 +770,11 @@ class DroneMotorHoverEnv(Env):
             self.crashed = True
             self.done = True
             self.termination_reason = "ground_touch"
-        elif position_error > 5.0:
+        elif position_error > self.task_contract.max_position_error_m:
             self.crashed = True
             self.done = True
             self.termination_reason = "position_limit"
-        elif velocity_norm > 5.0:
+        elif velocity_norm > self.task_contract.max_velocity_mps:
             self.crashed = True
             self.done = True
             self.termination_reason = "velocity_limit"

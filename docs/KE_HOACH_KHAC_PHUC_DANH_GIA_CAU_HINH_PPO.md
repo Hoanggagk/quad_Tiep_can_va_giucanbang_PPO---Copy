@@ -415,3 +415,23 @@ Kế hoạch được xem là hoàn thành khi có thể trả lời bằng dữ
 
 Chỉ sau khi năm câu hỏi này có bằng chứng đầy đủ mới chuyển từ “cấu hình có
 tiềm năng” sang kết luận về khả năng giải quyết bài toán.
+
+## 9. Trạng thái triển khai
+
+Cập nhật ngày 2026-11-15:
+
+| Giai đoạn | Trạng thái | Bằng chứng triển khai |
+|---|---|---|
+| 0 | Đã triển khai phần code/config | `drone_control/task_contract.py`; task contract v1, reward/observation/PPO config trong metadata motor |
+| 1 | Đã triển khai và có unit test | Buffer tách `terminated`/`truncated`, GAE bootstrap time limit, horizon velocity 15 s, pose timeout |
+| 2 | Đã triển khai lõi | Success tracker dùng chung, success event một lần, chuẩn hóa `info`; reward surface trực quan vẫn chưa tạo |
+| 3 | Đã triển khai và có checkpoint guard | Motor observation v2 gồm `[dx,dy,dz]`, state 20, metadata schema v3 từ chối checkpoint cũ |
+| 4 | Đã triển khai curriculum; chưa chạy so sánh horizon | Thêm `target_reaching`, goal XY, success-rate gate; chưa có dữ liệu 10/15/20 s |
+| 5 | Đã triển khai instrumentation | KL, clip fraction, explained variance, gradient norm, target-KL early stop và action near-bound trong log motor; chưa chạy sweep |
+| 6 | Đã đóng băng protocol/metrics, chưa chạy simulator | `drone_control/evaluation_protocol.py`, `tools/create_evaluation_manifest.py`; chưa có kết quả Test A–D |
+| 7 | Đã đồng bộ tài liệu kỹ thuật chính; release gate chưa đạt | `PPO_CONFIG_TABLE.md` đã phản ánh state 20/schema v3; cần dữ liệu multi-seed và simulator manifest hoàn tất |
+
+Các mục “chưa chạy” là chủ ý: kế hoạch cấm tự động khởi động training hoặc
+ProjectAirSim. Do đó thay đổi source có thể hoàn tất và kiểm thử offline, nhưng
+không được đánh dấu toàn bộ kế hoạch là hoàn thành trước khi có kết quả thực
+nghiệm nhiều seed theo Giai đoạn 5–7.

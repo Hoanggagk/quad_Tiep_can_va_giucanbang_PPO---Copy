@@ -28,6 +28,37 @@ def _normalize_action_bound(bound, action_dim, name):
     return tuple(float(value) for value in values.tolist())
 
 
+def compute_gae(
+    rewards,
+    state_values,
+    next_state_values,
+    terminateds,
+    truncateds,
+    *,
+    gamma,
+    gae_lambda,
+):
+    """Tính GAE; truncation bootstrap value nhưng chặn recursion qua episode."""
+    tensors = (rewards, state_values, next_state_values, terminateds, truncateds)
+    if any(tensor.ndim != 1 for tensor in tensors):
+        raise ValueError("Các tensor GAE phải có một chiều")
+    if len({tensor.numel() for tensor in tensors}) != 1:
+        raise ValueError("Các tensor GAE phải có cùng độ dài")
+    episode_boundaries = torch.maximum(terminateds, truncateds)
+    deltas = (
+        rewards
+        + gamma * next_state_values * (1.0 - terminateds)
+        - state_values
+    )
+    advantages = torch.zeros_like(rewards)
+    gae = torch.zeros((), dtype=rewards.dtype, device=rewards.device)
+    for index in range(rewards.numel() - 1, -1, -1):
+        continuation = 1.0 - episode_boundaries[index]
+        gae = deltas[index] + gamma * gae_lambda * continuation * gae
+        advantages[index] = gae
+    return advantages, advantages + state_values
+
+
 class ScaleAction(nn.Module):
     """Ánh xạ output Tanh từ [-1, 1] sang action bounds cấu hình."""
     def __init__(self, action_low, action_high, action_dim):
@@ -53,7 +84,9 @@ class RolloutBuffer:
         self.logprobs = []
         self.rewards = []
         self.state_values = []
-        self.is_terminals = []
+        self.next_state_values = []
+        self.terminateds = []
+        self.truncateds = []
 
     def clear(self):
         del self.actions[:]
@@ -61,7 +94,9 @@ class RolloutBuffer:
         del self.logprobs[:]
         del self.rewards[:]
         del self.state_values[:]
-        del self.is_terminals[:]
+        del self.next_state_values[:]
+        del self.terminateds[:]
+        del self.truncateds[:]
 
 class ActorCritic(nn.Module):
     def __init__(
@@ -239,12 +274,20 @@ class PPO:
         action_low=-1.5,
         action_high=1.5,
         action_distribution=CLIPPED_GAUSSIAN,
+        gae_lambda=0.95,
+        target_kl=None,
     ):
 
         self.action_std = action_std_init
         self.gamma = gamma
         self.eps_clip = eps_clip
         self.K_epochs = K_epochs
+        if not 0.0 <= gae_lambda <= 1.0:
+            raise ValueError("gae_lambda phải thuộc [0, 1]")
+        if target_kl is not None and target_kl <= 0.0:
+            raise ValueError("target_kl phải lớn hơn 0 hoặc None")
+        self.gae_lambda = float(gae_lambda)
+        self.target_kl = None if target_kl is None else float(target_kl)
         if action_distribution not in SUPPORTED_ACTION_DISTRIBUTIONS:
             raise ValueError(
                 f"action_distribution không hỗ trợ: {action_distribution!r}"
@@ -284,6 +327,7 @@ class PPO:
         self.policy_old.load_state_dict(self.policy.state_dict())
 
         self.MseLoss = nn.MSELoss()
+        self.last_update_metrics = {}
 
     def set_action_std(self, new_action_std):
 
@@ -321,33 +365,98 @@ class PPO:
         return action.detach().cpu().numpy().flatten()
 
 
+    def estimate_value(self, state):
+        """Ước lượng V(s) mà không ghi thêm transition vào rollout buffer."""
+        with torch.no_grad():
+            state_tensor = torch.as_tensor(state, dtype=torch.float32, device=device)
+            normalized = self.policy_old.state_norm(state_tensor)
+            value = self.policy_old.critic(normalized)
+        return value.detach()
+
+
+    def record_outcome(self, reward, terminated, truncated, next_state):
+        """Ghi outcome với bootstrap đúng cho terminal và time-limit truncation."""
+        if not self.buffer.states:
+            raise RuntimeError("Phải gọi select_action() trước record_outcome()")
+        next_value = (
+            torch.zeros_like(self.buffer.state_values[-1])
+            if terminated
+            else self.estimate_value(next_state)
+        )
+        self.buffer.rewards.append(float(reward))
+        self.buffer.next_state_values.append(next_value)
+        self.buffer.terminateds.append(bool(terminated))
+        self.buffer.truncateds.append(bool(truncated))
+
+
+    @staticmethod
+    def _gradient_norm(parameters):
+        squared_norm = torch.zeros((), dtype=torch.float32, device=device)
+        for parameter in parameters:
+            if parameter.grad is not None:
+                squared_norm += parameter.grad.detach().pow(2).sum()
+        return torch.sqrt(squared_norm).item()
+
+
     def update(self):
-        # Monte Carlo estimate of returns
-        rewards = []
-        discounted_reward = 0
-        for reward, is_terminal in zip(reversed(self.buffer.rewards), reversed(self.buffer.is_terminals)):
-            if is_terminal:
-                discounted_reward = 0
-            discounted_reward = reward + (self.gamma * discounted_reward)
-            rewards.insert(0, discounted_reward)  # why not append
+        transition_count = len(self.buffer.rewards)
+        lengths = {
+            len(self.buffer.states),
+            len(self.buffer.actions),
+            len(self.buffer.logprobs),
+            len(self.buffer.state_values),
+            len(self.buffer.next_state_values),
+            len(self.buffer.terminateds),
+            len(self.buffer.truncateds),
+            transition_count,
+        }
+        if transition_count == 0 or len(lengths) != 1:
+            raise RuntimeError("Rollout buffer rỗng hoặc các trường không cùng độ dài")
 
-        # Normalizing the rewards
-        rewards = torch.tensor(rewards, dtype=torch.float32).to(device)
-        rewards = (rewards - rewards.mean()) / (rewards.std() + 1e-7)
-
-        # convert list to tensor
-        old_states = torch.squeeze(torch.stack(self.buffer.states, dim=0)).detach().to(device)
-        old_actions = torch.squeeze(torch.stack(self.buffer.actions, dim=0)).detach().to(device)
-        old_logprobs = torch.squeeze(torch.stack(self.buffer.logprobs, dim=0)).detach().to(device)
-        old_state_values = torch.squeeze(torch.stack(self.buffer.state_values, dim=0)).detach().to(device)
-
-        # calculate advantages
-        advantages = rewards.detach() - old_state_values.detach() # compute A
+        rewards = torch.as_tensor(
+            self.buffer.rewards, dtype=torch.float32, device=device
+        )
+        old_states = torch.stack(self.buffer.states, dim=0).detach().to(device)
+        old_actions = torch.stack(self.buffer.actions, dim=0).detach().to(device)
+        old_logprobs = torch.stack(self.buffer.logprobs, dim=0).detach().to(device)
+        old_state_values = (
+            torch.stack(self.buffer.state_values, dim=0).squeeze(-1).detach().to(device)
+        )
+        next_state_values = (
+            torch.stack(self.buffer.next_state_values, dim=0)
+            .squeeze(-1)
+            .detach()
+            .to(device)
+        )
+        terminateds = torch.as_tensor(
+            self.buffer.terminateds, dtype=torch.float32, device=device
+        )
+        truncateds = torch.as_tensor(
+            self.buffer.truncateds, dtype=torch.float32, device=device
+        )
+        advantages, returns = compute_gae(
+            rewards,
+            old_state_values,
+            next_state_values,
+            terminateds,
+            truncateds,
+            gamma=self.gamma,
+            gae_lambda=self.gae_lambda,
+        )
+        normalized_advantages = (
+            advantages - advantages.mean()
+        ) / (advantages.std(unbiased=False) + 1e-8)
 
         # Optimize policy for K epochs
         total_policy_loss = 0.0
         total_value_loss  = 0.0
         total_entropy     = 0.0
+        total_approx_kl = 0.0
+        total_clip_fraction = 0.0
+        total_actor_grad_norm = 0.0
+        total_critic_grad_norm = 0.0
+        epochs_completed = 0
+        final_state_values = old_state_values
 
         for _ in range(self.K_epochs):
 
@@ -355,18 +464,23 @@ class PPO:
             logprobs, state_values, dist_entropy = self.policy.evaluate(old_states, old_actions)
 
             # match state_values tensor dimensions with rewards tensor
-            state_values = torch.squeeze(state_values)
+            state_values = state_values.squeeze(-1)
 
             # Finding the ratio (pi_theta / pi_theta__old)
-            ratios = torch.exp(logprobs - old_logprobs.detach())
+            log_ratio = logprobs - old_logprobs.detach()
+            ratios = torch.exp(log_ratio)
 
             # Finding Surrogate Loss
-            surr1 = ratios * advantages
-            surr2 = torch.clamp(ratios, 1-self.eps_clip, 1+self.eps_clip) * advantages
+            surr1 = ratios * normalized_advantages
+            surr2 = torch.clamp(ratios, 1-self.eps_clip, 1+self.eps_clip) * normalized_advantages
 
             policy_loss = -torch.min(surr1, surr2)
-            value_loss  = 0.5 * self.MseLoss(state_values, rewards)
+            value_loss  = 0.5 * self.MseLoss(state_values, returns)
             entropy     = dist_entropy
+            approx_kl = ((ratios - 1.0) - log_ratio).mean()
+            clip_fraction = (
+                (torch.abs(ratios - 1.0) > self.eps_clip).float().mean()
+            )
 
             # final loss of clipped objective PPO
             loss = policy_loss + value_loss - 0.01 * entropy
@@ -374,22 +488,57 @@ class PPO:
             # take gradient step
             self.optimizer.zero_grad()
             loss.mean().backward()
+            actor_grad_norm = self._gradient_norm(
+                list(self.policy.state_norm.parameters())
+                + list(self.policy.actor.parameters())
+            )
+            critic_grad_norm = self._gradient_norm(self.policy.critic.parameters())
             self.optimizer.step()
 
             total_policy_loss += policy_loss.mean().item()
             total_value_loss  += value_loss.item()
             total_entropy     += entropy.mean().item()
+            total_approx_kl += approx_kl.item()
+            total_clip_fraction += clip_fraction.item()
+            total_actor_grad_norm += actor_grad_norm
+            total_critic_grad_norm += critic_grad_norm
+            epochs_completed += 1
+            final_state_values = state_values.detach()
+            if self.target_kl is not None and approx_kl.item() > self.target_kl:
+                break
 
         # Copy new weights into old policy
         self.policy_old.load_state_dict(self.policy.state_dict())
 
-        # clear buffer
+        return_variance = torch.var(returns, unbiased=False)
+        if return_variance.item() > 1e-12:
+            explained_variance = 1.0 - (
+                torch.var(returns - final_state_values, unbiased=False)
+                / return_variance
+            ).item()
+        else:
+            explained_variance = float("nan")
+
+        denominator = max(epochs_completed, 1)
+        self.last_update_metrics = {
+            "transitions": transition_count,
+            "epochs_completed": epochs_completed,
+            "policy_loss": total_policy_loss / denominator,
+            "value_loss": total_value_loss / denominator,
+            "entropy": total_entropy / denominator,
+            "approx_kl": total_approx_kl / denominator,
+            "clip_fraction": total_clip_fraction / denominator,
+            "explained_variance": explained_variance,
+            "actor_grad_norm": total_actor_grad_norm / denominator,
+            "critic_grad_norm": total_critic_grad_norm / denominator,
+        }
+
         self.buffer.clear()
 
         return (
-            total_policy_loss / self.K_epochs,
-            total_value_loss  / self.K_epochs,
-            total_entropy     / self.K_epochs,
+            self.last_update_metrics["policy_loss"],
+            self.last_update_metrics["value_loss"],
+            self.last_update_metrics["entropy"],
         )
 
     def save(self, checkpoint_path):
