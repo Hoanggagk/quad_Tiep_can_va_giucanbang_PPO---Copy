@@ -44,20 +44,12 @@ class TestMotorReward(unittest.TestCase):
         return self.env.calculate_reward(current, previous)
 
     def test_stable_hover_has_positive_reward_and_no_penalties(self) -> None:
+        self.env._update_task_status()
         total, terms = self.reward()
         self.assertGreater(total, 1.0)
         self.assertGreater(terms["position"], 0.0)
         self.assertGreater(terms["hover_bonus"], 0.0)
-        for name in (
-            "velocity",
-            "attitude",
-            "yaw",
-            "angular_rate",
-            "motor_effort",
-            "motor_smoothness",
-            "saturation",
-            "crash",
-        ):
+        for name in ("approach", "velocity", "attitude", "success_bonus", "crash"):
             self.assertAlmostEqual(terms[name], 0.0)
 
     def test_tilted_state_has_attitude_penalty_and_lower_reward(self) -> None:
@@ -67,16 +59,27 @@ class TestMotorReward(unittest.TestCase):
         self.assertLess(terms["attitude"], 0.0)
         self.assertLess(tilted_total, hover_total)
 
-    def test_velocity_and_angular_rate_are_penalized_in_correct_units(self) -> None:
+    def test_velocity_is_not_directly_penalized_like_velocity_ned(self) -> None:
         self.set_state(velocity=(1.0, 0.0, 0.0), angular_rate=(0.0, 1.0, 0.0))
         _, terms = self.reward()
-        self.assertAlmostEqual(terms["velocity"], -0.10, places=7)
-        self.assertAlmostEqual(terms["angular_rate"], -0.05, places=7)
+        self.assertEqual(terms["velocity"], 0.0)
+        self.assertAlmostEqual(terms["angular_rate_norm_radps"], 1.0)
 
-    def test_yaw_error_is_wrapped_and_penalized(self) -> None:
-        self.set_state(yaw=2.0 * math.pi - 0.1)
+    def test_approach_to_goal_is_rewarded(self) -> None:
+        self.env.prev_state = np.array([1.0, 0.0, -2.0])
+        self.set_state(x=0.5)
         _, terms = self.reward()
-        self.assertAlmostEqual(terms["yaw"], -0.05 * 0.1**2, places=7)
+        self.assertAlmostEqual(terms["approach"], 1.0)
+
+    def test_success_bonus_is_emitted_once(self) -> None:
+        for _ in range(self.env.success_tracker.required_steps):
+            self.env._update_task_status()
+        _, terms = self.reward()
+        self.assertEqual(terms["success_bonus"], 5.0)
+
+        self.env._update_task_status()
+        _, terms = self.reward()
+        self.assertEqual(terms["success_bonus"], 0.0)
 
     def test_ground_touch_applies_strong_crash_penalty(self) -> None:
         self.set_state(z=-0.1)
@@ -84,35 +87,26 @@ class TestMotorReward(unittest.TestCase):
         total, terms = self.reward()
         self.assertTrue(self.env.crashed)
         self.assertEqual(self.env.termination_reason, "ground_touch")
-        self.assertEqual(terms["crash"], -self.env.reward_config.crash_penalty)
-        self.assertLess(total, 0.0)
+        self.assertEqual(total, -2.0)
+        self.assertEqual(terms["crash"], -2.0)
 
-    def test_motor_saturation_is_penalized(self) -> None:
+    def test_motor_saturation_is_logged_but_not_penalized(self) -> None:
         hover_total, _ = self.reward()
         saturated = np.ones(4)
         saturated_total, terms = self.reward(saturated, saturated)
         self.assertAlmostEqual(terms["saturation_fraction"], 1.0)
-        self.assertLess(terms["saturation"], 0.0)
-        self.assertLess(saturated_total, hover_total)
-
-    def test_motor_command_delta_is_penalized(self) -> None:
-        current = np.ones(4)
-        _, terms = self.reward(current, self.hover_signal)
-        self.assertLess(terms["motor_smoothness"], 0.0)
+        self.assertEqual(saturated_total, hover_total)
 
     def test_reward_terms_contain_all_logged_components(self) -> None:
         _, terms = self.reward()
         expected = {
             "position",
+            "approach",
             "alive",
             "velocity",
             "attitude",
-            "yaw",
-            "angular_rate",
-            "motor_effort",
-            "motor_smoothness",
-            "saturation",
             "hover_bonus",
+            "success_bonus",
             "crash",
             "total",
             "position_error_m",
@@ -131,7 +125,7 @@ class TestMotorReward(unittest.TestCase):
         self.assertTrue(self.env.done)
         self.assertEqual(self.env.termination_reason, "attitude_limit")
 
-    def test_reward_scales_with_control_period(self) -> None:
+    def test_reward_is_per_step_like_velocity_ned(self) -> None:
         total_50hz, _ = self.reward()
         env_100hz = DroneMotorHoverEnv(connect=False, dt=0.01)
         try:
@@ -140,7 +134,7 @@ class TestMotorReward(unittest.TestCase):
             env_100hz.angular_velocity = self.env.angular_velocity.copy()
             signal = np.full(4, env_100hz.hover_control_signal)
             total_100hz, _ = env_100hz.calculate_reward(signal, signal)
-            self.assertAlmostEqual(total_100hz, total_50hz / 2.0, places=6)
+            self.assertAlmostEqual(total_100hz, total_50hz, places=6)
         finally:
             env_100hz.close()
 
@@ -148,7 +142,7 @@ class TestMotorReward(unittest.TestCase):
         with self.assertRaises(ValueError):
             DroneMotorHoverEnv(
                 connect=False,
-                reward_config=RewardConfig(velocity_weight=-1.0),
+                reward_config=RewardConfig(approach_weight=-1.0),
             )
 
 

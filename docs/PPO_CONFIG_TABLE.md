@@ -3,6 +3,8 @@
 > Các mục 1–9 bên dưới mô tả cấu hình `velocity_ned` với 3 hành động vận tốc.
 > Cấu hình PPO điều khiển trực tiếp 4 động cơ (`motor_residual`) được trình bày
 > riêng tại [Mục 10](#10-cấu-hình-ppo-cho-không-gian-hành-động-4-động-cơ).
+> Công thức reward đầy đủ được tổng hợp riêng tại
+> [PPO_REWARD_FUNCTION.md](PPO_REWARD_FUNCTION.md).
 
 ## Cách đọc tài liệu: tại sao có hai reward function?
 
@@ -336,134 +338,51 @@ tại của pipeline vận tốc.
 ### 10.6. Reward function của `motor_residual` (4 action động cơ)
 
 > Phần này **chỉ áp dụng cho
-> `drone_control.action_spaces.motor_residual.train`**. Đây không phải phiên
-> bản cập nhật hay thay thế reward ở Mục 7, mà là reward của một environment
-> khác.
+> `drone_control.action_spaces.motor_residual.train`**. Từ `REWARD_VERSION = 2`,
+> công thức shaping được đồng nhất với `velocity_ned`; khác biệt chỉ còn ở
+> action space, observation và tần số điều khiển.
 
-Reward được scale theo `dt / reference_dt`, với `reference_dt = 0.02 s`, để giữ
-ý nghĩa gần nhất quán khi thay đổi tần số điều khiển. Cấu hình mặc định gồm:
-
-| Thành phần | Trọng số | Vai trò |
-|---|---:|---|
-| `position` | `position_weight = 1.0`, `position_scale = 0.5` | Thưởng theo `exp(-0.5 * position_error²)` |
-| `velocity` | 0.10 | Phạt bình phương tốc độ tuyến tính |
-| `attitude` | 0.50 | Phạt bình phương roll và pitch |
-| `yaw` | 0.05 | Phạt bình phương sai lệch yaw về 0 |
-| `angular_rate` | 0.05 | Phạt bình phương tốc độ góc |
-| `motor_effort` | 0.02 | Phạt lệch motor signal khỏi operating point hover |
-| `motor_smoothness` | 0.10 | Phạt thay đổi motor signal giữa hai bước |
-| `saturation` | 0.20 | Phạt tỷ lệ động cơ gần biên `[0, 1]` |
-| `alive_bonus` | 0.01 | Thưởng duy trì episode |
-| `hover_bonus` | 0.50 | Thưởng khi đồng thời đạt điều kiện hover |
-| `crash_penalty` | 10.0 | Phạt một lần khi trạng thái được đánh dấu crash |
-
-#### 10.6.1. Ký hiệu và hệ số thời gian
-
-Đặt:
+Ký hiệu $d_t=\lVert\mathbf{p}_t-\mathbf{g}\rVert_2$, và
+$\phi_t,\theta_t$ là roll, pitch. Các thành phần reward theo từng bước là:
 
 $$
-\alpha=\frac{dt}{dt_{ref}}, \qquad dt_{ref}=0.02\ \text{s}.
-$$
-
-Với cấu hình 50 Hz mặc định, $dt=0.02$ s nên $\alpha=1$. Ngoài ra:
-
-- $d_t=\lVert\mathbf{p}_t-\mathbf{g}\rVert_2$ là position error;
-- $\mathbf{v}_t$ và $\boldsymbol{\omega}_t$ là vận tốc tuyến tính và vận tốc góc;
-- $\phi_t,\theta_t,\psi_t$ là roll, pitch và yaw;
-- $u_{i,t}\in[0,1]$ là control signal của motor $i$;
-- $h$ là `hover_control_signal` đã hiệu chuẩn;
-- $\bar\psi_t=\operatorname{atan2}(\sin\psi_t,\cos\psi_t)$ là yaw đã wrap về
-  $[-\pi,\pi]$.
-
-#### 10.6.2. Công thức từng thành phần
-
-$$
-r_{position,t}=\alpha w_p\exp(-k_p d_t^2),
-\qquad w_p=1.0,\quad k_p=0.5.
+r_{pos,t}=\max\left(0,1-\frac{d_t}{3}\right),
 $$
 
 $$
-r_{velocity,t}=-\alpha w_v\lVert\mathbf{v}_t\rVert_2^2,
-\qquad w_v=0.10.
+r_{approach,t}=
+\begin{cases}
+2(d_{t-1}-d_t), & \text{khi đã có state trước đó},\\
+0, & \text{ở bước đầu tiên}.
+\end{cases}
 $$
 
 $$
-r_{attitude,t}=-\alpha w_a(\phi_t^2+\theta_t^2),
-\qquad w_a=0.50.
+r_{att,t}=-0.1(|\phi_t|+|\theta_t|),
+\qquad r_{vel,t}=0,
+\qquad r_{alive,t}=0.01.
 $$
 
-$$
-r_{yaw,t}=-\alpha w_y\bar\psi_t^2,
-\qquad w_y=0.05.
-$$
+`SuccessTracker` dùng chung quyết định hover và success:
 
 $$
-r_{angular,t}=-\alpha w_\omega
-\lVert\boldsymbol{\omega}_t\rVert_2^2,
-\qquad w_\omega=0.05.
-$$
-
-Với bốn motor ($N=4$):
-
-$$
-r_{effort,t}=-\alpha w_e\frac{1}{N}
-\sum_{i=1}^{N}(u_{i,t}-h)^2,
-\qquad w_e=0.02,
-$$
-
-$$
-r_{smooth,t}=-\alpha w_s\frac{1}{N}
-\sum_{i=1}^{N}(u_{i,t}-u_{i,t-1})^2,
-\qquad w_s=0.10.
-$$
-
-Với saturation margin $m=0.02$:
-
-$$
-q_t=\frac{1}{N}\sum_{i=1}^{N}
-\mathbb{1}[u_{i,t}\le m\ \lor\ u_{i,t}\ge1-m],
+r_{hover,t}=0.5\,\mathbb{1}[\text{sustaining}_t],
 \qquad
-r_{saturation,t}=-\alpha(0.20)q_t.
+r_{success,t}=5\,\mathbb{1}[\text{success\_event}_t].
 $$
 
-Các bonus và penalty rời rạc là:
+Nếu `crashed` là true, reward trả về đúng $-2$. Ngược lại:
 
 $$
-r_{alive,t}=\alpha(0.01),
+R_t=r_{pos,t}+r_{approach,t}+r_{vel,t}+r_{att,t}
+    +r_{alive,t}+r_{hover,t}+r_{success,t}.
 $$
 
-$$
-r_{hover,t}=\alpha(0.50)\,
-\mathbb{1}\!\left[
-d_t<0.20\ \land
-\lVert\mathbf{v}_t\rVert_2<0.20\ \land
-\sqrt{\phi_t^2+\theta_t^2}<10^\circ
-\right],
-$$
-
-$$
-r_{crash,t}=-10\,\mathbb{1}[\text{crashed}_t].
-$$
-
-#### 10.6.3. Tổng reward và các giá trị chỉ dùng để log
-
-$$
-\begin{aligned}
-R_t={}&r_{position,t}+r_{velocity,t}+r_{attitude,t}+r_{yaw,t}
-+r_{angular,t}\\
-&+r_{effort,t}+r_{smooth,t}+r_{saturation,t}
-+r_{alive,t}+r_{hover,t}+r_{crash,t}.
-\end{aligned}
-$$
-
-Các trường `position_error_m`, `velocity_norm_mps`,
-`angular_rate_norm_radps` và `saturation_fraction` được ghi kèm trong
-`reward_terms` để giám sát, nhưng **không được cộng thêm lần nữa** vào $R_t$.
-
-Điều kiện nhận `hover_bonus` là position error `< 0.20 m`, speed `< 0.20 m/s`
-và chuẩn attitude roll-pitch `< 10°`. Không nên thay một trọng số riêng lẻ mà
-không theo dõi ít nhất reward từng thành phần, survival rate, position RMSE,
-attitude RMSE và saturation fraction.
+Reward không còn scale theo `dt` và không còn các penalty `yaw`,
+`angular_rate`, `motor_effort`, `motor_smoothness` hay `saturation`. Các trường
+`position_error_m`, `velocity_norm_mps`, `angular_rate_norm_radps` và
+`saturation_fraction` vẫn được ghi trong `reward_terms` để giám sát; chúng
+không được cộng vào $R_t$.
 
 ### 10.7. Termination và curriculum
 

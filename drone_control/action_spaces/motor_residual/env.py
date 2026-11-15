@@ -108,50 +108,32 @@ class MotorCommand:
 
 @dataclass(frozen=True)
 class RewardConfig:
-    """Trọng số reward tại tần số tham chiếu 50 Hz."""
+    """Cấu hình reward đồng nhất với environment ``velocity_ned``."""
 
-    position_weight: float = 1.0
-    position_scale: float = 0.5
-    velocity_weight: float = 0.10
-    attitude_weight: float = 0.50
-    yaw_weight: float = 0.05
-    angular_rate_weight: float = 0.05
-    motor_effort_weight: float = 0.02
-    motor_smoothness_weight: float = 0.10
-    saturation_weight: float = 0.20
+    position_radius_m: float = 3.0
+    approach_weight: float = 2.0
+    attitude_weight: float = 0.10
     alive_bonus: float = 0.01
     hover_bonus: float = 0.50
-    crash_penalty: float = 10.0
-    hover_position_tolerance_m: float = 0.20
-    hover_velocity_tolerance_mps: float = 0.20
-    hover_attitude_tolerance_rad: float = math.radians(10.0)
+    success_bonus: float = 5.0
+    crash_penalty: float = 2.0
     saturation_margin: float = 0.02
-    reference_dt: float = 0.02
 
     def validate(self) -> None:
         numeric_values = (
-            self.position_weight,
-            self.position_scale,
-            self.velocity_weight,
+            self.position_radius_m,
+            self.approach_weight,
             self.attitude_weight,
-            self.yaw_weight,
-            self.angular_rate_weight,
-            self.motor_effort_weight,
-            self.motor_smoothness_weight,
-            self.saturation_weight,
             self.alive_bonus,
             self.hover_bonus,
+            self.success_bonus,
             self.crash_penalty,
-            self.hover_position_tolerance_m,
-            self.hover_velocity_tolerance_mps,
-            self.hover_attitude_tolerance_rad,
             self.saturation_margin,
-            self.reference_dt,
         )
         if not all(math.isfinite(value) and value >= 0.0 for value in numeric_values):
             raise ValueError("RewardConfig chỉ chấp nhận trọng số hữu hạn, không âm")
-        if self.position_scale <= 0.0 or self.reference_dt <= 0.0:
-            raise ValueError("position_scale và reference_dt phải lớn hơn 0")
+        if self.position_radius_m <= 0.0:
+            raise ValueError("position_radius_m phải lớn hơn 0")
         if not 0.0 <= self.saturation_margin < 0.5:
             raise ValueError("saturation_margin phải thuộc [0, 0.5)")
 
@@ -179,7 +161,7 @@ def load_motor_calibration(path: Path = MOTOR_CONFIG_PATH) -> dict[str, Any]:
 class DroneMotorHoverEnv(Env):
     """Environment hover với residual action của bốn rotor độc lập."""
 
-    REWARD_VERSION = 1
+    REWARD_VERSION = 2
     metadata = {"render_modes": ["human"]}
     MAX_STEPS_PER_EPISODE = round(
         DEFAULT_TASK_CONTRACT.motor_episode_seconds / 0.02
@@ -796,14 +778,11 @@ class DroneMotorHoverEnv(Env):
             raise ValueError("Motor signal dùng tính reward phải hữu hạn")
 
         config = self.reward_config
-        time_scale = self.dt / config.reference_dt
         pose = np.asarray(self.actor_pose, dtype=np.float64)
         position_error = float(np.linalg.norm(pose[:3] - self.goal_pose))
         velocity_norm = float(np.linalg.norm(self.linear_velocity))
         angular_rate_norm = float(np.linalg.norm(self.angular_velocity))
-        roll, pitch, yaw = float(pose[3]), float(pose[4]), float(pose[5])
-        yaw_error = math.atan2(math.sin(yaw), math.cos(yaw))
-        hover_signal = np.full(4, self.hover_control_signal, dtype=np.float64)
+        roll, pitch = float(pose[3]), float(pose[4])
         saturation_fraction = float(
             np.mean(
                 (current_signal <= config.saturation_margin)
@@ -811,39 +790,36 @@ class DroneMotorHoverEnv(Env):
             )
         )
 
+        previous_position_error = position_error
+        if self.prev_state is not None:
+            previous_position_error = float(
+                np.linalg.norm(np.asarray(self.prev_state[:3]) - self.goal_pose)
+            )
+        task_status = self.last_task_status
         terms = {
-            "position": time_scale
-            * config.position_weight
-            * math.exp(-config.position_scale * position_error**2),
-            "alive": time_scale * config.alive_bonus,
-            "velocity": -time_scale * config.velocity_weight * velocity_norm**2,
-            "attitude": -time_scale
-            * config.attitude_weight
-            * (roll**2 + pitch**2),
-            "yaw": -time_scale * config.yaw_weight * yaw_error**2,
-            "angular_rate": -time_scale
-            * config.angular_rate_weight
-            * angular_rate_norm**2,
-            "motor_effort": -time_scale
-            * config.motor_effort_weight
-            * float(np.mean(np.square(current_signal - hover_signal))),
-            "motor_smoothness": -time_scale
-            * config.motor_smoothness_weight
-            * float(np.mean(np.square(current_signal - previous_signal))),
-            "saturation": -time_scale
-            * config.saturation_weight
-            * saturation_fraction,
-            "hover_bonus": 0.0,
+            "position": max(0.0, 1.0 - position_error / config.position_radius_m),
+            "approach": config.approach_weight
+            * (previous_position_error - position_error),
+            "velocity": 0.0,
+            "attitude": -config.attitude_weight * (abs(roll) + abs(pitch)),
+            "alive": config.alive_bonus,
+            "hover_bonus": (
+                config.hover_bonus
+                if task_status is not None and task_status.sustaining
+                else 0.0
+            ),
+            "success_bonus": (
+                config.success_bonus
+                if task_status is not None and task_status.success_event
+                else 0.0
+            ),
             "crash": -config.crash_penalty if self.crashed else 0.0,
         }
 
-        attitude_norm = math.sqrt(roll**2 + pitch**2)
-        if (
-            position_error < config.hover_position_tolerance_m
-            and velocity_norm < config.hover_velocity_tolerance_mps
-            and attitude_norm < config.hover_attitude_tolerance_rad
-        ):
-            terms["hover_bonus"] = time_scale * config.hover_bonus
+        if self.crashed:
+            for name in terms:
+                terms[name] = 0.0
+            terms["crash"] = -config.crash_penalty
 
         total = float(sum(terms.values()))
         terms["total"] = total
