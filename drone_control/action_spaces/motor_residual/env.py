@@ -80,6 +80,9 @@ ACTUATOR_ORDER = (
     "Prop_RR_actuator",
 )
 NANOSECONDS_PER_SECOND = 1_000_000_000
+ACTION_MAPPING = "hover_centered_full_signal"
+ACTION_MAPPING_VERSION = 2
+PROJECTAIRSIM_SIGNAL_BOUNDS = (0.0, 1.0)
 
 
 @dataclass(frozen=True)
@@ -161,7 +164,7 @@ def load_motor_calibration(path: Path = MOTOR_CONFIG_PATH) -> dict[str, Any]:
 
 
 class DroneMotorHoverEnv(Env):
-    """Environment hover với action là tốc độ của bốn rotor độc lập."""
+    """Environment hover với residual action của bốn rotor độc lập."""
 
     metadata = {"render_modes": ["human"]}
     MAX_STEPS_PER_EPISODE = 500
@@ -173,8 +176,6 @@ class DroneMotorHoverEnv(Env):
         motor_config_path: Path = MOTOR_CONFIG_PATH,
         dt: float = 0.02,
         goal_pose: tuple[float, float, float] = (0.0, 0.0, -2.0),
-        min_rpm: float = 0.0,
-        rpm_delta: float | None = None,
         pose_timeout_seconds: float = 5.0,
         reward_config: RewardConfig | None = None,
         curriculum: MotorCurriculum | None = None,
@@ -190,15 +191,10 @@ class DroneMotorHoverEnv(Env):
         self.sim_config_fname = sim_config_fname
         self.dt = float(dt)
         self.goal_pose = np.asarray(goal_pose, dtype=np.float64)
-        self.min_rpm = float(min_rpm)
+        self.min_rpm = 0.0
         self.max_rpm = float(calibration["max_rpm"])
         self.hover_rpm = float(calibration["hover_rpm"])
         self.hover_control_signal = float(calibration["hover_control_signal"])
-        self.rpm_delta = float(
-            rpm_delta
-            if rpm_delta is not None
-            else min(self.hover_rpm - self.min_rpm, self.max_rpm - self.hover_rpm)
-        )
         self.pose_timeout_seconds = float(pose_timeout_seconds)
         self.reward_config = reward_config or RewardConfig()
         self.reward_config.validate()
@@ -210,14 +206,16 @@ class DroneMotorHoverEnv(Env):
         self._action_delay_queue: deque[np.ndarray] = deque()
         self.max_tilt_radians = math.radians(70.0)
 
-        if not 0.0 <= self.min_rpm < self.hover_rpm < self.max_rpm:
-            raise ValueError("Cần min_rpm < hover_rpm < max_rpm")
-        if self.rpm_delta <= 0.0:
-            raise ValueError("rpm_delta phải lớn hơn 0")
-        if self.hover_rpm - self.rpm_delta < self.min_rpm:
-            raise ValueError("rpm_delta làm RPM thấp hơn min_rpm")
-        if self.hover_rpm + self.rpm_delta > self.max_rpm:
-            raise ValueError("rpm_delta làm RPM cao hơn max_rpm")
+        if not 0.0 < self.hover_rpm < self.max_rpm:
+            raise ValueError("Cần 0 < hover_rpm < max_rpm")
+        if not 0.0 < self.hover_control_signal < 1.0:
+            raise ValueError("hover_control_signal phải thuộc (0, 1)")
+        expected_hover_rpm = self.max_rpm * math.sqrt(self.hover_control_signal)
+        if not math.isclose(self.hover_rpm, expected_hover_rpm, rel_tol=1e-6):
+            raise ValueError(
+                "Calibration không nhất quán: hover_rpm phải bằng "
+                "max_rpm * sqrt(hover_control_signal)"
+            )
 
         self.observation_shape = (17,)
         self.action_shape = (4,)
@@ -286,17 +284,23 @@ class DroneMotorHoverEnv(Env):
         if not np.all(np.isfinite(action_array)):
             raise ValueError("Action chứa NaN hoặc infinity")
 
-        normalized_action = np.clip(action_array, -1.0, 1.0)
-        rpm = np.clip(
-            self.hover_rpm + normalized_action * self.rpm_delta,
-            self.min_rpm,
-            self.max_rpm,
+        if np.any(action_array < -1.0) or np.any(action_array > 1.0):
+            raise ValueError("Action phải thuộc [-1, 1]; environment không tự clip")
+
+        effective_hover_signal = self.hover_control_signal + self.hover_signal_bias
+        if not 0.0 < effective_hover_signal < 1.0:
+            raise ValueError(
+                "hover_control_signal + hover_signal_bias phải thuộc (0, 1)"
+            )
+
+        normalized_action = action_array
+        control_signal = np.where(
+            normalized_action < 0.0,
+            effective_hover_signal * (1.0 + normalized_action),
+            effective_hover_signal
+            + normalized_action * (1.0 - effective_hover_signal),
         )
-        control_signal = np.clip(
-            np.square(rpm / self.max_rpm) + self.hover_signal_bias,
-            0.0,
-            1.0,
-        )
+        rpm = self.max_rpm * np.sqrt(control_signal)
         actuator_map = {
             actuator_id: float(control_signal[index])
             for index, actuator_id in enumerate(ACTUATOR_ORDER)

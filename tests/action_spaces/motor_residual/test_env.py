@@ -38,12 +38,9 @@ class TestMotorActionMapping(unittest.TestCase):
         np.testing.assert_allclose(self.env.action_space.low, -1.0)
         np.testing.assert_allclose(self.env.action_space.high, 1.0)
 
-    def test_action_is_clipped_to_normalized_bounds(self) -> None:
-        command = self.env.action_to_motor_command([2.0, -2.0, 1.5, -1.5])
-        np.testing.assert_array_equal(
-            command.normalized_action,
-            np.array([1.0, -1.0, 1.0, -1.0], dtype=np.float32),
-        )
+    def test_action_outside_normalized_bounds_is_rejected(self) -> None:
+        with self.assertRaisesRegex(ValueError, "không tự clip"):
+            self.env.action_to_motor_command([2.0, -1.0, 0.0, 1.0])
 
     def test_zero_action_maps_to_hover_operating_point(self) -> None:
         command = self.env.action_to_motor_command(np.zeros(4))
@@ -54,20 +51,41 @@ class TestMotorActionMapping(unittest.TestCase):
             rtol=1e-6,
         )
 
-    def test_rpm_is_always_within_configured_bounds(self) -> None:
-        for action in (
-            np.full(4, -100.0),
-            np.zeros(4),
-            np.full(4, 100.0),
-        ):
+    def test_full_action_bounds_cover_projectairsim_signal_range(self) -> None:
+        command = self.env.action_to_motor_command([-1.0, 0.0, 1.0, 0.5])
+        np.testing.assert_allclose(
+            command.control_signal,
+            [
+                0.0,
+                self.env.hover_control_signal,
+                1.0,
+                self.env.hover_control_signal
+                + 0.5 * (1.0 - self.env.hover_control_signal),
+            ],
+            rtol=1e-6,
+            atol=1e-7,
+        )
+
+    def test_rpm_is_always_within_projectairsim_bounds(self) -> None:
+        for action in (np.full(4, -1.0), np.zeros(4), np.full(4, 1.0)):
             rpm = self.env.action_to_motor_command(action).rpm
-            self.assertTrue(np.all(rpm >= self.env.min_rpm))
+            self.assertTrue(np.all(rpm >= 0.0))
             self.assertTrue(np.all(rpm <= self.env.max_rpm))
 
     def test_rpm_to_control_signal_uses_square_relationship(self) -> None:
         command = self.env.action_to_motor_command([-1.0, -0.25, 0.25, 1.0])
         expected = np.square(command.rpm.astype(np.float64) / self.env.max_rpm)
         np.testing.assert_allclose(command.control_signal, expected, rtol=1e-6)
+
+    def test_hover_bias_moves_neutral_point_but_preserves_full_bounds(self) -> None:
+        self.env.hover_signal_bias = 0.03
+        command = self.env.action_to_motor_command([-1.0, 0.0, 1.0, 0.0])
+        np.testing.assert_allclose(
+            command.control_signal,
+            [0.0, self.env.hover_control_signal + 0.03, 1.0, self.env.hover_control_signal + 0.03],
+            rtol=1e-6,
+            atol=1e-7,
+        )
 
     def test_actuator_map_uses_fl_fr_rl_rr_order(self) -> None:
         command = self.env.action_to_motor_command([-1.0, -0.5, 0.5, 1.0])

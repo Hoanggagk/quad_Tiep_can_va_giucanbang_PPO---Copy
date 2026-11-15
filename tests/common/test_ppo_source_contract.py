@@ -40,9 +40,12 @@ class TestPPOActionBoundsSourceContract(unittest.TestCase):
         self.assertIn("action_low", arguments)
         self.assertIn("action_high", arguments)
 
-    def test_ppo_exposes_configurable_bounds_at_end_of_signature(self) -> None:
+    def test_ppo_appends_distribution_after_configurable_bounds(self) -> None:
         arguments = self.get_init_argument_names("PPO")
-        self.assertEqual(arguments[-2:], ["action_low", "action_high"])
+        self.assertEqual(
+            arguments[-3:],
+            ["action_low", "action_high", "action_distribution"],
+        )
 
     def test_old_hardcoded_scaling_and_clamp_are_removed(self) -> None:
         self.assertNotIn("ScaleAction(1.5)", self.source)

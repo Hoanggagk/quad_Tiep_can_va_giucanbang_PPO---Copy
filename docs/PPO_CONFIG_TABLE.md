@@ -216,15 +216,20 @@ Mỗi action được giới hạn trong `[-1, 1]`. Với action chuẩn hóa `a
 tính lệnh cho động cơ thứ `i` như sau:
 
 ```text
-rpm_i = clip(hover_rpm + a_i * rpm_delta, min_rpm, max_rpm)
-control_signal_i = clip((rpm_i / max_rpm)^2 + hover_signal_bias, 0, 1)
+h = hover_control_signal + hover_signal_bias
+
+nếu a_i < 0: control_signal_i = h * (1 + a_i)
+nếu a_i ≥ 0: control_signal_i = h + a_i * (1 - h)
+
+rpm_i = max_rpm * sqrt(control_signal_i)
 ```
 
-Trong đó `hover_rpm`, `max_rpm` và thứ tự actuator được đọc từ
-`config/motor_control.json`; `rpm_delta` được chọn sao cho residual đối xứng
-quanh `hover_rpm` mà không vượt giới hạn RPM. Vì vậy `a_i = 0` là operating
-point hover, `a_i < 0` giảm RPM và `a_i > 0` tăng RPM. Cần hiệu chuẩn lại khi
-đổi model động cơ, khối lượng, thrust model hoặc scene vật lý.
+Ánh xạ hover-centered sử dụng toàn bộ miền `control_signal ∈ [0, 1]` của rotor
+ProjectAirSim: `a_i=-1` dừng rotor, `a_i=0` là operating point hover và
+`a_i=1` là `max_rpm`. Environment không clip action; giá trị ngoài `[-1,1]`
+được xem là lỗi. Policy motor dùng `tanh-squashed Gaussian` để action sinh ra
+luôn nằm trong miền hợp lệ. Cần hiệu chuẩn lại khi đổi model động cơ, khối
+lượng, thrust model hoặc scene vật lý.
 
 ### 10.4. Siêu tham số PPO mặc định
 
@@ -252,12 +257,15 @@ Với `CONTROL_FREQUENCY_HZ = 50`, ta có `dt = 0.02 s`; horizon 500 bước tư
 
 ```text
 State 17D → LayerNorm
-  ├─ Actor : 17 → 64 → Tanh → 64 → Tanh → 4 → Tanh → Scale[-1, 1]
+  ├─ Actor mean: 17 → 64 → Tanh → 64 → Tanh → 4 (latent mean)
+  │             z ~ Normal(mean, std), action = tanh(z)
   └─ Critic: 17 → 64 → Tanh → 64 → Tanh → 1
 ```
 
-Actor sử dụng Gaussian policy với phương sai chéo; action lấy mẫu được clamp về
-`[-1, 1]^4` trước khi gửi sang environment.
+Actor motor sử dụng `tanh-squashed Gaussian` có hiệu chỉnh Jacobian trong
+`log_prob`, nên action nằm trong `(-1,1)^4` mà không cần clamp. Cấu hình
+`velocity_ned` vẫn giữ distribution cũ để bảo toàn checkpoint và hành vi hiện
+tại của pipeline vận tốc.
 
 ### 10.6. Reward function của `motor_residual` (4 action động cơ)
 
@@ -329,10 +337,14 @@ policy_type = motor_level_ppo
 state_dim = 17
 action_dim = 4
 actuator_order = [FL, FR, RL, RR]
+action_mapping = hover_centered_full_signal
+action_mapping_version = 2
+policy_distribution = tanh_squashed_gaussian
 ```
 
-Luôn lưu file `.pth` cùng file `.pth.json`; không đổi tên hoặc tráo sidecar giữa
-các run.
+Checkpoint motor tạo trước mapping version 2 không được resume vì cùng một
+action nay tạo control signal khác. Luôn lưu file `.pth` cùng file `.pth.json`;
+không đổi tên hoặc tráo sidecar giữa các run.
 
 ### 10.9. Lệnh chạy và các tham số có thể cấu hình từ CLI
 

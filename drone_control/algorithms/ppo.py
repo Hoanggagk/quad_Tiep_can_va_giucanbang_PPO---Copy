@@ -1,8 +1,16 @@
 import torch
 import torch.nn as nn
+import torch.nn.functional as F
 from torch.distributions import MultivariateNormal
-from torch.distributions import Categorical
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
+
+CLIPPED_GAUSSIAN = "clipped_gaussian"
+TANH_SQUASHED_GAUSSIAN = "tanh_squashed_gaussian"
+SUPPORTED_ACTION_DISTRIBUTIONS = {
+    CLIPPED_GAUSSIAN,
+    TANH_SQUASHED_GAUSSIAN,
+}
 
 
 def _normalize_action_bound(bound, action_dim, name):
@@ -63,6 +71,7 @@ class ActorCritic(nn.Module):
         action_std_init,
         action_low=-1.5,
         action_high=1.5,
+        action_distribution=CLIPPED_GAUSSIAN,
     ):
         super(ActorCritic, self).__init__()
 
@@ -75,26 +84,36 @@ class ActorCritic(nn.Module):
         )
         if any(low >= high for low, high in zip(self.action_low, self.action_high)):
             raise ValueError("Mỗi action_low phải nhỏ hơn action_high tương ứng")
+        if action_distribution not in SUPPORTED_ACTION_DISTRIBUTIONS:
+            raise ValueError(
+                f"action_distribution không hỗ trợ: {action_distribution!r}"
+            )
+        self.action_distribution = action_distribution
         self.action_var = torch.full((action_dim,), action_std_init * action_std_init).to(device)
 
         # Chuẩn hóa đầu vào: giảm bão hòa Tanh khi state có giá trị lớn (x,y,z tính bằng mét)
         # LayerNorm học scale/shift phù hợp trong quá trình train, không cần biết phân phối trước
         self.state_norm = nn.LayerNorm(state_dim)
 
-        # actor
-        self.actor = nn.Sequential(
-                        nn.Linear(state_dim, 64),
-                        nn.Tanh(),
-                        nn.Linear(64, 64),
-                        nn.Tanh(),
-                        nn.Linear(64, action_dim),
-                        nn.Tanh(),            # output ∈ (-1, 1)
-                        ScaleAction(
-                            self.action_low,
-                            self.action_high,
-                            action_dim,
-                        ),
-                    )
+        actor_layers = [
+            nn.Linear(state_dim, 64),
+            nn.Tanh(),
+            nn.Linear(64, 64),
+            nn.Tanh(),
+            nn.Linear(64, action_dim),
+        ]
+        if self.action_distribution == CLIPPED_GAUSSIAN:
+            actor_layers.extend(
+                [
+                    nn.Tanh(),
+                    ScaleAction(
+                        self.action_low,
+                        self.action_high,
+                        action_dim,
+                    ),
+                ]
+            )
+        self.actor = nn.Sequential(*actor_layers)
         # critic
         self.critic = nn.Sequential(
                         nn.Linear(state_dim, 64),
@@ -108,21 +127,72 @@ class ActorCritic(nn.Module):
         self.action_var = torch.full((self.action_dim,), new_action_std * new_action_std).to(device)
 
 
+    def _action_scale_and_bias(self, reference):
+        action_low = torch.as_tensor(
+            self.action_low, dtype=reference.dtype, device=reference.device
+        )
+        action_high = torch.as_tensor(
+            self.action_high, dtype=reference.dtype, device=reference.device
+        )
+        return 0.5 * (action_high - action_low), 0.5 * (
+            action_high + action_low
+        )
+
+
+    @staticmethod
+    def _log_one_minus_tanh_squared(pre_tanh_action):
+        """Log-Jacobian ổn định số cho phép biến đổi tanh."""
+        return 2.0 * (
+            torch.log(torch.tensor(2.0, dtype=pre_tanh_action.dtype, device=pre_tanh_action.device))
+            - pre_tanh_action
+            - F.softplus(-2.0 * pre_tanh_action)
+        )
+
+
+    def _squash_action(self, pre_tanh_action):
+        action_scale, action_bias = self._action_scale_and_bias(pre_tanh_action)
+        return action_bias + action_scale * torch.tanh(pre_tanh_action)
+
+
+    def _squashed_logprob(self, dist, pre_tanh_action):
+        action_scale, _ = self._action_scale_and_bias(pre_tanh_action)
+        log_abs_det = torch.log(action_scale) + self._log_one_minus_tanh_squared(
+            pre_tanh_action
+        )
+        return dist.log_prob(pre_tanh_action) - log_abs_det.sum(dim=-1)
+
+
+    def _unsquash_action(self, action):
+        """Khôi phục latent action; guard chỉ xử lý sai số float sát biên."""
+        action_scale, action_bias = self._action_scale_and_bias(action)
+        normalized_action = (action - action_bias) / action_scale
+        epsilon = torch.finfo(action.dtype).eps
+        normalized_action = torch.clamp(
+            normalized_action, -1.0 + epsilon, 1.0 - epsilon
+        )
+        return torch.atanh(normalized_action)
+
+
     def act(self, state):
         state = self.state_norm(state)
         action_mean = self.actor(state)
         cov_mat = torch.diag(self.action_var).unsqueeze(dim=0)
         dist = MultivariateNormal(action_mean, cov_mat)
 
-        action = dist.sample()
-        action_low = torch.as_tensor(
-            self.action_low, dtype=action.dtype, device=action.device
-        )
-        action_high = torch.as_tensor(
-            self.action_high, dtype=action.dtype, device=action.device
-        )
-        action = torch.maximum(torch.minimum(action, action_high), action_low)
-        action_logprob = dist.log_prob(action)  # logprob của action đã clamp → khớp với buffer
+        if self.action_distribution == TANH_SQUASHED_GAUSSIAN:
+            pre_tanh_action = dist.sample()
+            action = self._squash_action(pre_tanh_action)
+            action_logprob = self._squashed_logprob(dist, pre_tanh_action)
+        else:
+            action = dist.sample()
+            action_low = torch.as_tensor(
+                self.action_low, dtype=action.dtype, device=action.device
+            )
+            action_high = torch.as_tensor(
+                self.action_high, dtype=action.dtype, device=action.device
+            )
+            action = torch.maximum(torch.minimum(action, action_high), action_low)
+            action_logprob = dist.log_prob(action)
         state_val = self.critic(state)  # state đã được norm ở đầu act()
 
         return action.detach(), action_logprob.detach(), state_val.detach()
@@ -140,8 +210,15 @@ class ActorCritic(nn.Module):
         if self.action_dim == 1:
             action = action.reshape(-1, self.action_dim)
 
-        action_logprobs = dist.log_prob(action)
-        dist_entropy = dist.entropy()
+        if self.action_distribution == TANH_SQUASHED_GAUSSIAN:
+            pre_tanh_action = self._unsquash_action(action)
+            action_logprobs = self._squashed_logprob(dist, pre_tanh_action)
+            # Không có entropy đóng cho tanh-Normal; -log pi(a|s) là ước lượng
+            # Monte Carlo nhất quán trên chính các action trong rollout.
+            dist_entropy = -action_logprobs
+        else:
+            action_logprobs = dist.log_prob(action)
+            dist_entropy = dist.entropy()
         state_values = self.critic(state)  # state đã được norm ở đầu evaluate()
 
         return action_logprobs, state_values, dist_entropy
@@ -161,12 +238,18 @@ class PPO:
         action_std_init=0.6,
         action_low=-1.5,
         action_high=1.5,
+        action_distribution=CLIPPED_GAUSSIAN,
     ):
 
         self.action_std = action_std_init
         self.gamma = gamma
         self.eps_clip = eps_clip
         self.K_epochs = K_epochs
+        if action_distribution not in SUPPORTED_ACTION_DISTRIBUTIONS:
+            raise ValueError(
+                f"action_distribution không hỗ trợ: {action_distribution!r}"
+            )
+        self.action_distribution = action_distribution
         self.action_low = _normalize_action_bound(
             action_low, action_dim, "action_low"
         )
@@ -182,6 +265,7 @@ class PPO:
             action_std_init,
             self.action_low,
             self.action_high,
+            self.action_distribution,
         ).to(device)
         self.optimizer = torch.optim.Adam([
                         {'params': self.policy.state_norm.parameters(), 'lr': lr_actor},
@@ -195,6 +279,7 @@ class PPO:
             action_std_init,
             self.action_low,
             self.action_high,
+            self.action_distribution,
         ).to(device)
         self.policy_old.load_state_dict(self.policy.state_dict())
 

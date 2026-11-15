@@ -7,7 +7,13 @@ import numpy as np
 try:
     import torch
 
-    from drone_control.algorithms.ppo import ActorCritic, PPO, ScaleAction, device
+    from drone_control.algorithms.ppo import (
+        TANH_SQUASHED_GAUSSIAN,
+        ActorCritic,
+        PPO,
+        ScaleAction,
+        device,
+    )
 
     TORCH_AVAILABLE = True
 except ModuleNotFoundError:
@@ -75,6 +81,27 @@ class TestActorCriticActionBounds(unittest.TestCase):
             self.assertTrue(torch.all(action >= -1.0))
             self.assertTrue(torch.all(action <= 1.0))
 
+    def test_tanh_squashed_action_is_bounded_without_gaussian_clipping(self) -> None:
+        model = ActorCritic(
+            17,
+            4,
+            action_std_init=0.35,
+            action_low=-1.0,
+            action_high=1.0,
+            action_distribution=TANH_SQUASHED_GAUSSIAN,
+        ).to(device)
+        action, logprob, _ = model.act(torch.zeros(17, device=device))
+        self.assertTrue(torch.all(action > -1.0))
+        self.assertTrue(torch.all(action < 1.0))
+        self.assertTrue(torch.isfinite(logprob))
+
+        batch_logprob, _, entropy = model.evaluate(
+            torch.zeros((1, 17), device=device), action.unsqueeze(0)
+        )
+        self.assertTrue(torch.all(torch.isfinite(batch_logprob)))
+        self.assertTrue(torch.all(torch.isfinite(entropy)))
+        torch.testing.assert_close(batch_logprob.squeeze(0), logprob, rtol=1e-5, atol=1e-5)
+
     def test_bounds_do_not_add_state_dict_keys(self) -> None:
         velocity_model = ActorCritic(13, 3, action_std_init=0.6)
         clone = ActorCritic(13, 3, action_std_init=0.6)
@@ -110,11 +137,18 @@ class TestPPOConfigurations(unittest.TestCase):
         self.assertTrue(np.all(action <= 1.5))
 
     def test_motor_constructor_uses_normalized_bounds(self) -> None:
-        agent = self.make_ppo(17, 4, action_low=-1.0, action_high=1.0)
+        agent = self.make_ppo(
+            17,
+            4,
+            action_low=-1.0,
+            action_high=1.0,
+            action_distribution=TANH_SQUASHED_GAUSSIAN,
+        )
         action = agent.select_action(np.zeros(17, dtype=np.float32))
         self.assertEqual(action.shape, (4,))
-        self.assertTrue(np.all(action >= -1.0))
-        self.assertTrue(np.all(action <= 1.0))
+        self.assertTrue(np.all(action > -1.0))
+        self.assertTrue(np.all(action < 1.0))
+        self.assertEqual(agent.action_distribution, TANH_SQUASHED_GAUSSIAN)
 
     def test_vector_bounds_are_supported(self) -> None:
         agent = self.make_ppo(
@@ -128,6 +162,23 @@ class TestPPOConfigurations(unittest.TestCase):
         self.assertLessEqual(action[0], 2.0)
         self.assertGreaterEqual(action[1], 0.0)
         self.assertLessEqual(action[1], 1.0)
+
+    def test_tanh_squashed_policy_can_complete_an_update(self) -> None:
+        agent = self.make_ppo(
+            17,
+            4,
+            action_low=-1.0,
+            action_high=1.0,
+            action_distribution=TANH_SQUASHED_GAUSSIAN,
+        )
+        for index in range(4):
+            agent.select_action(np.full(17, index * 0.01, dtype=np.float32))
+            agent.buffer.rewards.append(float(index + 1))
+            agent.buffer.is_terminals.append(index == 3)
+        losses = agent.update()
+        self.assertEqual(len(losses), 3)
+        self.assertTrue(all(np.isfinite(value) for value in losses))
+        self.assertEqual(agent.buffer.actions, [])
 
 
 if __name__ == "__main__":

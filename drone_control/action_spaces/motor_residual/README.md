@@ -1,8 +1,9 @@
 # Residual motor action space
 
 Policy sinh bốn residual action chuẩn hóa trong `[-1, 1]^4`. Environment ánh
-xạ chúng thành RPM quanh operating point hover đã hiệu chuẩn trong
-`config/motor_control.json`.
+xạ hover-centered sang toàn miền control signal `[0, 1]^4` của ProjectAirSim:
+`-1` dừng rotor, `0` là operating point hover và `1` là maximum signal. Điểm
+hover được hiệu chuẩn trong `config/motor_control.json`.
 
 Xem bảng cấu hình đầy đủ về state/action, siêu tham số PPO, reward, curriculum
 và checkpoint tại [`docs/PPO_CONFIG_TABLE.md`](../../../docs/PPO_CONFIG_TABLE.md#10-cấu-hình-ppo-cho-không-gian-hành-động-4-động-cơ).

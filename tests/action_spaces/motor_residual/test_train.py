@@ -58,12 +58,17 @@ class TestMotorTrainingEntryPoint(unittest.TestCase):
             timestep=100,
         )
         required = {
+            "schema_version",
             "state_dim",
             "action_dim",
+            "action_mapping",
+            "action_mapping_version",
+            "policy_distribution",
+            "projectairsim_signal_bounds",
             "actuator_order",
             "max_rpm",
             "hover_rpm",
-            "rpm_delta",
+            "hover_control_signal",
             "observation_layout",
             "reward_weights",
             "control_frequency_hz",
@@ -73,6 +78,9 @@ class TestMotorTrainingEntryPoint(unittest.TestCase):
         self.assertEqual(metadata["actuator_order"], list(ACTUATOR_ORDER))
         self.assertEqual(metadata["state_dim"], 17)
         self.assertEqual(metadata["action_dim"], 4)
+        self.assertEqual(metadata["schema_version"], 2)
+        self.assertEqual(metadata["action_mapping_version"], 2)
+        self.assertEqual(metadata["policy_distribution"], "tanh_squashed_gaussian")
         self.assertTrue(metadata["source_id"].startswith("sha256:"))
 
     def test_checkpoint_and_sidecar_are_saved_without_overwrite(self) -> None:
@@ -111,6 +119,20 @@ class TestMotorTrainingEntryPoint(unittest.TestCase):
                 json.dumps(metadata), encoding="utf-8"
             )
             with self.assertRaisesRegex(ValueError, "action_dim"):
+                validate_resume_checkpoint(checkpoint)
+
+    def test_resume_rejects_legacy_action_mapping(self) -> None:
+        metadata = build_checkpoint_metadata(
+            self.env, self.curriculum, run_id="motor_test", episode=0, timestep=0
+        )
+        metadata["action_mapping_version"] = 1
+        with tempfile.TemporaryDirectory() as temporary_directory:
+            checkpoint = Path(temporary_directory) / "legacy.pth"
+            checkpoint.write_bytes(b"legacy checkpoint")
+            metadata_path_for(checkpoint).write_text(
+                json.dumps(metadata), encoding="utf-8"
+            )
+            with self.assertRaisesRegex(ValueError, "action_mapping_version"):
                 validate_resume_checkpoint(checkpoint)
 
 

@@ -10,7 +10,7 @@ Hướng dẫn đầy đủ: [`docs/HUONG_DAN_SU_DUNG.md`](docs/HUONG_DAN_SU_DUN
 | Phương pháp | Action | Bounds | Mã nguồn |
 |---|---|---:|---|
 | NED velocity | `[v_north, v_east, v_down]` | `[-1.5, 1.5]^3` m/s | `drone_control/action_spaces/velocity_ned/` |
-| Residual motor | residual RPM của `[FL, FR, RL, RR]` | `[-1, 1]^4` | `drone_control/action_spaces/motor_residual/` |
+| Residual motor | hover-centered signal của `[FL, FR, RL, RR]` | `[-1, 1]^4 → [0, 1]^4` | `drone_control/action_spaces/motor_residual/` |
 
 Biến thể `short_episode` thuộc NED velocity vì nó chỉ thay đổi horizon,
 không thay đổi ý nghĩa action.

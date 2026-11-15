@@ -154,8 +154,9 @@ mô phỏng hoặc khu vực thử nghiệm đã kiểm soát.
 ## 5. Residual motor action space
 
 Policy sinh bốn action theo thứ tự `[FL, FR, RL, RR]`. Environment ánh xạ
-`[-1, 1]^4` thành residual RPM quanh operating point trong
-`config/motor_control.json`.
+`[-1, 1]^4` theo kiểu hover-centered sang toàn miền control signal `[0,1]^4`
+của ProjectAirSim. `-1` dừng rotor, `0` là operating point hover và `1` là
+maximum signal; calibration nằm trong `config/motor_control.json`.
 
 ### 5.1. Kiểm tra actuator
 

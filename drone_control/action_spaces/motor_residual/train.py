@@ -18,8 +18,11 @@ from typing import Any
 
 from drone_control.action_spaces.motor_residual.curriculum import MotorCurriculum
 from drone_control.action_spaces.motor_residual.env import (
+    ACTION_MAPPING,
+    ACTION_MAPPING_VERSION,
     ACTUATOR_ORDER,
     DroneMotorHoverEnv,
+    PROJECTAIRSIM_SIGNAL_BOUNDS,
 )
 from drone_control.action_spaces.motor_residual.monitoring import TrainingMonitor
 
@@ -34,6 +37,7 @@ OBSERVATION_LAYOUT = (
 )
 CONTROL_FREQUENCY_HZ = 50.0
 CONTROL_DT = 1.0 / CONTROL_FREQUENCY_HZ
+POLICY_DISTRIBUTION = "tanh_squashed_gaussian"
 
 LOG_ROOT = Path("log_dir") / "hover_motor"
 CHECKPOINT_ROOT = Path("checkpoints_motor")
@@ -85,7 +89,7 @@ def build_checkpoint_metadata(
     timestep: int,
 ) -> dict[str, Any]:
     return {
-        "schema_version": 1,
+        "schema_version": 2,
         "policy_type": "motor_level_ppo",
         "run_id": run_id,
         "episode": episode,
@@ -93,10 +97,17 @@ def build_checkpoint_metadata(
         "state_dim": STATE_DIM,
         "action_dim": ACTION_DIM,
         "action_bounds": {"low": -1.0, "high": 1.0},
+        "action_mapping": ACTION_MAPPING,
+        "action_mapping_version": ACTION_MAPPING_VERSION,
+        "policy_distribution": POLICY_DISTRIBUTION,
+        "projectairsim_signal_bounds": {
+            "low": PROJECTAIRSIM_SIGNAL_BOUNDS[0],
+            "high": PROJECTAIRSIM_SIGNAL_BOUNDS[1],
+        },
         "actuator_order": list(ACTUATOR_ORDER),
         "max_rpm": env.max_rpm,
         "hover_rpm": env.hover_rpm,
-        "rpm_delta": env.rpm_delta,
+        "hover_control_signal": env.hover_control_signal,
         "observation_layout": list(OBSERVATION_LAYOUT),
         "reward_weights": asdict(env.reward_config),
         "control_frequency_hz": 1.0 / env.dt,
@@ -149,6 +160,13 @@ def validate_resume_checkpoint(checkpoint_path: Path) -> dict[str, Any]:
         "state_dim": STATE_DIM,
         "action_dim": ACTION_DIM,
         "actuator_order": list(ACTUATOR_ORDER),
+        "action_mapping": ACTION_MAPPING,
+        "action_mapping_version": ACTION_MAPPING_VERSION,
+        "policy_distribution": POLICY_DISTRIBUTION,
+        "projectairsim_signal_bounds": {
+            "low": PROJECTAIRSIM_SIGNAL_BOUNDS[0],
+            "high": PROJECTAIRSIM_SIGNAL_BOUNDS[1],
+        },
     }
     for key, value in expected.items():
         if metadata.get(key) != value:
@@ -204,6 +222,7 @@ async def train(
         ACTION_STD_INIT,
         action_low=-1.0,
         action_high=1.0,
+        action_distribution=POLICY_DISTRIBUTION,
     )
     if resume_path is not None:
         agent.load(str(resume_path))

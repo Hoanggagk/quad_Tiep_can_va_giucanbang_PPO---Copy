@@ -167,16 +167,20 @@ Không gian hành động:
 action = [a_FL, a_FR, a_RL, a_RR] thuộc [-1, 1]^4
 ```
 
-Ánh xạ action sang tốc độ rotor:
+Ánh xạ hover-centered sang toàn miền control signal của ProjectAirSim:
 
 ```python
-rpm = np.clip(
-    hover_rpm + action * rpm_delta,
-    min_rpm,
-    max_rpm,
+effective_hover = hover_control_signal + hover_signal_bias
+motor_signal = np.where(
+    action < 0.0,
+    effective_hover * (1.0 + action),
+    effective_hover + action * (1.0 - effective_hover),
 )
-motor_signal = np.square(rpm / max_rpm)
+rpm = max_rpm * np.sqrt(motor_signal)
 ```
+
+Policy dùng tanh-squashed Gaussian để bảo đảm action thuộc `(-1,1)`. Action
+ngoài `[-1,1]` từ nguồn bên ngoài phải bị từ chối thay vì âm thầm clip.
 
 Tần số điều khiển khởi đầu:
 
@@ -212,9 +216,10 @@ Tiêu chí hoàn thành:
 
 Tạo thư mục hoặc file test phù hợp, kiểm tra tối thiểu:
 
-- Action `[-1, 1]` được clip đúng.
+- Action ngoài `[-1, 1]` bị từ chối rõ ràng.
 - `action = zeros(4)` ánh xạ về operating point hover.
-- RPM không vượt `min_rpm` và `max_rpm`.
+- `action = -1/+1` ánh xạ về control signal `0/1`.
+- RPM nằm trong `[0, max_rpm]`.
 - Chuyển đổi `RPM -> control signal` đúng công thức bình phương.
 - Thứ tự FL, FR, RL, RR không bị đảo.
 - `prev_action` có kích thước 4.
@@ -239,8 +244,10 @@ ACTION_DIM = 4
 
 Hướng triển khai:
 
-- Prototype: Gaussian action rồi clip về `[-1, 1]`.
-- Bản chính thức: tanh-squashed Gaussian có hiệu chỉnh `log_prob`.
+- Motor-level: tanh-squashed Gaussian có hiệu chỉnh `log_prob`, không clamp
+  action lấy mẫu.
+- Velocity-level: giữ distribution cũ để không thay đổi hành vi ngoài phạm vi
+  module motor.
 
 Tiêu chí hoàn thành:
 
@@ -323,7 +330,8 @@ Metadata cần lưu cùng checkpoint:
 
 - `state_dim` và `action_dim`.
 - Thứ tự rotor.
-- `max_rpm`, `hover_rpm`, `rpm_delta`.
+- `max_rpm`, `hover_rpm`, `hover_control_signal`.
+- Action mapping, mapping version, policy distribution và miền signal `[0,1]`.
 - Observation layout.
 - Reward weights.
 - Control frequency.
