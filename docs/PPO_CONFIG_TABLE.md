@@ -4,6 +4,32 @@
 > Cấu hình PPO điều khiển trực tiếp 4 động cơ (`motor_residual`) được trình bày
 > riêng tại [Mục 10](#10-cấu-hình-ppo-cho-không-gian-hành-động-4-động-cơ).
 
+## Cách đọc tài liệu: tại sao có hai reward function?
+
+Reward function **không phải là một siêu tham số dùng chung của PPO**. PPO dùng
+chung chỉ tối ưu tổng reward do environment trả về. Vì repository có hai
+environment với hai không gian hành động khác nhau, tài liệu phải mô tả hai
+reward function tương ứng:
+
+| Cấu hình | Environment | Policy điều khiển | Reward được mô tả tại |
+|---|---|---|---|
+| `velocity_ned` | `action_spaces/velocity_ned/env.py` | 3 vận tốc `[v_north, v_east, v_down]` | [Mục 7](#7-reward-function-của-velocity_ned-3-action-vận-tốc) |
+| `motor_residual` | `action_spaces/motor_residual/env.py` | 4 residual motor `[FL, FR, RL, RR]` | [Mục 10.6](#106-reward-function-của-motor_residual-4-action-động-cơ) |
+
+Hai reward này không được cộng với nhau và không được chọn đồng thời trong một
+lần huấn luyện. Entry point được chạy sẽ quyết định environment và reward:
+
+```text
+velocity_ned.train   → DroneHoveringEnv.get_reward(action)
+motor_residual.train → DroneMotorHoverEnv.calculate_reward(...)
+```
+
+Các siêu tham số PPO như `GAMMA`, `EPS_CLIP`, `K_EPOCHS`, learning rate và kiến
+trúc Actor-Critic có thể giống nhau, nhưng reward phải khác vì mức điều khiển
+khác nhau. Với motor-level control, agent trực tiếp tạo lệnh cho rotor nên cần
+thêm các penalty về motor effort, độ mượt và saturation mà velocity-level
+control không cần xử lý trực tiếp.
+
 ## 1. Tham Số Không Gian (State & Action Space)
 
 | Tham Số        | Ký Hiệu | Giá Trị     | Ý Nghĩa                                                                                                             |
@@ -83,7 +109,11 @@
 
 ---
 
-## 7. Tham Số Reward Function
+## 7. Reward function của `velocity_ned` (3 action vận tốc)
+
+> Phần này **chỉ áp dụng cho các lệnh chạy
+> `drone_control.action_spaces.velocity_ned.*`**. Không dùng các trọng số này để
+> diễn giải log của `motor_residual`.
 
 | Tham Số             | Ký Hiệu    | Giá Trị | Ý Nghĩa                                                  |
 | ------------------- | ---------- | ------- | -------------------------------------------------------- |
@@ -229,7 +259,12 @@ State 17D → LayerNorm
 Actor sử dụng Gaussian policy với phương sai chéo; action lấy mẫu được clamp về
 `[-1, 1]^4` trước khi gửi sang environment.
 
-### 10.6. Reward mặc định
+### 10.6. Reward function của `motor_residual` (4 action động cơ)
+
+> Phần này **chỉ áp dụng cho
+> `drone_control.action_spaces.motor_residual.train`**. Đây không phải phiên
+> bản cập nhật hay thay thế reward ở Mục 7, mà là reward của một environment
+> khác.
 
 Reward được scale theo `dt / reference_dt`, với `reference_dt = 0.02 s`, để giữ
 ý nghĩa gần nhất quán khi thay đổi tần số điều khiển. Cấu hình mặc định gồm:
