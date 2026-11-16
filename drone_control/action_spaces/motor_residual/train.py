@@ -33,6 +33,7 @@ from drone_control.action_spaces.motor_residual.monitoring import TrainingMonito
 
 STATE_DIM = len(OBSERVATION_LAYOUT)
 ACTION_DIM = 4
+CHECKPOINT_SCHEMA_VERSION = 4
 CONTROL_FREQUENCY_HZ = 50.0
 CONTROL_DT = 1.0 / CONTROL_FREQUENCY_HZ
 POLICY_DISTRIBUTION = "tanh_squashed_gaussian"
@@ -40,10 +41,10 @@ POLICY_DISTRIBUTION = "tanh_squashed_gaussian"
 LOG_ROOT = Path("log_dir") / "hover_motor"
 CHECKPOINT_ROOT = Path("checkpoints_motor")
 
-ACTION_STD_INIT = 0.35
-ACTION_STD_DECAY_RATE = 0.01
-ACTION_STD_DECAY_FREQ_EPISODES = 50
-MIN_ACTION_STD = 0.05
+ACTION_STD_INIT = 0.50
+ACTION_STD_DECAY_RATE = 0.005
+ACTION_STD_DECAY_FREQ_EPISODES = 100
+MIN_ACTION_STD = 0.10
 MAX_TRAINING_TIMESTEPS = 500_000
 UPDATE_TIMESTEP = 2_000
 SAVE_MODEL_FREQ = 50_000
@@ -89,7 +90,7 @@ def build_checkpoint_metadata(
     timestep: int,
 ) -> dict[str, Any]:
     return {
-        "schema_version": 3,
+        "schema_version": CHECKPOINT_SCHEMA_VERSION,
         "policy_type": "motor_level_ppo",
         "run_id": run_id,
         "episode": episode,
@@ -123,6 +124,10 @@ def build_checkpoint_metadata(
             "eps_clip": EPS_CLIP,
             "lr_actor": LR_ACTOR,
             "lr_critic": LR_CRITIC,
+            "action_std_init": ACTION_STD_INIT,
+            "action_std_decay_rate": ACTION_STD_DECAY_RATE,
+            "action_std_decay_freq_episodes": ACTION_STD_DECAY_FREQ_EPISODES,
+            "min_action_std": MIN_ACTION_STD,
         },
         "curriculum": {
             "stage_index": curriculum.stage_index,
@@ -168,7 +173,7 @@ def validate_resume_checkpoint(checkpoint_path: Path) -> dict[str, Any]:
         raise ValueError("Checkpoint resume thiếu metadata motor-level")
     metadata = json.loads(sidecar.read_text(encoding="utf-8"))
     expected = {
-        "schema_version": 3,
+        "schema_version": CHECKPOINT_SCHEMA_VERSION,
         "policy_type": "motor_level_ppo",
         "state_dim": STATE_DIM,
         "action_dim": ACTION_DIM,

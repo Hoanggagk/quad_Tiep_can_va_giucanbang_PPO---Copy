@@ -219,29 +219,30 @@ Không thực hiện hyperparameter sweep trước khi Giai đoạn 1 đạt to�
 
 ### Giai đoạn 3 — Observation và goal representation
 
-**Mục tiêu:** policy quan sát được hướng tới goal khi goal thay đổi.
+**Mục tiêu:** loại bỏ partial observability bằng cách đồng bộ observation với
+phân bố goal được dùng trong huấn luyện.
 
 #### Quyết định thiết kế
 
 - `velocity_ned` baseline giữ goal cố định và state 13 chiều để làm control.
-- `motor_residual` chuyển sang observation v2 có vector sai số mục tiêu
-  `[dx, dy, dz]`.
-- Phương án ưu tiên cho motor là giữ absolute position và thêm goal-error
-  vector, tạo state 20 chiều. Absolute altitude vẫn hữu ích cho ground/safety,
-  còn goal-error loại bỏ partial observability khi target z thay đổi.
+- Theo cấu hình người dùng chọn, `motor_residual` dùng observation v3 gồm đúng
+  các chỉ số 0–12, tạo state 13 chiều.
+- Vì state 13 không chứa vector `[dx,dy,dz]`, curriculum mặc định phải giữ goal
+  cố định `[0,0,-2]`; reaching được tạo bằng cách random initial state. Nếu
+  khôi phục variable goal, phải bổ sung goal direction vào observation.
 
 #### Công việc
 
 - Chuẩn hóa và tài liệu hóa units/ranges cho từng observation field.
 - Đánh giá running normalization hoặc fixed scaling; `LayerNorm` không được xem
   là bằng chứng duy nhất rằng input distribution đã phù hợp.
-- Thêm observation schema version 2 và từ chối checkpoint state 17 cũ.
-- Tạo test cho direction/sign của `dx,dy,dz`, NED convention, yaw wrap và sensor
-  noise.
+- Dùng observation schema version 3 và từ chối checkpoint state 17/20 cũ.
+- Tạo test cho thứ tự chính xác 13 trường, NED convention, khoảng cách tới goal
+  và sensor noise.
 
 #### Gate
 
-Không dùng checkpoint motor state 17 để kết luận hiệu năng của observation v2.
+Không dùng checkpoint motor state 17/20 để kết luận hiệu năng của observation v3.
 
 ### Giai đoạn 4 — Horizon và curriculum target reaching
 
@@ -257,10 +258,11 @@ Không dùng checkpoint motor state 17 để kết luận hiệu năng của obs
 #### `motor_residual`
 
 - Giữ các stage hover gần hiện tại làm safety curriculum.
-- Thêm stage reaching có XY/Z goal error tăng dần, thay vì chỉ random tối đa
-  0.4 m quanh goal.
+- Thêm stage reaching bằng cách tăng dần miền random initial position quanh
+  goal cố định; không random goal khi state không có vector hướng tới goal.
 - Tách training distribution và evaluation distribution. Evaluation phải có
-  initial positions/goals chưa xuất hiện chính xác trong training.
+  initial positions chưa xuất hiện chính xác trong training, nhưng vẫn dùng
+  cùng goal `[0,0,-2]`.
 - Chỉ mở rộng position limit 5 m sau khi định nghĩa operational envelope và
   kiểm chứng safety; không bỏ termination chỉ để tăng completion.
 - Xác nhận disturbance là transient hay sustained; external force phải có
@@ -395,7 +397,7 @@ Giai đoạn 1 và 2 là blocker của mọi kết luận thực nghiệm. Giai 
 | PPO buffer v2 | Tách termination/truncation, bootstrap đúng, GAE tests |
 | Success metrics | Reached/sustained/success state machine dùng chung |
 | Velocity env v2 | Timeout, reward events, horizon nhất quán, richer logging |
-| Motor observation v2 | Goal-error vector, schema/version và checkpoint guard |
+| Motor observation v3 | State 13 (chỉ số 0–12), goal cố định, schema/version và checkpoint guard |
 | Curriculum v2 | Reaching stages và frozen evaluation distributions |
 | PPO diagnostics | KL, clip fraction, entropy, value/gradient metrics |
 | Evaluation runner | Test A–D, multi-seed manifest, aggregate report |
@@ -425,11 +427,11 @@ Cập nhật ngày 2026-11-15:
 | 0 | Đã triển khai phần code/config | `drone_control/task_contract.py`; task contract v1, reward/observation/PPO config trong metadata motor |
 | 1 | Đã triển khai và có unit test | Buffer tách `terminated`/`truncated`, GAE bootstrap time limit, horizon velocity 15 s, pose timeout |
 | 2 | Đã triển khai lõi | Success tracker dùng chung, success event một lần, chuẩn hóa `info`; reward surface trực quan vẫn chưa tạo |
-| 3 | Đã triển khai và có checkpoint guard | Motor observation v2 gồm `[dx,dy,dz]`, state 20, metadata schema v3 từ chối checkpoint cũ |
-| 4 | Đã triển khai curriculum; chưa chạy so sánh horizon | Thêm `target_reaching`, goal XY, success-rate gate; chưa có dữ liệu 10/15/20 s |
+| 3 | Đã triển khai và có checkpoint guard | Motor observation v3 dùng chỉ số 0–12, state 13, metadata schema v4 từ chối checkpoint state 17/20 |
+| 4 | Đã triển khai curriculum; chưa chạy so sánh horizon | Giữ goal `[0,0,-2]`, tăng độ khó bằng random initial state và success-rate gate; chưa có dữ liệu 10/15/20 s |
 | 5 | Đã triển khai instrumentation | KL, clip fraction, explained variance, gradient norm, target-KL early stop và action near-bound trong log motor; chưa chạy sweep |
 | 6 | Đã đóng băng protocol/metrics, chưa chạy simulator | `drone_control/evaluation_protocol.py`, `tools/create_evaluation_manifest.py`; chưa có kết quả Test A–D |
-| 7 | Đã đồng bộ tài liệu kỹ thuật chính; release gate chưa đạt | `PPO_CONFIG_TABLE.md` đã phản ánh state 20/schema v3; cần dữ liệu multi-seed và simulator manifest hoàn tất |
+| 7 | Đã đồng bộ tài liệu kỹ thuật chính; release gate chưa đạt | `PPO_CONFIG_TABLE.md` phản ánh state 13/schema v4; cần dữ liệu multi-seed và simulator manifest hoàn tất |
 
 Các mục “chưa chạy” là chủ ý: kế hoạch cấm tự động khởi động training hoặc
 ProjectAirSim. Do đó thay đổi source có thể hoàn tất và kiểm thử offline, nhưng

@@ -10,9 +10,14 @@ from drone_control.action_spaces.motor_residual.env import (
     DroneMotorHoverEnv,
 )
 from drone_control.action_spaces.motor_residual.train import (
+    ACTION_STD_DECAY_FREQ_EPISODES,
+    ACTION_STD_DECAY_RATE,
+    ACTION_STD_INIT,
     ACTION_DIM,
+    CHECKPOINT_SCHEMA_VERSION,
     CHECKPOINT_ROOT,
     LOG_ROOT,
+    MIN_ACTION_STD,
     OBSERVATION_LAYOUT,
     STATE_DIM,
     build_checkpoint_metadata,
@@ -37,9 +42,17 @@ class TestMotorTrainingEntryPoint(unittest.TestCase):
         self.env.close()
 
     def test_motor_dimensions_and_observation_layout(self) -> None:
-        self.assertEqual(STATE_DIM, 20)
+        self.assertEqual(STATE_DIM, 13)
         self.assertEqual(ACTION_DIM, 4)
         self.assertEqual(len(OBSERVATION_LAYOUT), STATE_DIM)
+        self.assertEqual(
+            OBSERVATION_LAYOUT,
+            (
+                "x_m", "y_m", "z_m", "roll_rad", "pitch_rad", "yaw_rad",
+                "vx_mps", "vy_mps", "vz_mps", "roll_rate_radps",
+                "pitch_rate_radps", "yaw_rate_radps", "distance_to_goal_m",
+            ),
+        )
 
     def test_output_namespaces_are_separate_from_velocity_training(self) -> None:
         self.assertEqual(LOG_ROOT.as_posix(), "log_dir/hover_motor")
@@ -79,13 +92,29 @@ class TestMotorTrainingEntryPoint(unittest.TestCase):
         }
         self.assertTrue(required.issubset(metadata))
         self.assertEqual(metadata["actuator_order"], list(ACTUATOR_ORDER))
-        self.assertEqual(metadata["state_dim"], 20)
+        self.assertEqual(metadata["state_dim"], 13)
         self.assertEqual(metadata["action_dim"], 4)
-        self.assertEqual(metadata["schema_version"], 3)
-        self.assertEqual(metadata["observation_schema_version"], 2)
+        self.assertEqual(metadata["schema_version"], 4)
+        self.assertEqual(metadata["observation_schema_version"], 3)
         self.assertEqual(metadata["action_mapping_version"], 2)
         self.assertEqual(metadata["policy_distribution"], "tanh_squashed_gaussian")
         self.assertTrue(metadata["source_id"].startswith("sha256:"))
+
+    def test_motor_exploration_profile_is_recorded_in_metadata(self) -> None:
+        metadata = build_checkpoint_metadata(
+            self.env, self.curriculum, run_id="motor_test", episode=0, timestep=0
+        )
+        self.assertEqual(CHECKPOINT_SCHEMA_VERSION, 4)
+        self.assertEqual(ACTION_STD_INIT, 0.50)
+        self.assertEqual(ACTION_STD_DECAY_RATE, 0.005)
+        self.assertEqual(ACTION_STD_DECAY_FREQ_EPISODES, 100)
+        self.assertEqual(MIN_ACTION_STD, 0.10)
+        self.assertEqual(
+            metadata["ppo_config"]["action_std_init"], ACTION_STD_INIT
+        )
+        self.assertEqual(
+            metadata["ppo_config"]["min_action_std"], MIN_ACTION_STD
+        )
 
     def test_checkpoint_and_sidecar_are_saved_without_overwrite(self) -> None:
         metadata = build_checkpoint_metadata(
@@ -151,6 +180,21 @@ class TestMotorTrainingEntryPoint(unittest.TestCase):
                 json.dumps(metadata), encoding="utf-8"
             )
             with self.assertRaisesRegex(ValueError, "observation_schema_version"):
+                validate_resume_checkpoint(checkpoint)
+
+    def test_resume_rejects_legacy_state_twenty_checkpoint(self) -> None:
+        metadata = build_checkpoint_metadata(
+            self.env, self.curriculum, run_id="motor_test", episode=0, timestep=0
+        )
+        metadata["state_dim"] = 20
+        metadata["observation_schema_version"] = 2
+        with tempfile.TemporaryDirectory() as temporary_directory:
+            checkpoint = Path(temporary_directory) / "legacy_state_20.pth"
+            checkpoint.write_bytes(b"legacy state 20 checkpoint")
+            metadata_path_for(checkpoint).write_text(
+                json.dumps(metadata), encoding="utf-8"
+            )
+            with self.assertRaisesRegex(ValueError, "state_dim"):
                 validate_resume_checkpoint(checkpoint)
 
 

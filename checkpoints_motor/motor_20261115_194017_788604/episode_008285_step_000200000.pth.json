@@ -1,0 +1,389 @@
+{
+  "schema_version": 4,
+  "policy_type": "motor_level_ppo",
+  "run_id": "motor_20261115_194017_788604",
+  "episode": 8285,
+  "timestep": 200000,
+  "state_dim": 13,
+  "action_dim": 4,
+  "action_bounds": {
+    "low": -1.0,
+    "high": 1.0
+  },
+  "action_mapping": "hover_centered_full_signal",
+  "action_mapping_version": 2,
+  "policy_distribution": "tanh_squashed_gaussian",
+  "projectairsim_signal_bounds": {
+    "low": 0.0,
+    "high": 1.0
+  },
+  "actuator_order": [
+    "Prop_FL_actuator",
+    "Prop_FR_actuator",
+    "Prop_RL_actuator",
+    "Prop_RR_actuator"
+  ],
+  "max_rpm": 6396.667,
+  "hover_rpm": 5119.831688310858,
+  "hover_control_signal": 0.640625,
+  "observation_layout": [
+    "x_m",
+    "y_m",
+    "z_m",
+    "roll_rad",
+    "pitch_rad",
+    "yaw_rad",
+    "vx_mps",
+    "vy_mps",
+    "vz_mps",
+    "roll_rate_radps",
+    "pitch_rate_radps",
+    "yaw_rate_radps",
+    "distance_to_goal_m"
+  ],
+  "observation_schema_version": 3,
+  "task_contract": {
+    "version": 1,
+    "coordinate_frame": "NED",
+    "goal_position_m": [
+      0.0,
+      0.0,
+      -2.0
+    ],
+    "yaw_target_rad": 0.0,
+    "require_yaw": true,
+    "reach_position_tolerance_m": 0.2,
+    "hover_velocity_tolerance_mps": 0.2,
+    "hover_attitude_tolerance_rad": 0.17453292519943295,
+    "hover_yaw_tolerance_rad": 0.2617993877991494,
+    "training_sustained_seconds": 2.0,
+    "evaluation_sustained_seconds": 5.0,
+    "stress_sustained_seconds": 10.0,
+    "max_position_error_m": 5.0,
+    "max_velocity_mps": 5.0,
+    "velocity_episode_seconds": 15.0,
+    "motor_episode_seconds": 10.0
+  },
+  "reward_version": 2,
+  "reward_weights": {
+    "position_radius_m": 3.0,
+    "approach_weight": 2.0,
+    "attitude_weight": 0.1,
+    "alive_bonus": 0.01,
+    "hover_bonus": 0.5,
+    "success_bonus": 5.0,
+    "crash_penalty": 2.0,
+    "saturation_margin": 0.02
+  },
+  "control_frequency_hz": 50.0,
+  "control_dt_seconds": 0.02,
+  "ppo_config": {
+    "gamma": 0.99,
+    "gae_lambda": 0.95,
+    "target_kl": 0.02,
+    "k_epochs": 30,
+    "eps_clip": 0.2,
+    "lr_actor": 0.0003,
+    "lr_critic": 0.001,
+    "action_std_init": 0.5,
+    "action_std_decay_rate": 0.005,
+    "action_std_decay_freq_episodes": 100,
+    "min_action_std": 0.1
+  },
+  "curriculum": {
+    "stage_index": 0,
+    "stage_name": "attitude_hover",
+    "stages": [
+      {
+        "name": "attitude_hover",
+        "position_range_m": 0.0,
+        "goal_xy_range_m": 0.0,
+        "tilt_range_rad": 0.0,
+        "velocity_range_mps": 0.0,
+        "target_z_range_m": [
+          -2.0,
+          -2.0
+        ],
+        "initial_z_range_m": [
+          -2.0,
+          -2.0
+        ],
+        "disturbance_force_range_n": 0.0,
+        "mass_scale_range": [
+          1.0,
+          1.0
+        ],
+        "thrust_scale_range": [
+          1.0,
+          1.0
+        ],
+        "motor_time_constant_scale_range": [
+          1.0,
+          1.0
+        ],
+        "sensor_noise_std": 0.0,
+        "action_delay_steps": 0,
+        "hover_signal_bias_range": 0.0,
+        "min_survival_rate": 0.9,
+        "min_success_rate": 0.8,
+        "max_position_rmse_m": 0.3,
+        "max_attitude_rmse_rad": 0.20943951023931956,
+        "min_evaluation_episodes": 20
+      },
+      {
+        "name": "random_attitude",
+        "position_range_m": 0.0,
+        "goal_xy_range_m": 0.0,
+        "tilt_range_rad": 0.13962634015954636,
+        "velocity_range_mps": 0.0,
+        "target_z_range_m": [
+          -2.0,
+          -2.0
+        ],
+        "initial_z_range_m": [
+          -2.0,
+          -2.0
+        ],
+        "disturbance_force_range_n": 0.0,
+        "mass_scale_range": [
+          1.0,
+          1.0
+        ],
+        "thrust_scale_range": [
+          1.0,
+          1.0
+        ],
+        "motor_time_constant_scale_range": [
+          1.0,
+          1.0
+        ],
+        "sensor_noise_std": 0.0,
+        "action_delay_steps": 0,
+        "hover_signal_bias_range": 0.0,
+        "min_survival_rate": 0.9,
+        "min_success_rate": 0.8,
+        "max_position_rmse_m": 0.3,
+        "max_attitude_rmse_rad": 0.20943951023931956,
+        "min_evaluation_episodes": 20
+      },
+      {
+        "name": "random_position_velocity",
+        "position_range_m": 0.25,
+        "goal_xy_range_m": 0.0,
+        "tilt_range_rad": 0.13962634015954636,
+        "velocity_range_mps": 0.25,
+        "target_z_range_m": [
+          -2.0,
+          -2.0
+        ],
+        "initial_z_range_m": [
+          -2.0,
+          -2.0
+        ],
+        "disturbance_force_range_n": 0.0,
+        "mass_scale_range": [
+          1.0,
+          1.0
+        ],
+        "thrust_scale_range": [
+          1.0,
+          1.0
+        ],
+        "motor_time_constant_scale_range": [
+          1.0,
+          1.0
+        ],
+        "sensor_noise_std": 0.0,
+        "action_delay_steps": 0,
+        "hover_signal_bias_range": 0.0,
+        "min_survival_rate": 0.9,
+        "min_success_rate": 0.8,
+        "max_position_rmse_m": 0.3,
+        "max_attitude_rmse_rad": 0.20943951023931956,
+        "min_evaluation_episodes": 20
+      },
+      {
+        "name": "altitude_change",
+        "position_range_m": 0.3,
+        "goal_xy_range_m": 0.0,
+        "tilt_range_rad": 0.17453292519943295,
+        "velocity_range_mps": 0.3,
+        "target_z_range_m": [
+          -2.0,
+          -2.0
+        ],
+        "initial_z_range_m": [
+          -2.0,
+          -2.0
+        ],
+        "disturbance_force_range_n": 0.0,
+        "mass_scale_range": [
+          1.0,
+          1.0
+        ],
+        "thrust_scale_range": [
+          1.0,
+          1.0
+        ],
+        "motor_time_constant_scale_range": [
+          1.0,
+          1.0
+        ],
+        "sensor_noise_std": 0.0,
+        "action_delay_steps": 0,
+        "hover_signal_bias_range": 0.0,
+        "min_survival_rate": 0.9,
+        "min_success_rate": 0.8,
+        "max_position_rmse_m": 0.3,
+        "max_attitude_rmse_rad": 0.20943951023931956,
+        "min_evaluation_episodes": 20
+      },
+      {
+        "name": "takeoff",
+        "position_range_m": 0.2,
+        "goal_xy_range_m": 0.0,
+        "tilt_range_rad": 0.08726646259971647,
+        "velocity_range_mps": 0.0,
+        "target_z_range_m": [
+          -2.0,
+          -2.0
+        ],
+        "initial_z_range_m": [
+          -0.7,
+          -0.35
+        ],
+        "disturbance_force_range_n": 0.0,
+        "mass_scale_range": [
+          1.0,
+          1.0
+        ],
+        "thrust_scale_range": [
+          1.0,
+          1.0
+        ],
+        "motor_time_constant_scale_range": [
+          1.0,
+          1.0
+        ],
+        "sensor_noise_std": 0.0,
+        "action_delay_steps": 0,
+        "hover_signal_bias_range": 0.0,
+        "min_survival_rate": 0.9,
+        "min_success_rate": 0.8,
+        "max_position_rmse_m": 0.3,
+        "max_attitude_rmse_rad": 0.20943951023931956,
+        "min_evaluation_episodes": 20
+      },
+      {
+        "name": "target_reaching",
+        "position_range_m": 1.5,
+        "goal_xy_range_m": 0.0,
+        "tilt_range_rad": 0.17453292519943295,
+        "velocity_range_mps": 0.3,
+        "target_z_range_m": [
+          -2.0,
+          -2.0
+        ],
+        "initial_z_range_m": [
+          -2.0,
+          -2.0
+        ],
+        "disturbance_force_range_n": 0.0,
+        "mass_scale_range": [
+          1.0,
+          1.0
+        ],
+        "thrust_scale_range": [
+          1.0,
+          1.0
+        ],
+        "motor_time_constant_scale_range": [
+          1.0,
+          1.0
+        ],
+        "sensor_noise_std": 0.0,
+        "action_delay_steps": 0,
+        "hover_signal_bias_range": 0.0,
+        "min_survival_rate": 0.9,
+        "min_success_rate": 0.8,
+        "max_position_rmse_m": 0.3,
+        "max_attitude_rmse_rad": 0.20943951023931956,
+        "min_evaluation_episodes": 20
+      },
+      {
+        "name": "disturbance",
+        "position_range_m": 1.0,
+        "goal_xy_range_m": 0.0,
+        "tilt_range_rad": 0.20943951023931956,
+        "velocity_range_mps": 0.4,
+        "target_z_range_m": [
+          -2.0,
+          -2.0
+        ],
+        "initial_z_range_m": [
+          -2.0,
+          -2.0
+        ],
+        "disturbance_force_range_n": 2.0,
+        "mass_scale_range": [
+          1.0,
+          1.0
+        ],
+        "thrust_scale_range": [
+          1.0,
+          1.0
+        ],
+        "motor_time_constant_scale_range": [
+          1.0,
+          1.0
+        ],
+        "sensor_noise_std": 0.0,
+        "action_delay_steps": 0,
+        "hover_signal_bias_range": 0.0,
+        "min_survival_rate": 0.9,
+        "min_success_rate": 0.8,
+        "max_position_rmse_m": 0.3,
+        "max_attitude_rmse_rad": 0.20943951023931956,
+        "min_evaluation_episodes": 20
+      },
+      {
+        "name": "domain_randomization",
+        "position_range_m": 1.5,
+        "goal_xy_range_m": 0.0,
+        "tilt_range_rad": 0.2617993877991494,
+        "velocity_range_mps": 0.5,
+        "target_z_range_m": [
+          -2.0,
+          -2.0
+        ],
+        "initial_z_range_m": [
+          -2.0,
+          -2.0
+        ],
+        "disturbance_force_range_n": 2.5,
+        "mass_scale_range": [
+          0.9,
+          1.1
+        ],
+        "thrust_scale_range": [
+          0.9,
+          1.1
+        ],
+        "motor_time_constant_scale_range": [
+          0.9,
+          1.1
+        ],
+        "sensor_noise_std": 0.01,
+        "action_delay_steps": 2,
+        "hover_signal_bias_range": 0.03,
+        "min_survival_rate": 0.9,
+        "min_success_rate": 0.8,
+        "max_position_rmse_m": 0.3,
+        "max_attitude_rmse_rad": 0.20943951023931956,
+        "min_evaluation_episodes": 20
+      }
+    ]
+  },
+  "source_id": "sha256:ff5a8db10f36d057244fce22e83b238b4b59537aa624c01f3df43031c4123374",
+  "created_at": "2026-11-16T06:20:23.222562+07:00"
+}

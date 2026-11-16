@@ -247,7 +247,8 @@ action và ý nghĩa đầu ra policy khác nhau.
 
 ### 10.2. Không gian trạng thái
 
-`STATE_DIM = 20` và `observation_schema_version = 2`. Thứ tự các phần tử phải được giữ nguyên khi huấn luyện,
+`STATE_DIM = 13` và `observation_schema_version = 3`. Policy chỉ sử dụng các
+phần tử từ chỉ số 0 đến 12. Thứ tự phải được giữ nguyên khi huấn luyện,
 resume hoặc triển khai policy:
 
 | Chỉ số | Tên trong metadata | Đại lượng |
@@ -257,12 +258,12 @@ resume hoặc triển khai policy:
 | 6–8 | `vx_mps`, `vy_mps`, `vz_mps` | Vận tốc tuyến tính, đơn vị m/s |
 | 9–11 | `roll_rate_radps`, `pitch_rate_radps`, `yaw_rate_radps` | Vận tốc góc, đơn vị rad/s |
 | 12 | `distance_to_goal_m` | Khoảng cách Euclid tới mục tiêu, đơn vị m |
-| 13–16 | `motor_fl_signal`, `motor_fr_signal`, `motor_rl_signal`, `motor_rr_signal` | Control signal hiện tại của bốn động cơ |
-| 17–19 | `goal_error_x_m`, `goal_error_y_m`, `goal_error_z_m` | Vector `goal - position` trong NED, đơn vị m |
 
-`LayerNorm(20)` được áp dụng trước Actor và Critic trong implementation PPO dùng
-chung. Việc đổi thứ tự hoặc bỏ các motor signal sẽ làm checkpoint hiện tại
-không còn tương thích.
+`LayerNorm(13)` được áp dụng trước Actor và Critic. State không chứa motor
+signal hoặc vector `[dx,dy,dz]`; vì vậy curriculum mặc định giữ goal cố định
+tại `[0,0,-2]` và tạo bài toán reaching bằng cách thay đổi trạng thái khởi tạo.
+Nếu cần goal thay đổi theo episode, phải bổ sung lại vector hướng tới goal và
+tăng observation schema. Checkpoint state 20 trước đây không còn tương thích.
 
 ### 10.3. Không gian hành động và ánh xạ xuống động cơ
 
@@ -301,10 +302,10 @@ lượng, thrust model hoặc scene vật lý.
 
 | Tham số | Giá trị | Ý nghĩa |
 |---|---:|---|
-| `ACTION_STD_INIT` | 0.35 | Độ lệch chuẩn khám phá ban đầu trên action chuẩn hóa |
-| `ACTION_STD_DECAY_RATE` | 0.01 | Mức giảm mỗi lần decay |
-| `ACTION_STD_DECAY_FREQ_EPISODES` | 50 episode | Chu kỳ giảm độ lệch chuẩn |
-| `MIN_ACTION_STD` | 0.05 | Độ lệch chuẩn nhỏ nhất |
+| `ACTION_STD_INIT` | 0.50 | Tăng độ lệch chuẩn khám phá ban đầu trên latent action |
+| `ACTION_STD_DECAY_RATE` | 0.005 | Giảm chậm để duy trì exploration lâu hơn |
+| `ACTION_STD_DECAY_FREQ_EPISODES` | 100 episode | Giãn chu kỳ giảm độ lệch chuẩn |
+| `MIN_ACTION_STD` | 0.10 | Duy trì mức exploration tối thiểu cao hơn |
 | `MAX_TRAINING_TIMESTEPS` | 500,000 | Tổng số bước huấn luyện mặc định |
 | `STEPS_PER_EPISODE` | 500 | Horizon tối đa của một episode |
 | `UPDATE_TIMESTEP` | 2,000 | Số transition giữa hai lần PPO update |
@@ -324,10 +325,10 @@ Với `CONTROL_FREQUENCY_HZ = 50`, ta có `dt = 0.02 s`; horizon 500 bước tư
 ### 10.5. Kiến trúc Actor-Critic
 
 ```text
-State 20D → LayerNorm
-  ├─ Actor mean: 20 → 64 → Tanh → 64 → Tanh → 4 (latent mean)
+State 13D → LayerNorm
+  ├─ Actor mean: 13 → 64 → Tanh → 64 → Tanh → 4 (latent mean)
   │             z ~ Normal(mean, std), action = tanh(z)
-  └─ Critic: 20 → 64 → Tanh → 64 → Tanh → 1
+  └─ Critic: 13 → 64 → Tanh → 64 → Tanh → 1
 ```
 
 Actor motor sử dụng `tanh-squashed Gaussian` có hiệu chỉnh Jacobian trong
@@ -402,6 +403,9 @@ attitude_hover → random_attitude → random_position_velocity
 → domain_randomization
 ```
 
+Mọi stage mặc định dùng cùng goal `[0,0,-2]`. Các stage vẫn tăng độ khó bằng
+initial position, attitude, velocity, disturbance và domain randomization.
+
 Stage chỉ được nâng khi đủ số episode đánh giá và đồng thời đạt các ngưỡng về
 survival rate, reach/sustained success rate, position RMSE và attitude RMSE. Khi resume, stage hiện tại được
 khôi phục từ metadata của checkpoint.
@@ -417,17 +421,17 @@ Mỗi lần chạy tạo `run_id` riêng:
 | Checkpoint | `checkpoints_motor/<run_id>/*.pth` |
 | Metadata checkpoint | file `*.pth.json` nằm cạnh checkpoint |
 
-Metadata schema v3 ghi lại `state_dim`, `action_dim`, action bounds, actuator order,
+Metadata schema v4 ghi lại `state_dim`, `action_dim`, action bounds, actuator order,
 observation schema/layout, task contract v1, reward version, PPO/GAE config,
-calibration RPM, tần số điều khiển và curriculum.
+action-std schedule, calibration RPM, tần số điều khiển và curriculum.
 Resume chỉ được chấp nhận khi sidecar tồn tại và tối thiểu khớp:
 
 ```text
 policy_type = motor_level_ppo
-schema_version = 3
-state_dim = 20
+schema_version = 4
+state_dim = 13
 action_dim = 4
-observation_schema_version = 2
+observation_schema_version = 3
 actuator_order = [FL, FR, RL, RR]
 action_mapping = hover_centered_full_signal
 action_mapping_version = 2
@@ -438,9 +442,9 @@ Checkpoint motor tạo trước mapping version 2 không được resume vì cù
 action nay tạo control signal khác. Luôn lưu file `.pth` cùng file `.pth.json`;
 không đổi tên hoặc tráo sidecar giữa các run.
 
-Checkpoint state 17 / observation schema v1 cũng không được resume vào policy
-state 20. Chúng chỉ là artifact lịch sử và không được dùng để kết luận hiệu
-năng của observation v2.
+Checkpoint state 17 hoặc state 20 trước đây không được resume vào policy state
+13. Chúng chỉ là artifact lịch sử; so sánh kết quả phải ghi rõ observation
+schema tương ứng.
 
 ### 10.9. Lệnh chạy và các tham số có thể cấu hình từ CLI
 

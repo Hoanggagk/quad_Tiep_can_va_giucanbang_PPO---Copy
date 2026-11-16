@@ -106,7 +106,7 @@ class CurriculumWindow:
 
 
 def default_motor_curriculum() -> tuple[CurriculumStage, ...]:
-    """Tám stage theo đúng thứ tự tăng độ khó của kế hoạch triển khai."""
+    """Tám stage tăng độ khó, dùng goal cố định phù hợp với state 13."""
     return (
         CurriculumStage(name="attitude_hover"),
         CurriculumStage(name="random_attitude", tilt_range_rad=math.radians(8.0)),
@@ -121,39 +121,31 @@ def default_motor_curriculum() -> tuple[CurriculumStage, ...]:
             position_range_m=0.30,
             tilt_range_rad=math.radians(10.0),
             velocity_range_mps=0.30,
-            target_z_range_m=(-3.0, -1.0),
         ),
         CurriculumStage(
             name="takeoff",
             position_range_m=0.20,
             tilt_range_rad=math.radians(5.0),
             initial_z_range_m=(-0.70, -0.35),
-            target_z_range_m=(-2.5, -1.5),
         ),
         CurriculumStage(
             name="target_reaching",
             position_range_m=1.50,
-            goal_xy_range_m=0.50,
             tilt_range_rad=math.radians(10.0),
             velocity_range_mps=0.30,
-            target_z_range_m=(-3.0, -1.0),
         ),
         CurriculumStage(
             name="disturbance",
             position_range_m=1.00,
-            goal_xy_range_m=0.50,
             tilt_range_rad=math.radians(12.0),
             velocity_range_mps=0.40,
-            target_z_range_m=(-3.0, -1.0),
             disturbance_force_range_n=2.0,
         ),
         CurriculumStage(
             name="domain_randomization",
             position_range_m=1.50,
-            goal_xy_range_m=1.00,
             tilt_range_rad=math.radians(15.0),
             velocity_range_mps=0.50,
-            target_z_range_m=(-3.0, -1.0),
             disturbance_force_range_n=2.5,
             mass_scale_range=(0.90, 1.10),
             thrust_scale_range=(0.90, 1.10),

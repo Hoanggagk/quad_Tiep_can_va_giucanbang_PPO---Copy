@@ -55,6 +55,14 @@ class TestMotorCurriculum(unittest.TestCase):
         self.assertEqual(conditions.sensor_noise_std, 0.01)
         self.assertLessEqual(abs(conditions.hover_signal_bias), 0.03)
 
+    def test_default_curriculum_keeps_goal_observable_with_compact_state(self) -> None:
+        stages = default_motor_curriculum()
+        for stage_index in range(len(stages)):
+            conditions = MotorCurriculum(
+                initial_stage=stage_index, seed=stage_index
+            ).sample_episode()
+            np.testing.assert_allclose(conditions.goal_position_m, [0.0, 0.0, -2.0])
+
     def test_physical_domain_randomization_is_applied_to_robot_config(self) -> None:
         conditions = MotorCurriculum(initial_stage=7, seed=8).sample_episode()
         scene = {

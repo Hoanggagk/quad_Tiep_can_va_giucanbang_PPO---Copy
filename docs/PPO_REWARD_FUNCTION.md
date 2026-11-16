@@ -8,7 +8,7 @@ nhau. Mỗi lần huấn luyện chỉ sử dụng reward của environment đư
 | Cấu hình | Không gian hành động | Hàm reward trong source | Reward version |
 |---|---|---|---:|
 | `velocity_ned` | 3 velocity setpoint NED | `DroneHoveringEnv.get_reward()` | 2 |
-| `motor_residual` | 4 lệnh residual motor `[FL, FR, RL, RR]` | `DroneMotorHoverEnv.calculate_reward()` | 1 |
+| `motor_residual` | 4 lệnh residual motor `[FL, FR, RL, RR]` | `DroneMotorHoverEnv.calculate_reward()` | 2 |
 
 Hai reward function **không được cộng với nhau**. PPO chỉ nhận scalar reward
 $R_t$ từ environment và tối ưu discounted return:

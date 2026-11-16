@@ -34,7 +34,7 @@ class TestMotorActionMapping(unittest.TestCase):
 
     def test_spaces_have_expected_shapes_and_bounds(self) -> None:
         self.assertEqual(self.env.action_space.shape, (4,))
-        self.assertEqual(self.env.observation_space.shape, (20,))
+        self.assertEqual(self.env.observation_space.shape, (13,))
         np.testing.assert_allclose(self.env.action_space.low, -1.0)
         np.testing.assert_allclose(self.env.action_space.high, 1.0)
 
@@ -116,14 +116,13 @@ class TestMotorObservation(unittest.TestCase):
     def tearDown(self) -> None:
         self.env.close()
 
-    def test_observation_has_20_float32_elements_and_goal_error(self) -> None:
+    def test_observation_uses_only_indices_zero_to_twelve(self) -> None:
         self.env.prev_motor_signal = np.array([0.1, 0.2, 0.3, 0.4])
         self.env.pose_callback("pose", make_pose(1_000_000_000))
         observation = self.env.get_observation()
-        self.assertEqual(observation.shape, (20,))
+        self.assertEqual(observation.shape, (13,))
         self.assertEqual(observation.dtype, np.float32)
-        np.testing.assert_allclose(observation[13:17], [0.1, 0.2, 0.3, 0.4])
-        np.testing.assert_allclose(observation[17:20], [0.0, 0.0, 0.0])
+        self.assertAlmostEqual(float(observation[12]), 0.0)
 
     def test_pose_callback_estimates_linear_velocity_from_sim_time(self) -> None:
         self.env.pose_callback("pose", make_pose(1_000_000_000, x=0.0))
@@ -131,11 +130,11 @@ class TestMotorObservation(unittest.TestCase):
         observation = self.env.get_observation()
         self.assertAlmostEqual(float(observation[6]), 1.0, places=6)
 
-    def test_goal_error_uses_goal_minus_position_in_ned(self) -> None:
+    def test_last_observation_element_is_distance_to_goal(self) -> None:
         self.env.goal_pose = np.array([1.0, -1.0, -3.0])
         self.env.pose_callback("pose", make_pose(1_000_000_000, x=0.25, y=-0.5, z=-2.0))
         observation = self.env.get_observation()
-        np.testing.assert_allclose(observation[17:20], [0.75, -0.5, -1.0])
+        self.assertAlmostEqual(float(observation[12]), math.sqrt(1.8125), places=6)
 
     def test_observation_requires_actual_pose(self) -> None:
         with self.assertRaises(RuntimeError):
@@ -195,7 +194,7 @@ class TestMotorRuntimeSafety(unittest.IsolatedAsyncioTestCase):
             np.zeros(4)
         )
 
-        self.assertEqual(observation.shape, (20,))
+        self.assertEqual(observation.shape, (13,))
         self.assertFalse(terminated)
         self.assertFalse(truncated)
         self.assertIn("reward_terms", info)

@@ -88,13 +88,11 @@ NANOSECONDS_PER_SECOND = 1_000_000_000
 ACTION_MAPPING = "hover_centered_full_signal"
 ACTION_MAPPING_VERSION = 2
 PROJECTAIRSIM_SIGNAL_BOUNDS = (0.0, 1.0)
-OBSERVATION_SCHEMA_VERSION = 2
+OBSERVATION_SCHEMA_VERSION = 3
 OBSERVATION_LAYOUT = (
     "x_m", "y_m", "z_m", "roll_rad", "pitch_rad", "yaw_rad",
     "vx_mps", "vy_mps", "vz_mps", "roll_rate_radps",
     "pitch_rate_radps", "yaw_rate_radps", "distance_to_goal_m",
-    "motor_fl_signal", "motor_fr_signal", "motor_rl_signal", "motor_rr_signal",
-    "goal_error_x_m", "goal_error_y_m", "goal_error_z_m",
 )
 
 
@@ -695,15 +693,12 @@ class DroneMotorHoverEnv(Env):
             angular_velocity = self.angular_velocity.copy()
 
         distance_to_goal = float(np.linalg.norm(pose[:3] - self.goal_pose))
-        goal_error = self.goal_pose - pose[:3]
         observation = np.concatenate(
             (
                 pose,
                 linear_velocity,
                 angular_velocity,
                 np.array([distance_to_goal], dtype=np.float64),
-                self.prev_motor_signal,
-                goal_error,
             )
         ).astype(np.float32)
         if self.sensor_noise_std > 0.0:
