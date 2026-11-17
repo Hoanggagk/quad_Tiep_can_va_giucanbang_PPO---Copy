@@ -44,7 +44,7 @@ Trong đó `u_i` là control signal gửi tới actuator.
 - Không nạp checkpoint velocity-level vào mạng motor-level như một checkpoint hoàn chỉnh.
 - Mọi lệnh motor phải được giới hạn trong miền an toàn `[0, 1]`.
 - Khi reset, đóng environment hoặc gặp exception, phải gửi lệnh dừng cả bốn rotor.
-- Sau mỗi thay đổi source code, chạy `codegraph sync .`.
+- Sau mỗi thay đổi source code, nếu `graphify-out/graph.json` đã tồn tại, chạy `graphify update .`.
 
 ## 4. Thứ tự triển khai
 
@@ -432,7 +432,7 @@ drone_control/action_spaces/velocity_ned/control_mavsdk.py
 - [ ] Disturbance evaluation không dùng velocity action giả.
 - [ ] Checkpoint motor có metadata đầy đủ.
 - [ ] Checkpoint và kết quả cũ không bị ghi đè.
-- [ ] Đã chạy `codegraph sync .` sau thay đổi source.
+- [ ] Đã chạy `graphify update .` sau thay đổi source nếu graph đã được tạo.
 
 ## 8. Thứ tự ưu tiên ngắn gọn
 

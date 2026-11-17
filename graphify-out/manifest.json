@@ -1,0 +1,700 @@
+{
+  ".codex/hooks.json": {
+    "mtime": 1794926111.830438,
+    "seen": 1794926465.9792318,
+    "ast_hash": "5ebef3dd159986e465ab65e4014107ec",
+    "semantic_hash": "5ebef3dd159986e465ab65e4014107ec",
+    "ast_empty": true
+  },
+  ".vscode/settings.json": {
+    "mtime": 1784195546.4605298,
+    "seen": 1794926465.9792318,
+    "ast_hash": "e6242852b3584fae506b103979a13361",
+    "semantic_hash": "e6242852b3584fae506b103979a13361",
+    "ast_empty": true
+  },
+  "analysis/legacy/phantichketqua_goc.py": {
+    "mtime": 1784277679.515361,
+    "seen": 1794926465.9792318,
+    "ast_hash": "e08749b3fccad7ebf4325307304d8fc4",
+    "semantic_hash": "e08749b3fccad7ebf4325307304d8fc4"
+  },
+  "analysis/legacy/phantichketqua_vitri.py": {
+    "mtime": 1784446813.2765563,
+    "seen": 1794926465.9792318,
+    "ast_hash": "364dd92a0f3ec15875116bca08d58c81",
+    "semantic_hash": "364dd92a0f3ec15875116bca08d58c81"
+  },
+  "analysis/legacy/phantichketquatest.py": {
+    "mtime": 1784273426.9727166,
+    "seen": 1794926465.97975,
+    "ast_hash": "45932c458a1d77c72196badd5617c533",
+    "semantic_hash": "45932c458a1d77c72196badd5617c533"
+  },
+  "analysis/legacy/phantichketquatest2.py": {
+    "mtime": 1784273381.9572084,
+    "seen": 1794926465.97975,
+    "ast_hash": "c542ac4804dfa18c5dcf13b89198a307",
+    "semantic_hash": "c542ac4804dfa18c5dcf13b89198a307"
+  },
+  "analysis/legacy/with_disturbance/phantichketqua_goc.py": {
+    "mtime": 1784453141.3143387,
+    "seen": 1794926465.97975,
+    "ast_hash": "cec4a28dce7f9c89af119a2c616aec73",
+    "semantic_hash": "cec4a28dce7f9c89af119a2c616aec73"
+  },
+  "analysis/legacy/with_disturbance/phantichketqua_vitri.py": {
+    "mtime": 1784448997.5396621,
+    "seen": 1794926465.97975,
+    "ast_hash": "c10ea0a2a2e0c57557b0cf51786e2ccd",
+    "semantic_hash": "c10ea0a2a2e0c57557b0cf51786e2ccd"
+  },
+  "analysis/legacy/without_disturbance/phantichketqua_goc.py": {
+    "mtime": 1784277679.515361,
+    "seen": 1794926465.97975,
+    "ast_hash": "e08749b3fccad7ebf4325307304d8fc4",
+    "semantic_hash": "e08749b3fccad7ebf4325307304d8fc4"
+  },
+  "analysis/legacy/without_disturbance/phantichketqua_vitri.py": {
+    "mtime": 1784476907.043263,
+    "seen": 1794926465.97975,
+    "ast_hash": "ff763ab88d6849319542b8bc4b721174",
+    "semantic_hash": "ff763ab88d6849319542b8bc4b721174"
+  },
+  "checkpoints_motor/motor_20261102_133221_904014/episode_001057_step_000050000.pth.json": {
+    "mtime": 1793606748.2766917,
+    "seen": 1794926465.9803069,
+    "ast_hash": "95bf2e5dbe5e966dbc340a621eb7e5d9",
+    "semantic_hash": "95bf2e5dbe5e966dbc340a621eb7e5d9",
+    "ast_empty": true
+  },
+  "checkpoints_motor/motor_20261102_133221_904014/episode_001680_step_000100000.pth.json": {
+    "mtime": 1793610618.5066454,
+    "seen": 1794926465.9803069,
+    "ast_hash": "24a989f46256dd832b644e2c5b9d17c5",
+    "semantic_hash": "24a989f46256dd832b644e2c5b9d17c5",
+    "ast_empty": true
+  },
+  "checkpoints_motor/motor_20261114_075729_459960/episode_001261_step_000050000.pth.json": {
+    "mtime": 1794623876.863487,
+    "seen": 1794926465.9803069,
+    "ast_hash": "6d4de18b6b9e7b777d19fc66eb0f5629",
+    "semantic_hash": "6d4de18b6b9e7b777d19fc66eb0f5629",
+    "ast_empty": true
+  },
+  "checkpoints_motor/motor_20261114_075729_459960/episode_001950_step_000100000.pth.json": {
+    "mtime": 1794628663.9155083,
+    "seen": 1794926465.9803069,
+    "ast_hash": "6eae951f18777ba16bad6f7f797338d4",
+    "semantic_hash": "6eae951f18777ba16bad6f7f797338d4",
+    "ast_empty": true
+  },
+  "checkpoints_motor/motor_20261114_075729_459960/episode_002593_step_000150000.pth.json": {
+    "mtime": 1794633200.706237,
+    "seen": 1794926465.9803069,
+    "ast_hash": "08c1765bc89cafd5df9ebc54c38e5076",
+    "semantic_hash": "08c1765bc89cafd5df9ebc54c38e5076",
+    "ast_empty": true
+  },
+  "checkpoints_motor/motor_20261114_075729_459960/episode_003197_step_000200000.pth.json": {
+    "mtime": 1794637879.3534184,
+    "seen": 1794926465.9803069,
+    "ast_hash": "3caf59685eea5ede9b17914c22d6ed28",
+    "semantic_hash": "3caf59685eea5ede9b17914c22d6ed28",
+    "ast_empty": true
+  },
+  "checkpoints_motor/motor_20261115_194017_788604/episode_002139_step_000050000.pth.json": {
+    "mtime": 1794756210.4973538,
+    "seen": 1794926465.9803069,
+    "ast_hash": "9636bf01c58b7bf8f7a1ca8046521b45",
+    "semantic_hash": "9636bf01c58b7bf8f7a1ca8046521b45",
+    "ast_empty": true
+  },
+  "checkpoints_motor/motor_20261115_194017_788604/episode_004041_step_000100000.pth.json": {
+    "mtime": 1794764797.819608,
+    "seen": 1794926465.9803069,
+    "ast_hash": "0175c635c4a9f11350125d428a904edd",
+    "semantic_hash": "0175c635c4a9f11350125d428a904edd",
+    "ast_empty": true
+  },
+  "checkpoints_motor/motor_20261115_194017_788604/episode_006034_step_000150000.pth.json": {
+    "mtime": 1794774447.8156555,
+    "seen": 1794926465.9803069,
+    "ast_hash": "9e80089e3676f03cb824bcdf917a38a1",
+    "semantic_hash": "9e80089e3676f03cb824bcdf917a38a1",
+    "ast_empty": true
+  },
+  "checkpoints_motor/motor_20261115_194017_788604/episode_008285_step_000200000.pth.json": {
+    "mtime": 1794784823.2313757,
+    "seen": 1794926465.9803069,
+    "ast_hash": "2e03ee35c76c9ef6fc4e2d35892afd89",
+    "semantic_hash": "2e03ee35c76c9ef6fc4e2d35892afd89",
+    "ast_empty": true
+  },
+  "config/motor_control.json": {
+    "mtime": 1793591571.720961,
+    "seen": 1794926465.9803069,
+    "ast_hash": "dee99cf7ac434755e382b641f9992cd5",
+    "semantic_hash": "dee99cf7ac434755e382b641f9992cd5",
+    "ast_empty": true
+  },
+  "drone-control-using-reinforcement-learning/.github/workflows/push.yml": {
+    "mtime": 1794925684.9893475,
+    "seen": 1794926465.9803069,
+    "ast_hash": "9ab79bc1fcdb8fa95ba36bcfa8ab08c7",
+    "semantic_hash": "9ab79bc1fcdb8fa95ba36bcfa8ab08c7"
+  },
+  "drone-control-using-reinforcement-learning/.github/workflows/release.yml": {
+    "mtime": 1794925684.9893475,
+    "seen": 1794926465.9803069,
+    "ast_hash": "472ef3b5c001f10f7be869079874a16d",
+    "semantic_hash": "472ef3b5c001f10f7be869079874a16d"
+  },
+  "drone-control-using-reinforcement-learning/build_project.sh": {
+    "mtime": 1794925684.9903588,
+    "seen": 1794926465.9803069,
+    "ast_hash": "0c3d21a36578cf4927e2b454b2951f30",
+    "semantic_hash": "0c3d21a36578cf4927e2b454b2951f30"
+  },
+  "drone-control-using-reinforcement-learning/gym_pybullet_drones/__init__.py": {
+    "mtime": 1794925684.9918654,
+    "seen": 1794926465.9803069,
+    "ast_hash": "c038c6d1d7117982f492767f74149d10",
+    "semantic_hash": "c038c6d1d7117982f492767f74149d10"
+  },
+  "drone-control-using-reinforcement-learning/gym_pybullet_drones/assets/clone_bfs.sh": {
+    "mtime": 1794925685.0043972,
+    "seen": 1794926465.980839,
+    "ast_hash": "3daf106a94c9e2288df38ab2848eb0f5",
+    "semantic_hash": "3daf106a94c9e2288df38ab2848eb0f5"
+  },
+  "drone-control-using-reinforcement-learning/gym_pybullet_drones/assets/ffmpeg_png2mp4.sh": {
+    "mtime": 1794925685.0049334,
+    "seen": 1794926465.980839,
+    "ast_hash": "68bbac77a938195a2e50914542f38b1b",
+    "semantic_hash": "68bbac77a938195a2e50914542f38b1b"
+  },
+  "drone-control-using-reinforcement-learning/gym_pybullet_drones/control/BaseControl.py": {
+    "mtime": 1794925685.0830684,
+    "seen": 1794926465.980839,
+    "ast_hash": "1d7975939160f786b34ce44851c27e59",
+    "semantic_hash": "1d7975939160f786b34ce44851c27e59"
+  },
+  "drone-control-using-reinforcement-learning/gym_pybullet_drones/control/CTBRControl.py": {
+    "mtime": 1794925685.0840669,
+    "seen": 1794926465.980839,
+    "ast_hash": "2b8b85c517862fcf38af50d3f86cb673",
+    "semantic_hash": "2b8b85c517862fcf38af50d3f86cb673"
+  },
+  "drone-control-using-reinforcement-learning/gym_pybullet_drones/control/DSLPIDControl.py": {
+    "mtime": 1794925685.0840669,
+    "seen": 1794926465.981381,
+    "ast_hash": "f04e70326a7e00735274bf604c4cc0d9",
+    "semantic_hash": "f04e70326a7e00735274bf604c4cc0d9"
+  },
+  "drone-control-using-reinforcement-learning/gym_pybullet_drones/control/__init__.py": {
+    "mtime": 1794925685.0840669,
+    "seen": 1794926465.981381,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseAviary.py": {
+    "mtime": 1794925685.085126,
+    "seen": 1794926465.981381,
+    "ast_hash": "3b5902dee64898a026749699fd794b0a",
+    "semantic_hash": "3b5902dee64898a026749699fd794b0a"
+  },
+  "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseRLAviary.py": {
+    "mtime": 1794925685.085126,
+    "seen": 1794926465.981381,
+    "ast_hash": "06ee87b41aead4b618ec0a1df5c57a9a",
+    "semantic_hash": "06ee87b41aead4b618ec0a1df5c57a9a"
+  },
+  "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BetaAviary.py": {
+    "mtime": 1794925685.0861337,
+    "seen": 1794926465.981381,
+    "ast_hash": "5476e495ad465ed4b3d78e808ddff30d",
+    "semantic_hash": "5476e495ad465ed4b3d78e808ddff30d"
+  },
+  "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/CtrlAviary.py": {
+    "mtime": 1794925685.0861337,
+    "seen": 1794926465.981907,
+    "ast_hash": "eb2c8d30b79491a4eb8885d3168ba321",
+    "semantic_hash": "eb2c8d30b79491a4eb8885d3168ba321"
+  },
+  "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/FlyThruGateAvitary.py": {
+    "mtime": 1794925685.0861337,
+    "seen": 1794926465.981907,
+    "ast_hash": "0ce6ec7c7ba40e2a99688b4f8e6df77e",
+    "semantic_hash": "0ce6ec7c7ba40e2a99688b4f8e6df77e"
+  },
+  "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/HoverAviary.py": {
+    "mtime": 1794925685.08713,
+    "seen": 1794926465.981907,
+    "ast_hash": "4536e6929fa49eb1a64ad6d728a37d4a",
+    "semantic_hash": "4536e6929fa49eb1a64ad6d728a37d4a"
+  },
+  "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/MultiHoverAviary.py": {
+    "mtime": 1794925685.08713,
+    "seen": 1794926465.981907,
+    "ast_hash": "fbeadf2b6759c85af8b43e83f83ad1de",
+    "semantic_hash": "fbeadf2b6759c85af8b43e83f83ad1de"
+  },
+  "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/VelocityAviary.py": {
+    "mtime": 1794925685.08713,
+    "seen": 1794926465.981907,
+    "ast_hash": "61ceed8db6b0fa77227874619450a67a",
+    "semantic_hash": "61ceed8db6b0fa77227874619450a67a"
+  },
+  "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/__init__.py": {
+    "mtime": 1794925685.08713,
+    "seen": 1794926465.9824169,
+    "ast_hash": "67c09ee4677d2f6563d59e5ee9ce52c8",
+    "semantic_hash": "67c09ee4677d2f6563d59e5ee9ce52c8"
+  },
+  "drone-control-using-reinforcement-learning/gym_pybullet_drones/examples/__init__.py": {
+    "mtime": 1794925685.08713,
+    "seen": 1794926465.9824169,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "drone-control-using-reinforcement-learning/gym_pybullet_drones/examples/beta.py": {
+    "mtime": 1794925685.0881367,
+    "seen": 1794926465.9824169,
+    "ast_hash": "bb369ca86dcbcf931773ce32e60e64a6",
+    "semantic_hash": "bb369ca86dcbcf931773ce32e60e64a6"
+  },
+  "drone-control-using-reinforcement-learning/gym_pybullet_drones/examples/debug.py": {
+    "mtime": 1794925685.0881367,
+    "seen": 1794926465.9824169,
+    "ast_hash": "e71aeb8f878f5df768225e49c82c1167",
+    "semantic_hash": "e71aeb8f878f5df768225e49c82c1167"
+  },
+  "drone-control-using-reinforcement-learning/gym_pybullet_drones/examples/downwash.py": {
+    "mtime": 1794925685.0881367,
+    "seen": 1794926465.9824169,
+    "ast_hash": "27f14e7e8814a681d4a4cdb18619eec3",
+    "semantic_hash": "27f14e7e8814a681d4a4cdb18619eec3"
+  },
+  "drone-control-using-reinforcement-learning/gym_pybullet_drones/examples/learn.py": {
+    "mtime": 1794925685.0881367,
+    "seen": 1794926465.9829614,
+    "ast_hash": "48a84209aa65ee602b45c9f97023e120",
+    "semantic_hash": "48a84209aa65ee602b45c9f97023e120"
+  },
+  "drone-control-using-reinforcement-learning/gym_pybullet_drones/examples/pid.py": {
+    "mtime": 1794925685.0891433,
+    "seen": 1794926465.9829614,
+    "ast_hash": "e9d2ed7de3b419d5329f2b2692b40917",
+    "semantic_hash": "e9d2ed7de3b419d5329f2b2692b40917"
+  },
+  "drone-control-using-reinforcement-learning/gym_pybullet_drones/examples/pid_velocity.py": {
+    "mtime": 1794925685.0891433,
+    "seen": 1794926465.9829614,
+    "ast_hash": "df6b812222eeeb56973ecebe39f8b592",
+    "semantic_hash": "df6b812222eeeb56973ecebe39f8b592"
+  },
+  "drone-control-using-reinforcement-learning/gym_pybullet_drones/utils/Logger.py": {
+    "mtime": 1794925685.0891433,
+    "seen": 1794926465.9829614,
+    "ast_hash": "8962004fe948b5e03edcc4b410ca9d16",
+    "semantic_hash": "8962004fe948b5e03edcc4b410ca9d16"
+  },
+  "drone-control-using-reinforcement-learning/gym_pybullet_drones/utils/__init__.py": {
+    "mtime": 1794925685.0891433,
+    "seen": 1794926465.9829614,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "drone-control-using-reinforcement-learning/gym_pybullet_drones/utils/enums.py": {
+    "mtime": 1794925685.0901456,
+    "seen": 1794926465.9835005,
+    "ast_hash": "f922826a71ba642968f2cec6ba3494b7",
+    "semantic_hash": "f922826a71ba642968f2cec6ba3494b7"
+  },
+  "drone-control-using-reinforcement-learning/gym_pybullet_drones/utils/utils.py": {
+    "mtime": 1794925685.0901456,
+    "seen": 1794926465.9838524,
+    "ast_hash": "12ca6902a110542dd710712f557b17e1",
+    "semantic_hash": "12ca6902a110542dd710712f557b17e1"
+  },
+  "drone-control-using-reinforcement-learning/ppo.py": {
+    "mtime": 1794925685.0980318,
+    "seen": 1794926465.9838524,
+    "ast_hash": "ebdaa7eef381ca6b59c59afe269710e5",
+    "semantic_hash": "ebdaa7eef381ca6b59c59afe269710e5"
+  },
+  "drone-control-using-reinforcement-learning/pyproject.toml": {
+    "mtime": 1794925685.0980318,
+    "seen": 1794926465.9838524,
+    "ast_hash": "6fa9456b4dca7089e394ff26c0126b05",
+    "semantic_hash": "6fa9456b4dca7089e394ff26c0126b05"
+  },
+  "drone-control-using-reinforcement-learning/test_hover.py": {
+    "mtime": 1794925685.1501024,
+    "seen": 1794926465.9838524,
+    "ast_hash": "827d461ac49ca319bb2ca3f85b6bfa11",
+    "semantic_hash": "827d461ac49ca319bb2ca3f85b6bfa11"
+  },
+  "drone-control-using-reinforcement-learning/test_thrugate.py": {
+    "mtime": 1794925685.1501024,
+    "seen": 1794926465.984355,
+    "ast_hash": "bf2c9447238d0ee11b30e36b29a80b93",
+    "semantic_hash": "bf2c9447238d0ee11b30e36b29a80b93"
+  },
+  "drone-control-using-reinforcement-learning/tests/test_build.py": {
+    "mtime": 1794925685.1516118,
+    "seen": 1794926465.984355,
+    "ast_hash": "e0b9355ddfd82c8e47c1ad5f2076519a",
+    "semantic_hash": "e0b9355ddfd82c8e47c1ad5f2076519a"
+  },
+  "drone-control-using-reinforcement-learning/tests/test_examples.py": {
+    "mtime": 1794925685.1516118,
+    "seen": 1794926465.984355,
+    "ast_hash": "6e9756844217415d57ac9efd47a117a4",
+    "semantic_hash": "6e9756844217415d57ac9efd47a117a4"
+  },
+  "drone-control-using-reinforcement-learning/train_hover.py": {
+    "mtime": 1794925685.1516118,
+    "seen": 1794926465.984355,
+    "ast_hash": "d84ca99bd71348567986d1f1ea8f1cda",
+    "semantic_hash": "d84ca99bd71348567986d1f1ea8f1cda"
+  },
+  "drone-control-using-reinforcement-learning/train_thrugate.py": {
+    "mtime": 1794925685.1530962,
+    "seen": 1794926465.984355,
+    "ast_hash": "065bb5f058804fc34423cdf883ce3112",
+    "semantic_hash": "065bb5f058804fc34423cdf883ce3112"
+  },
+  "drone_control/__init__.py": {
+    "mtime": 1794205676.6502533,
+    "seen": 1794926465.9848814,
+    "ast_hash": "9d2c307e664fd2ebe29ef3faffad9010",
+    "semantic_hash": "9d2c307e664fd2ebe29ef3faffad9010"
+  },
+  "drone_control/action_spaces/__init__.py": {
+    "mtime": 1794205677.6762052,
+    "seen": 1794926465.9848814,
+    "ast_hash": "ade0870cfaf4f9d64957a07a6d8ca263",
+    "semantic_hash": "ade0870cfaf4f9d64957a07a6d8ca263"
+  },
+  "drone_control/action_spaces/motor_residual/__init__.py": {
+    "mtime": 1794205678.4445717,
+    "seen": 1794926465.9848814,
+    "ast_hash": "53ec15879588579b8e35d601eec431a9",
+    "semantic_hash": "53ec15879588579b8e35d601eec431a9"
+  },
+  "drone_control/action_spaces/motor_residual/calibrate.py": {
+    "mtime": 1794205560.799946,
+    "seen": 1794926465.9848814,
+    "ast_hash": "66d50e0603e273eadd16f4bfb3d3d60a",
+    "semantic_hash": "66d50e0603e273eadd16f4bfb3d3d60a"
+  },
+  "drone_control/action_spaces/motor_residual/check_actuators.py": {
+    "mtime": 1793591230.4538484,
+    "seen": 1794926465.9848814,
+    "ast_hash": "6b7e8b486f9b407b59de4fd3f9615b39",
+    "semantic_hash": "6b7e8b486f9b407b59de4fd3f9615b39"
+  },
+  "drone_control/action_spaces/motor_residual/curriculum.py": {
+    "mtime": 1794745279.354532,
+    "seen": 1794926465.9854236,
+    "ast_hash": "7c9c3e241e14bfd398ab606fc3d3f3cc",
+    "semantic_hash": "7c9c3e241e14bfd398ab606fc3d3f3cc"
+  },
+  "drone_control/action_spaces/motor_residual/env.py": {
+    "mtime": 1794840387.5793574,
+    "seen": 1794926465.9854236,
+    "ast_hash": "d77ce5b33d4af72496969be89f774d4b",
+    "semantic_hash": "d77ce5b33d4af72496969be89f774d4b"
+  },
+  "drone_control/action_spaces/motor_residual/monitoring.py": {
+    "mtime": 1794715734.348646,
+    "seen": 1794926465.9854236,
+    "ast_hash": "a1f6345eeb5ea6d0f0599d27f7ab78bf",
+    "semantic_hash": "a1f6345eeb5ea6d0f0599d27f7ab78bf"
+  },
+  "drone_control/action_spaces/motor_residual/train.py": {
+    "mtime": 1794840387.2259786,
+    "seen": 1794926465.9854236,
+    "ast_hash": "35729bd58364d027f93ac56a6a0bd59f",
+    "semantic_hash": "35729bd58364d027f93ac56a6a0bd59f"
+  },
+  "drone_control/action_spaces/velocity_ned/__init__.py": {
+    "mtime": 1794205678.0581381,
+    "seen": 1794926465.9854236,
+    "ast_hash": "22306f394a3e23a81e1356056526c051",
+    "semantic_hash": "22306f394a3e23a81e1356056526c051"
+  },
+  "drone_control/action_spaces/velocity_ned/control_disturbance.py": {
+    "mtime": 1794205834.163782,
+    "seen": 1794926465.985946,
+    "ast_hash": "d0132222185297a02cc03f4a32e95a1b",
+    "semantic_hash": "d0132222185297a02cc03f4a32e95a1b"
+  },
+  "drone_control/action_spaces/velocity_ned/control_mavsdk.py": {
+    "mtime": 1794205834.6243224,
+    "seen": 1794926465.985946,
+    "ast_hash": "d777ab11b8e510f5cc0d6c2dc43d955a",
+    "semantic_hash": "d777ab11b8e510f5cc0d6c2dc43d955a"
+  },
+  "drone_control/action_spaces/velocity_ned/control_projectairsim.py": {
+    "mtime": 1794205659.233585,
+    "seen": 1794926465.985946,
+    "ast_hash": "eaf76e513e07d30abf0d90e49e9834da",
+    "semantic_hash": "eaf76e513e07d30abf0d90e49e9834da"
+  },
+  "drone_control/action_spaces/velocity_ned/env.py": {
+    "mtime": 1794717513.219359,
+    "seen": 1794926465.985946,
+    "ast_hash": "94c8e3523fcca6e2e38fd38690582b00",
+    "semantic_hash": "94c8e3523fcca6e2e38fd38690582b00"
+  },
+  "drone_control/action_spaces/velocity_ned/env_short_episode.py": {
+    "mtime": 1794715877.2286835,
+    "seen": 1794926465.985946,
+    "ast_hash": "3eac6ab03eb794bec9b114b1b3959814",
+    "semantic_hash": "3eac6ab03eb794bec9b114b1b3959814"
+  },
+  "drone_control/action_spaces/velocity_ned/evaluate_balance.py": {
+    "mtime": 1794205660.4339576,
+    "seen": 1794926465.9865084,
+    "ast_hash": "8023672a346a26acbf4086f91ce45a06",
+    "semantic_hash": "8023672a346a26acbf4086f91ce45a06"
+  },
+  "drone_control/action_spaces/velocity_ned/train.py": {
+    "mtime": 1794715854.5919764,
+    "seen": 1794926465.9865084,
+    "ast_hash": "4b24552a00d6367c481b124357fc4b37",
+    "semantic_hash": "4b24552a00d6367c481b124357fc4b37"
+  },
+  "drone_control/action_spaces/velocity_ned/train_short_episode.py": {
+    "mtime": 1794715854.246101,
+    "seen": 1794926465.9865084,
+    "ast_hash": "91db8155acc575fe8cde7c15290a9ceb",
+    "semantic_hash": "91db8155acc575fe8cde7c15290a9ceb"
+  },
+  "drone_control/algorithms/__init__.py": {
+    "mtime": 1794205677.1558442,
+    "seen": 1794926465.9865084,
+    "ast_hash": "d4a7afc621669199244530958b059ccd",
+    "semantic_hash": "d4a7afc621669199244530958b059ccd"
+  },
+  "drone_control/algorithms/ppo.py": {
+    "mtime": 1794717454.0803845,
+    "seen": 1794926465.9865084,
+    "ast_hash": "77edf9e94139e44f52bc868142f8d015",
+    "semantic_hash": "77edf9e94139e44f52bc868142f8d015"
+  },
+  "drone_control/evaluation_protocol.py": {
+    "mtime": 1794715623.728162,
+    "seen": 1794926465.9865084,
+    "ast_hash": "0376af60ca930795660102b6042447e3",
+    "semantic_hash": "0376af60ca930795660102b6042447e3"
+  },
+  "drone_control/task_contract.py": {
+    "mtime": 1794715020.5372589,
+    "seen": 1794926465.9870555,
+    "ast_hash": "75d598be46c4dec2f7ea9627efc9c3c5",
+    "semantic_hash": "75d598be46c4dec2f7ea9627efc9c3c5"
+  },
+  "log_dir/hover_motor/motor_20261114_075729_459960/training_status.json": {
+    "mtime": 1794641473.371135,
+    "seen": 1794926465.9870555,
+    "ast_hash": "4ccba02fbb31a40feb707cfab470d835",
+    "semantic_hash": "4ccba02fbb31a40feb707cfab470d835",
+    "ast_empty": true
+  },
+  "log_dir/hover_motor/motor_20261115_115411_735049/training_status.json": {
+    "mtime": 1794730399.1459558,
+    "seen": 1794926465.9870555,
+    "ast_hash": "bd252a960acdf3806eabd4de1da9a555",
+    "semantic_hash": "bd252a960acdf3806eabd4de1da9a555",
+    "ast_empty": true
+  },
+  "log_dir/hover_motor/motor_20261115_160849_746679/training_status.json": {
+    "mtime": 1794733776.6060014,
+    "seen": 1794926465.9870555,
+    "ast_hash": "c54fb40c5af40aae42d2ab3c2768dfa8",
+    "semantic_hash": "c54fb40c5af40aae42d2ab3c2768dfa8",
+    "ast_empty": true
+  },
+  "log_dir/hover_motor/motor_20261115_194017_788604/training_status.json": {
+    "mtime": 1794786265.7986865,
+    "seen": 1794926465.9870555,
+    "ast_hash": "77df3f594805e7604f2450ae2f977bb5",
+    "semantic_hash": "77df3f594805e7604f2450ae2f977bb5",
+    "ast_empty": true
+  },
+  "log_dir/hover_motor/motor_20261116_163159_710890/training_status.json": {
+    "mtime": 1794822242.815035,
+    "seen": 1794926465.9870555,
+    "ast_hash": "083a55af7267efd35bebd3fd6a66f811",
+    "semantic_hash": "083a55af7267efd35bebd3fd6a66f811",
+    "ast_empty": true
+  },
+  "log_dir/hover_motor/motor_20261116_215905_253119/training_status.json": {
+    "mtime": 1794843691.8131678,
+    "seen": 1794926465.9870555,
+    "ast_hash": "217d3f18edd1dd07d78143788c971537",
+    "semantic_hash": "217d3f18edd1dd07d78143788c971537",
+    "ast_empty": true
+  },
+  "log_dir/hover_motor/motor_20261117_164635_177445/training_status.json": {
+    "mtime": 1794915086.7819273,
+    "seen": 1794926465.9870555,
+    "ast_hash": "e80f98b28665c694d61a41ced236cc06",
+    "semantic_hash": "e80f98b28665c694d61a41ced236cc06",
+    "ast_empty": true
+  },
+  "tests/__init__.py": {
+    "mtime": 1793592129.1341372,
+    "seen": 1794926465.9870555,
+    "ast_hash": "8706a627ce34d2db73084f634a91f59d",
+    "semantic_hash": "8706a627ce34d2db73084f634a91f59d"
+  },
+  "tests/action_spaces/__init__.py": {
+    "mtime": 1794205679.2269962,
+    "seen": 1794926465.9870555,
+    "ast_hash": "5d95088b93f1476bb7bd3352f186d9f7",
+    "semantic_hash": "5d95088b93f1476bb7bd3352f186d9f7"
+  },
+  "tests/action_spaces/motor_residual/__init__.py": {
+    "mtime": 1794205679.609503,
+    "seen": 1794926465.9870555,
+    "ast_hash": "e36ba4ca36dd0fbda2d45035b9deab8e",
+    "semantic_hash": "e36ba4ca36dd0fbda2d45035b9deab8e"
+  },
+  "tests/action_spaces/motor_residual/test_curriculum.py": {
+    "mtime": 1794745102.5749547,
+    "seen": 1794926465.9870555,
+    "ast_hash": "5e28d48d742aa821d79f39779faf2bec",
+    "semantic_hash": "5e28d48d742aa821d79f39779faf2bec"
+  },
+  "tests/action_spaces/motor_residual/test_env.py": {
+    "mtime": 1794745101.842814,
+    "seen": 1794926465.987591,
+    "ast_hash": "c74110a08549b418cd4fd975f28c0c17",
+    "semantic_hash": "c74110a08549b418cd4fd975f28c0c17"
+  },
+  "tests/action_spaces/motor_residual/test_monitoring.py": {
+    "mtime": 1794617695.133325,
+    "seen": 1794926465.987591,
+    "ast_hash": "a127ab9488c9f7cf349797e9a78a2b9b",
+    "semantic_hash": "a127ab9488c9f7cf349797e9a78a2b9b"
+  },
+  "tests/action_spaces/motor_residual/test_reward.py": {
+    "mtime": 1794840412.501032,
+    "seen": 1794926465.987591,
+    "ast_hash": "5ebd30129d9f01dbba574a8723ab5751",
+    "semantic_hash": "5ebd30129d9f01dbba574a8723ab5751"
+  },
+  "tests/action_spaces/motor_residual/test_train.py": {
+    "mtime": 1794840424.8688767,
+    "seen": 1794926465.987591,
+    "ast_hash": "72c99c404a3a76bf2e424ce5ba7eb335",
+    "semantic_hash": "72c99c404a3a76bf2e424ce5ba7eb335"
+  },
+  "tests/common/__init__.py": {
+    "mtime": 1794205678.8087425,
+    "seen": 1794926465.987591,
+    "ast_hash": "40f3dc9798577be8a6652569667d5f25",
+    "semantic_hash": "40f3dc9798577be8a6652569667d5f25"
+  },
+  "tests/common/test_analyze_motor_training.py": {
+    "mtime": 1794800928.9004283,
+    "seen": 1794926465.988126,
+    "ast_hash": "09f4deb73586b5013fa3126318965511",
+    "semantic_hash": "09f4deb73586b5013fa3126318965511"
+  },
+  "tests/common/test_evaluation_protocol.py": {
+    "mtime": 1794715624.2426114,
+    "seen": 1794926465.988126,
+    "ast_hash": "b78caba379730757363fdf2f81708ba7",
+    "semantic_hash": "b78caba379730757363fdf2f81708ba7"
+  },
+  "tests/common/test_ppo_action_bounds.py": {
+    "mtime": 1794717492.5780027,
+    "seen": 1794926465.988126,
+    "ast_hash": "96ae070f85dc5515aa96b76c96ee0b12",
+    "semantic_hash": "96ae070f85dc5515aa96b76c96ee0b12"
+  },
+  "tests/common/test_ppo_gae.py": {
+    "mtime": 1794715131.842698,
+    "seen": 1794926465.988126,
+    "ast_hash": "9a751fb7a587bedddadb4251f71da9ea",
+    "semantic_hash": "9a751fb7a587bedddadb4251f71da9ea"
+  },
+  "tests/common/test_ppo_source_contract.py": {
+    "mtime": 1794715506.6816902,
+    "seen": 1794926465.988126,
+    "ast_hash": "ac9702c01862983144f0943dc5838190",
+    "semantic_hash": "ac9702c01862983144f0943dc5838190"
+  },
+  "tests/common/test_task_contract.py": {
+    "mtime": 1794715020.889816,
+    "seen": 1794926465.9886448,
+    "ast_hash": "e350ed4e721c3f31673b57fd89a2cb1a",
+    "semantic_hash": "e350ed4e721c3f31673b57fd89a2cb1a"
+  },
+  "tools/__init__.py": {
+    "mtime": 1794205679.9853947,
+    "seen": 1794926465.9886448,
+    "ast_hash": "a41c5917ebfa7a32f8de86415614531b",
+    "semantic_hash": "a41c5917ebfa7a32f8de86415614531b"
+  },
+  "tools/analyze_motor_training.py": {
+    "mtime": 1794840388.124897,
+    "seen": 1794926465.9886448,
+    "ast_hash": "e9603c4ec8cedcf3432754cc20f70a44",
+    "semantic_hash": "e9603c4ec8cedcf3432754cc20f70a44"
+  },
+  "tools/create_evaluation_manifest.py": {
+    "mtime": 1794715822.2550285,
+    "seen": 1794926465.9886448,
+    "ast_hash": "baffed3b5bb4f09a7dcd8b04317dab4e",
+    "semantic_hash": "baffed3b5bb4f09a7dcd8b04317dab4e"
+  },
+  "tools/diagnostics/__init__.py": {
+    "mtime": 1794205680.8020859,
+    "seen": 1794926465.9886448,
+    "ast_hash": "9cddf12426b59c83943df16f12f0aab1",
+    "semantic_hash": "9cddf12426b59c83943df16f12f0aab1"
+  },
+  "tools/diagnostics/clock_manual_step.py": {
+    "mtime": 1774233854.1212828,
+    "seen": 1794926465.9886448,
+    "ast_hash": "e377d7fbce35676afadf574cb6cbb5cd",
+    "semantic_hash": "e377d7fbce35676afadf574cb6cbb5cd"
+  },
+  "tools/diagnostics/connection_ue.py": {
+    "mtime": 1784342108.8673348,
+    "seen": 1794926465.9891787,
+    "ast_hash": "d47125f8e7fd5e3dc02bc24217c15b6a",
+    "semantic_hash": "d47125f8e7fd5e3dc02bc24217c15b6a"
+  },
+  "tools/diagnostics/mavsdk_takeoff.py": {
+    "mtime": 1781166324.149625,
+    "seen": 1794926465.9891787,
+    "ast_hash": "026f72702260ef0f716f0ffd2729a34a",
+    "semantic_hash": "026f72702260ef0f716f0ffd2729a34a"
+  },
+  "tools/visualization/__init__.py": {
+    "mtime": 1794205680.3800533,
+    "seen": 1794926465.9891787,
+    "ast_hash": "91f3ace8c2a0ec728abeb1b4011b7db8",
+    "semantic_hash": "91f3ace8c2a0ec728abeb1b4011b7db8"
+  },
+  "tools/visualization/visualize_neuron.py": {
+    "mtime": 1794205561.2743752,
+    "seen": 1794926465.9891787,
+    "ast_hash": "53c74aec592a75d71ab5a8672fe98139",
+    "semantic_hash": "53c74aec592a75d71ab5a8672fe98139"
+  },
+  "tools/visualization/visualize_results.py": {
+    "mtime": 1794205835.60339,
+    "seen": 1794926465.9891787,
+    "ast_hash": "017fb97514e72bbb3c037036e012c5e4",
+    "semantic_hash": "017fb97514e72bbb3c037036e012c5e4"
+  }
+}

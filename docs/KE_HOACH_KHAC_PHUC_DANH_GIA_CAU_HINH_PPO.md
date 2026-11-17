@@ -363,7 +363,7 @@ Một cấu hình chỉ được gọi là “giải quyết reaching và sustai
 2. Có kết quả nhiều seed và không chỉ chọn best checkpoint/best seed.
 3. Không có config/document drift.
 4. Metrics safety và completion được báo cáo cùng RMSE/reward.
-5. Test, compile, `git diff --check` và CodeGraph sync đều đạt.
+5. Test, compile, `git diff --check` và Graphify update (nếu graph đã được tạo) đều đạt.
 6. Simulator evaluation có manifest và không overwrite artifact cũ.
 
 ## 6. Thứ tự ưu tiên và phụ thuộc
