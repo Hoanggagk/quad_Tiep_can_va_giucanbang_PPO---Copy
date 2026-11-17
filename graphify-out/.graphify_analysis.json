@@ -1,8 +1,162 @@
 {
   "communities": {
     "0": [
+      "ast",
+      "csv",
+      "deque",
+      "drone_control_action_spaces_motor_residual_monitoring",
+      "drone_control_action_spaces_motor_residual_monitoring_format_duration",
+      "drone_control_action_spaces_motor_residual_monitoring_mean",
+      "drone_control_action_spaces_motor_residual_monitoring_optional_float",
+      "drone_control_action_spaces_motor_residual_monitoring_py_any",
+      "drone_control_action_spaces_motor_residual_monitoring_py_path",
+      "drone_control_action_spaces_motor_residual_monitoring_rationale_1",
+      "drone_control_action_spaces_motor_residual_monitoring_rationale_115",
+      "drone_control_action_spaces_motor_residual_monitoring_rationale_42",
+      "drone_control_action_spaces_motor_residual_monitoring_trainingmonitor",
+      "drone_control_action_spaces_motor_residual_monitoring_trainingmonitor_finish",
+      "drone_control_action_spaces_motor_residual_monitoring_trainingmonitor_init",
+      "drone_control_action_spaces_motor_residual_monitoring_trainingmonitor_record_checkpoint",
+      "drone_control_action_spaces_motor_residual_monitoring_trainingmonitor_record_episode",
+      "drone_control_action_spaces_motor_residual_monitoring_trainingmonitor_write_status",
+      "drone_control_action_spaces_motor_residual_train",
+      "drone_control_action_spaces_motor_residual_train_build_checkpoint_metadata",
+      "drone_control_action_spaces_motor_residual_train_main",
+      "drone_control_action_spaces_motor_residual_train_make_run_id",
+      "drone_control_action_spaces_motor_residual_train_metadata_path_for",
+      "drone_control_action_spaces_motor_residual_train_parse_args",
+      "drone_control_action_spaces_motor_residual_train_py_any",
+      "drone_control_action_spaces_motor_residual_train_py_namespace",
+      "drone_control_action_spaces_motor_residual_train_py_path",
+      "drone_control_action_spaces_motor_residual_train_rationale_1",
+      "drone_control_action_spaces_motor_residual_train_save_checkpoint_with_metadata",
+      "drone_control_action_spaces_motor_residual_train_source_fingerprint",
+      "drone_control_action_spaces_motor_residual_train_train",
+      "drone_control_action_spaces_motor_residual_train_validate_resume_checkpoint",
+      "hashlib",
+      "json",
+      "math",
+      "pathlib",
+      "statistics",
+      "tempfile",
+      "tests_action_spaces_motor_residual_test_monitoring",
+      "tests_action_spaces_motor_residual_test_monitoring_fakeclock",
+      "tests_action_spaces_motor_residual_test_monitoring_fakeclock_call",
+      "tests_action_spaces_motor_residual_test_monitoring_fakeclock_init",
+      "tests_action_spaces_motor_residual_test_monitoring_testtrainingmonitor",
+      "tests_action_spaces_motor_residual_test_monitoring_testtrainingmonitor_record",
+      "tests_action_spaces_motor_residual_test_monitoring_testtrainingmonitor_setup",
+      "tests_action_spaces_motor_residual_test_monitoring_testtrainingmonitor_test_checkpoint_and_completion_are_persisted",
+      "tests_action_spaces_motor_residual_test_monitoring_testtrainingmonitor_test_console_reports_first_episode_and_configured_interval",
+      "tests_action_spaces_motor_residual_test_monitoring_testtrainingmonitor_test_invalid_configuration_is_rejected",
+      "tests_action_spaces_motor_residual_test_monitoring_testtrainingmonitor_test_snapshot_contains_progress_rolling_metrics_and_eta",
+      "tests_action_spaces_motor_residual_test_train",
+      "tests_action_spaces_motor_residual_test_train_fakeagent",
+      "tests_action_spaces_motor_residual_test_train_fakeagent_save",
+      "tests_action_spaces_motor_residual_test_train_testmotortrainingentrypoint",
+      "tests_action_spaces_motor_residual_test_train_testmotortrainingentrypoint_setup",
+      "tests_action_spaces_motor_residual_test_train_testmotortrainingentrypoint_test_checkpoint_and_sidecar_are_saved_without_overwrite",
+      "tests_action_spaces_motor_residual_test_train_testmotortrainingentrypoint_test_metadata_contains_all_required_fields",
+      "tests_action_spaces_motor_residual_test_train_testmotortrainingentrypoint_test_motor_dimensions_and_observation_layout",
+      "tests_action_spaces_motor_residual_test_train_testmotortrainingentrypoint_test_motor_exploration_profile_is_recorded_in_metadata",
+      "tests_action_spaces_motor_residual_test_train_testmotortrainingentrypoint_test_output_namespaces_are_separate_from_velocity_training",
+      "tests_action_spaces_motor_residual_test_train_testmotortrainingentrypoint_test_resume_rejects_checkpoint_without_motor_metadata",
+      "tests_action_spaces_motor_residual_test_train_testmotortrainingentrypoint_test_resume_rejects_legacy_action_mapping",
+      "tests_action_spaces_motor_residual_test_train_testmotortrainingentrypoint_test_resume_rejects_legacy_observation_schema",
+      "tests_action_spaces_motor_residual_test_train_testmotortrainingentrypoint_test_resume_rejects_legacy_state_twenty_checkpoint",
+      "tests_action_spaces_motor_residual_test_train_testmotortrainingentrypoint_test_resume_rejects_wrong_dimensions",
+      "tests_action_spaces_motor_residual_test_train_testmotortrainingentrypoint_test_run_id_is_deterministic_for_timestamp_and_motor_prefixed",
+      "tests_common_test_analyze_motor_training",
+      "tests_common_test_analyze_motor_training_testanalyzemotortraining",
+      "tests_common_test_analyze_motor_training_testanalyzemotortraining_test_missing_required_column_is_rejected",
+      "tests_common_test_analyze_motor_training_testanalyzemotortraining_test_report_identifies_short_failed_stage_locked_training",
+      "tests_common_test_ppo_source_contract",
+      "tools_analyze_motor_training",
+      "tools_analyze_motor_training_build_report",
+      "tools_analyze_motor_training_correlation",
+      "tools_analyze_motor_training_float",
+      "tools_analyze_motor_training_fmt",
+      "tools_analyze_motor_training_load_training_csv",
+      "tools_analyze_motor_training_main",
+      "tools_analyze_motor_training_mean",
+      "tools_analyze_motor_training_optional_float",
+      "tools_analyze_motor_training_parse_args",
+      "tools_analyze_motor_training_percentile",
+      "tools_analyze_motor_training_py_namespace",
+      "tools_analyze_motor_training_py_path",
+      "tools_analyze_motor_training_rate",
+      "tools_analyze_motor_training_rationale_1",
+      "tools_analyze_motor_training_unique_ppo_snapshots",
+      "tools_analyze_motor_training_values",
+      "tools_diagnostics_connection_ue",
+      "unittest",
+      "websocket"
+    ],
+    "1": [
+      "drone_control_algorithms_ppo_actorcritic",
+      "drone_control_algorithms_ppo_actorcritic_act",
+      "drone_control_algorithms_ppo_actorcritic_action_scale_and_bias",
+      "drone_control_algorithms_ppo_actorcritic_evaluate",
+      "drone_control_algorithms_ppo_actorcritic_init",
+      "drone_control_algorithms_ppo_actorcritic_log_one_minus_tanh_squared",
+      "drone_control_algorithms_ppo_actorcritic_set_action_std",
+      "drone_control_algorithms_ppo_actorcritic_squash_action",
+      "drone_control_algorithms_ppo_actorcritic_squashed_logprob",
+      "drone_control_algorithms_ppo_actorcritic_unsquash_action",
+      "drone_control_algorithms_ppo_normalize_action_bound",
+      "drone_control_algorithms_ppo_ppo_init",
+      "drone_control_algorithms_ppo_rationale_17",
+      "drone_control_algorithms_ppo_rationale_179",
+      "drone_control_algorithms_ppo_rationale_201",
+      "drone_control_algorithms_ppo_rationale_63",
+      "drone_control_algorithms_ppo_rolloutbuffer",
+      "drone_control_algorithms_ppo_rolloutbuffer_clear",
+      "drone_control_algorithms_ppo_rolloutbuffer_init",
+      "drone_control_algorithms_ppo_scaleaction",
+      "drone_control_algorithms_ppo_scaleaction_forward",
+      "drone_control_algorithms_ppo_scaleaction_init",
+      "tests_common_test_ppo_action_bounds",
+      "tests_common_test_ppo_action_bounds_py_skipunless",
+      "tests_common_test_ppo_action_bounds_testactorcriticactionbounds",
+      "tests_common_test_ppo_action_bounds_testactorcriticactionbounds_test_bounds_do_not_add_state_dict_keys",
+      "tests_common_test_ppo_action_bounds_testactorcriticactionbounds_test_motor_forward_shape_and_normalized_bounds",
+      "tests_common_test_ppo_action_bounds_testactorcriticactionbounds_test_sampled_action_is_clipped_to_configured_bounds",
+      "tests_common_test_ppo_action_bounds_testactorcriticactionbounds_test_tanh_squashed_action_is_bounded_without_gaussian_clipping",
+      "tests_common_test_ppo_action_bounds_testactorcriticactionbounds_test_velocity_forward_shape_and_default_bounds",
+      "tests_common_test_ppo_action_bounds_testppoconfigurations",
+      "tests_common_test_ppo_action_bounds_testppoconfigurations_make_ppo",
+      "tests_common_test_ppo_action_bounds_testppoconfigurations_test_existing_velocity_constructor_keeps_old_default",
+      "tests_common_test_ppo_action_bounds_testppoconfigurations_test_load_reads_checkpoint_once_for_both_policies",
+      "tests_common_test_ppo_action_bounds_testppoconfigurations_test_motor_constructor_uses_normalized_bounds",
+      "tests_common_test_ppo_action_bounds_testppoconfigurations_test_tanh_squashed_policy_can_complete_an_update",
+      "tests_common_test_ppo_action_bounds_testppoconfigurations_test_vector_bounds_are_supported",
+      "tests_common_test_ppo_action_bounds_testscaleaction",
+      "tests_common_test_ppo_action_bounds_testscaleaction_test_asymmetric_vector_bounds",
+      "tests_common_test_ppo_action_bounds_testscaleaction_test_invalid_bounds_are_rejected",
+      "tests_common_test_ppo_action_bounds_testscaleaction_test_symmetric_scalar_bounds",
+      "tools_visualization_visualize_neuron_main",
+      "tools_visualization_visualize_neuron_neuronvisualizer",
+      "tools_visualization_visualize_neuron_neuronvisualizer_draw_connections",
+      "tools_visualization_visualize_neuron_neuronvisualizer_init",
+      "tools_visualization_visualize_neuron_neuronvisualizer_print_network_summary",
+      "tools_visualization_visualize_neuron_neuronvisualizer_visualize_activations",
+      "tools_visualization_visualize_neuron_neuronvisualizer_visualize_activations_hook_fn",
+      "tools_visualization_visualize_neuron_neuronvisualizer_visualize_activations_hook_fn_hook",
+      "tools_visualization_visualize_neuron_neuronvisualizer_visualize_architecture",
+      "tools_visualization_visualize_neuron_neuronvisualizer_visualize_weight_distribution",
+      "tools_visualization_visualize_neuron_neuronvisualizer_visualize_weights_heatmap",
+      "tools_visualization_visualize_neuron_rationale_105",
+      "tools_visualization_visualize_neuron_rationale_11",
+      "tools_visualization_visualize_neuron_rationale_131",
+      "tools_visualization_visualize_neuron_rationale_14",
+      "tools_visualization_visualize_neuron_rationale_190",
+      "tools_visualization_visualize_neuron_rationale_220",
+      "tools_visualization_visualize_neuron_rationale_239",
+      "tools_visualization_visualize_neuron_rationale_36",
+      "tools_visualization_visualize_neuron_rationale_91"
+    ],
+    "2": [
       "copy",
-      "dataclasses",
       "drone_control_action_spaces_motor_residual_calibrate",
       "drone_control_action_spaces_motor_residual_calibrate_binary_search_hover",
       "drone_control_action_spaces_motor_residual_calibrate_build_output",
@@ -58,21 +212,137 @@
       "drone_control_action_spaces_motor_residual_check_actuators_smoketestsettings_validate",
       "drone_control_action_spaces_motor_residual_check_actuators_stop_all_rotors",
       "drone_control_action_spaces_motor_residual_check_actuators_validate_motor_scene",
-      "drone_control_action_spaces_motor_residual_env",
-      "drone_control_action_spaces_motor_residual_env_rationale_1",
-      "drone_control_action_spaces_velocity_ned_env",
-      "drone_control_task_contract",
-      "drone_control_task_contract_rationale_1",
-      "gymnasium_spaces",
-      "projectairsim",
-      "projectairsim_gym_envs_gym_env",
-      "projectairsim_utils",
-      "protocol",
-      "sys",
-      "threading",
-      "typing"
+      "protocol"
     ],
-    "1": [
+    "3": [
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_dslpidcontrol_dslpidcontrol",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_dslpidcontrol_dslpidcontrol_one23dinterface",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_dslpidcontrol_rationale_10",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_dslpidcontrol_rationale_266",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_init",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_rationale_41",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baserlaviary_baserlaviary_init",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baserlaviary_rationale_30",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_betaaviary_betaaviary_init",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_betaaviary_rationale_39",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_ctrlaviary",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_ctrlaviary_ctrlaviary_init",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_ctrlaviary_rationale_27",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_flythrugateavitary_flythrugateavitary_init",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_flythrugateavitary_rationale_27",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_hoveraviary_hoveraviary_init",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_hoveraviary_rationale_23",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_multihoveraviary_multihoveraviary_init",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_multihoveraviary_rationale_25",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_velocityaviary",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_velocityaviary_rationale_10",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_velocityaviary_rationale_173",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_velocityaviary_rationale_188",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_velocityaviary_rationale_203",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_velocityaviary_rationale_218",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_velocityaviary_rationale_29",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_velocityaviary_rationale_83",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_velocityaviary_rationale_99",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_velocityaviary_velocityaviary",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_velocityaviary_velocityaviary_actionspace",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_velocityaviary_velocityaviary_computeinfo",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_velocityaviary_velocityaviary_computereward",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_velocityaviary_velocityaviary_computeterminated",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_velocityaviary_velocityaviary_computetruncated",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_velocityaviary_velocityaviary_init",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_velocityaviary_velocityaviary_observationspace",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_enums_dronemodel",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_enums_physics",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_enums_rationale_14",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_enums_rationale_4",
+      "pil"
+    ],
+    "4": [
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_examples_beta",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_examples_beta_rationale_1",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_examples_beta_run",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_examples_downwash",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_examples_downwash_rationale_1",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_examples_downwash_run",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_examples_learn",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_examples_learn_rationale_1",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_examples_learn_run",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_examples_pid_run",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_examples_pid_velocity_run",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_logger_logger",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_logger_logger_init",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_logger_logger_log",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_logger_logger_plot",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_logger_logger_save",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_logger_logger_save_as_csv",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_logger_py_object",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_logger_rationale_10",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_logger_rationale_124",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_logger_rationale_134",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_logger_rationale_206",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_logger_rationale_26",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_logger_rationale_89",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_utils",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_utils_rationale_1",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_utils_rationale_11",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_utils_rationale_34",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_utils_str2bool",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_utils_sync",
+      "drone_control_using_reinforcement_learning_tests_test_examples",
+      "drone_control_using_reinforcement_learning_tests_test_examples_test_downwash",
+      "drone_control_using_reinforcement_learning_tests_test_examples_test_learn",
+      "drone_control_using_reinforcement_learning_tests_test_examples_test_pid",
+      "drone_control_using_reinforcement_learning_tests_test_examples_test_pid_velocity",
+      "scipy_optimize",
+      "stable_baselines3",
+      "stable_baselines3_common_callbacks",
+      "stable_baselines3_common_env_util",
+      "stable_baselines3_common_evaluation",
+      "time"
+    ],
+    "5": [
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baserlaviary",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baserlaviary_baserlaviary",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baserlaviary_rationale_12",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_flythrugateavitary",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_flythrugateavitary_flythrugateavitary",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_flythrugateavitary_rationale_11",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_hoveraviary",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_hoveraviary_hoveraviary",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_hoveraviary_rationale_7",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_init",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_multihoveraviary",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_multihoveraviary_multihoveraviary",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_multihoveraviary_rationale_7",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_enums",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_enums_actiontype",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_enums_imagetype",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_enums_observationtype",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_enums_rationale_26",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_enums_rationale_36",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_enums_rationale_46",
+      "drone_control_using_reinforcement_learning_ppo",
+      "drone_control_using_reinforcement_learning_ppo_ppo",
+      "drone_control_using_reinforcement_learning_ppo_ppo_decay_action_std",
+      "drone_control_using_reinforcement_learning_ppo_ppo_load",
+      "drone_control_using_reinforcement_learning_ppo_ppo_save",
+      "drone_control_using_reinforcement_learning_ppo_ppo_select_action",
+      "drone_control_using_reinforcement_learning_ppo_ppo_set_action_std",
+      "drone_control_using_reinforcement_learning_ppo_ppo_update",
+      "drone_control_using_reinforcement_learning_test_hover",
+      "drone_control_using_reinforcement_learning_test_hover_test",
+      "drone_control_using_reinforcement_learning_test_thrugate",
+      "drone_control_using_reinforcement_learning_test_thrugate_test",
+      "drone_control_using_reinforcement_learning_train_hover",
+      "drone_control_using_reinforcement_learning_train_hover_train",
+      "drone_control_using_reinforcement_learning_train_thrugate",
+      "drone_control_using_reinforcement_learning_train_thrugate_train",
+      "enum",
+      "gymnasium",
+      "torch"
+    ],
+    "6": [
       "drone_control_action_spaces_motor_residual_curriculum",
       "drone_control_action_spaces_motor_residual_curriculum_curriculummetrics",
       "drone_control_action_spaces_motor_residual_curriculum_curriculumstage",
@@ -91,21 +361,6 @@
       "drone_control_action_spaces_motor_residual_curriculum_rationale_1",
       "drone_control_action_spaces_motor_residual_curriculum_rationale_109",
       "drone_control_action_spaces_motor_residual_env_dronemotorhoverenv_record_curriculum_episode",
-      "drone_control_action_spaces_motor_residual_train",
-      "drone_control_action_spaces_motor_residual_train_build_checkpoint_metadata",
-      "drone_control_action_spaces_motor_residual_train_main",
-      "drone_control_action_spaces_motor_residual_train_make_run_id",
-      "drone_control_action_spaces_motor_residual_train_metadata_path_for",
-      "drone_control_action_spaces_motor_residual_train_parse_args",
-      "drone_control_action_spaces_motor_residual_train_py_any",
-      "drone_control_action_spaces_motor_residual_train_py_namespace",
-      "drone_control_action_spaces_motor_residual_train_py_path",
-      "drone_control_action_spaces_motor_residual_train_rationale_1",
-      "drone_control_action_spaces_motor_residual_train_save_checkpoint_with_metadata",
-      "drone_control_action_spaces_motor_residual_train_source_fingerprint",
-      "drone_control_action_spaces_motor_residual_train_train",
-      "drone_control_action_spaces_motor_residual_train_validate_resume_checkpoint",
-      "json",
       "tests_action_spaces_motor_residual_test_curriculum",
       "tests_action_spaces_motor_residual_test_curriculum_testmotorcurriculum",
       "tests_action_spaces_motor_residual_test_curriculum_testmotorcurriculum_test_advance_requires_all_metrics_not_reward",
@@ -118,317 +373,40 @@
       "tests_action_spaces_motor_residual_test_curriculum_testmotorcurriculum_test_sampling_is_reproducible_and_bounded",
       "tests_action_spaces_motor_residual_test_curriculum_testmotorcurriculum_test_scene_initial_pose_uses_meters_and_degrees",
       "tests_action_spaces_motor_residual_test_curriculum_testmotorcurriculum_test_stage_one_is_near_exact_hover",
-      "tests_action_spaces_motor_residual_test_curriculum_testmotorcurriculum_test_takeoff_starts_near_ground_and_targets_hover_height",
-      "tests_action_spaces_motor_residual_test_train",
-      "tests_action_spaces_motor_residual_test_train_fakeagent",
-      "tests_action_spaces_motor_residual_test_train_fakeagent_save",
-      "tests_action_spaces_motor_residual_test_train_testmotortrainingentrypoint",
-      "tests_action_spaces_motor_residual_test_train_testmotortrainingentrypoint_setup",
-      "tests_action_spaces_motor_residual_test_train_testmotortrainingentrypoint_test_checkpoint_and_sidecar_are_saved_without_overwrite",
-      "tests_action_spaces_motor_residual_test_train_testmotortrainingentrypoint_test_metadata_contains_all_required_fields",
-      "tests_action_spaces_motor_residual_test_train_testmotortrainingentrypoint_test_motor_dimensions_and_observation_layout",
-      "tests_action_spaces_motor_residual_test_train_testmotortrainingentrypoint_test_motor_exploration_profile_is_recorded_in_metadata",
-      "tests_action_spaces_motor_residual_test_train_testmotortrainingentrypoint_test_output_namespaces_are_separate_from_velocity_training",
-      "tests_action_spaces_motor_residual_test_train_testmotortrainingentrypoint_test_resume_rejects_checkpoint_without_motor_metadata",
-      "tests_action_spaces_motor_residual_test_train_testmotortrainingentrypoint_test_resume_rejects_legacy_action_mapping",
-      "tests_action_spaces_motor_residual_test_train_testmotortrainingentrypoint_test_resume_rejects_legacy_observation_schema",
-      "tests_action_spaces_motor_residual_test_train_testmotortrainingentrypoint_test_resume_rejects_legacy_state_twenty_checkpoint",
-      "tests_action_spaces_motor_residual_test_train_testmotortrainingentrypoint_test_resume_rejects_wrong_dimensions",
-      "tests_action_spaces_motor_residual_test_train_testmotortrainingentrypoint_test_run_id_is_deterministic_for_timestamp_and_motor_prefixed"
-    ],
-    "2": [
-      "drone_control_action_spaces_velocity_ned_env_dronehoveringenv",
-      "drone_control_action_spaces_velocity_ned_env_dronehoveringenv_check_termination",
-      "drone_control_action_spaces_velocity_ned_env_dronehoveringenv_collision_callback",
-      "drone_control_action_spaces_velocity_ned_env_dronehoveringenv_get_observation",
-      "drone_control_action_spaces_velocity_ned_env_dronehoveringenv_get_reward",
-      "drone_control_action_spaces_velocity_ned_env_dronehoveringenv_init",
-      "drone_control_action_spaces_velocity_ned_env_dronehoveringenv_init_episode_state",
-      "drone_control_action_spaces_velocity_ned_env_dronehoveringenv_is_pose_synced",
-      "drone_control_action_spaces_velocity_ned_env_dronehoveringenv_pose_callback",
-      "drone_control_action_spaces_velocity_ned_env_dronehoveringenv_render",
-      "drone_control_action_spaces_velocity_ned_env_dronehoveringenv_reset",
-      "drone_control_action_spaces_velocity_ned_env_dronehoveringenv_set_target_sim_time",
-      "drone_control_action_spaces_velocity_ned_env_dronehoveringenv_step",
-      "drone_control_action_spaces_velocity_ned_env_dronehoveringenv_stop_velocity_command",
-      "drone_control_action_spaces_velocity_ned_env_dronehoveringenv_update_task_status",
-      "drone_control_action_spaces_velocity_ned_env_rationale_175",
-      "drone_control_action_spaces_velocity_ned_env_rationale_228",
-      "drone_control_action_spaces_velocity_ned_env_rationale_278",
-      "drone_control_action_spaces_velocity_ned_env_rationale_60",
-      "drone_control_action_spaces_velocity_ned_env_rationale_82",
-      "drone_control_action_spaces_velocity_ned_env_short_episode",
-      "drone_control_action_spaces_velocity_ned_env_short_episode_dronehoveringenv",
-      "drone_control_action_spaces_velocity_ned_env_short_episode_dronehoveringenv_init",
-      "drone_control_action_spaces_velocity_ned_env_short_episode_rationale_1",
-      "drone_control_action_spaces_velocity_ned_train",
-      "drone_control_action_spaces_velocity_ned_train_main",
-      "drone_control_action_spaces_velocity_ned_train_parse_args",
-      "drone_control_action_spaces_velocity_ned_train_plot_training_results",
-      "drone_control_action_spaces_velocity_ned_train_plot_trajectory",
-      "drone_control_action_spaces_velocity_ned_train_rationale_1",
-      "drone_control_action_spaces_velocity_ned_train_rationale_111",
-      "drone_control_action_spaces_velocity_ned_train_rationale_290",
-      "drone_control_action_spaces_velocity_ned_train_rationale_399",
-      "drone_control_action_spaces_velocity_ned_train_rationale_68",
-      "drone_control_action_spaces_velocity_ned_train_smooth",
-      "drone_control_action_spaces_velocity_ned_train_test",
-      "drone_control_action_spaces_velocity_ned_train_train",
-      "drone_control_task_contract_py_any",
-      "drone_control_task_contract_rationale_85",
-      "drone_control_task_contract_successstatus",
-      "drone_control_task_contract_successstatus_to_info",
-      "drone_control_task_contract_successtracker",
-      "drone_control_task_contract_successtracker_init",
-      "drone_control_task_contract_successtracker_reset",
-      "drone_control_task_contract_successtracker_update",
-      "drone_control_task_contract_taskcontract",
-      "drone_control_task_contract_taskcontract_to_metadata",
-      "drone_control_task_contract_taskcontract_validate",
-      "projectairsimenv",
-      "tests_common_test_task_contract",
-      "tests_common_test_task_contract_testsuccesstracker",
-      "tests_common_test_task_contract_testsuccesstracker_setup",
-      "tests_common_test_task_contract_testsuccesstracker_test_success_requires_continuous_qualified_steps_and_emits_once",
-      "tests_common_test_task_contract_testsuccesstracker_test_violation_resets_sustain_but_not_reached_history",
-      "tests_common_test_task_contract_testsuccesstracker_test_yaw_can_be_excluded_from_contract",
-      "tests_common_test_task_contract_testsuccesstracker_update",
-      "tests_common_test_task_contract_testtaskcontract",
-      "tests_common_test_task_contract_testtaskcontract_test_default_contract_is_valid_and_serializable",
-      "tests_common_test_task_contract_testtaskcontract_test_invalid_duration_is_rejected"
-    ],
-    "3": [
-      "ast",
-      "collections",
-      "csv",
-      "deque",
-      "drone_control_action_spaces_motor_residual_monitoring",
-      "drone_control_action_spaces_motor_residual_monitoring_format_duration",
-      "drone_control_action_spaces_motor_residual_monitoring_mean",
-      "drone_control_action_spaces_motor_residual_monitoring_optional_float",
-      "drone_control_action_spaces_motor_residual_monitoring_py_any",
-      "drone_control_action_spaces_motor_residual_monitoring_py_path",
-      "drone_control_action_spaces_motor_residual_monitoring_rationale_1",
-      "drone_control_action_spaces_motor_residual_monitoring_rationale_115",
-      "drone_control_action_spaces_motor_residual_monitoring_rationale_42",
-      "drone_control_action_spaces_motor_residual_monitoring_trainingmonitor",
-      "drone_control_action_spaces_motor_residual_monitoring_trainingmonitor_finish",
-      "drone_control_action_spaces_motor_residual_monitoring_trainingmonitor_init",
-      "drone_control_action_spaces_motor_residual_monitoring_trainingmonitor_record_checkpoint",
-      "drone_control_action_spaces_motor_residual_monitoring_trainingmonitor_record_episode",
-      "drone_control_action_spaces_motor_residual_monitoring_trainingmonitor_write_status",
-      "math",
-      "pathlib",
-      "statistics",
-      "tempfile",
-      "tests_action_spaces_motor_residual_test_monitoring",
-      "tests_action_spaces_motor_residual_test_monitoring_fakeclock",
-      "tests_action_spaces_motor_residual_test_monitoring_fakeclock_call",
-      "tests_action_spaces_motor_residual_test_monitoring_fakeclock_init",
-      "tests_action_spaces_motor_residual_test_monitoring_testtrainingmonitor",
-      "tests_action_spaces_motor_residual_test_monitoring_testtrainingmonitor_record",
-      "tests_action_spaces_motor_residual_test_monitoring_testtrainingmonitor_setup",
-      "tests_action_spaces_motor_residual_test_monitoring_testtrainingmonitor_test_checkpoint_and_completion_are_persisted",
-      "tests_action_spaces_motor_residual_test_monitoring_testtrainingmonitor_test_console_reports_first_episode_and_configured_interval",
-      "tests_action_spaces_motor_residual_test_monitoring_testtrainingmonitor_test_invalid_configuration_is_rejected",
-      "tests_action_spaces_motor_residual_test_monitoring_testtrainingmonitor_test_snapshot_contains_progress_rolling_metrics_and_eta",
-      "tests_common_test_analyze_motor_training",
-      "tests_common_test_analyze_motor_training_testanalyzemotortraining",
-      "tests_common_test_analyze_motor_training_testanalyzemotortraining_test_missing_required_column_is_rejected",
-      "tests_common_test_analyze_motor_training_testanalyzemotortraining_test_report_identifies_short_failed_stage_locked_training",
-      "tests_common_test_ppo_source_contract",
-      "tools_analyze_motor_training",
-      "tools_analyze_motor_training_build_report",
-      "tools_analyze_motor_training_correlation",
-      "tools_analyze_motor_training_float",
-      "tools_analyze_motor_training_fmt",
-      "tools_analyze_motor_training_load_training_csv",
-      "tools_analyze_motor_training_main",
-      "tools_analyze_motor_training_mean",
-      "tools_analyze_motor_training_optional_float",
-      "tools_analyze_motor_training_parse_args",
-      "tools_analyze_motor_training_percentile",
-      "tools_analyze_motor_training_py_namespace",
-      "tools_analyze_motor_training_py_path",
-      "tools_analyze_motor_training_rate",
-      "tools_analyze_motor_training_rationale_1",
-      "tools_analyze_motor_training_unique_ppo_snapshots",
-      "tools_analyze_motor_training_values",
-      "unittest"
-    ],
-    "4": [
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_dslpidcontrol",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_dslpidcontrol_dslpidcontrol",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_dslpidcontrol_dslpidcontrol_one23dinterface",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_dslpidcontrol_rationale_10",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_dslpidcontrol_rationale_266",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_velocityaviary",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_velocityaviary_rationale_10",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_velocityaviary_rationale_173",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_velocityaviary_rationale_188",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_velocityaviary_rationale_203",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_velocityaviary_rationale_218",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_velocityaviary_rationale_29",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_velocityaviary_rationale_83",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_velocityaviary_rationale_99",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_velocityaviary_velocityaviary",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_velocityaviary_velocityaviary_actionspace",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_velocityaviary_velocityaviary_computeinfo",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_velocityaviary_velocityaviary_computereward",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_velocityaviary_velocityaviary_computeterminated",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_velocityaviary_velocityaviary_computetruncated",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_velocityaviary_velocityaviary_init",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_velocityaviary_velocityaviary_observationspace",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_examples_beta_run",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_examples_downwash_run",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_examples_pid",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_examples_pid_rationale_1",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_examples_pid_run",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_examples_pid_velocity",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_examples_pid_velocity_rationale_1",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_examples_pid_velocity_run",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_logger_logger",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_logger_logger_init",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_logger_logger_log",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_logger_logger_plot",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_logger_logger_save",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_logger_logger_save_as_csv",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_logger_py_object",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_logger_rationale_10",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_logger_rationale_124",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_logger_rationale_134",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_logger_rationale_26",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_logger_rationale_89",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_utils_rationale_11",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_utils_sync",
-      "pdb",
-      "pybullet",
-      "random",
-      "scipy_spatial_transform"
-    ],
-    "5": [
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baserlaviary",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baserlaviary_baserlaviary",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baserlaviary_baserlaviary_actionspace",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baserlaviary_baserlaviary_init",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baserlaviary_baserlaviary_observationspace",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baserlaviary_rationale_12",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baserlaviary_rationale_133",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baserlaviary_rationale_250",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baserlaviary_rationale_30",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_flythrugateavitary",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_flythrugateavitary_flythrugateavitary",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_flythrugateavitary_flythrugateavitary_computeinfo",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_flythrugateavitary_flythrugateavitary_computeterminated",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_flythrugateavitary_flythrugateavitary_init",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_flythrugateavitary_rationale_11",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_flythrugateavitary_rationale_142",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_flythrugateavitary_rationale_158",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_flythrugateavitary_rationale_27",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_hoveraviary",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_hoveraviary_hoveraviary",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_hoveraviary_hoveraviary_computeinfo",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_hoveraviary_hoveraviary_init",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_hoveraviary_rationale_133",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_hoveraviary_rationale_23",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_hoveraviary_rationale_7",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_init",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_multihoveraviary",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_multihoveraviary_multihoveraviary",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_multihoveraviary_multihoveraviary_computeinfo",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_multihoveraviary_multihoveraviary_init",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_multihoveraviary_rationale_135",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_multihoveraviary_rationale_25",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_multihoveraviary_rationale_7",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_enums",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_enums_actiontype",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_enums_dronemodel",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_enums_imagetype",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_enums_observationtype",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_enums_physics",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_enums_rationale_14",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_enums_rationale_26",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_enums_rationale_36",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_enums_rationale_4",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_enums_rationale_46",
-      "drone_control_using_reinforcement_learning_train_thrugate",
-      "drone_control_using_reinforcement_learning_train_thrugate_train",
-      "enum"
-    ],
-    "6": [
-      "asyncio",
-      "cv2",
-      "drone_control_action_spaces_velocity_ned_control_mavsdk",
-      "drone_control_action_spaces_velocity_ned_control_mavsdk_get_observation",
-      "drone_control_action_spaces_velocity_ned_control_mavsdk_py_ndarray",
-      "drone_control_action_spaces_velocity_ned_control_mavsdk_py_system",
-      "drone_control_action_spaces_velocity_ned_control_mavsdk_rationale_249",
-      "drone_control_action_spaces_velocity_ned_control_mavsdk_rationale_314",
-      "drone_control_action_spaces_velocity_ned_control_mavsdk_rationale_43",
-      "drone_control_action_spaces_velocity_ned_control_mavsdk_run",
-      "drone_control_action_spaces_velocity_ned_control_mavsdk_run_try_arm",
-      "drone_control_action_spaces_velocity_ned_control_mavsdk_save_trajectory",
-      "event",
-      "mavsdk",
-      "mavsdk_action",
-      "mavsdk_offboard",
-      "tools_diagnostics_clock_manual_step",
-      "tools_diagnostics_clock_manual_step_dronewithdatasync",
-      "tools_diagnostics_clock_manual_step_dronewithdatasync_displayimage",
-      "tools_diagnostics_clock_manual_step_dronewithdatasync_imagecallback",
-      "tools_diagnostics_clock_manual_step_dronewithdatasync_isdatasynced",
-      "tools_diagnostics_clock_manual_step_dronewithdatasync_posecallback",
-      "tools_diagnostics_clock_manual_step_dronewithdatasync_set_target_sim_time",
-      "tools_diagnostics_clock_manual_step_main",
-      "tools_diagnostics_clock_manual_step_nanos_to_sec",
-      "tools_diagnostics_clock_manual_step_py_drone",
-      "tools_diagnostics_clock_manual_step_py_projectairsimclient",
-      "tools_diagnostics_clock_manual_step_py_world",
-      "tools_diagnostics_clock_manual_step_rationale_1",
-      "tools_diagnostics_mavsdk_takeoff",
-      "tools_diagnostics_mavsdk_takeoff_get_observation",
-      "tools_diagnostics_mavsdk_takeoff_monitor",
-      "tools_diagnostics_mavsdk_takeoff_print_diagnostics",
-      "tools_diagnostics_mavsdk_takeoff_py_ndarray",
-      "tools_diagnostics_mavsdk_takeoff_py_system",
-      "tools_diagnostics_mavsdk_takeoff_rationale_159",
-      "tools_diagnostics_mavsdk_takeoff_rationale_208",
-      "tools_diagnostics_mavsdk_takeoff_rationale_94",
-      "tools_diagnostics_mavsdk_takeoff_run"
+      "tests_action_spaces_motor_residual_test_curriculum_testmotorcurriculum_test_takeoff_starts_near_ground_and_targets_hover_height"
     ],
     "7": [
-      "argparse",
-      "cycler",
-      "datetime",
-      "drone_control_action_spaces_velocity_ned_control_projectairsim_rationale_141",
-      "drone_control_action_spaces_velocity_ned_control_projectairsim_save_csv",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_examples_beta",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_examples_beta_rationale_1",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_examples_debug",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_examples_learn",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_examples_learn_rationale_1",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_logger",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_utils",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_utils_rationale_1",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_utils_rationale_34",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_utils_str2bool",
-      "drone_control_using_reinforcement_learning_ppo",
-      "drone_control_using_reinforcement_learning_test_hover",
-      "drone_control_using_reinforcement_learning_test_hover_test",
-      "drone_control_using_reinforcement_learning_test_thrugate",
-      "drone_control_using_reinforcement_learning_test_thrugate_test",
-      "drone_control_using_reinforcement_learning_train_hover",
-      "drone_control_using_reinforcement_learning_train_hover_train",
-      "gymnasium",
-      "numpy",
-      "os",
-      "scipy_optimize",
-      "stable_baselines3",
-      "stable_baselines3_common_callbacks",
-      "stable_baselines3_common_env_util",
-      "stable_baselines3_common_evaluation",
-      "time",
-      "torch"
+      "figure",
+      "glob",
+      "matplotlib_cm",
+      "matplotlib_pyplot",
+      "mpl_toolkits_mplot3d",
+      "pandas",
+      "tools_visualization_visualize_results",
+      "tools_visualization_visualize_results_ensure_dir",
+      "tools_visualization_visualize_results_load_traj_csv",
+      "tools_visualization_visualize_results_main",
+      "tools_visualization_visualize_results_parse_args",
+      "tools_visualization_visualize_results_plot_balance_summary",
+      "tools_visualization_visualize_results_plot_balance_trajectory",
+      "tools_visualization_visualize_results_plot_balance_trajectory_shade_kick",
+      "tools_visualization_visualize_results_plot_compare_folders",
+      "tools_visualization_visualize_results_plot_compare_folders_load_folder",
+      "tools_visualization_visualize_results_plot_training_log",
+      "tools_visualization_visualize_results_plot_trajectories_folder",
+      "tools_visualization_visualize_results_plot_trajectory",
+      "tools_visualization_visualize_results_py_ndarray",
+      "tools_visualization_visualize_results_rationale_1",
+      "tools_visualization_visualize_results_rationale_136",
+      "tools_visualization_visualize_results_rationale_159",
+      "tools_visualization_visualize_results_rationale_262",
+      "tools_visualization_visualize_results_rationale_362",
+      "tools_visualization_visualize_results_rationale_471",
+      "tools_visualization_visualize_results_rationale_51",
+      "tools_visualization_visualize_results_rationale_556",
+      "tools_visualization_visualize_results_rationale_74",
+      "tools_visualization_visualize_results_save",
+      "tools_visualization_visualize_results_smooth"
     ],
     "8": [
       "drone_control_action_spaces_motor_residual_curriculum_episodeconditions",
@@ -457,9 +435,36 @@
       "drone_control_action_spaces_motor_residual_env_py_any",
       "drone_control_action_spaces_motor_residual_env_py_path",
       "drone_control_action_spaces_motor_residual_env_rationale_160",
+      "drone_control_task_contract_successtracker_reset",
       "floating"
     ],
     "9": [
+      "drone_control_action_spaces_velocity_ned_control_mavsdk",
+      "drone_control_action_spaces_velocity_ned_control_mavsdk_get_observation",
+      "drone_control_action_spaces_velocity_ned_control_mavsdk_py_ndarray",
+      "drone_control_action_spaces_velocity_ned_control_mavsdk_py_system",
+      "drone_control_action_spaces_velocity_ned_control_mavsdk_rationale_249",
+      "drone_control_action_spaces_velocity_ned_control_mavsdk_rationale_314",
+      "drone_control_action_spaces_velocity_ned_control_mavsdk_rationale_43",
+      "drone_control_action_spaces_velocity_ned_control_mavsdk_run",
+      "drone_control_action_spaces_velocity_ned_control_mavsdk_run_try_arm",
+      "drone_control_action_spaces_velocity_ned_control_mavsdk_save_trajectory",
+      "event",
+      "mavsdk",
+      "mavsdk_action",
+      "mavsdk_offboard",
+      "tools_diagnostics_mavsdk_takeoff",
+      "tools_diagnostics_mavsdk_takeoff_get_observation",
+      "tools_diagnostics_mavsdk_takeoff_monitor",
+      "tools_diagnostics_mavsdk_takeoff_print_diagnostics",
+      "tools_diagnostics_mavsdk_takeoff_py_ndarray",
+      "tools_diagnostics_mavsdk_takeoff_py_system",
+      "tools_diagnostics_mavsdk_takeoff_rationale_159",
+      "tools_diagnostics_mavsdk_takeoff_rationale_208",
+      "tools_diagnostics_mavsdk_takeoff_rationale_94",
+      "tools_diagnostics_mavsdk_takeoff_run"
+    ],
+    "10": [
       "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_getdronestatevector",
       "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_rationale_546",
       "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_ctrlaviary_ctrlaviary_computeobs",
@@ -485,33 +490,80 @@
       "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_velocityaviary_velocityaviary_computeobs",
       "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_velocityaviary_velocityaviary_preprocessaction"
     ],
-    "10": [
-      "figure",
-      "glob",
-      "matplotlib_cm",
-      "matplotlib_pyplot",
-      "mpl_toolkits_mplot3d",
-      "tools_visualization_visualize_results",
-      "tools_visualization_visualize_results_ensure_dir",
-      "tools_visualization_visualize_results_main",
-      "tools_visualization_visualize_results_parse_args",
-      "tools_visualization_visualize_results_plot_balance_summary",
-      "tools_visualization_visualize_results_plot_balance_trajectory",
-      "tools_visualization_visualize_results_plot_balance_trajectory_shade_kick",
-      "tools_visualization_visualize_results_plot_compare_folders",
-      "tools_visualization_visualize_results_plot_training_log",
-      "tools_visualization_visualize_results_plot_trajectories_folder",
-      "tools_visualization_visualize_results_plot_trajectory",
-      "tools_visualization_visualize_results_rationale_1",
-      "tools_visualization_visualize_results_rationale_159",
-      "tools_visualization_visualize_results_rationale_262",
-      "tools_visualization_visualize_results_rationale_362",
-      "tools_visualization_visualize_results_rationale_471",
-      "tools_visualization_visualize_results_rationale_556",
-      "tools_visualization_visualize_results_rationale_74",
-      "tools_visualization_visualize_results_save"
-    ],
     "11": [
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_actionspace",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_close",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_dynamics",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_getadjacencymatrix",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_getdroneids",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_getpybulletclient",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_integrateq",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_normalizedactiontorpm",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_observationspace",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_parseurdfparameters",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_render",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_rationale_1021",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_rationale_1031",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_rationale_19",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_rationale_391",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_rationale_417",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_rationale_426",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_rationale_439",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_rationale_661",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_rationale_821",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_rationale_898",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_rationale_985"
+    ],
+    "12": [
+      "argparse",
+      "asyncio",
+      "drone_control_action_spaces_velocity_ned_control_disturbance",
+      "drone_control_action_spaces_velocity_ned_control_disturbance_parse_args",
+      "drone_control_action_spaces_velocity_ned_control_disturbance_plot_trajectory",
+      "drone_control_action_spaces_velocity_ned_control_disturbance_rationale_1",
+      "drone_control_action_spaces_velocity_ned_control_disturbance_rationale_145",
+      "drone_control_action_spaces_velocity_ned_control_disturbance_rationale_176",
+      "drone_control_action_spaces_velocity_ned_control_disturbance_rationale_62",
+      "drone_control_action_spaces_velocity_ned_control_disturbance_run_control",
+      "drone_control_action_spaces_velocity_ned_control_disturbance_save_csv",
+      "drone_control_action_spaces_velocity_ned_control_projectairsim",
+      "drone_control_action_spaces_velocity_ned_control_projectairsim_parse_args",
+      "drone_control_action_spaces_velocity_ned_control_projectairsim_plot_trajectory",
+      "drone_control_action_spaces_velocity_ned_control_projectairsim_rationale_1",
+      "drone_control_action_spaces_velocity_ned_control_projectairsim_rationale_141",
+      "drone_control_action_spaces_velocity_ned_control_projectairsim_rationale_172",
+      "drone_control_action_spaces_velocity_ned_control_projectairsim_rationale_58",
+      "drone_control_action_spaces_velocity_ned_control_projectairsim_run_control",
+      "drone_control_action_spaces_velocity_ned_control_projectairsim_save_csv",
+      "drone_control_action_spaces_velocity_ned_evaluate_balance_parse_args",
+      "sympy"
+    ],
+    "13": [
+      "drone_control_action_spaces_velocity_ned_evaluate_balance",
+      "drone_control_action_spaces_velocity_ned_evaluate_balance_evaluate",
+      "drone_control_action_spaces_velocity_ned_evaluate_balance_plot_recovery_curves",
+      "drone_control_action_spaces_velocity_ned_evaluate_balance_plot_summary",
+      "drone_control_action_spaces_velocity_ned_evaluate_balance_plot_summary_bar",
+      "drone_control_action_spaces_velocity_ned_evaluate_balance_print_table",
+      "drone_control_action_spaces_velocity_ned_evaluate_balance_rationale_1",
+      "drone_control_action_spaces_velocity_ned_evaluate_balance_rationale_112",
+      "drone_control_action_spaces_velocity_ned_evaluate_balance_rationale_185",
+      "drone_control_action_spaces_velocity_ned_evaluate_balance_rationale_212",
+      "drone_control_action_spaces_velocity_ned_evaluate_balance_rationale_244",
+      "drone_control_action_spaces_velocity_ned_evaluate_balance_rationale_320",
+      "drone_control_action_spaces_velocity_ned_evaluate_balance_rationale_379",
+      "drone_control_action_spaces_velocity_ned_evaluate_balance_rationale_437",
+      "drone_control_action_spaces_velocity_ned_evaluate_balance_run_trial",
+      "drone_control_action_spaces_velocity_ned_evaluate_balance_save_results_csv",
+      "drone_control_action_spaces_velocity_ned_evaluate_balance_save_trajectory_csv",
+      "drone_control_action_spaces_velocity_ned_evaluate_balance_trialresult",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_examples_debug",
+      "numpy",
+      "pybullet_data",
+      "sys"
+    ],
+    "14": [
       "drone_control_using_reinforcement_learning_github_workflows_release",
       "drone_control_using_reinforcement_learning_github_workflows_release_deploy_needs",
       "drone_control_using_reinforcement_learning_github_workflows_release_deploy_runs_on",
@@ -535,7 +587,7 @@
       "drone_control_using_reinforcement_learning_github_workflows_release_with_python_version",
       "drone_control_using_reinforcement_learning_github_workflows_release_with_repository_url"
     ],
-    "12": [
+    "15": [
       "drone_control_action_spaces_motor_residual_env_dronemotorhoverenv_check_termination",
       "drone_control_action_spaces_motor_residual_env_dronemotorhoverenv_update_task_status",
       "drone_control_action_spaces_motor_residual_env_rationale_109",
@@ -558,53 +610,7 @@
       "tests_action_spaces_motor_residual_test_reward_testmotorreward_test_tilted_state_has_attitude_penalty_and_lower_reward",
       "tests_action_spaces_motor_residual_test_reward_testmotorreward_test_velocity_is_not_directly_penalized_like_velocity_ned"
     ],
-    "13": [
-      "drone_control_evaluation_protocol",
-      "drone_control_evaluation_protocol_aggregate_metrics",
-      "drone_control_evaluation_protocol_aggregate_metrics_mean",
-      "drone_control_evaluation_protocol_build_evaluation_manifest",
-      "drone_control_evaluation_protocol_episodemetrics",
-      "drone_control_evaluation_protocol_episodemetrics_validate",
-      "drone_control_evaluation_protocol_evaluationscenario",
-      "drone_control_evaluation_protocol_py_any",
-      "drone_control_evaluation_protocol_rationale_1",
-      "hashlib",
-      "tests_common_test_evaluation_protocol",
-      "tests_common_test_evaluation_protocol_testevaluationprotocol",
-      "tests_common_test_evaluation_protocol_testevaluationprotocol_make_record",
-      "tests_common_test_evaluation_protocol_testevaluationprotocol_test_aggregate_reports_completion_safety_and_control",
-      "tests_common_test_evaluation_protocol_testevaluationprotocol_test_duplicate_seeds_are_rejected",
-      "tests_common_test_evaluation_protocol_testevaluationprotocol_test_manifest_freezes_tests_a_to_d_and_multiple_seeds",
-      "tools_create_evaluation_manifest",
-      "tools_create_evaluation_manifest_main",
-      "tools_create_evaluation_manifest_parse_args",
-      "tools_create_evaluation_manifest_py_namespace",
-      "tools_create_evaluation_manifest_rationale_1"
-    ],
-    "14": [
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_ctrlaviary",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_ctrlaviary_ctrlaviary",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_ctrlaviary_ctrlaviary_actionspace",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_ctrlaviary_ctrlaviary_computeinfo",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_ctrlaviary_ctrlaviary_computereward",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_ctrlaviary_ctrlaviary_computeterminated",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_ctrlaviary_ctrlaviary_computetruncated",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_ctrlaviary_ctrlaviary_init",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_ctrlaviary_ctrlaviary_observationspace",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_ctrlaviary_ctrlaviary_preprocessaction",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_ctrlaviary_rationale_124",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_ctrlaviary_rationale_145",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_ctrlaviary_rationale_160",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_ctrlaviary_rationale_175",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_ctrlaviary_rationale_190",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_ctrlaviary_rationale_27",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_ctrlaviary_rationale_75",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_ctrlaviary_rationale_8",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_ctrlaviary_rationale_91",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_examples_downwash",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_examples_downwash_rationale_1"
-    ],
-    "15": [
+    "16": [
       "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_betaaviary_betaaviary",
       "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_betaaviary_betaaviary_actionspace",
       "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_betaaviary_betaaviary_computeinfo",
@@ -626,50 +632,7 @@
       "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_betaaviary_rationale_302",
       "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_betaaviary_rationale_317"
     ],
-    "16": [
-      "tools_visualization_visualize_neuron_main",
-      "tools_visualization_visualize_neuron_neuronvisualizer",
-      "tools_visualization_visualize_neuron_neuronvisualizer_draw_connections",
-      "tools_visualization_visualize_neuron_neuronvisualizer_init",
-      "tools_visualization_visualize_neuron_neuronvisualizer_print_network_summary",
-      "tools_visualization_visualize_neuron_neuronvisualizer_visualize_activations",
-      "tools_visualization_visualize_neuron_neuronvisualizer_visualize_activations_hook_fn",
-      "tools_visualization_visualize_neuron_neuronvisualizer_visualize_activations_hook_fn_hook",
-      "tools_visualization_visualize_neuron_neuronvisualizer_visualize_architecture",
-      "tools_visualization_visualize_neuron_neuronvisualizer_visualize_weight_distribution",
-      "tools_visualization_visualize_neuron_neuronvisualizer_visualize_weights_heatmap",
-      "tools_visualization_visualize_neuron_rationale_105",
-      "tools_visualization_visualize_neuron_rationale_11",
-      "tools_visualization_visualize_neuron_rationale_131",
-      "tools_visualization_visualize_neuron_rationale_14",
-      "tools_visualization_visualize_neuron_rationale_190",
-      "tools_visualization_visualize_neuron_rationale_220",
-      "tools_visualization_visualize_neuron_rationale_239",
-      "tools_visualization_visualize_neuron_rationale_36",
-      "tools_visualization_visualize_neuron_rationale_91"
-    ],
     "17": [
-      "drone_control_action_spaces_velocity_ned_evaluate_balance",
-      "drone_control_action_spaces_velocity_ned_evaluate_balance_evaluate",
-      "drone_control_action_spaces_velocity_ned_evaluate_balance_parse_args",
-      "drone_control_action_spaces_velocity_ned_evaluate_balance_plot_recovery_curves",
-      "drone_control_action_spaces_velocity_ned_evaluate_balance_plot_summary",
-      "drone_control_action_spaces_velocity_ned_evaluate_balance_plot_summary_bar",
-      "drone_control_action_spaces_velocity_ned_evaluate_balance_print_table",
-      "drone_control_action_spaces_velocity_ned_evaluate_balance_rationale_1",
-      "drone_control_action_spaces_velocity_ned_evaluate_balance_rationale_112",
-      "drone_control_action_spaces_velocity_ned_evaluate_balance_rationale_185",
-      "drone_control_action_spaces_velocity_ned_evaluate_balance_rationale_212",
-      "drone_control_action_spaces_velocity_ned_evaluate_balance_rationale_244",
-      "drone_control_action_spaces_velocity_ned_evaluate_balance_rationale_320",
-      "drone_control_action_spaces_velocity_ned_evaluate_balance_rationale_379",
-      "drone_control_action_spaces_velocity_ned_evaluate_balance_rationale_437",
-      "drone_control_action_spaces_velocity_ned_evaluate_balance_run_trial",
-      "drone_control_action_spaces_velocity_ned_evaluate_balance_save_results_csv",
-      "drone_control_action_spaces_velocity_ned_evaluate_balance_save_trajectory_csv",
-      "drone_control_action_spaces_velocity_ned_evaluate_balance_trialresult"
-    ],
-    "18": [
       "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_basecontrol_basecontrol",
       "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_basecontrol_basecontrol_computecontrol",
       "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_basecontrol_basecontrol_computecontrolfromstate",
@@ -690,7 +653,7 @@
       "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_dslpidcontrol_rationale_23",
       "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_dslpidcontrol_rationale_66"
     ],
-    "19": [
+    "18": [
       "analysis_legacy_with_disturbance_phantichketqua_goc",
       "analysis_legacy_with_disturbance_phantichketqua_goc_band_str",
       "analysis_legacy_with_disturbance_phantichketqua_goc_compute_peak",
@@ -709,6 +672,26 @@
       "analysis_legacy_with_disturbance_phantichketqua_goc_shade_band",
       "analysis_legacy_with_disturbance_phantichketqua_goc_vline_collision",
       "analysis_legacy_with_disturbance_phantichketqua_goc_vline_settled"
+    ],
+    "19": [
+      "drone_control_action_spaces_velocity_ned_env_dronehoveringenv",
+      "drone_control_action_spaces_velocity_ned_env_dronehoveringenv_collision_callback",
+      "drone_control_action_spaces_velocity_ned_env_dronehoveringenv_render",
+      "drone_control_action_spaces_velocity_ned_train",
+      "drone_control_action_spaces_velocity_ned_train_main",
+      "drone_control_action_spaces_velocity_ned_train_parse_args",
+      "drone_control_action_spaces_velocity_ned_train_plot_training_results",
+      "drone_control_action_spaces_velocity_ned_train_plot_trajectory",
+      "drone_control_action_spaces_velocity_ned_train_rationale_1",
+      "drone_control_action_spaces_velocity_ned_train_rationale_111",
+      "drone_control_action_spaces_velocity_ned_train_rationale_290",
+      "drone_control_action_spaces_velocity_ned_train_rationale_399",
+      "drone_control_action_spaces_velocity_ned_train_rationale_68",
+      "drone_control_action_spaces_velocity_ned_train_smooth",
+      "drone_control_action_spaces_velocity_ned_train_test",
+      "drone_control_action_spaces_velocity_ned_train_train",
+      "matplotlib",
+      "projectairsimenv"
     ],
     "20": [
       "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_computereward",
@@ -731,44 +714,60 @@
       "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_rationale_790"
     ],
     "21": [
-      "drone_control_algorithms_ppo_actorcritic",
-      "drone_control_algorithms_ppo_actorcritic_act",
-      "drone_control_algorithms_ppo_actorcritic_action_scale_and_bias",
-      "drone_control_algorithms_ppo_actorcritic_evaluate",
-      "drone_control_algorithms_ppo_actorcritic_log_one_minus_tanh_squared",
-      "drone_control_algorithms_ppo_actorcritic_set_action_std",
-      "drone_control_algorithms_ppo_actorcritic_squash_action",
-      "drone_control_algorithms_ppo_actorcritic_squashed_logprob",
-      "drone_control_algorithms_ppo_actorcritic_unsquash_action",
-      "drone_control_algorithms_ppo_rationale_179",
-      "drone_control_algorithms_ppo_rationale_201",
-      "tests_common_test_ppo_action_bounds_testactorcriticactionbounds",
-      "tests_common_test_ppo_action_bounds_testactorcriticactionbounds_test_bounds_do_not_add_state_dict_keys",
-      "tests_common_test_ppo_action_bounds_testactorcriticactionbounds_test_motor_forward_shape_and_normalized_bounds",
-      "tests_common_test_ppo_action_bounds_testactorcriticactionbounds_test_sampled_action_is_clipped_to_configured_bounds",
-      "tests_common_test_ppo_action_bounds_testactorcriticactionbounds_test_tanh_squashed_action_is_bounded_without_gaussian_clipping",
-      "tests_common_test_ppo_action_bounds_testactorcriticactionbounds_test_velocity_forward_shape_and_default_bounds"
+      "collections",
+      "dataclasses",
+      "drone_control_action_spaces_motor_residual_env",
+      "drone_control_action_spaces_motor_residual_env_rationale_1",
+      "drone_control_action_spaces_velocity_ned_env",
+      "drone_control_evaluation_protocol",
+      "drone_control_evaluation_protocol_evaluationscenario",
+      "drone_control_evaluation_protocol_rationale_1",
+      "drone_control_task_contract",
+      "drone_control_task_contract_rationale_1",
+      "gymnasium_spaces",
+      "projectairsim",
+      "projectairsim_gym_envs_gym_env",
+      "projectairsim_utils",
+      "threading",
+      "typing"
     ],
     "22": [
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_close",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_dynamics",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_getadjacencymatrix",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_getdroneids",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_getpybulletclient",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_integrateq",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_normalizedactiontorpm",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_render",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_rationale_19",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_rationale_391",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_rationale_417",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_rationale_426",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_rationale_439",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_rationale_661",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_rationale_821",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_rationale_898"
+      "drone_control_action_spaces_motor_residual_env_dronemotorhoverenv_calculate_reward",
+      "drone_control_action_spaces_motor_residual_env_dronemotorhoverenv_get_reward",
+      "drone_control_action_spaces_motor_residual_env_dronemotorhoverenv_require_runtime",
+      "drone_control_action_spaces_motor_residual_env_dronemotorhoverenv_step",
+      "drone_control_action_spaces_motor_residual_env_dronemotorhoverenv_wait_for_pose_sync_async",
+      "drone_control_action_spaces_motor_residual_env_py_drone",
+      "drone_control_action_spaces_motor_residual_env_py_ndarray",
+      "drone_control_action_spaces_motor_residual_env_py_projectairsimclient",
+      "drone_control_action_spaces_motor_residual_env_py_world",
+      "drone_control_action_spaces_motor_residual_env_rationale_764",
+      "drone_control_action_spaces_motor_residual_env_rationale_833",
+      "tests_action_spaces_motor_residual_test_env_testmotorruntimesafety",
+      "tests_action_spaces_motor_residual_test_env_testmotorruntimesafety_test_pose_timeout_stops_all_rotors",
+      "tests_action_spaces_motor_residual_test_env_testmotorruntimesafety_test_rejected_motor_command_raises_and_stops_all_rotors",
+      "tests_action_spaces_motor_residual_test_env_testmotorruntimesafety_test_simulation_exception_stops_all_rotors",
+      "tests_action_spaces_motor_residual_test_env_testmotorruntimesafety_test_successful_step_updates_previous_motor_state"
     ],
     "23": [
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_ctrlaviary_ctrlaviary",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_ctrlaviary_ctrlaviary_actionspace",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_ctrlaviary_ctrlaviary_computeinfo",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_ctrlaviary_ctrlaviary_computereward",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_ctrlaviary_ctrlaviary_computeterminated",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_ctrlaviary_ctrlaviary_computetruncated",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_ctrlaviary_ctrlaviary_observationspace",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_ctrlaviary_ctrlaviary_preprocessaction",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_ctrlaviary_rationale_124",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_ctrlaviary_rationale_145",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_ctrlaviary_rationale_160",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_ctrlaviary_rationale_175",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_ctrlaviary_rationale_190",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_ctrlaviary_rationale_75",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_ctrlaviary_rationale_8",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_ctrlaviary_rationale_91"
+    ],
+    "24": [
       "analysis_legacy_phantichketqua_vitri",
       "analysis_legacy_phantichketqua_vitri_rationale_1",
       "analysis_legacy_phantichketqua_vitri_rationale_146",
@@ -783,10 +782,9 @@
       "analysis_legacy_phantichketquatest_rationale_145",
       "analysis_legacy_phantichketquatest_vline_ang",
       "analysis_legacy_phantichketquatest_vline_pos",
-      "matplotlib_gridspec",
-      "pandas"
+      "matplotlib_gridspec"
     ],
-    "24": [
+    "25": [
       "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_ctbrcontrol_ctbrcontrol",
       "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_ctbrcontrol_ctbrcontrol_computecontrol",
       "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_ctbrcontrol_ctbrcontrol_computecontrolfromstate",
@@ -803,7 +801,23 @@
       "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_ctbrcontrol_rationale_52",
       "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_ctbrcontrol_rationale_69"
     ],
-    "25": [
+    "26": [
+      "cv2",
+      "tools_diagnostics_clock_manual_step",
+      "tools_diagnostics_clock_manual_step_dronewithdatasync",
+      "tools_diagnostics_clock_manual_step_dronewithdatasync_displayimage",
+      "tools_diagnostics_clock_manual_step_dronewithdatasync_imagecallback",
+      "tools_diagnostics_clock_manual_step_dronewithdatasync_isdatasynced",
+      "tools_diagnostics_clock_manual_step_dronewithdatasync_posecallback",
+      "tools_diagnostics_clock_manual_step_dronewithdatasync_set_target_sim_time",
+      "tools_diagnostics_clock_manual_step_main",
+      "tools_diagnostics_clock_manual_step_nanos_to_sec",
+      "tools_diagnostics_clock_manual_step_py_drone",
+      "tools_diagnostics_clock_manual_step_py_projectairsimclient",
+      "tools_diagnostics_clock_manual_step_py_world",
+      "tools_diagnostics_clock_manual_step_rationale_1"
+    ],
+    "27": [
       "drone_control_action_spaces_motor_residual_env_dronemotorhoverenv_action_to_motor_command",
       "drone_control_action_spaces_motor_residual_env_motorcommand",
       "tests_action_spaces_motor_residual_test_env_testmotoractionmapping",
@@ -819,7 +833,23 @@
       "tests_action_spaces_motor_residual_test_env_testmotoractionmapping_test_spaces_have_expected_shapes_and_bounds",
       "tests_action_spaces_motor_residual_test_env_testmotoractionmapping_test_zero_action_maps_to_hover_operating_point"
     ],
-    "26": [
+    "28": [
+      "drone_control_action_spaces_velocity_ned_train_short_episode",
+      "drone_control_action_spaces_velocity_ned_train_short_episode_main",
+      "drone_control_action_spaces_velocity_ned_train_short_episode_parse_args",
+      "drone_control_action_spaces_velocity_ned_train_short_episode_plot_training_results",
+      "drone_control_action_spaces_velocity_ned_train_short_episode_plot_trajectory_episode",
+      "drone_control_action_spaces_velocity_ned_train_short_episode_rationale_1",
+      "drone_control_action_spaces_velocity_ned_train_short_episode_rationale_112",
+      "drone_control_action_spaces_velocity_ned_train_short_episode_rationale_292",
+      "drone_control_action_spaces_velocity_ned_train_short_episode_rationale_374",
+      "drone_control_action_spaces_velocity_ned_train_short_episode_rationale_68",
+      "drone_control_action_spaces_velocity_ned_train_short_episode_smooth",
+      "drone_control_action_spaces_velocity_ned_train_short_episode_test",
+      "drone_control_action_spaces_velocity_ned_train_short_episode_train",
+      "os"
+    ],
+    "29": [
       "drone_control_using_reinforcement_learning_github_workflows_push",
       "drone_control_using_reinforcement_learning_github_workflows_push_jobs",
       "drone_control_using_reinforcement_learning_github_workflows_push_jobs_run_tests",
@@ -835,7 +865,7 @@
       "drone_control_using_reinforcement_learning_github_workflows_push_steps_with",
       "drone_control_using_reinforcement_learning_github_workflows_push_with_python_version"
     ],
-    "27": [
+    "30": [
       "drone_control_action_spaces_motor_residual_env_dronemotorhoverenv_get_observation",
       "drone_control_action_spaces_motor_residual_env_dronemotorhoverenv_pose_callback",
       "tests_action_spaces_motor_residual_test_env",
@@ -850,94 +880,36 @@
       "tests_action_spaces_motor_residual_test_env_testmotorruntimesafety_setup",
       "unittest_mock"
     ],
-    "28": [
-      "drone_control_action_spaces_velocity_ned_train_short_episode",
-      "drone_control_action_spaces_velocity_ned_train_short_episode_main",
-      "drone_control_action_spaces_velocity_ned_train_short_episode_parse_args",
-      "drone_control_action_spaces_velocity_ned_train_short_episode_plot_training_results",
-      "drone_control_action_spaces_velocity_ned_train_short_episode_plot_trajectory_episode",
-      "drone_control_action_spaces_velocity_ned_train_short_episode_rationale_1",
-      "drone_control_action_spaces_velocity_ned_train_short_episode_rationale_112",
-      "drone_control_action_spaces_velocity_ned_train_short_episode_rationale_292",
-      "drone_control_action_spaces_velocity_ned_train_short_episode_rationale_374",
-      "drone_control_action_spaces_velocity_ned_train_short_episode_rationale_68",
-      "drone_control_action_spaces_velocity_ned_train_short_episode_smooth",
-      "drone_control_action_spaces_velocity_ned_train_short_episode_test",
-      "drone_control_action_spaces_velocity_ned_train_short_episode_train"
-    ],
-    "29": [
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_basecontrol",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_ctbrcontrol",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_betaaviary",
-      "pil",
-      "pkg_resources",
-      "pybullet_data",
-      "socket",
-      "struct",
-      "subprocess",
-      "transforms3d_quaternions",
-      "transforms3d_utils",
-      "xml_etree_elementtree"
-    ],
-    "30": [
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_examples_learn_run",
-      "drone_control_using_reinforcement_learning_ppo_ppo",
-      "drone_control_using_reinforcement_learning_ppo_ppo_decay_action_std",
-      "drone_control_using_reinforcement_learning_ppo_ppo_load",
-      "drone_control_using_reinforcement_learning_ppo_ppo_save",
-      "drone_control_using_reinforcement_learning_ppo_ppo_select_action",
-      "drone_control_using_reinforcement_learning_ppo_ppo_set_action_std",
-      "drone_control_using_reinforcement_learning_ppo_ppo_update",
-      "drone_control_using_reinforcement_learning_tests_test_examples",
-      "drone_control_using_reinforcement_learning_tests_test_examples_test_downwash",
-      "drone_control_using_reinforcement_learning_tests_test_examples_test_learn",
-      "drone_control_using_reinforcement_learning_tests_test_examples_test_pid",
-      "drone_control_using_reinforcement_learning_tests_test_examples_test_pid_velocity"
-    ],
     "31": [
-      "drone_control_action_spaces_motor_residual_env_dronemotorhoverenv_calculate_reward",
-      "drone_control_action_spaces_motor_residual_env_dronemotorhoverenv_get_reward",
-      "drone_control_action_spaces_motor_residual_env_dronemotorhoverenv_step",
-      "drone_control_action_spaces_motor_residual_env_dronemotorhoverenv_wait_for_pose_sync_async",
-      "drone_control_action_spaces_motor_residual_env_py_ndarray",
-      "drone_control_action_spaces_motor_residual_env_rationale_764",
-      "drone_control_action_spaces_motor_residual_env_rationale_833",
-      "tests_action_spaces_motor_residual_test_env_testmotorruntimesafety",
-      "tests_action_spaces_motor_residual_test_env_testmotorruntimesafety_test_pose_timeout_stops_all_rotors",
-      "tests_action_spaces_motor_residual_test_env_testmotorruntimesafety_test_rejected_motor_command_raises_and_stops_all_rotors",
-      "tests_action_spaces_motor_residual_test_env_testmotorruntimesafety_test_simulation_exception_stops_all_rotors",
-      "tests_action_spaces_motor_residual_test_env_testmotorruntimesafety_test_successful_step_updates_previous_motor_state"
+      "drone_control_action_spaces_velocity_ned_env_dronehoveringenv_check_termination",
+      "drone_control_action_spaces_velocity_ned_env_dronehoveringenv_get_reward",
+      "drone_control_action_spaces_velocity_ned_env_dronehoveringenv_is_pose_synced",
+      "drone_control_action_spaces_velocity_ned_env_dronehoveringenv_set_target_sim_time",
+      "drone_control_action_spaces_velocity_ned_env_dronehoveringenv_step",
+      "drone_control_action_spaces_velocity_ned_env_dronehoveringenv_stop_velocity_command",
+      "drone_control_action_spaces_velocity_ned_env_dronehoveringenv_update_task_status",
+      "drone_control_action_spaces_velocity_ned_env_rationale_175",
+      "drone_control_action_spaces_velocity_ned_env_rationale_278",
+      "drone_control_action_spaces_velocity_ned_env_rationale_82",
+      "drone_control_task_contract_py_any",
+      "drone_control_task_contract_successstatus",
+      "drone_control_task_contract_successstatus_to_info"
     ],
     "32": [
-      "drone_control_action_spaces_velocity_ned_control_disturbance",
-      "drone_control_action_spaces_velocity_ned_control_disturbance_parse_args",
-      "drone_control_action_spaces_velocity_ned_control_disturbance_plot_trajectory",
-      "drone_control_action_spaces_velocity_ned_control_disturbance_rationale_1",
-      "drone_control_action_spaces_velocity_ned_control_disturbance_rationale_145",
-      "drone_control_action_spaces_velocity_ned_control_disturbance_rationale_176",
-      "drone_control_action_spaces_velocity_ned_control_disturbance_rationale_62",
-      "drone_control_action_spaces_velocity_ned_control_disturbance_run_control",
-      "drone_control_action_spaces_velocity_ned_control_disturbance_save_csv",
-      "sympy",
-      "tools_diagnostics_connection_ue",
-      "websocket"
+      "cycler",
+      "datetime",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_dslpidcontrol",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_examples_pid",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_examples_pid_rationale_1",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_examples_pid_velocity",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_examples_pid_velocity_rationale_1",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_logger",
+      "pdb",
+      "pybullet",
+      "random",
+      "scipy_spatial_transform"
     ],
     "33": [
-      "drone_control_algorithms_ppo_actorcritic_init",
-      "drone_control_algorithms_ppo_normalize_action_bound",
-      "drone_control_algorithms_ppo_rationale_17",
-      "drone_control_algorithms_ppo_rationale_63",
-      "drone_control_algorithms_ppo_scaleaction",
-      "drone_control_algorithms_ppo_scaleaction_forward",
-      "drone_control_algorithms_ppo_scaleaction_init",
-      "tests_common_test_ppo_action_bounds",
-      "tests_common_test_ppo_action_bounds_testscaleaction",
-      "tests_common_test_ppo_action_bounds_testscaleaction_test_asymmetric_vector_bounds",
-      "tests_common_test_ppo_action_bounds_testscaleaction_test_invalid_bounds_are_rejected",
-      "tests_common_test_ppo_action_bounds_testscaleaction_test_symmetric_scalar_bounds"
-    ],
-    "34": [
       "drone_control_algorithms_ppo_ppo",
       "drone_control_algorithms_ppo_ppo_decay_action_std",
       "drone_control_algorithms_ppo_ppo_estimate_value",
@@ -950,6 +922,20 @@
       "drone_control_algorithms_ppo_ppo_update",
       "drone_control_algorithms_ppo_rationale_369",
       "drone_control_algorithms_ppo_rationale_378"
+    ],
+    "34": [
+      "drone_control_evaluation_protocol_aggregate_metrics",
+      "drone_control_evaluation_protocol_aggregate_metrics_mean",
+      "drone_control_evaluation_protocol_build_evaluation_manifest",
+      "drone_control_evaluation_protocol_episodemetrics",
+      "drone_control_evaluation_protocol_episodemetrics_validate",
+      "drone_control_evaluation_protocol_py_any",
+      "tests_common_test_evaluation_protocol",
+      "tests_common_test_evaluation_protocol_testevaluationprotocol",
+      "tests_common_test_evaluation_protocol_testevaluationprotocol_make_record",
+      "tests_common_test_evaluation_protocol_testevaluationprotocol_test_aggregate_reports_completion_safety_and_control",
+      "tests_common_test_evaluation_protocol_testevaluationprotocol_test_duplicate_seeds_are_rejected",
+      "tests_common_test_evaluation_protocol_testevaluationprotocol_test_manifest_freezes_tests_a_to_d_and_multiple_seeds"
     ],
     "35": [
       "analysis_legacy_phantichketqua_goc",
@@ -978,28 +964,28 @@
       "analysis_legacy_without_disturbance_phantichketqua_goc_shade_band"
     ],
     "37": [
-      "drone_control_algorithms_ppo",
-      "drone_control_algorithms_ppo_ppo_init",
-      "drone_control_algorithms_ppo_rolloutbuffer",
-      "drone_control_algorithms_ppo_rolloutbuffer_clear",
-      "drone_control_algorithms_ppo_rolloutbuffer_init",
-      "matplotlib_patches",
-      "tools_visualization_visualize_neuron",
-      "torch_distributions",
-      "torch_nn",
-      "torch_nn_functional"
+      "drone_control_task_contract_rationale_85",
+      "drone_control_task_contract_successtracker",
+      "drone_control_task_contract_successtracker_update",
+      "tests_common_test_task_contract",
+      "tests_common_test_task_contract_testsuccesstracker",
+      "tests_common_test_task_contract_testsuccesstracker_setup",
+      "tests_common_test_task_contract_testsuccesstracker_test_success_requires_continuous_qualified_steps_and_emits_once",
+      "tests_common_test_task_contract_testsuccesstracker_test_violation_resets_sustain_but_not_reached_history",
+      "tests_common_test_task_contract_testsuccesstracker_test_yaw_can_be_excluded_from_contract",
+      "tests_common_test_task_contract_testsuccesstracker_update"
     ],
     "38": [
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_actionspace",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_init",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_observationspace",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_parseurdfparameters",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_rationale_1021",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_rationale_1031",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_rationale_41",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_rationale_985",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_betaaviary_betaaviary_init",
-      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_betaaviary_rationale_39"
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_basecontrol",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_ctbrcontrol",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_betaaviary",
+      "pkg_resources",
+      "socket",
+      "struct",
+      "subprocess",
+      "transforms3d_quaternions",
+      "transforms3d_utils",
+      "xml_etree_elementtree"
     ],
     "39": [
       "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_computeinfo",
@@ -1014,6 +1000,17 @@
       "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_rationale_524"
     ],
     "40": [
+      "agents_graphify_workflow",
+      "agents_project_architecture",
+      "agents_project_instructions",
+      "agents_safety_constraints",
+      "readme_ned_velocity_action_space",
+      "readme_preserve_experiment_artifacts",
+      "readme_quadrotor_control_with_ppo",
+      "readme_residual_motor_action_space",
+      "readme_shared_ppo_implementation"
+    ],
+    "41": [
       "analysis_legacy_without_disturbance_phantichketqua_vitri",
       "analysis_legacy_without_disturbance_phantichketqua_vitri_band_str",
       "analysis_legacy_without_disturbance_phantichketqua_vitri_compute_time_in_band",
@@ -1024,7 +1021,7 @@
       "analysis_legacy_without_disturbance_phantichketqua_vitri_shade_band",
       "analysis_legacy_without_disturbance_phantichketqua_vitri_vline_pos"
     ],
-    "41": [
+    "42": [
       "classdef",
       "tests_common_test_ppo_source_contract_testppoactionboundssourcecontract",
       "tests_common_test_ppo_source_contract_testppoactionboundssourcecontract_get_class",
@@ -1035,7 +1032,7 @@
       "tests_common_test_ppo_source_contract_testppoactionboundssourcecontract_test_old_hardcoded_scaling_and_clamp_are_removed",
       "tests_common_test_ppo_source_contract_testppoactionboundssourcecontract_test_ppo_appends_distribution_after_configurable_bounds"
     ],
-    "42": [
+    "43": [
       "drone_control_using_reinforcement_learning_ppo_actorcritic",
       "drone_control_using_reinforcement_learning_ppo_actorcritic_act",
       "drone_control_using_reinforcement_learning_ppo_actorcritic_evaluate",
@@ -1046,7 +1043,7 @@
       "drone_control_using_reinforcement_learning_ppo_rolloutbuffer_clear",
       "drone_control_using_reinforcement_learning_ppo_rolloutbuffer_init"
     ],
-    "43": [
+    "44": [
       "analysis_legacy_with_disturbance_phantichketqua_vitri",
       "analysis_legacy_with_disturbance_phantichketqua_vitri_rationale_1",
       "analysis_legacy_with_disturbance_phantichketqua_vitri_rationale_183",
@@ -1056,17 +1053,17 @@
       "analysis_legacy_with_disturbance_phantichketqua_vitri_vline_pos",
       "analysis_legacy_with_disturbance_phantichketqua_vitri_vline_settled"
     ],
-    "44": [
-      "drone_control_action_spaces_velocity_ned_control_projectairsim",
-      "drone_control_action_spaces_velocity_ned_control_projectairsim_parse_args",
-      "drone_control_action_spaces_velocity_ned_control_projectairsim_plot_trajectory",
-      "drone_control_action_spaces_velocity_ned_control_projectairsim_rationale_1",
-      "drone_control_action_spaces_velocity_ned_control_projectairsim_rationale_172",
-      "drone_control_action_spaces_velocity_ned_control_projectairsim_rationale_58",
-      "drone_control_action_spaces_velocity_ned_control_projectairsim_run_control",
-      "matplotlib"
-    ],
     "45": [
+      "drone_control_action_spaces_velocity_ned_env_dronehoveringenv_init",
+      "drone_control_task_contract_successtracker_init",
+      "drone_control_task_contract_taskcontract",
+      "drone_control_task_contract_taskcontract_to_metadata",
+      "drone_control_task_contract_taskcontract_validate",
+      "tests_common_test_task_contract_testtaskcontract",
+      "tests_common_test_task_contract_testtaskcontract_test_default_contract_is_valid_and_serializable",
+      "tests_common_test_task_contract_testtaskcontract_test_invalid_duration_is_rejected"
+    ],
+    "46": [
       "drone_control_algorithms_ppo_compute_gae",
       "drone_control_algorithms_ppo_rationale_41",
       "tests_common_test_ppo_gae",
@@ -1075,16 +1072,6 @@
       "tests_common_test_ppo_gae_testgaesemantics_test_non_boundary_transition_propagates_next_advantage",
       "tests_common_test_ppo_gae_testgaesemantics_test_physical_terminal_does_not_bootstrap",
       "tests_common_test_ppo_gae_testgaesemantics_test_time_limit_bootstraps_but_stops_episode_recursion"
-    ],
-    "46": [
-      "tests_common_test_ppo_action_bounds_py_skipunless",
-      "tests_common_test_ppo_action_bounds_testppoconfigurations",
-      "tests_common_test_ppo_action_bounds_testppoconfigurations_make_ppo",
-      "tests_common_test_ppo_action_bounds_testppoconfigurations_test_existing_velocity_constructor_keeps_old_default",
-      "tests_common_test_ppo_action_bounds_testppoconfigurations_test_load_reads_checkpoint_once_for_both_policies",
-      "tests_common_test_ppo_action_bounds_testppoconfigurations_test_motor_constructor_uses_normalized_bounds",
-      "tests_common_test_ppo_action_bounds_testppoconfigurations_test_tanh_squashed_policy_can_complete_an_update",
-      "tests_common_test_ppo_action_bounds_testppoconfigurations_test_vector_bounds_are_supported"
     ],
     "47": [
       "drone_control_action_spaces_motor_residual_env_dronemotorhoverenv_close",
@@ -1095,6 +1082,30 @@
       "tests_action_spaces_motor_residual_test_train_testmotortrainingentrypoint_teardown"
     ],
     "48": [
+      "drone_control_action_spaces_motor_residual_readme_checkpoint_metadata",
+      "drone_control_action_spaces_motor_residual_readme_hover_centered_mapping",
+      "drone_control_action_spaces_motor_residual_readme_motor_curriculum",
+      "drone_control_action_spaces_motor_residual_readme_residual_motor_action_space",
+      "drone_control_action_spaces_motor_residual_readme_safe_actuator_tools",
+      "drone_control_action_spaces_motor_residual_readme_training_monitor"
+    ],
+    "49": [
+      "drone_control_action_spaces_velocity_ned_env_dronehoveringenv_get_observation",
+      "drone_control_action_spaces_velocity_ned_env_dronehoveringenv_init_episode_state",
+      "drone_control_action_spaces_velocity_ned_env_dronehoveringenv_pose_callback",
+      "drone_control_action_spaces_velocity_ned_env_dronehoveringenv_reset",
+      "drone_control_action_spaces_velocity_ned_env_rationale_228",
+      "drone_control_action_spaces_velocity_ned_env_rationale_60"
+    ],
+    "50": [
+      "drone_control_algorithms_ppo",
+      "matplotlib_patches",
+      "tools_visualization_visualize_neuron",
+      "torch_distributions",
+      "torch_nn",
+      "torch_nn_functional"
+    ],
+    "51": [
       "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_dslpidcontrol_dslpidcontrol_computecontrol",
       "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_dslpidcontrol_dslpidcontrol_dslpidattitudecontrol",
       "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_dslpidcontrol_dslpidcontrol_dslpidpositioncontrol",
@@ -1102,7 +1113,7 @@
       "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_dslpidcontrol_rationale_219",
       "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_dslpidcontrol_rationale_93"
     ],
-    "49": [
+    "52": [
       "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_addobstacles",
       "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_housekeeping",
       "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_showdronelocalaxes",
@@ -1110,7 +1121,7 @@
       "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_rationale_920",
       "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_rationale_958"
     ],
-    "50": [
+    "53": [
       "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_exportimage",
       "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_getdroneimages",
       "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_rationale_571",
@@ -1118,186 +1129,520 @@
       "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baserlaviary_baserlaviary_computeobs",
       "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baserlaviary_rationale_291"
     ],
-    "51": [
-      "tools_visualization_visualize_results_load_traj_csv",
-      "tools_visualization_visualize_results_plot_compare_folders_load_folder",
-      "tools_visualization_visualize_results_py_ndarray",
-      "tools_visualization_visualize_results_rationale_136",
-      "tools_visualization_visualize_results_rationale_51",
-      "tools_visualization_visualize_results_smooth"
+    "54": [
+      "drone_control_using_reinforcement_learning_readme_action_std_exploration",
+      "drone_control_using_reinforcement_learning_readme_fly_through_gate",
+      "drone_control_using_reinforcement_learning_readme_gym_pybullet_drones",
+      "drone_control_using_reinforcement_learning_readme_hover_reward_constraints",
+      "drone_control_using_reinforcement_learning_readme_ppo_hover_project",
+      "drone_control_using_reinforcement_learning_readme_ppo_pytorch"
     ],
-    "52": [
-      "drone_control_action_spaces_motor_residual_env_dronemotorhoverenv_require_runtime",
-      "drone_control_action_spaces_motor_residual_env_py_drone",
-      "drone_control_action_spaces_motor_residual_env_py_projectairsimclient",
-      "drone_control_action_spaces_motor_residual_env_py_world"
+    "55": [
+      "tools_create_evaluation_manifest",
+      "tools_create_evaluation_manifest_main",
+      "tools_create_evaluation_manifest_parse_args",
+      "tools_create_evaluation_manifest_py_namespace",
+      "tools_create_evaluation_manifest_rationale_1"
     ],
-    "53": [
+    "56": [
+      "actor_architecture_actor_network",
+      "actor_architecture_hidden_layers_64_tanh",
+      "actor_architecture_input_state_13",
+      "actor_architecture_output_action_3"
+    ],
+    "57": [
+      "balance_eval_results_balance_eval_summary_disturbance_directions",
+      "balance_eval_results_balance_eval_summary_position_error_threshold",
+      "balance_eval_results_balance_eval_summary_post_collision_balance_evaluation",
+      "balance_eval_results_balance_eval_summary_survival_rate"
+    ],
+    "58": [
+      "drone_control_action_spaces_velocity_ned_env_short_episode",
+      "drone_control_action_spaces_velocity_ned_env_short_episode_dronehoveringenv",
+      "drone_control_action_spaces_velocity_ned_env_short_episode_dronehoveringenv_init",
+      "drone_control_action_spaces_velocity_ned_env_short_episode_rationale_1"
+    ],
+    "59": [
+      "drone_control_action_spaces_velocity_ned_readme_module_invocation",
+      "drone_control_action_spaces_velocity_ned_readme_ned_velocity_action_space",
+      "drone_control_action_spaces_velocity_ned_readme_training_and_deployment",
+      "drone_control_action_spaces_velocity_ned_readme_velocity_policy_bounds"
+    ],
+    "60": [
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_assets_beta_presets_bak_betaflight_sitl",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_assets_beta_presets_bak_pid_profile",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_assets_beta_presets_bak_pwm_motor_protocol",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_assets_beta_presets_bak_rate_profile"
+    ],
+    "61": [
       "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_calculatenextstep",
       "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_rationale_1108",
       "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baserlaviary_baserlaviary_preprocessaction",
       "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baserlaviary_rationale_163"
     ],
-    "54": [
+    "62": [
       "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baserlaviary_baserlaviary_addobstacles",
       "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baserlaviary_rationale_100",
       "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_flythrugateavitary_flythrugateavitary_addobstacles",
       "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_flythrugateavitary_rationale_72"
     ],
-    "55": [
+    "63": [
       "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_flythrugateavitary_flythrugateavitary_clipandnormalizestate",
       "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_flythrugateavitary_flythrugateavitary_clipandnormalizestatewarning",
       "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_flythrugateavitary_rationale_175",
       "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_flythrugateavitary_rationale_242"
     ],
-    "56": [
+    "64": [
+      "balance_eval_results_recovery_curves_recovery_push_east_attitude_response",
+      "balance_eval_results_recovery_curves_recovery_push_east_position_failure",
+      "balance_eval_results_recovery_curves_recovery_push_east_push_east_recovery"
+    ],
+    "65": [
+      "balance_eval_results_recovery_curves_recovery_push_strong_attitude_response",
+      "balance_eval_results_recovery_curves_recovery_push_strong_position_failure",
+      "balance_eval_results_recovery_curves_recovery_push_strong_strong_push_recovery"
+    ],
+    "66": [
+      "analysis_readme_artifact_preservation",
+      "analysis_readme_legacy_analysis"
+    ],
+    "67": [
+      "control_results_co_nhieu_ppo_3r_overlay_summary_late_altitude_divergence",
+      "control_results_co_nhieu_ppo_3r_overlay_summary_trajectory_overlay"
+    ],
+    "68": [
+      "control_results_co_nhieu_ppo_4r_overlay_summary_bounded_hover_tracking",
+      "control_results_co_nhieu_ppo_4r_overlay_summary_trajectory_overlay"
+    ],
+    "69": [
+      "control_results_khong_co_nhieu_ppo3r_overlay_summary_steady_state_offset",
+      "control_results_khong_co_nhieu_ppo3r_overlay_summary_trajectory_overlay"
+    ],
+    "70": [
+      "control_results_khong_co_nhieu_ppo4r_overlay_summary_stable_altitude_tracking",
+      "control_results_khong_co_nhieu_ppo4r_overlay_summary_trajectory_overlay"
+    ],
+    "71": [
+      "docs_danh_gia_cau_hinh_ppo_quadcopter_configuration_assessment",
+      "docs_ke_hoach_khac_phuc_danh_gia_cau_hinh_ppo_remediation_plan"
+    ],
+    "72": [
+      "docs_pi2020_direct_motor_rl_controller",
+      "docs_pi2020_low_level_autonomous_quadrotor_control"
+    ],
+    "73": [
+      "docs_ppo_config_table_ppo_configuration_reference",
+      "docs_ppo_reward_function_reward_reference"
+    ],
+    "74": [
       "drone_control_action_spaces_init",
       "drone_control_action_spaces_init_rationale_1"
     ],
-    "57": [
+    "75": [
       "drone_control_action_spaces_motor_residual_init",
       "drone_control_action_spaces_motor_residual_init_rationale_1"
     ],
-    "58": [
+    "76": [
       "drone_control_action_spaces_velocity_ned_init",
       "drone_control_action_spaces_velocity_ned_init_rationale_1"
     ],
-    "59": [
+    "77": [
       "drone_control_algorithms_init",
       "drone_control_algorithms_init_rationale_1"
     ],
-    "60": [
+    "78": [
       "drone_control_init",
       "drone_control_init_rationale_1"
     ],
-    "61": [
+    "79": [
       "drone_control_using_reinforcement_learning_build_project",
       "drone_control_using_reinforcement_learning_build_project_sh__entry"
     ],
-    "62": [
+    "80": [
       "drone_control_using_reinforcement_learning_gym_pybullet_drones_assets_clone_bfs",
       "drone_control_using_reinforcement_learning_gym_pybullet_drones_assets_clone_bfs_sh__entry"
     ],
-    "63": [
+    "81": [
       "drone_control_using_reinforcement_learning_gym_pybullet_drones_assets_ffmpeg_png2mp4",
       "drone_control_using_reinforcement_learning_gym_pybullet_drones_assets_ffmpeg_png2mp4_sh__entry"
     ],
-    "64": [
+    "82": [
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_assets_helix_multi_drone_helix_demo",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_assets_helix_propeller_rpm_controls"
+    ],
+    "83": [
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_assets_rl_pybullet_environment",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_assets_rl_reinforcement_learning_flight_demo"
+    ],
+    "84": [
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baserlaviary_baserlaviary_actionspace",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baserlaviary_rationale_133"
+    ],
+    "85": [
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baserlaviary_baserlaviary_observationspace",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baserlaviary_rationale_250"
+    ],
+    "86": [
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_flythrugateavitary_flythrugateavitary_computeinfo",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_flythrugateavitary_rationale_158"
+    ],
+    "87": [
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_flythrugateavitary_flythrugateavitary_computeterminated",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_flythrugateavitary_rationale_142"
+    ],
+    "88": [
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_hoveraviary_hoveraviary_computeinfo",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_hoveraviary_rationale_133"
+    ],
+    "89": [
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_multihoveraviary_multihoveraviary_computeinfo",
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_multihoveraviary_rationale_135"
+    ],
+    "90": [
       "drone_control_using_reinforcement_learning_gym_pybullet_drones_init",
       "gymnasium_envs_registration"
     ],
-    "65": [
+    "91": [
       "drone_control_using_reinforcement_learning_tests_test_build",
       "drone_control_using_reinforcement_learning_tests_test_build_test_imports"
     ],
-    "66": [
+    "92": [
+      "log_dir_hover_motor_motor_20261115_194017_788604_training_analysis_report_attitude_instability",
+      "log_dir_hover_motor_motor_20261115_194017_788604_training_analysis_report_motor_training_analysis"
+    ],
+    "93": [
+      "test_results_4r_co_nhieu_plots_kq1_quytrinh_vitri_ep002_4r_disturbed_position_analysis",
+      "test_results_4r_co_nhieu_plots_kq1_quytrinh_vitri_ep002_position_metrics"
+    ],
+    "94": [
+      "test_results_4r_co_nhieu_plots_phan_tich_ep002_4r_disturbed_flight_analysis",
+      "test_results_4r_co_nhieu_plots_phan_tich_ep002_six_dof_metrics"
+    ],
+    "95": [
+      "test_results_4r_co_nhieu_plots_trajectory_ep003_plot_descent_and_attitude_response",
+      "test_results_4r_co_nhieu_plots_trajectory_ep003_plot_episode_3_flight_path"
+    ],
+    "96": [
+      "test_results_4r_co_nhieu_plots_trajectory_ep006_plot_descent_and_attitude_response",
+      "test_results_4r_co_nhieu_plots_trajectory_ep006_plot_episode_6_flight_path"
+    ],
+    "97": [
+      "test_results_4r_co_nhieu_plots_trajectory_ep009_plot_descent_and_yaw_drift",
+      "test_results_4r_co_nhieu_plots_trajectory_ep009_plot_episode_9_flight_path"
+    ],
+    "98": [
+      "test_results_4r_co_nhieu_trajectory_ep002_altitude_goal_tracking",
+      "test_results_4r_co_nhieu_trajectory_ep002_episode_2_hover_trajectory"
+    ],
+    "99": [
+      "test_results_4r_co_nhieu_trajectory_ep005_altitude_goal_tracking",
+      "test_results_4r_co_nhieu_trajectory_ep005_episode_5_hover_trajectory"
+    ],
+    "100": [
+      "test_results_4r_co_nhieu_trajectory_ep008_altitude_goal_tracking",
+      "test_results_4r_co_nhieu_trajectory_ep008_episode_8_hover_trajectory"
+    ],
+    "101": [
+      "test_results_4r_khong_co_nhieu_overlay_summary_repeatable_hover_response",
+      "test_results_4r_khong_co_nhieu_overlay_summary_undisturbed_trajectory_overlay"
+    ],
+    "102": [
+      "test_results_4r_khong_co_nhieu_plots_kq2_quytrinh_goc_ep002_attitude_analysis",
+      "test_results_4r_khong_co_nhieu_plots_kq2_quytrinh_goc_ep002_attitude_rmse"
+    ],
+    "103": [
+      "test_results_4r_khong_co_nhieu_trajectory_ep003_episode_3_hover_trajectory",
+      "test_results_4r_khong_co_nhieu_trajectory_ep003_smooth_hover_convergence"
+    ],
+    "104": [
+      "test_results_4r_khong_co_nhieu_trajectory_ep006_episode_6_hover_trajectory",
+      "test_results_4r_khong_co_nhieu_trajectory_ep006_smooth_hover_convergence"
+    ],
+    "105": [
+      "test_results_4r_khong_co_nhieu_trajectory_ep009_episode_9_hover_trajectory",
+      "test_results_4r_khong_co_nhieu_trajectory_ep009_smooth_hover_convergence"
+    ],
+    "106": [
+      "test_results_co_nhieu_plots_kq1_quytrinh_vitri_ep002_disturbed_position_analysis",
+      "test_results_co_nhieu_plots_kq1_quytrinh_vitri_ep002_tracking_metrics"
+    ],
+    "107": [
+      "test_results_co_nhieu_plots_phan_tich_ep002_attitude_and_position_metrics",
+      "test_results_co_nhieu_plots_phan_tich_ep002_disturbed_trajectory_analysis"
+    ],
+    "108": [
       "tests_action_spaces_init",
       "tests_action_spaces_init_rationale_1"
     ],
-    "67": [
+    "109": [
       "tests_action_spaces_motor_residual_init",
       "tests_action_spaces_motor_residual_init_rationale_1"
     ],
-    "68": [
+    "110": [
       "tests_common_init",
       "tests_common_init_rationale_1"
     ],
-    "69": [
+    "111": [
       "tests_init",
       "tests_init_rationale_1"
     ],
-    "70": [
+    "112": [
       "tools_diagnostics_init",
       "tools_diagnostics_init_rationale_1"
     ],
-    "71": [
+    "113": [
       "tools_init",
       "tools_init_rationale_1"
     ],
-    "72": [
+    "114": [
       "tools_visualization_init",
       "tools_visualization_init_rationale_1"
     ],
-    "73": [
+    "115": [
+      "actor_activations_actor_network_activations"
+    ],
+    "116": [
+      "actor_weight_distribution_actor_network_weight_distributions"
+    ],
+    "117": [
+      "actor_weights_heatmap_actor_weights"
+    ],
+    "118": [
+      "balance_eval_results_recovery_curves_recovery_push_diag_diagonal_push_recovery"
+    ],
+    "119": [
+      "balance_eval_results_recovery_curves_recovery_push_down_push_down_recovery"
+    ],
+    "120": [
+      "balance_eval_results_recovery_curves_recovery_push_north_north_push_recovery"
+    ],
+    "121": [
+      "balance_eval_results_recovery_curves_recovery_push_south_push_south_recovery"
+    ],
+    "122": [
+      "balance_eval_results_recovery_curves_recovery_push_up_upward_push_recovery"
+    ],
+    "123": [
+      "balance_eval_results_recovery_curves_recovery_push_west_push_west_recovery"
+    ],
+    "124": [
+      "control_results_co_nhieu_ppo_3r_overlay_summary_attitude_ppo_3r_disturbed_attitude"
+    ],
+    "125": [
+      "control_results_co_nhieu_ppo_3r_trajectory_ep001_noisy_3r_episode_1"
+    ],
+    "126": [
+      "control_results_co_nhieu_ppo_4r_overlay_summary_attitude_ppo_4r_disturbed_attitude"
+    ],
+    "127": [
+      "control_results_co_nhieu_ppo_4r_trajectory_ep001_noisy_4r_episode_1"
+    ],
+    "128": [
+      "control_results_khong_co_nhieu_ppo3r_overlay_summary_attitude_ppo3r_clean_attitude"
+    ],
+    "129": [
+      "control_results_khong_co_nhieu_ppo3r_trajectory_ep001_clean_3r_episode_1"
+    ],
+    "130": [
+      "control_results_khong_co_nhieu_ppo4r_overlay_summary_attitude_ppo4r_clean_attitude"
+    ],
+    "131": [
+      "control_results_khong_co_nhieu_ppo4r_trajectory_ep001_clean_4r_episode_1"
+    ],
+    "132": [
+      "docs_envs_explanation_drone_hovering_environment"
+    ],
+    "133": [
+      "docs_huong_dan_su_dung_project_usage_guide"
+    ],
+    "134": [
+      "docs_ke_hoach_trien_khai_dieu_khien_motor_motor_control_plan"
+    ],
+    "135": [
+      "docs_readme_mavsdk_ppo_mavsdk_guide"
+    ],
+    "136": [
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_assets_helix_multi_drone_helix_simulation"
+    ],
+    "137": [
+      "drone_control_using_reinforcement_learning_gym_pybullet_drones_assets_marl_multi_agent_drone_animation"
+    ],
+    "138": [
       "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_init"
     ],
-    "74": [
+    "139": [
       "drone_control_using_reinforcement_learning_gym_pybullet_drones_examples_init"
     ],
-    "75": [
+    "140": [
       "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_init"
     ],
-    "76": [
+    "141": [
+      "drone_control_using_reinforcement_learning_pypi_description_gym_pybullet_drones"
+    ],
+    "142": [
+      "log_dir_hover_projectairsim_learning_curve_hover_learning_curve"
+    ],
+    "143": [
       "pkg_gym_pybullet_drones"
+    ],
+    "144": [
+      "test_results_4r_co_nhieu_overlay_summary_disturbed_position_overlay"
+    ],
+    "145": [
+      "test_results_4r_co_nhieu_plots_kq1_quytrinh_vitri_position_analysis"
+    ],
+    "146": [
+      "test_results_4r_co_nhieu_plots_kq2_quytrinh_goc_ep002_episode_2_attitude_rmse"
+    ],
+    "147": [
+      "test_results_4r_co_nhieu_plots_overlay_summary_episode_overlay"
+    ],
+    "148": [
+      "test_results_4r_co_nhieu_plots_trajectory_ep001_plot_disturbed_episode_1_trajectory"
+    ],
+    "149": [
+      "test_results_4r_co_nhieu_plots_trajectory_ep002_plot_episode_2"
+    ],
+    "150": [
+      "test_results_4r_co_nhieu_plots_trajectory_ep004_plot_disturbed_episode_4_trajectory"
+    ],
+    "151": [
+      "test_results_4r_co_nhieu_plots_trajectory_ep005_plot_episode_5"
+    ],
+    "152": [
+      "test_results_4r_co_nhieu_plots_trajectory_ep007_plot_disturbed_episode_7_trajectory"
+    ],
+    "153": [
+      "test_results_4r_co_nhieu_plots_trajectory_ep008_plot_episode_8"
+    ],
+    "154": [
+      "test_results_4r_co_nhieu_plots_trajectory_ep010_plot_disturbed_episode_10_trajectory"
+    ],
+    "155": [
+      "test_results_4r_co_nhieu_trajectory_ep001_episode_1"
+    ],
+    "156": [
+      "test_results_4r_co_nhieu_trajectory_ep003_disturbed_episode_3_goal_tracking"
+    ],
+    "157": [
+      "test_results_4r_co_nhieu_trajectory_ep004_episode_4"
+    ],
+    "158": [
+      "test_results_4r_co_nhieu_trajectory_ep006_disturbed_episode_6_goal_tracking"
+    ],
+    "159": [
+      "test_results_4r_co_nhieu_trajectory_ep007_episode_7"
+    ],
+    "160": [
+      "test_results_4r_co_nhieu_trajectory_ep009_disturbed_episode_9_goal_tracking"
+    ],
+    "161": [
+      "test_results_4r_co_nhieu_trajectory_ep010_episode_10"
+    ],
+    "162": [
+      "test_results_4r_khong_co_nhieu_overlay_summary_attitude_clean_attitude_overlay"
+    ],
+    "163": [
+      "test_results_4r_khong_co_nhieu_plots_kq1_quytrinh_vitri_ep002_position_analysis"
+    ],
+    "164": [
+      "test_results_4r_khong_co_nhieu_trajectory_ep001_clean_episode_1_goal_tracking"
+    ],
+    "165": [
+      "test_results_4r_khong_co_nhieu_trajectory_ep002_episode_2"
+    ],
+    "166": [
+      "test_results_4r_khong_co_nhieu_trajectory_ep004_clean_episode_4_goal_tracking"
+    ],
+    "167": [
+      "test_results_4r_khong_co_nhieu_trajectory_ep005_episode_5"
+    ],
+    "168": [
+      "test_results_4r_khong_co_nhieu_trajectory_ep007_clean_episode_7_goal_tracking"
+    ],
+    "169": [
+      "test_results_4r_khong_co_nhieu_trajectory_ep008_episode_8"
+    ],
+    "170": [
+      "test_results_4r_khong_co_nhieu_trajectory_ep010_clean_episode_10_goal_tracking"
+    ],
+    "171": [
+      "test_results_co_nhieu_plots_kq1_quytrinh_vitri_position_analysis"
+    ],
+    "172": [
+      "test_results_co_nhieu_plots_kq2_quytrinh_goc_disturbed_attitude_metrics"
+    ],
+    "173": [
+      "test_results_co_nhieu_plots_kq2_quytrinh_goc_ep002_attitude_analysis"
     ]
   },
   "cohesion": {
-    "0": 0.06790890269151138,
-    "1": 0.08038075092543628,
-    "2": 0.06370543541788427,
-    "3": 0.07393483709273183,
-    "4": 0.07535460992907801,
-    "5": 0.11933395004625347,
-    "6": 0.07557354925775979,
-    "7": 0.1693548387096774,
-    "8": 0.1452991452991453,
-    "9": 0.08333333333333333,
-    "10": 0.18478260869565216,
-    "11": 0.10822510822510822,
-    "12": 0.18571428571428572,
-    "13": 0.16666666666666666,
-    "14": 0.1,
-    "15": 0.10526315789473684,
-    "16": 0.13157894736842105,
-    "17": 0.17543859649122806,
-    "18": 0.1286549707602339,
-    "19": 0.1111111111111111,
+    "0": 0.05143570536828964,
+    "1": 0.05191256830601093,
+    "2": 0.08521303258145363,
+    "3": 0.07781649245063879,
+    "4": 0.1024390243902439,
+    "5": 0.1794871794871795,
+    "6": 0.15268817204301074,
+    "7": 0.14408602150537633,
+    "8": 0.13756613756613756,
+    "9": 0.11231884057971014,
+    "10": 0.08333333333333333,
+    "11": 0.09090909090909091,
+    "12": 0.12121212121212122,
+    "13": 0.16883116883116883,
+    "14": 0.10822510822510822,
+    "15": 0.18571428571428572,
+    "16": 0.10526315789473684,
+    "17": 0.1286549707602339,
+    "18": 0.1111111111111111,
+    "19": 0.16339869281045752,
     "20": 0.1111111111111111,
-    "21": 0.21323529411764705,
-    "22": 0.125,
-    "23": 0.14166666666666666,
-    "24": 0.1619047619047619,
-    "25": 0.21978021978021978,
-    "26": 0.14285714285714285,
-    "27": 0.2692307692307692,
-    "28": 0.23076923076923078,
-    "29": 0.21794871794871795,
-    "30": 0.21794871794871795,
-    "31": 0.22727272727272727,
-    "32": 0.19696969696969696,
-    "33": 0.24242424242424243,
-    "34": 0.21212121212121213,
+    "21": 0.19166666666666668,
+    "22": 0.15833333333333333,
+    "23": 0.125,
+    "24": 0.13333333333333333,
+    "25": 0.1619047619047619,
+    "26": 0.1978021978021978,
+    "27": 0.21978021978021978,
+    "28": 0.24175824175824176,
+    "29": 0.14285714285714285,
+    "30": 0.2692307692307692,
+    "31": 0.16666666666666666,
+    "32": 0.2727272727272727,
+    "33": 0.21212121212121213,
+    "34": 0.2878787878787879,
     "35": 0.18181818181818182,
     "36": 0.18181818181818182,
-    "37": 0.2222222222222222,
-    "38": 0.2,
+    "37": 0.35555555555555557,
+    "38": 0.26666666666666666,
     "39": 0.2,
-    "40": 0.2222222222222222,
-    "41": 0.3333333333333333,
-    "42": 0.2222222222222222,
-    "43": 0.25,
-    "44": 0.2857142857142857,
-    "45": 0.35714285714285715,
-    "46": 0.42857142857142855,
+    "40": 0.25,
+    "41": 0.2222222222222222,
+    "42": 0.3333333333333333,
+    "43": 0.2222222222222222,
+    "44": 0.25,
+    "45": 0.5,
+    "46": 0.35714285714285715,
     "47": 0.3333333333333333,
     "48": 0.3333333333333333,
-    "49": 0.3333333333333333,
-    "50": 0.3333333333333333,
+    "49": 0.4,
+    "50": 0.4,
     "51": 0.3333333333333333,
-    "52": 0.5,
-    "53": 0.5,
-    "54": 0.5,
+    "52": 0.3333333333333333,
+    "53": 0.3333333333333333,
+    "54": 0.3333333333333333,
     "55": 0.5,
-    "56": 1.0,
-    "57": 1.0,
-    "58": 1.0,
-    "59": 1.0,
-    "60": 1.0,
-    "61": 1.0,
-    "62": 1.0,
-    "63": 1.0,
-    "64": 1.0,
-    "65": 1.0,
+    "56": 0.5,
+    "57": 0.5,
+    "58": 0.5,
+    "59": 0.5,
+    "60": 0.5,
+    "61": 0.5,
+    "62": 0.5,
+    "63": 0.5,
+    "64": 0.6666666666666666,
+    "65": 0.6666666666666666,
     "66": 1.0,
     "67": 1.0,
     "68": 1.0,
@@ -1308,7 +1653,104 @@
     "73": 1.0,
     "74": 1.0,
     "75": 1.0,
-    "76": 1.0
+    "76": 1.0,
+    "77": 1.0,
+    "78": 1.0,
+    "79": 1.0,
+    "80": 1.0,
+    "81": 1.0,
+    "82": 1.0,
+    "83": 1.0,
+    "84": 1.0,
+    "85": 1.0,
+    "86": 1.0,
+    "87": 1.0,
+    "88": 1.0,
+    "89": 1.0,
+    "90": 1.0,
+    "91": 1.0,
+    "92": 1.0,
+    "93": 1.0,
+    "94": 1.0,
+    "95": 1.0,
+    "96": 1.0,
+    "97": 1.0,
+    "98": 1.0,
+    "99": 1.0,
+    "100": 1.0,
+    "101": 1.0,
+    "102": 1.0,
+    "103": 1.0,
+    "104": 1.0,
+    "105": 1.0,
+    "106": 1.0,
+    "107": 1.0,
+    "108": 1.0,
+    "109": 1.0,
+    "110": 1.0,
+    "111": 1.0,
+    "112": 1.0,
+    "113": 1.0,
+    "114": 1.0,
+    "115": 1.0,
+    "116": 1.0,
+    "117": 1.0,
+    "118": 1.0,
+    "119": 1.0,
+    "120": 1.0,
+    "121": 1.0,
+    "122": 1.0,
+    "123": 1.0,
+    "124": 1.0,
+    "125": 1.0,
+    "126": 1.0,
+    "127": 1.0,
+    "128": 1.0,
+    "129": 1.0,
+    "130": 1.0,
+    "131": 1.0,
+    "132": 1.0,
+    "133": 1.0,
+    "134": 1.0,
+    "135": 1.0,
+    "136": 1.0,
+    "137": 1.0,
+    "138": 1.0,
+    "139": 1.0,
+    "140": 1.0,
+    "141": 1.0,
+    "142": 1.0,
+    "143": 1.0,
+    "144": 1.0,
+    "145": 1.0,
+    "146": 1.0,
+    "147": 1.0,
+    "148": 1.0,
+    "149": 1.0,
+    "150": 1.0,
+    "151": 1.0,
+    "152": 1.0,
+    "153": 1.0,
+    "154": 1.0,
+    "155": 1.0,
+    "156": 1.0,
+    "157": 1.0,
+    "158": 1.0,
+    "159": 1.0,
+    "160": 1.0,
+    "161": 1.0,
+    "162": 1.0,
+    "163": 1.0,
+    "164": 1.0,
+    "165": 1.0,
+    "166": 1.0,
+    "167": 1.0,
+    "168": 1.0,
+    "169": 1.0,
+    "170": 1.0,
+    "171": 1.0,
+    "172": 1.0,
+    "173": 1.0
   },
   "gods": [
     {
@@ -1364,6 +1806,17 @@
   ],
   "surprises": [
     {
+      "source": "TestMotorTrainingEntryPoint",
+      "target": "MotorCurriculum",
+      "source_files": [
+        "tests/action_spaces/motor_residual/test_train.py",
+        "drone_control/action_spaces/motor_residual/curriculum.py"
+      ],
+      "confidence": "INFERRED",
+      "relation": "uses",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; bridges separate communities"
+    },
+    {
       "source": "TestMotorCurriculum",
       "target": "DroneMotorHoverEnv",
       "source_files": [
@@ -1406,21 +1859,43 @@
       "confidence": "INFERRED",
       "relation": "uses",
       "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; bridges separate communities"
-    },
-    {
-      "source": "TestMotorReward",
-      "target": "DroneMotorHoverEnv",
-      "source_files": [
-        "tests/action_spaces/motor_residual/test_reward.py",
-        "drone_control/action_spaces/motor_residual/env.py"
-      ],
-      "confidence": "INFERRED",
-      "relation": "uses",
-      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; bridges separate communities"
     }
   ],
-  "tokens": {
-    "input": 0,
-    "output": 0
-  }
+  "questions": [
+    {
+      "type": "bridge_node",
+      "question": "Why does `BaseAviary` connect `Community 11` to `Community 3`, `Community 5`, `Community 38`, `Community 39`, `Community 10`, `Community 16`, `Community 20`, `Community 52`, `Community 53`, `Community 23`, `Community 61`?",
+      "why": "High betweenness centrality (0.094) - this node is a cross-community bridge."
+    },
+    {
+      "type": "verify_inferred",
+      "question": "Are the 12 inferred relationships involving `DroneMotorHoverEnv` (e.g. with `EpisodeConditions` and `MotorCurriculum`) actually correct?",
+      "why": "`DroneMotorHoverEnv` has 12 INFERRED edges - model-reasoned connections that need verification."
+    },
+    {
+      "type": "isolated_nodes",
+      "question": "What connects `gym-pybullet-drones`, `Actor Network Activations`, `Actor Network Architecture` to the rest of the system?",
+      "why": "125 weakly-connected nodes found - possible documentation gaps or missing edges."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Community 0` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.05143570536828964 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `DroneMotorHoverEnv` connect `Community 8` to `Community 0`, `Community 37`, `Community 6`, `Community 45`, `Community 15`, `Community 47`, `Community 21`, `Community 22`, `Community 27`, `Community 30`?",
+      "why": "High betweenness centrality (0.074) - this node is a cross-community bridge."
+    },
+    {
+      "type": "verify_inferred",
+      "question": "Are the 3 inferred relationships involving `BaseAviary` (e.g. with `DroneModel` and `ImageType`) actually correct?",
+      "why": "`BaseAviary` has 3 INFERRED edges - model-reasoned connections that need verification."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Community 1` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.05191256830601093 - nodes in this community are weakly interconnected."
+    }
+  ]
 }

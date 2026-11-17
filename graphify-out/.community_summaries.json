@@ -1,0 +1,5030 @@
+{
+  "0": [
+    {
+      "id": "math",
+      "label": "math",
+      "source_file": "",
+      "degree": 30
+    },
+    {
+      "id": "drone_control_action_spaces_motor_residual_train",
+      "label": "motor_residual/train.py",
+      "source_file": "drone_control/action_spaces/motor_residual/train.py",
+      "degree": 28
+    },
+    {
+      "id": "tools_analyze_motor_training",
+      "label": "analyze_motor_training.py",
+      "source_file": "tools/analyze_motor_training.py",
+      "degree": 22
+    },
+    {
+      "id": "drone_control_action_spaces_motor_residual_train_train",
+      "label": "train()",
+      "source_file": "drone_control/action_spaces/motor_residual/train.py",
+      "degree": 19
+    },
+    {
+      "id": "json",
+      "label": "json",
+      "source_file": "",
+      "degree": 17
+    },
+    {
+      "id": "tests_action_spaces_motor_residual_test_train",
+      "label": "test_train.py",
+      "source_file": "tests/action_spaces/motor_residual/test_train.py",
+      "degree": 17
+    },
+    {
+      "id": "tests_action_spaces_motor_residual_test_train_testmotortrainingentrypoint",
+      "label": "TestMotorTrainingEntryPoint",
+      "source_file": "tests/action_spaces/motor_residual/test_train.py",
+      "degree": 16
+    },
+    {
+      "id": "drone_control_action_spaces_motor_residual_train_build_checkpoint_metadata",
+      "label": "build_checkpoint_metadata()",
+      "source_file": "drone_control/action_spaces/motor_residual/train.py",
+      "degree": 15
+    },
+    {
+      "id": "drone_control_action_spaces_motor_residual_monitoring",
+      "label": "monitoring.py",
+      "source_file": "drone_control/action_spaces/motor_residual/monitoring.py",
+      "degree": 14
+    },
+    {
+      "id": "pathlib",
+      "label": "pathlib",
+      "source_file": "",
+      "degree": 14
+    },
+    {
+      "id": "tools_analyze_motor_training_build_report",
+      "label": "build_report()",
+      "source_file": "tools/analyze_motor_training.py",
+      "degree": 14
+    },
+    {
+      "id": "drone_control_action_spaces_motor_residual_monitoring_trainingmonitor",
+      "label": "TrainingMonitor",
+      "source_file": "drone_control/action_spaces/motor_residual/monitoring.py",
+      "degree": 13
+    }
+  ],
+  "1": [
+    {
+      "id": "drone_control_algorithms_ppo_actorcritic",
+      "label": "ActorCritic",
+      "source_file": "drone_control/algorithms/ppo.py",
+      "degree": 21
+    },
+    {
+      "id": "tests_common_test_ppo_action_bounds",
+      "label": "test_ppo_action_bounds.py",
+      "source_file": "tests/common/test_ppo_action_bounds.py",
+      "degree": 11
+    },
+    {
+      "id": "tools_visualization_visualize_neuron_neuronvisualizer",
+      "label": "NeuronVisualizer",
+      "source_file": "tools/visualization/visualize_neuron.py",
+      "degree": 11
+    },
+    {
+      "id": "drone_control_algorithms_ppo_scaleaction",
+      "label": "ScaleAction",
+      "source_file": "drone_control/algorithms/ppo.py",
+      "degree": 10
+    },
+    {
+      "id": "tests_common_test_ppo_action_bounds_testppoconfigurations",
+      "label": "TestPPOConfigurations",
+      "source_file": "tests/common/test_ppo_action_bounds.py",
+      "degree": 9
+    },
+    {
+      "id": "tests_common_test_ppo_action_bounds_testactorcriticactionbounds",
+      "label": "TestActorCriticActionBounds",
+      "source_file": "tests/common/test_ppo_action_bounds.py",
+      "degree": 8
+    },
+    {
+      "id": "tools_visualization_visualize_neuron_main",
+      "label": "main()",
+      "source_file": "tools/visualization/visualize_neuron.py",
+      "degree": 8
+    },
+    {
+      "id": "tests_common_test_ppo_action_bounds_testppoconfigurations_make_ppo",
+      "label": ".make_ppo()",
+      "source_file": "tests/common/test_ppo_action_bounds.py",
+      "degree": 7
+    },
+    {
+      "id": "drone_control_algorithms_ppo_normalize_action_bound",
+      "label": "_normalize_action_bound()",
+      "source_file": "drone_control/algorithms/ppo.py",
+      "degree": 6
+    },
+    {
+      "id": "tests_common_test_ppo_action_bounds_testscaleaction",
+      "label": "TestScaleAction",
+      "source_file": "tests/common/test_ppo_action_bounds.py",
+      "degree": 6
+    },
+    {
+      "id": "drone_control_algorithms_ppo_actorcritic_squashed_logprob",
+      "label": "._squashed_logprob()",
+      "source_file": "drone_control/algorithms/ppo.py",
+      "degree": 5
+    },
+    {
+      "id": "drone_control_algorithms_ppo_actorcritic_action_scale_and_bias",
+      "label": "._action_scale_and_bias()",
+      "source_file": "drone_control/algorithms/ppo.py",
+      "degree": 4
+    }
+  ],
+  "2": [
+    {
+      "id": "drone_control_action_spaces_motor_residual_calibrate",
+      "label": "calibrate.py",
+      "source_file": "drone_control/action_spaces/motor_residual/calibrate.py",
+      "degree": 37
+    },
+    {
+      "id": "drone_control_action_spaces_motor_residual_check_actuators",
+      "label": "check_actuators.py",
+      "source_file": "drone_control/action_spaces/motor_residual/check_actuators.py",
+      "degree": 22
+    },
+    {
+      "id": "drone_control_action_spaces_motor_residual_calibrate_run_trial",
+      "label": "run_trial()",
+      "source_file": "drone_control/action_spaces/motor_residual/calibrate.py",
+      "degree": 17
+    },
+    {
+      "id": "drone_control_action_spaces_motor_residual_calibrate_execute_calibration",
+      "label": "execute_calibration()",
+      "source_file": "drone_control/action_spaces/motor_residual/calibrate.py",
+      "degree": 13
+    },
+    {
+      "id": "drone_control_action_spaces_motor_residual_calibrate_py_any",
+      "label": "Any",
+      "source_file": "",
+      "degree": 11
+    },
+    {
+      "id": "drone_control_action_spaces_motor_residual_check_actuators_run_rotor_sequence",
+      "label": "run_rotor_sequence()",
+      "source_file": "drone_control/action_spaces/motor_residual/check_actuators.py",
+      "degree": 11
+    },
+    {
+      "id": "drone_control_action_spaces_motor_residual_check_actuators_stop_all_rotors",
+      "label": "stop_all_rotors()",
+      "source_file": "drone_control/action_spaces/motor_residual/check_actuators.py",
+      "degree": 10
+    },
+    {
+      "id": "drone_control_action_spaces_motor_residual_calibrate_binary_search_hover",
+      "label": "binary_search_hover()",
+      "source_file": "drone_control/action_spaces/motor_residual/calibrate.py",
+      "degree": 9
+    },
+    {
+      "id": "drone_control_action_spaces_motor_residual_calibrate_calibrationsettings",
+      "label": "CalibrationSettings",
+      "source_file": "drone_control/action_spaces/motor_residual/calibrate.py",
+      "degree": 8
+    },
+    {
+      "id": "drone_control_action_spaces_motor_residual_calibrate_main",
+      "label": "main()",
+      "source_file": "drone_control/action_spaces/motor_residual/calibrate.py",
+      "degree": 8
+    },
+    {
+      "id": "drone_control_action_spaces_motor_residual_calibrate_verify_hover_signal",
+      "label": "verify_hover_signal()",
+      "source_file": "drone_control/action_spaces/motor_residual/calibrate.py",
+      "degree": 8
+    },
+    {
+      "id": "drone_control_action_spaces_motor_residual_check_actuators_main",
+      "label": "main()",
+      "source_file": "drone_control/action_spaces/motor_residual/check_actuators.py",
+      "degree": 7
+    }
+  ],
+  "3": [
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_enums_dronemodel",
+      "label": "DroneModel",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/utils/enums.py",
+      "degree": 41
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_enums_physics",
+      "label": "Physics",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/utils/enums.py",
+      "degree": 33
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_dslpidcontrol_dslpidcontrol",
+      "label": "DSLPIDControl",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/control/DSLPIDControl.py",
+      "degree": 21
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary",
+      "label": "BaseAviary.py",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseAviary.py",
+      "degree": 21
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_velocityaviary_velocityaviary",
+      "label": "VelocityAviary",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/VelocityAviary.py",
+      "degree": 18
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_init",
+      "label": ".__init__()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseAviary.py",
+      "degree": 14
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_velocityaviary",
+      "label": "VelocityAviary.py",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/VelocityAviary.py",
+      "degree": 13
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_ctrlaviary",
+      "label": "CtrlAviary.py",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/CtrlAviary.py",
+      "degree": 12
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baserlaviary_baserlaviary_init",
+      "label": ".__init__()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseRLAviary.py",
+      "degree": 11
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_flythrugateavitary_flythrugateavitary_init",
+      "label": ".__init__()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/FlyThruGateAvitary.py",
+      "degree": 7
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_hoveraviary_hoveraviary_init",
+      "label": ".__init__()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/HoverAviary.py",
+      "degree": 7
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_multihoveraviary_multihoveraviary_init",
+      "label": ".__init__()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/MultiHoverAviary.py",
+      "degree": 7
+    }
+  ],
+  "4": [
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_examples_learn",
+      "label": "learn.py",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/examples/learn.py",
+      "degree": 25
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_logger_logger",
+      "label": "Logger",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/utils/Logger.py",
+      "degree": 22
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_examples_beta",
+      "label": "beta.py",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/examples/beta.py",
+      "degree": 20
+    },
+    {
+      "id": "time",
+      "label": "time",
+      "source_file": "",
+      "degree": 20
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_utils_sync",
+      "label": "sync()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/utils/utils.py",
+      "degree": 19
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_examples_downwash",
+      "label": "downwash.py",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/examples/downwash.py",
+      "degree": 17
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_utils",
+      "label": "utils.py",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/utils/utils.py",
+      "degree": 16
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_examples_learn_run",
+      "label": "run()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/examples/learn.py",
+      "degree": 15
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_utils_str2bool",
+      "label": "str2bool()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/utils/utils.py",
+      "degree": 12
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_examples_beta_run",
+      "label": "run()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/examples/beta.py",
+      "degree": 11
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_examples_downwash_run",
+      "label": "run()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/examples/downwash.py",
+      "degree": 11
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_examples_pid_run",
+      "label": "run()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/examples/pid.py",
+      "degree": 11
+    }
+  ],
+  "5": [
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_enums",
+      "label": "enums.py",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/utils/enums.py",
+      "degree": 26
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_enums_actiontype",
+      "label": "ActionType",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/utils/enums.py",
+      "degree": 25
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_enums_observationtype",
+      "label": "ObservationType",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/utils/enums.py",
+      "degree": 25
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_test_thrugate",
+      "label": "test_thrugate.py",
+      "source_file": "drone-control-using-reinforcement-learning/test_thrugate.py",
+      "degree": 24
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_train_thrugate",
+      "label": "train_thrugate.py",
+      "source_file": "drone-control-using-reinforcement-learning/train_thrugate.py",
+      "degree": 24
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_test_hover",
+      "label": "test_hover.py",
+      "source_file": "drone-control-using-reinforcement-learning/test_hover.py",
+      "degree": 22
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_train_hover",
+      "label": "train_hover.py",
+      "source_file": "drone-control-using-reinforcement-learning/train_hover.py",
+      "degree": 22
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baserlaviary_baserlaviary",
+      "label": "BaseRLAviary",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseRLAviary.py",
+      "degree": 21
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_hoveraviary_hoveraviary",
+      "label": "HoverAviary",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/HoverAviary.py",
+      "degree": 21
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_flythrugateavitary_flythrugateavitary",
+      "label": "FlyThruGateAvitary",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/FlyThruGateAvitary.py",
+      "degree": 20
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baserlaviary",
+      "label": "BaseRLAviary.py",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseRLAviary.py",
+      "degree": 19
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_multihoveraviary_multihoveraviary",
+      "label": "MultiHoverAviary",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/MultiHoverAviary.py",
+      "degree": 19
+    }
+  ],
+  "6": [
+    {
+      "id": "drone_control_action_spaces_motor_residual_curriculum_motorcurriculum",
+      "label": "MotorCurriculum",
+      "source_file": "drone_control/action_spaces/motor_residual/curriculum.py",
+      "degree": 28
+    },
+    {
+      "id": "tests_action_spaces_motor_residual_test_curriculum_testmotorcurriculum",
+      "label": "TestMotorCurriculum",
+      "source_file": "tests/action_spaces/motor_residual/test_curriculum.py",
+      "degree": 15
+    },
+    {
+      "id": "drone_control_action_spaces_motor_residual_curriculum",
+      "label": "curriculum.py",
+      "source_file": "drone_control/action_spaces/motor_residual/curriculum.py",
+      "degree": 14
+    },
+    {
+      "id": "tests_action_spaces_motor_residual_test_curriculum",
+      "label": "test_curriculum.py",
+      "source_file": "tests/action_spaces/motor_residual/test_curriculum.py",
+      "degree": 10
+    },
+    {
+      "id": "drone_control_action_spaces_motor_residual_curriculum_curriculumstage",
+      "label": "CurriculumStage",
+      "source_file": "drone_control/action_spaces/motor_residual/curriculum.py",
+      "degree": 9
+    },
+    {
+      "id": "drone_control_action_spaces_motor_residual_curriculum_default_motor_curriculum",
+      "label": "default_motor_curriculum()",
+      "source_file": "drone_control/action_spaces/motor_residual/curriculum.py",
+      "degree": 8
+    },
+    {
+      "id": "drone_control_action_spaces_motor_residual_curriculum_motorcurriculum_record_episode",
+      "label": ".record_episode()",
+      "source_file": "drone_control/action_spaces/motor_residual/curriculum.py",
+      "degree": 7
+    },
+    {
+      "id": "drone_control_action_spaces_motor_residual_env_dronemotorhoverenv_record_curriculum_episode",
+      "label": "._record_curriculum_episode()",
+      "source_file": "drone_control/action_spaces/motor_residual/env.py",
+      "degree": 7
+    },
+    {
+      "id": "drone_control_action_spaces_motor_residual_curriculum_motorcurriculum_advance_if_ready",
+      "label": ".advance_if_ready()",
+      "source_file": "drone_control/action_spaces/motor_residual/curriculum.py",
+      "degree": 6
+    },
+    {
+      "id": "drone_control_action_spaces_motor_residual_curriculum_motorcurriculum_current_stage",
+      "label": ".current_stage()",
+      "source_file": "drone_control/action_spaces/motor_residual/curriculum.py",
+      "degree": 6
+    },
+    {
+      "id": "tests_action_spaces_motor_residual_test_curriculum_testmotorcurriculum_test_advance_requires_all_metrics_not_reward",
+      "label": ".test_advance_requires_all_metrics_not_reward()",
+      "source_file": "tests/action_spaces/motor_residual/test_curriculum.py",
+      "degree": 6
+    },
+    {
+      "id": "tests_action_spaces_motor_residual_test_curriculum_testmotorcurriculum_test_environment_records_metrics_and_advances_stage_once",
+      "label": ".test_environment_records_metrics_and_advances_stage_once()",
+      "source_file": "tests/action_spaces/motor_residual/test_curriculum.py",
+      "degree": 6
+    }
+  ],
+  "7": [
+    {
+      "id": "matplotlib_pyplot",
+      "label": "matplotlib_pyplot",
+      "source_file": "",
+      "degree": 33
+    },
+    {
+      "id": "tools_visualization_visualize_results",
+      "label": "visualize_results.py",
+      "source_file": "tools/visualization/visualize_results.py",
+      "degree": 22
+    },
+    {
+      "id": "pandas",
+      "label": "pandas",
+      "source_file": "",
+      "degree": 13
+    },
+    {
+      "id": "tools_visualization_visualize_results_plot_trajectories_folder",
+      "label": "plot_trajectories_folder()",
+      "source_file": "tools/visualization/visualize_results.py",
+      "degree": 10
+    },
+    {
+      "id": "tools_visualization_visualize_results_save",
+      "label": "_save()",
+      "source_file": "tools/visualization/visualize_results.py",
+      "degree": 9
+    },
+    {
+      "id": "tools_visualization_visualize_results_ensure_dir",
+      "label": "_ensure_dir()",
+      "source_file": "tools/visualization/visualize_results.py",
+      "degree": 8
+    },
+    {
+      "id": "tools_visualization_visualize_results_plot_balance_summary",
+      "label": "plot_balance_summary()",
+      "source_file": "tools/visualization/visualize_results.py",
+      "degree": 8
+    },
+    {
+      "id": "tools_visualization_visualize_results_plot_balance_trajectory",
+      "label": "plot_balance_trajectory()",
+      "source_file": "tools/visualization/visualize_results.py",
+      "degree": 8
+    },
+    {
+      "id": "tools_visualization_visualize_results_plot_training_log",
+      "label": "plot_training_log()",
+      "source_file": "tools/visualization/visualize_results.py",
+      "degree": 8
+    },
+    {
+      "id": "tools_visualization_visualize_results_load_traj_csv",
+      "label": "_load_traj_csv()",
+      "source_file": "tools/visualization/visualize_results.py",
+      "degree": 7
+    },
+    {
+      "id": "tools_visualization_visualize_results_main",
+      "label": "main()",
+      "source_file": "tools/visualization/visualize_results.py",
+      "degree": 7
+    },
+    {
+      "id": "tools_visualization_visualize_results_plot_compare_folders",
+      "label": "plot_compare_folders()",
+      "source_file": "tools/visualization/visualize_results.py",
+      "degree": 7
+    }
+  ],
+  "8": [
+    {
+      "id": "drone_control_action_spaces_motor_residual_env_dronemotorhoverenv",
+      "label": "DroneMotorHoverEnv",
+      "source_file": "drone_control/action_spaces/motor_residual/env.py",
+      "degree": 54
+    },
+    {
+      "id": "drone_control_action_spaces_motor_residual_env_dronemotorhoverenv_reset",
+      "label": ".reset()",
+      "source_file": "drone_control/action_spaces/motor_residual/env.py",
+      "degree": 16
+    },
+    {
+      "id": "drone_control_action_spaces_motor_residual_env_dronemotorhoverenv_init",
+      "label": ".__init__()",
+      "source_file": "drone_control/action_spaces/motor_residual/env.py",
+      "degree": 12
+    },
+    {
+      "id": "drone_control_action_spaces_motor_residual_env_py_any",
+      "label": "Any",
+      "source_file": "",
+      "degree": 12
+    },
+    {
+      "id": "drone_control_action_spaces_motor_residual_curriculum_episodeconditions",
+      "label": "EpisodeConditions",
+      "source_file": "drone_control/action_spaces/motor_residual/curriculum.py",
+      "degree": 6
+    },
+    {
+      "id": "drone_control_action_spaces_motor_residual_env_box",
+      "label": "Box",
+      "source_file": "drone_control/action_spaces/motor_residual/env.py",
+      "degree": 5
+    },
+    {
+      "id": "drone_control_action_spaces_motor_residual_env_dronemotorhoverenv_apply_domain_randomization_to_scene",
+      "label": "._apply_domain_randomization_to_scene()",
+      "source_file": "drone_control/action_spaces/motor_residual/env.py",
+      "degree": 5
+    },
+    {
+      "id": "drone_control_action_spaces_motor_residual_env_dronemotorhoverenv_apply_initial_pose_to_scene",
+      "label": "._apply_initial_pose_to_scene()",
+      "source_file": "drone_control/action_spaces/motor_residual/env.py",
+      "degree": 5
+    },
+    {
+      "id": "drone_control_action_spaces_motor_residual_env_load_motor_calibration",
+      "label": "load_motor_calibration()",
+      "source_file": "drone_control/action_spaces/motor_residual/env.py",
+      "degree": 5
+    },
+    {
+      "id": "drone_control_action_spaces_motor_residual_curriculum_motorcurriculum_sample_episode",
+      "label": ".sample_episode()",
+      "source_file": "drone_control/action_spaces/motor_residual/curriculum.py",
+      "degree": 4
+    },
+    {
+      "id": "drone_control_action_spaces_motor_residual_env_dronemotorhoverenv_curriculum_info",
+      "label": "._curriculum_info()",
+      "source_file": "drone_control/action_spaces/motor_residual/env.py",
+      "degree": 4
+    },
+    {
+      "id": "drone_control_action_spaces_motor_residual_env_dronemotorhoverenv_init_episode_state",
+      "label": "._init_episode_state()",
+      "source_file": "drone_control/action_spaces/motor_residual/env.py",
+      "degree": 4
+    }
+  ],
+  "9": [
+    {
+      "id": "drone_control_action_spaces_velocity_ned_control_mavsdk",
+      "label": "control_mavsdk.py",
+      "source_file": "drone_control/action_spaces/velocity_ned/control_mavsdk.py",
+      "degree": 13
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_control_mavsdk_run",
+      "label": "run()",
+      "source_file": "drone_control/action_spaces/velocity_ned/control_mavsdk.py",
+      "degree": 9
+    },
+    {
+      "id": "tools_diagnostics_mavsdk_takeoff",
+      "label": "mavsdk_takeoff.py",
+      "source_file": "tools/diagnostics/mavsdk_takeoff.py",
+      "degree": 9
+    },
+    {
+      "id": "tools_diagnostics_mavsdk_takeoff_monitor",
+      "label": "monitor()",
+      "source_file": "tools/diagnostics/mavsdk_takeoff.py",
+      "degree": 8
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_control_mavsdk_get_observation",
+      "label": "get_observation()",
+      "source_file": "drone_control/action_spaces/velocity_ned/control_mavsdk.py",
+      "degree": 7
+    },
+    {
+      "id": "tools_diagnostics_mavsdk_takeoff_get_observation",
+      "label": "get_observation()",
+      "source_file": "tools/diagnostics/mavsdk_takeoff.py",
+      "degree": 7
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_control_mavsdk_save_trajectory",
+      "label": "save_trajectory()",
+      "source_file": "drone_control/action_spaces/velocity_ned/control_mavsdk.py",
+      "degree": 4
+    },
+    {
+      "id": "tools_diagnostics_mavsdk_takeoff_print_diagnostics",
+      "label": "print_diagnostics()",
+      "source_file": "tools/diagnostics/mavsdk_takeoff.py",
+      "degree": 4
+    },
+    {
+      "id": "tools_diagnostics_mavsdk_takeoff_run",
+      "label": "run()",
+      "source_file": "tools/diagnostics/mavsdk_takeoff.py",
+      "degree": 4
+    },
+    {
+      "id": "tools_diagnostics_mavsdk_takeoff_py_system",
+      "label": "System",
+      "source_file": "",
+      "degree": 3
+    },
+    {
+      "id": "mavsdk",
+      "label": "mavsdk",
+      "source_file": "",
+      "degree": 2
+    },
+    {
+      "id": "mavsdk_action",
+      "label": "mavsdk_action",
+      "source_file": "",
+      "degree": 2
+    }
+  ],
+  "10": [
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_getdronestatevector",
+      "label": "._getDroneStateVector()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseAviary.py",
+      "degree": 16
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_ctrlaviary_ctrlaviary_computeobs",
+      "label": "._computeObs()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/CtrlAviary.py",
+      "degree": 3
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_flythrugateavitary_flythrugateavitary_computereward",
+      "label": "._computeReward()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/FlyThruGateAvitary.py",
+      "degree": 3
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_flythrugateavitary_flythrugateavitary_computetruncated",
+      "label": "._computeTruncated()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/FlyThruGateAvitary.py",
+      "degree": 3
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_hoveraviary_hoveraviary_computereward",
+      "label": "._computeReward()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/HoverAviary.py",
+      "degree": 3
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_hoveraviary_hoveraviary_computeterminated",
+      "label": "._computeTerminated()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/HoverAviary.py",
+      "degree": 3
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_hoveraviary_hoveraviary_computetruncated",
+      "label": "._computeTruncated()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/HoverAviary.py",
+      "degree": 3
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_multihoveraviary_multihoveraviary_computereward",
+      "label": "._computeReward()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/MultiHoverAviary.py",
+      "degree": 3
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_multihoveraviary_multihoveraviary_computeterminated",
+      "label": "._computeTerminated()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/MultiHoverAviary.py",
+      "degree": 3
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_multihoveraviary_multihoveraviary_computetruncated",
+      "label": "._computeTruncated()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/MultiHoverAviary.py",
+      "degree": 3
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_velocityaviary_velocityaviary_computeobs",
+      "label": "._computeObs()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/VelocityAviary.py",
+      "degree": 3
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_velocityaviary_velocityaviary_preprocessaction",
+      "label": "._preprocessAction()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/VelocityAviary.py",
+      "degree": 3
+    }
+  ],
+  "11": [
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary",
+      "label": "BaseAviary",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseAviary.py",
+      "degree": 46
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_dynamics",
+      "label": "._dynamics()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseAviary.py",
+      "degree": 4
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_actionspace",
+      "label": "._actionSpace()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseAviary.py",
+      "degree": 3
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_observationspace",
+      "label": "._observationSpace()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseAviary.py",
+      "degree": 3
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_parseurdfparameters",
+      "label": "._parseURDFParameters()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseAviary.py",
+      "degree": 3
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_close",
+      "label": ".close()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseAviary.py",
+      "degree": 2
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_getadjacencymatrix",
+      "label": "._getAdjacencyMatrix()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseAviary.py",
+      "degree": 2
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_getdroneids",
+      "label": ".getDroneIds()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseAviary.py",
+      "degree": 2
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_getpybulletclient",
+      "label": ".getPyBulletClient()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseAviary.py",
+      "degree": 2
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_integrateq",
+      "label": "._integrateQ()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseAviary.py",
+      "degree": 2
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_normalizedactiontorpm",
+      "label": "._normalizedActionToRPM()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseAviary.py",
+      "degree": 2
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_render",
+      "label": ".render()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseAviary.py",
+      "degree": 2
+    }
+  ],
+  "12": [
+    {
+      "id": "argparse",
+      "label": "argparse",
+      "source_file": "",
+      "degree": 33
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_control_disturbance",
+      "label": "control_disturbance.py",
+      "source_file": "drone_control/action_spaces/velocity_ned/control_disturbance.py",
+      "degree": 21
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_control_projectairsim",
+      "label": "control_projectairsim.py",
+      "source_file": "drone_control/action_spaces/velocity_ned/control_projectairsim.py",
+      "degree": 18
+    },
+    {
+      "id": "asyncio",
+      "label": "asyncio",
+      "source_file": "",
+      "degree": 16
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_control_disturbance_run_control",
+      "label": "run_control()",
+      "source_file": "drone_control/action_spaces/velocity_ned/control_disturbance.py",
+      "degree": 9
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_control_projectairsim_run_control",
+      "label": "run_control()",
+      "source_file": "drone_control/action_spaces/velocity_ned/control_projectairsim.py",
+      "degree": 8
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_control_disturbance_plot_trajectory",
+      "label": "_plot_trajectory()",
+      "source_file": "drone_control/action_spaces/velocity_ned/control_disturbance.py",
+      "degree": 6
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_control_projectairsim_plot_trajectory",
+      "label": "_plot_trajectory()",
+      "source_file": "drone_control/action_spaces/velocity_ned/control_projectairsim.py",
+      "degree": 6
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_control_disturbance_save_csv",
+      "label": "_save_csv()",
+      "source_file": "drone_control/action_spaces/velocity_ned/control_disturbance.py",
+      "degree": 5
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_control_projectairsim_save_csv",
+      "label": "_save_csv()",
+      "source_file": "drone_control/action_spaces/velocity_ned/control_projectairsim.py",
+      "degree": 5
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_control_disturbance_parse_args",
+      "label": "parse_args()",
+      "source_file": "drone_control/action_spaces/velocity_ned/control_disturbance.py",
+      "degree": 2
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_control_projectairsim_parse_args",
+      "label": "parse_args()",
+      "source_file": "drone_control/action_spaces/velocity_ned/control_projectairsim.py",
+      "degree": 2
+    }
+  ],
+  "13": [
+    {
+      "id": "numpy",
+      "label": "numpy",
+      "source_file": "",
+      "degree": 88
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_evaluate_balance",
+      "label": "evaluate_balance.py",
+      "source_file": "drone_control/action_spaces/velocity_ned/evaluate_balance.py",
+      "degree": 25
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_evaluate_balance_evaluate",
+      "label": "evaluate()",
+      "source_file": "drone_control/action_spaces/velocity_ned/evaluate_balance.py",
+      "degree": 11
+    },
+    {
+      "id": "sys",
+      "label": "sys",
+      "source_file": "",
+      "degree": 10
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_evaluate_balance_plot_summary",
+      "label": "_plot_summary()",
+      "source_file": "drone_control/action_spaces/velocity_ned/evaluate_balance.py",
+      "degree": 8
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_evaluate_balance_plot_recovery_curves",
+      "label": "_plot_recovery_curves()",
+      "source_file": "drone_control/action_spaces/velocity_ned/evaluate_balance.py",
+      "degree": 7
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_evaluate_balance_run_trial",
+      "label": "_run_trial()",
+      "source_file": "drone_control/action_spaces/velocity_ned/evaluate_balance.py",
+      "degree": 7
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_evaluate_balance_save_trajectory_csv",
+      "label": "_save_trajectory_csv()",
+      "source_file": "drone_control/action_spaces/velocity_ned/evaluate_balance.py",
+      "degree": 7
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_evaluate_balance_trialresult",
+      "label": "TrialResult",
+      "source_file": "drone_control/action_spaces/velocity_ned/evaluate_balance.py",
+      "degree": 7
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_evaluate_balance_save_results_csv",
+      "label": "_save_results_csv()",
+      "source_file": "drone_control/action_spaces/velocity_ned/evaluate_balance.py",
+      "degree": 6
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_evaluate_balance_print_table",
+      "label": "_print_table()",
+      "source_file": "drone_control/action_spaces/velocity_ned/evaluate_balance.py",
+      "degree": 5
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_examples_debug",
+      "label": "debug.py",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/examples/debug.py",
+      "degree": 4
+    }
+  ],
+  "14": [
+    {
+      "id": "drone_control_using_reinforcement_learning_github_workflows_release_deploy_steps",
+      "label": "steps",
+      "source_file": "drone-control-using-reinforcement-learning/.github/workflows/release.yml",
+      "degree": 5
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_github_workflows_release_run_tests_steps",
+      "label": "steps",
+      "source_file": "drone-control-using-reinforcement-learning/.github/workflows/release.yml",
+      "degree": 5
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_github_workflows_release_steps_with",
+      "label": "with",
+      "source_file": "drone-control-using-reinforcement-learning/.github/workflows/release.yml",
+      "degree": 5
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_github_workflows_release",
+      "label": "release.yml",
+      "source_file": "drone-control-using-reinforcement-learning/.github/workflows/release.yml",
+      "degree": 4
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_github_workflows_release_jobs_deploy",
+      "label": "deploy",
+      "source_file": "drone-control-using-reinforcement-learning/.github/workflows/release.yml",
+      "degree": 4
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_github_workflows_release_jobs",
+      "label": "jobs",
+      "source_file": "drone-control-using-reinforcement-learning/.github/workflows/release.yml",
+      "degree": 3
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_github_workflows_release_jobs_run_tests",
+      "label": "run_tests",
+      "source_file": "drone-control-using-reinforcement-learning/.github/workflows/release.yml",
+      "degree": 3
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_github_workflows_release_on",
+      "label": "on",
+      "source_file": "drone-control-using-reinforcement-learning/.github/workflows/release.yml",
+      "degree": 2
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_github_workflows_release_on_release",
+      "label": "release",
+      "source_file": "drone-control-using-reinforcement-learning/.github/workflows/release.yml",
+      "degree": 2
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_github_workflows_release_permissions",
+      "label": "permissions",
+      "source_file": "drone-control-using-reinforcement-learning/.github/workflows/release.yml",
+      "degree": 2
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_github_workflows_release_steps_name",
+      "label": "name",
+      "source_file": "drone-control-using-reinforcement-learning/.github/workflows/release.yml",
+      "degree": 2
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_github_workflows_release_steps_run",
+      "label": "run",
+      "source_file": "drone-control-using-reinforcement-learning/.github/workflows/release.yml",
+      "degree": 2
+    }
+  ],
+  "15": [
+    {
+      "id": "tests_action_spaces_motor_residual_test_reward_testmotorreward",
+      "label": "TestMotorReward",
+      "source_file": "tests/action_spaces/motor_residual/test_reward.py",
+      "degree": 18
+    },
+    {
+      "id": "tests_action_spaces_motor_residual_test_reward_testmotorreward_reward",
+      "label": ".reward()",
+      "source_file": "tests/action_spaces/motor_residual/test_reward.py",
+      "degree": 11
+    },
+    {
+      "id": "drone_control_action_spaces_motor_residual_env_rewardconfig",
+      "label": "RewardConfig",
+      "source_file": "drone_control/action_spaces/motor_residual/env.py",
+      "degree": 7
+    },
+    {
+      "id": "tests_action_spaces_motor_residual_test_reward",
+      "label": "test_reward.py",
+      "source_file": "tests/action_spaces/motor_residual/test_reward.py",
+      "degree": 7
+    },
+    {
+      "id": "tests_action_spaces_motor_residual_test_reward_testmotorreward_set_state",
+      "label": ".set_state()",
+      "source_file": "tests/action_spaces/motor_residual/test_reward.py",
+      "degree": 7
+    },
+    {
+      "id": "drone_control_action_spaces_motor_residual_env_dronemotorhoverenv_update_task_status",
+      "label": "._update_task_status()",
+      "source_file": "drone_control/action_spaces/motor_residual/env.py",
+      "degree": 5
+    },
+    {
+      "id": "tests_action_spaces_motor_residual_test_reward_testmotorreward_test_continuous_reward_terms_are_scaled_to_control_period",
+      "label": ".test_continuous_reward_terms_are_scaled_to_control_period()",
+      "source_file": "tests/action_spaces/motor_residual/test_reward.py",
+      "degree": 5
+    },
+    {
+      "id": "drone_control_action_spaces_motor_residual_env_dronemotorhoverenv_check_termination",
+      "label": "._check_termination()",
+      "source_file": "drone_control/action_spaces/motor_residual/env.py",
+      "degree": 4
+    },
+    {
+      "id": "tests_action_spaces_motor_residual_test_reward_testmotorreward_test_ground_touch_applies_strong_crash_penalty",
+      "label": ".test_ground_touch_applies_strong_crash_penalty()",
+      "source_file": "tests/action_spaces/motor_residual/test_reward.py",
+      "degree": 4
+    },
+    {
+      "id": "tests_action_spaces_motor_residual_test_reward_testmotorreward_setup",
+      "label": ".setUp()",
+      "source_file": "tests/action_spaces/motor_residual/test_reward.py",
+      "degree": 3
+    },
+    {
+      "id": "tests_action_spaces_motor_residual_test_reward_testmotorreward_test_approach_to_goal_is_rewarded",
+      "label": ".test_approach_to_goal_is_rewarded()",
+      "source_file": "tests/action_spaces/motor_residual/test_reward.py",
+      "degree": 3
+    },
+    {
+      "id": "tests_action_spaces_motor_residual_test_reward_testmotorreward_test_invalid_reward_config_is_rejected",
+      "label": ".test_invalid_reward_config_is_rejected()",
+      "source_file": "tests/action_spaces/motor_residual/test_reward.py",
+      "degree": 3
+    }
+  ],
+  "16": [
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_betaaviary_betaaviary",
+      "label": "BetaAviary",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BetaAviary.py",
+      "degree": 19
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_betaaviary_betaaviary_step",
+      "label": ".step()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BetaAviary.py",
+      "degree": 4
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_betaaviary_betaaviary_computeobs",
+      "label": "._computeObs()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BetaAviary.py",
+      "degree": 3
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_betaaviary_betaaviary_actionspace",
+      "label": "._actionSpace()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BetaAviary.py",
+      "degree": 2
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_betaaviary_betaaviary_computeinfo",
+      "label": "._computeInfo()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BetaAviary.py",
+      "degree": 2
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_betaaviary_betaaviary_computereward",
+      "label": "._computeReward()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BetaAviary.py",
+      "degree": 2
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_betaaviary_betaaviary_computeterminated",
+      "label": "._computeTerminated()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BetaAviary.py",
+      "degree": 2
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_betaaviary_betaaviary_computetruncated",
+      "label": "._computeTruncated()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BetaAviary.py",
+      "degree": 2
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_betaaviary_betaaviary_ctbr2beta",
+      "label": ".ctbr2beta()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BetaAviary.py",
+      "degree": 2
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_betaaviary_betaaviary_observationspace",
+      "label": "._observationSpace()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BetaAviary.py",
+      "degree": 2
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_betaaviary_betaaviary_preprocessaction",
+      "label": "._preprocessAction()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BetaAviary.py",
+      "degree": 2
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_betaaviary_rationale_19",
+      "label": "Multi-drone environment class for use of BetaFlight controller.",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BetaAviary.py",
+      "degree": 1
+    }
+  ],
+  "17": [
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_basecontrol_basecontrol",
+      "label": "BaseControl",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/control/BaseControl.py",
+      "degree": 12
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_basecontrol_basecontrol_init",
+      "label": ".__init__()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/control/BaseControl.py",
+      "degree": 6
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_dslpidcontrol_dslpidcontrol_init",
+      "label": ".__init__()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/control/DSLPIDControl.py",
+      "degree": 5
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_basecontrol_basecontrol_reset",
+      "label": ".reset()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/control/BaseControl.py",
+      "degree": 4
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_dslpidcontrol_dslpidcontrol_reset",
+      "label": ".reset()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/control/DSLPIDControl.py",
+      "degree": 4
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_basecontrol_basecontrol_computecontrol",
+      "label": ".computeControl()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/control/BaseControl.py",
+      "degree": 3
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_basecontrol_basecontrol_computecontrolfromstate",
+      "label": ".computeControlFromState()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/control/BaseControl.py",
+      "degree": 3
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_basecontrol_basecontrol_geturdfparameter",
+      "label": "._getURDFParameter()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/control/BaseControl.py",
+      "degree": 3
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_basecontrol_basecontrol_setpidcoefficients",
+      "label": ".setPIDCoefficients()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/control/BaseControl.py",
+      "degree": 2
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_basecontrol_py_object",
+      "label": "object",
+      "source_file": "",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_basecontrol_rationale_108",
+      "label": "Abstract method to compute the control action for a single drone. It must be…",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/control/BaseControl.py",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_basecontrol_rationale_146",
+      "label": "Sets the coefficients of a PID controller. This method throws an error message…",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/control/BaseControl.py",
+      "degree": 1
+    }
+  ],
+  "18": [
+    {
+      "id": "analysis_legacy_with_disturbance_phantichketqua_goc",
+      "label": "with_disturbance/phantichketqua_goc.py",
+      "source_file": "analysis/legacy/with_disturbance/phantichketqua_goc.py",
+      "degree": 15
+    },
+    {
+      "id": "analysis_legacy_with_disturbance_phantichketqua_goc_compute_peak",
+      "label": "compute_peak()",
+      "source_file": "analysis/legacy/with_disturbance/phantichketqua_goc.py",
+      "degree": 3
+    },
+    {
+      "id": "analysis_legacy_with_disturbance_phantichketqua_goc_compute_recovery",
+      "label": "compute_recovery()",
+      "source_file": "analysis/legacy/with_disturbance/phantichketqua_goc.py",
+      "degree": 3
+    },
+    {
+      "id": "analysis_legacy_with_disturbance_phantichketqua_goc_compute_time_in_band",
+      "label": "compute_time_in_band()",
+      "source_file": "analysis/legacy/with_disturbance/phantichketqua_goc.py",
+      "degree": 3
+    },
+    {
+      "id": "analysis_legacy_with_disturbance_phantichketqua_goc_shade_band",
+      "label": "_shade_band()",
+      "source_file": "analysis/legacy/with_disturbance/phantichketqua_goc.py",
+      "degree": 3
+    },
+    {
+      "id": "analysis_legacy_with_disturbance_phantichketqua_goc_mark_peak",
+      "label": "_mark_peak()",
+      "source_file": "analysis/legacy/with_disturbance/phantichketqua_goc.py",
+      "degree": 2
+    },
+    {
+      "id": "analysis_legacy_with_disturbance_phantichketqua_goc_vline_collision",
+      "label": "_vline_collision()",
+      "source_file": "analysis/legacy/with_disturbance/phantichketqua_goc.py",
+      "degree": 2
+    },
+    {
+      "id": "analysis_legacy_with_disturbance_phantichketqua_goc_vline_settled",
+      "label": "_vline_settled()",
+      "source_file": "analysis/legacy/with_disturbance/phantichketqua_goc.py",
+      "degree": 2
+    },
+    {
+      "id": "analysis_legacy_with_disturbance_phantichketqua_goc_band_str",
+      "label": "_band_str()",
+      "source_file": "analysis/legacy/with_disturbance/phantichketqua_goc.py",
+      "degree": 1
+    },
+    {
+      "id": "analysis_legacy_with_disturbance_phantichketqua_goc_rationale_1",
+      "label": "KẾT QUẢ 2: PHÂN TÍCH QUỸĐẠO GÓC (ROLL, PITCH, YAW) Các chỉ số được tính (RIÊNG…",
+      "source_file": "analysis/legacy/with_disturbance/phantichketqua_goc.py",
+      "degree": 1
+    },
+    {
+      "id": "analysis_legacy_with_disturbance_phantichketqua_goc_rationale_107",
+      "label": "Trả về (giá trị đỉnh có dấu, |đỉnh|, thời điểm xảy ra đỉnh).",
+      "source_file": "analysis/legacy/with_disturbance/phantichketqua_goc.py",
+      "degree": 1
+    },
+    {
+      "id": "analysis_legacy_with_disturbance_phantichketqua_goc_rationale_156",
+      "label": "Tô nền các khoảng thời gian mà |góc| nằm trong vùng cân bằng.",
+      "source_file": "analysis/legacy/with_disturbance/phantichketqua_goc.py",
+      "degree": 1
+    }
+  ],
+  "19": [
+    {
+      "id": "drone_control_action_spaces_velocity_ned_env_dronehoveringenv",
+      "label": "DroneHoveringEnv",
+      "source_file": "drone_control/action_spaces/velocity_ned/env.py",
+      "degree": 34
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_train",
+      "label": "velocity_ned/train.py",
+      "source_file": "drone_control/action_spaces/velocity_ned/train.py",
+      "degree": 19
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_train_test",
+      "label": "test()",
+      "source_file": "drone_control/action_spaces/velocity_ned/train.py",
+      "degree": 7
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_train_train",
+      "label": "train()",
+      "source_file": "drone_control/action_spaces/velocity_ned/train.py",
+      "degree": 7
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_train_plot_trajectory",
+      "label": "_plot_trajectory()",
+      "source_file": "drone_control/action_spaces/velocity_ned/train.py",
+      "degree": 6
+    },
+    {
+      "id": "matplotlib",
+      "label": "matplotlib",
+      "source_file": "",
+      "degree": 6
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_train_plot_training_results",
+      "label": "_plot_training_results()",
+      "source_file": "drone_control/action_spaces/velocity_ned/train.py",
+      "degree": 5
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_train_main",
+      "label": "main()",
+      "source_file": "drone_control/action_spaces/velocity_ned/train.py",
+      "degree": 4
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_train_smooth",
+      "label": "_smooth()",
+      "source_file": "drone_control/action_spaces/velocity_ned/train.py",
+      "degree": 4
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_train_parse_args",
+      "label": "parse_args()",
+      "source_file": "drone_control/action_spaces/velocity_ned/train.py",
+      "degree": 3
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_env_dronehoveringenv_collision_callback",
+      "label": ".collision_callback()",
+      "source_file": "drone_control/action_spaces/velocity_ned/env.py",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_env_dronehoveringenv_render",
+      "label": ".render()",
+      "source_file": "drone_control/action_spaces/velocity_ned/env.py",
+      "degree": 1
+    }
+  ],
+  "20": [
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_step",
+      "label": ".step()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseAviary.py",
+      "degree": 17
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_computereward",
+      "label": "._computeReward()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseAviary.py",
+      "degree": 3
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_computeterminated",
+      "label": "._computeTerminated()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseAviary.py",
+      "degree": 3
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_computetruncated",
+      "label": "._computeTruncated()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseAviary.py",
+      "degree": 3
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_downwash",
+      "label": "._downwash()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseAviary.py",
+      "degree": 3
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_drag",
+      "label": "._drag()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseAviary.py",
+      "degree": 3
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_groundeffect",
+      "label": "._groundEffect()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseAviary.py",
+      "degree": 3
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_physics",
+      "label": "._physics()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseAviary.py",
+      "degree": 3
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_preprocessaction",
+      "label": "._preprocessAction()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseAviary.py",
+      "degree": 3
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_rationale_1053",
+      "label": "Pre-processes the action passed to `.step()` into motors' RPMs. Must be…",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseAviary.py",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_rationale_1068",
+      "label": "Computes the current reward value(s). Must be implemented in a subclass.",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseAviary.py",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_rationale_1078",
+      "label": "Computes the current terminated value(s). Must be implemented in a subclass.",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseAviary.py",
+      "degree": 1
+    }
+  ],
+  "21": [
+    {
+      "id": "drone_control_action_spaces_motor_residual_env",
+      "label": "motor_residual/env.py",
+      "source_file": "drone_control/action_spaces/motor_residual/env.py",
+      "degree": 31
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_env",
+      "label": "velocity_ned/env.py",
+      "source_file": "drone_control/action_spaces/velocity_ned/env.py",
+      "degree": 19
+    },
+    {
+      "id": "drone_control_evaluation_protocol",
+      "label": "evaluation_protocol.py",
+      "source_file": "drone_control/evaluation_protocol.py",
+      "degree": 16
+    },
+    {
+      "id": "drone_control_task_contract",
+      "label": "task_contract.py",
+      "source_file": "drone_control/task_contract.py",
+      "degree": 11
+    },
+    {
+      "id": "dataclasses",
+      "label": "dataclasses",
+      "source_file": "",
+      "degree": 8
+    },
+    {
+      "id": "typing",
+      "label": "typing",
+      "source_file": "",
+      "degree": 8
+    },
+    {
+      "id": "collections",
+      "label": "collections",
+      "source_file": "",
+      "degree": 5
+    },
+    {
+      "id": "projectairsim",
+      "label": "projectairsim",
+      "source_file": "",
+      "degree": 5
+    },
+    {
+      "id": "projectairsim_utils",
+      "label": "projectairsim_utils",
+      "source_file": "",
+      "degree": 5
+    },
+    {
+      "id": "threading",
+      "label": "threading",
+      "source_file": "",
+      "degree": 3
+    },
+    {
+      "id": "gymnasium_spaces",
+      "label": "gymnasium_spaces",
+      "source_file": "",
+      "degree": 2
+    },
+    {
+      "id": "drone_control_action_spaces_motor_residual_env_rationale_1",
+      "label": "Gymnasium environment điều khiển trực tiếp bốn rotor của quadrotor. Action được…",
+      "source_file": "drone_control/action_spaces/motor_residual/env.py",
+      "degree": 1
+    }
+  ],
+  "22": [
+    {
+      "id": "drone_control_action_spaces_motor_residual_env_dronemotorhoverenv_step",
+      "label": ".step()",
+      "source_file": "drone_control/action_spaces/motor_residual/env.py",
+      "degree": 19
+    },
+    {
+      "id": "tests_action_spaces_motor_residual_test_env_testmotorruntimesafety",
+      "label": "TestMotorRuntimeSafety",
+      "source_file": "tests/action_spaces/motor_residual/test_env.py",
+      "degree": 9
+    },
+    {
+      "id": "drone_control_action_spaces_motor_residual_env_dronemotorhoverenv_calculate_reward",
+      "label": ".calculate_reward()",
+      "source_file": "drone_control/action_spaces/motor_residual/env.py",
+      "degree": 7
+    },
+    {
+      "id": "drone_control_action_spaces_motor_residual_env_dronemotorhoverenv_require_runtime",
+      "label": "._require_runtime()",
+      "source_file": "drone_control/action_spaces/motor_residual/env.py",
+      "degree": 5
+    },
+    {
+      "id": "drone_control_action_spaces_motor_residual_env_py_ndarray",
+      "label": "ndarray",
+      "source_file": "",
+      "degree": 5
+    },
+    {
+      "id": "drone_control_action_spaces_motor_residual_env_dronemotorhoverenv_get_reward",
+      "label": ".get_reward()",
+      "source_file": "drone_control/action_spaces/motor_residual/env.py",
+      "degree": 3
+    },
+    {
+      "id": "drone_control_action_spaces_motor_residual_env_dronemotorhoverenv_wait_for_pose_sync_async",
+      "label": "._wait_for_pose_sync_async()",
+      "source_file": "drone_control/action_spaces/motor_residual/env.py",
+      "degree": 2
+    },
+    {
+      "id": "tests_action_spaces_motor_residual_test_env_testmotorruntimesafety_test_pose_timeout_stops_all_rotors",
+      "label": ".test_pose_timeout_stops_all_rotors()",
+      "source_file": "tests/action_spaces/motor_residual/test_env.py",
+      "degree": 2
+    },
+    {
+      "id": "tests_action_spaces_motor_residual_test_env_testmotorruntimesafety_test_rejected_motor_command_raises_and_stops_all_rotors",
+      "label": ".test_rejected_motor_command_raises_and_stops_all_rotors()",
+      "source_file": "tests/action_spaces/motor_residual/test_env.py",
+      "degree": 2
+    },
+    {
+      "id": "tests_action_spaces_motor_residual_test_env_testmotorruntimesafety_test_simulation_exception_stops_all_rotors",
+      "label": ".test_simulation_exception_stops_all_rotors()",
+      "source_file": "tests/action_spaces/motor_residual/test_env.py",
+      "degree": 2
+    },
+    {
+      "id": "tests_action_spaces_motor_residual_test_env_testmotorruntimesafety_test_successful_step_updates_previous_motor_state",
+      "label": ".test_successful_step_updates_previous_motor_state()",
+      "source_file": "tests/action_spaces/motor_residual/test_env.py",
+      "degree": 2
+    },
+    {
+      "id": "drone_control_action_spaces_motor_residual_env_py_drone",
+      "label": "Drone",
+      "source_file": "",
+      "degree": 1
+    }
+  ],
+  "23": [
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_ctrlaviary_ctrlaviary",
+      "label": "CtrlAviary",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/CtrlAviary.py",
+      "degree": 20
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_ctrlaviary_ctrlaviary_actionspace",
+      "label": "._actionSpace()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/CtrlAviary.py",
+      "degree": 2
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_ctrlaviary_ctrlaviary_computeinfo",
+      "label": "._computeInfo()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/CtrlAviary.py",
+      "degree": 2
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_ctrlaviary_ctrlaviary_computereward",
+      "label": "._computeReward()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/CtrlAviary.py",
+      "degree": 2
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_ctrlaviary_ctrlaviary_computeterminated",
+      "label": "._computeTerminated()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/CtrlAviary.py",
+      "degree": 2
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_ctrlaviary_ctrlaviary_computetruncated",
+      "label": "._computeTruncated()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/CtrlAviary.py",
+      "degree": 2
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_ctrlaviary_ctrlaviary_observationspace",
+      "label": "._observationSpace()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/CtrlAviary.py",
+      "degree": 2
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_ctrlaviary_ctrlaviary_preprocessaction",
+      "label": "._preprocessAction()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/CtrlAviary.py",
+      "degree": 2
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_ctrlaviary_rationale_124",
+      "label": "Pre-processes the action passed to `.step()` into motors' RPMs. Clips and…",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/CtrlAviary.py",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_ctrlaviary_rationale_145",
+      "label": "Computes the current reward value(s). Unused as this subclass is not meant for…",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/CtrlAviary.py",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_ctrlaviary_rationale_160",
+      "label": "Computes the current terminated value(s). Unused as this subclass is not meant…",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/CtrlAviary.py",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_ctrlaviary_rationale_175",
+      "label": "Computes the current truncated value(s). Unused as this subclass is not meant…",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/CtrlAviary.py",
+      "degree": 1
+    }
+  ],
+  "24": [
+    {
+      "id": "analysis_legacy_phantichketquatest",
+      "label": "phantichketquatest.py",
+      "source_file": "analysis/legacy/phantichketquatest.py",
+      "degree": 8
+    },
+    {
+      "id": "matplotlib_gridspec",
+      "label": "matplotlib_gridspec",
+      "source_file": "",
+      "degree": 8
+    },
+    {
+      "id": "analysis_legacy_phantichketqua_vitri",
+      "label": "legacy/phantichketqua_vitri.py",
+      "source_file": "analysis/legacy/phantichketqua_vitri.py",
+      "degree": 7
+    },
+    {
+      "id": "analysis_legacy_phantichketquatest2",
+      "label": "phantichketquatest2.py",
+      "source_file": "analysis/legacy/phantichketquatest2.py",
+      "degree": 7
+    },
+    {
+      "id": "analysis_legacy_phantichketqua_vitri_vline_pos",
+      "label": "_vline_pos()",
+      "source_file": "analysis/legacy/phantichketqua_vitri.py",
+      "degree": 2
+    },
+    {
+      "id": "analysis_legacy_phantichketquatest2_vline",
+      "label": "_vline()",
+      "source_file": "analysis/legacy/phantichketquatest2.py",
+      "degree": 2
+    },
+    {
+      "id": "analysis_legacy_phantichketquatest_vline_ang",
+      "label": "_vline_ang()",
+      "source_file": "analysis/legacy/phantichketquatest.py",
+      "degree": 2
+    },
+    {
+      "id": "analysis_legacy_phantichketquatest_vline_pos",
+      "label": "_vline_pos()",
+      "source_file": "analysis/legacy/phantichketquatest.py",
+      "degree": 2
+    },
+    {
+      "id": "analysis_legacy_phantichketqua_vitri_rationale_1",
+      "label": "KẾT QUẢ 1: PHÂN TÍCH QUỸĐẠO VỊ TRÍ (X, Y, Z) Các chỉ số được tính: - Thời gian…",
+      "source_file": "analysis/legacy/phantichketqua_vitri.py",
+      "degree": 1
+    },
+    {
+      "id": "analysis_legacy_phantichketqua_vitri_rationale_146",
+      "label": "Đường thẳng tại settling vị trí.",
+      "source_file": "analysis/legacy/phantichketqua_vitri.py",
+      "degree": 1
+    },
+    {
+      "id": "analysis_legacy_phantichketquatest2_rationale_1",
+      "label": "Phân tích kết quả bay từ file trajectory CSV. Các chỉ số được tính: Settling…",
+      "source_file": "analysis/legacy/phantichketquatest2.py",
+      "degree": 1
+    },
+    {
+      "id": "analysis_legacy_phantichketquatest2_rationale_97",
+      "label": "Đường thẳng đứng tại thời điểm hội tụ.",
+      "source_file": "analysis/legacy/phantichketquatest2.py",
+      "degree": 1
+    }
+  ],
+  "25": [
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_ctbrcontrol_ctbrcontrol",
+      "label": "CTBRControl",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/control/CTBRControl.py",
+      "degree": 12
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_ctbrcontrol_ctbrcontrol_init",
+      "label": ".__init__()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/control/CTBRControl.py",
+      "degree": 5
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_ctbrcontrol_ctbrcontrol_computecontrolfromstate",
+      "label": ".computeControlFromState()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/control/CTBRControl.py",
+      "degree": 4
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_ctbrcontrol_ctbrcontrol_computecontrol",
+      "label": ".computeControl()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/control/CTBRControl.py",
+      "degree": 3
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_ctbrcontrol_ctbrcontrol_geturdfparameter",
+      "label": "._getURDFParameter()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/control/CTBRControl.py",
+      "degree": 3
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_ctbrcontrol_ctbrcontrol_reset",
+      "label": ".reset()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/control/CTBRControl.py",
+      "degree": 3
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_ctbrcontrol_ctbrcontrol_setpidcoefficients",
+      "label": ".setPIDCoefficients()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/control/CTBRControl.py",
+      "degree": 2
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_ctbrcontrol_py_object",
+      "label": "object",
+      "source_file": "",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_ctbrcontrol_rationale_114",
+      "label": "Abstract method to compute the control action for a single drone. It must be…",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/control/CTBRControl.py",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_ctbrcontrol_rationale_14",
+      "label": "Base class for control. Implements `__init__()`, `reset(), and interface…",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/control/CTBRControl.py",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_ctbrcontrol_rationale_180",
+      "label": "Sets the coefficients of a PID controller. This method throws an error message…",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/control/CTBRControl.py",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_ctbrcontrol_rationale_218",
+      "label": "Reads a parameter from a drone's URDF file. This method is nothing more than a…",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/control/CTBRControl.py",
+      "degree": 1
+    }
+  ],
+  "26": [
+    {
+      "id": "tools_diagnostics_clock_manual_step",
+      "label": "clock_manual_step.py",
+      "source_file": "tools/diagnostics/clock_manual_step.py",
+      "degree": 9
+    },
+    {
+      "id": "tools_diagnostics_clock_manual_step_main",
+      "label": "main()",
+      "source_file": "tools/diagnostics/clock_manual_step.py",
+      "degree": 9
+    },
+    {
+      "id": "tools_diagnostics_clock_manual_step_dronewithdatasync",
+      "label": "DroneWithDataSync",
+      "source_file": "tools/diagnostics/clock_manual_step.py",
+      "degree": 8
+    },
+    {
+      "id": "tools_diagnostics_clock_manual_step_dronewithdatasync_displayimage",
+      "label": ".DisplayImage()",
+      "source_file": "tools/diagnostics/clock_manual_step.py",
+      "degree": 2
+    },
+    {
+      "id": "tools_diagnostics_clock_manual_step_dronewithdatasync_isdatasynced",
+      "label": ".IsDataSynced()",
+      "source_file": "tools/diagnostics/clock_manual_step.py",
+      "degree": 2
+    },
+    {
+      "id": "tools_diagnostics_clock_manual_step_dronewithdatasync_set_target_sim_time",
+      "label": ".set_target_sim_time()",
+      "source_file": "tools/diagnostics/clock_manual_step.py",
+      "degree": 2
+    },
+    {
+      "id": "tools_diagnostics_clock_manual_step_nanos_to_sec",
+      "label": "nanos_to_sec()",
+      "source_file": "tools/diagnostics/clock_manual_step.py",
+      "degree": 2
+    },
+    {
+      "id": "cv2",
+      "label": "cv2",
+      "source_file": "",
+      "degree": 1
+    },
+    {
+      "id": "tools_diagnostics_clock_manual_step_dronewithdatasync_imagecallback",
+      "label": ".ImageCallback()",
+      "source_file": "tools/diagnostics/clock_manual_step.py",
+      "degree": 1
+    },
+    {
+      "id": "tools_diagnostics_clock_manual_step_dronewithdatasync_posecallback",
+      "label": ".PoseCallback()",
+      "source_file": "tools/diagnostics/clock_manual_step.py",
+      "degree": 1
+    },
+    {
+      "id": "tools_diagnostics_clock_manual_step_py_drone",
+      "label": "Drone",
+      "source_file": "",
+      "degree": 1
+    },
+    {
+      "id": "tools_diagnostics_clock_manual_step_py_projectairsimclient",
+      "label": "ProjectAirSimClient",
+      "source_file": "",
+      "degree": 1
+    }
+  ],
+  "27": [
+    {
+      "id": "tests_action_spaces_motor_residual_test_env_testmotoractionmapping",
+      "label": "TestMotorActionMapping",
+      "source_file": "tests/action_spaces/motor_residual/test_env.py",
+      "degree": 14
+    },
+    {
+      "id": "drone_control_action_spaces_motor_residual_env_dronemotorhoverenv_action_to_motor_command",
+      "label": ".action_to_motor_command()",
+      "source_file": "drone_control/action_spaces/motor_residual/env.py",
+      "degree": 12
+    },
+    {
+      "id": "drone_control_action_spaces_motor_residual_env_motorcommand",
+      "label": "MotorCommand",
+      "source_file": "drone_control/action_spaces/motor_residual/env.py",
+      "degree": 2
+    },
+    {
+      "id": "tests_action_spaces_motor_residual_test_env_testmotoractionmapping_setup",
+      "label": ".setUp()",
+      "source_file": "tests/action_spaces/motor_residual/test_env.py",
+      "degree": 2
+    },
+    {
+      "id": "tests_action_spaces_motor_residual_test_env_testmotoractionmapping_test_action_outside_normalized_bounds_is_rejected",
+      "label": ".test_action_outside_normalized_bounds_is_rejected()",
+      "source_file": "tests/action_spaces/motor_residual/test_env.py",
+      "degree": 2
+    },
+    {
+      "id": "tests_action_spaces_motor_residual_test_env_testmotoractionmapping_test_actuator_map_uses_fl_fr_rl_rr_order",
+      "label": ".test_actuator_map_uses_fl_fr_rl_rr_order()",
+      "source_file": "tests/action_spaces/motor_residual/test_env.py",
+      "degree": 2
+    },
+    {
+      "id": "tests_action_spaces_motor_residual_test_env_testmotoractionmapping_test_full_action_bounds_cover_projectairsim_signal_range",
+      "label": ".test_full_action_bounds_cover_projectairsim_signal_range()",
+      "source_file": "tests/action_spaces/motor_residual/test_env.py",
+      "degree": 2
+    },
+    {
+      "id": "tests_action_spaces_motor_residual_test_env_testmotoractionmapping_test_hover_bias_moves_neutral_point_but_preserves_full_bounds",
+      "label": ".test_hover_bias_moves_neutral_point_but_preserves_full_bounds()",
+      "source_file": "tests/action_spaces/motor_residual/test_env.py",
+      "degree": 2
+    },
+    {
+      "id": "tests_action_spaces_motor_residual_test_env_testmotoractionmapping_test_invalid_action_shape_and_nonfinite_value_are_rejected",
+      "label": ".test_invalid_action_shape_and_nonfinite_value_are_rejected()",
+      "source_file": "tests/action_spaces/motor_residual/test_env.py",
+      "degree": 2
+    },
+    {
+      "id": "tests_action_spaces_motor_residual_test_env_testmotoractionmapping_test_rpm_is_always_within_projectairsim_bounds",
+      "label": ".test_rpm_is_always_within_projectairsim_bounds()",
+      "source_file": "tests/action_spaces/motor_residual/test_env.py",
+      "degree": 2
+    },
+    {
+      "id": "tests_action_spaces_motor_residual_test_env_testmotoractionmapping_test_rpm_to_control_signal_uses_square_relationship",
+      "label": ".test_rpm_to_control_signal_uses_square_relationship()",
+      "source_file": "tests/action_spaces/motor_residual/test_env.py",
+      "degree": 2
+    },
+    {
+      "id": "tests_action_spaces_motor_residual_test_env_testmotoractionmapping_test_zero_action_maps_to_hover_operating_point",
+      "label": ".test_zero_action_maps_to_hover_operating_point()",
+      "source_file": "tests/action_spaces/motor_residual/test_env.py",
+      "degree": 2
+    }
+  ],
+  "28": [
+    {
+      "id": "os",
+      "label": "os",
+      "source_file": "",
+      "degree": 52
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_train_short_episode",
+      "label": "train_short_episode.py",
+      "source_file": "drone_control/action_spaces/velocity_ned/train_short_episode.py",
+      "degree": 19
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_train_short_episode_test",
+      "label": "test()",
+      "source_file": "drone_control/action_spaces/velocity_ned/train_short_episode.py",
+      "degree": 7
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_train_short_episode_train",
+      "label": "train()",
+      "source_file": "drone_control/action_spaces/velocity_ned/train_short_episode.py",
+      "degree": 7
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_train_short_episode_plot_trajectory_episode",
+      "label": "_plot_trajectory_episode()",
+      "source_file": "drone_control/action_spaces/velocity_ned/train_short_episode.py",
+      "degree": 6
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_train_short_episode_plot_training_results",
+      "label": "_plot_training_results()",
+      "source_file": "drone_control/action_spaces/velocity_ned/train_short_episode.py",
+      "degree": 5
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_train_short_episode_main",
+      "label": "main()",
+      "source_file": "drone_control/action_spaces/velocity_ned/train_short_episode.py",
+      "degree": 4
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_train_short_episode_smooth",
+      "label": "_smooth()",
+      "source_file": "drone_control/action_spaces/velocity_ned/train_short_episode.py",
+      "degree": 4
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_train_short_episode_parse_args",
+      "label": "parse_args()",
+      "source_file": "drone_control/action_spaces/velocity_ned/train_short_episode.py",
+      "degree": 3
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_train_short_episode_rationale_1",
+      "label": "Huấn luyện PPO giữ quadcopter ổn định tại điểm mục tiêu (hover) trong môi…",
+      "source_file": "drone_control/action_spaces/velocity_ned/train_short_episode.py",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_train_short_episode_rationale_112",
+      "label": "Vòng lặp huấn luyện PPO với DroneHoveringEnv (ProjectAirSim). Args:…",
+      "source_file": "drone_control/action_spaces/velocity_ned/train_short_episode.py",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_train_short_episode_rationale_292",
+      "label": "Vẽ quỹ đạo 3D + X/Y/Z theo thời gian cho một episode, lưu thành một file.",
+      "source_file": "drone_control/action_spaces/velocity_ned/train_short_episode.py",
+      "degree": 1
+    }
+  ],
+  "29": [
+    {
+      "id": "drone_control_using_reinforcement_learning_github_workflows_push_run_tests_steps",
+      "label": "steps",
+      "source_file": "drone-control-using-reinforcement-learning/.github/workflows/push.yml",
+      "degree": 5
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_github_workflows_push",
+      "label": "push.yml",
+      "source_file": "drone-control-using-reinforcement-learning/.github/workflows/push.yml",
+      "degree": 4
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_github_workflows_push_jobs_run_tests",
+      "label": "run_tests",
+      "source_file": "drone-control-using-reinforcement-learning/.github/workflows/push.yml",
+      "degree": 3
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_github_workflows_push_jobs",
+      "label": "jobs",
+      "source_file": "drone-control-using-reinforcement-learning/.github/workflows/push.yml",
+      "degree": 2
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_github_workflows_push_permissions",
+      "label": "permissions",
+      "source_file": "drone-control-using-reinforcement-learning/.github/workflows/push.yml",
+      "degree": 2
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_github_workflows_push_steps_with",
+      "label": "with",
+      "source_file": "drone-control-using-reinforcement-learning/.github/workflows/push.yml",
+      "degree": 2
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_github_workflows_push_name",
+      "label": "name",
+      "source_file": "drone-control-using-reinforcement-learning/.github/workflows/push.yml",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_github_workflows_push_on",
+      "label": "on",
+      "source_file": "drone-control-using-reinforcement-learning/.github/workflows/push.yml",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_github_workflows_push_permissions_contents",
+      "label": "contents",
+      "source_file": "drone-control-using-reinforcement-learning/.github/workflows/push.yml",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_github_workflows_push_run_tests_runs_on",
+      "label": "runs-on",
+      "source_file": "drone-control-using-reinforcement-learning/.github/workflows/push.yml",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_github_workflows_push_steps_name",
+      "label": "name",
+      "source_file": "drone-control-using-reinforcement-learning/.github/workflows/push.yml",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_github_workflows_push_steps_run",
+      "label": "run",
+      "source_file": "drone-control-using-reinforcement-learning/.github/workflows/push.yml",
+      "degree": 1
+    }
+  ],
+  "30": [
+    {
+      "id": "tests_action_spaces_motor_residual_test_env",
+      "label": "test_env.py",
+      "source_file": "tests/action_spaces/motor_residual/test_env.py",
+      "degree": 11
+    },
+    {
+      "id": "drone_control_action_spaces_motor_residual_env_dronemotorhoverenv_get_observation",
+      "label": ".get_observation()",
+      "source_file": "drone_control/action_spaces/motor_residual/env.py",
+      "degree": 8
+    },
+    {
+      "id": "tests_action_spaces_motor_residual_test_env_testmotorobservation",
+      "label": "TestMotorObservation",
+      "source_file": "tests/action_spaces/motor_residual/test_env.py",
+      "degree": 8
+    },
+    {
+      "id": "drone_control_action_spaces_motor_residual_env_dronemotorhoverenv_pose_callback",
+      "label": ".pose_callback()",
+      "source_file": "drone_control/action_spaces/motor_residual/env.py",
+      "degree": 6
+    },
+    {
+      "id": "tests_action_spaces_motor_residual_test_env_make_pose",
+      "label": "make_pose()",
+      "source_file": "tests/action_spaces/motor_residual/test_env.py",
+      "degree": 5
+    },
+    {
+      "id": "tests_action_spaces_motor_residual_test_env_testmotorobservation_test_last_observation_element_is_distance_to_goal",
+      "label": ".test_last_observation_element_is_distance_to_goal()",
+      "source_file": "tests/action_spaces/motor_residual/test_env.py",
+      "degree": 4
+    },
+    {
+      "id": "tests_action_spaces_motor_residual_test_env_testmotorobservation_test_observation_uses_only_indices_zero_to_twelve",
+      "label": ".test_observation_uses_only_indices_zero_to_twelve()",
+      "source_file": "tests/action_spaces/motor_residual/test_env.py",
+      "degree": 4
+    },
+    {
+      "id": "tests_action_spaces_motor_residual_test_env_testmotorobservation_test_pose_callback_estimates_linear_velocity_from_sim_time",
+      "label": ".test_pose_callback_estimates_linear_velocity_from_sim_time()",
+      "source_file": "tests/action_spaces/motor_residual/test_env.py",
+      "degree": 4
+    },
+    {
+      "id": "tests_action_spaces_motor_residual_test_env_testmotorruntimesafety_setup",
+      "label": ".setUp()",
+      "source_file": "tests/action_spaces/motor_residual/test_env.py",
+      "degree": 4
+    },
+    {
+      "id": "tests_action_spaces_motor_residual_test_env_testmotorobservation_setup",
+      "label": ".setUp()",
+      "source_file": "tests/action_spaces/motor_residual/test_env.py",
+      "degree": 2
+    },
+    {
+      "id": "tests_action_spaces_motor_residual_test_env_testmotorobservation_teardown",
+      "label": ".tearDown()",
+      "source_file": "tests/action_spaces/motor_residual/test_env.py",
+      "degree": 2
+    },
+    {
+      "id": "tests_action_spaces_motor_residual_test_env_testmotorobservation_test_observation_requires_actual_pose",
+      "label": ".test_observation_requires_actual_pose()",
+      "source_file": "tests/action_spaces/motor_residual/test_env.py",
+      "degree": 2
+    }
+  ],
+  "31": [
+    {
+      "id": "drone_control_action_spaces_velocity_ned_env_dronehoveringenv_step",
+      "label": ".step()",
+      "source_file": "drone_control/action_spaces/velocity_ned/env.py",
+      "degree": 8
+    },
+    {
+      "id": "drone_control_task_contract_successstatus",
+      "label": "SuccessStatus",
+      "source_file": "drone_control/task_contract.py",
+      "degree": 7
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_env_dronehoveringenv_update_task_status",
+      "label": "._update_task_status()",
+      "source_file": "drone_control/action_spaces/velocity_ned/env.py",
+      "degree": 4
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_env_dronehoveringenv_check_termination",
+      "label": "._check_termination()",
+      "source_file": "drone_control/action_spaces/velocity_ned/env.py",
+      "degree": 3
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_env_dronehoveringenv_get_reward",
+      "label": ".get_reward()",
+      "source_file": "drone_control/action_spaces/velocity_ned/env.py",
+      "degree": 3
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_env_dronehoveringenv_set_target_sim_time",
+      "label": ".set_target_sim_time()",
+      "source_file": "drone_control/action_spaces/velocity_ned/env.py",
+      "degree": 3
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_env_dronehoveringenv_stop_velocity_command",
+      "label": "._stop_velocity_command()",
+      "source_file": "drone_control/action_spaces/velocity_ned/env.py",
+      "degree": 3
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_env_dronehoveringenv_is_pose_synced",
+      "label": ".is_pose_synced()",
+      "source_file": "drone_control/action_spaces/velocity_ned/env.py",
+      "degree": 2
+    },
+    {
+      "id": "drone_control_task_contract_py_any",
+      "label": "Any",
+      "source_file": "",
+      "degree": 2
+    },
+    {
+      "id": "drone_control_task_contract_successstatus_to_info",
+      "label": ".to_info()",
+      "source_file": "drone_control/task_contract.py",
+      "degree": 2
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_env_rationale_175",
+      "label": "Neutralize the command on timeout without hiding the root failure.",
+      "source_file": "drone_control/action_spaces/velocity_ned/env.py",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_env_rationale_278",
+      "label": "Kiểm tra các điều kiện kết thúc sớm để tránh lãng phí bước huấn luyện.",
+      "source_file": "drone_control/action_spaces/velocity_ned/env.py",
+      "degree": 1
+    }
+  ],
+  "32": [
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_examples_pid_velocity",
+      "label": "pid_velocity.py",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/examples/pid_velocity.py",
+      "degree": 26
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_examples_pid",
+      "label": "pid.py",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/examples/pid.py",
+      "degree": 24
+    },
+    {
+      "id": "datetime",
+      "label": "datetime",
+      "source_file": "",
+      "degree": 20
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_logger",
+      "label": "Logger.py",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/utils/Logger.py",
+      "degree": 15
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_dslpidcontrol",
+      "label": "DSLPIDControl.py",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/control/DSLPIDControl.py",
+      "degree": 14
+    },
+    {
+      "id": "pybullet",
+      "label": "pybullet",
+      "source_file": "",
+      "degree": 7
+    },
+    {
+      "id": "pdb",
+      "label": "pdb",
+      "source_file": "",
+      "degree": 2
+    },
+    {
+      "id": "random",
+      "label": "random",
+      "source_file": "",
+      "degree": 2
+    },
+    {
+      "id": "cycler",
+      "label": "cycler",
+      "source_file": "",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_examples_pid_rationale_1",
+      "label": "Script demonstrating the joint use of simulation and control. The simulation is…",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/examples/pid.py",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_examples_pid_velocity_rationale_1",
+      "label": "Script demonstrating the joint use of velocity input. The simulation is run by…",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/examples/pid_velocity.py",
+      "degree": 1
+    },
+    {
+      "id": "scipy_spatial_transform",
+      "label": "scipy_spatial_transform",
+      "source_file": "",
+      "degree": 1
+    }
+  ],
+  "33": [
+    {
+      "id": "drone_control_algorithms_ppo_ppo",
+      "label": "PPO",
+      "source_file": "drone_control/algorithms/ppo.py",
+      "degree": 31
+    },
+    {
+      "id": "drone_control_algorithms_ppo_ppo_estimate_value",
+      "label": ".estimate_value()",
+      "source_file": "drone_control/algorithms/ppo.py",
+      "degree": 3
+    },
+    {
+      "id": "drone_control_algorithms_ppo_ppo_record_outcome",
+      "label": ".record_outcome()",
+      "source_file": "drone_control/algorithms/ppo.py",
+      "degree": 3
+    },
+    {
+      "id": "drone_control_algorithms_ppo_ppo_update",
+      "label": ".update()",
+      "source_file": "drone_control/algorithms/ppo.py",
+      "degree": 3
+    },
+    {
+      "id": "drone_control_algorithms_ppo_ppo_decay_action_std",
+      "label": ".decay_action_std()",
+      "source_file": "drone_control/algorithms/ppo.py",
+      "degree": 2
+    },
+    {
+      "id": "drone_control_algorithms_ppo_ppo_gradient_norm",
+      "label": "._gradient_norm()",
+      "source_file": "drone_control/algorithms/ppo.py",
+      "degree": 2
+    },
+    {
+      "id": "drone_control_algorithms_ppo_ppo_set_action_std",
+      "label": ".set_action_std()",
+      "source_file": "drone_control/algorithms/ppo.py",
+      "degree": 2
+    },
+    {
+      "id": "drone_control_algorithms_ppo_ppo_load",
+      "label": ".load()",
+      "source_file": "drone_control/algorithms/ppo.py",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_algorithms_ppo_ppo_save",
+      "label": ".save()",
+      "source_file": "drone_control/algorithms/ppo.py",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_algorithms_ppo_ppo_select_action",
+      "label": ".select_action()",
+      "source_file": "drone_control/algorithms/ppo.py",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_algorithms_ppo_rationale_369",
+      "label": "Ước lượng V(s) mà không ghi thêm transition vào rollout buffer.",
+      "source_file": "drone_control/algorithms/ppo.py",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_algorithms_ppo_rationale_378",
+      "label": "Ghi outcome với bootstrap đúng cho terminal và time-limit truncation.",
+      "source_file": "drone_control/algorithms/ppo.py",
+      "degree": 1
+    }
+  ],
+  "34": [
+    {
+      "id": "drone_control_evaluation_protocol_build_evaluation_manifest",
+      "label": "build_evaluation_manifest()",
+      "source_file": "drone_control/evaluation_protocol.py",
+      "degree": 12
+    },
+    {
+      "id": "drone_control_evaluation_protocol_aggregate_metrics",
+      "label": "aggregate_metrics()",
+      "source_file": "drone_control/evaluation_protocol.py",
+      "degree": 6
+    },
+    {
+      "id": "drone_control_evaluation_protocol_episodemetrics",
+      "label": "EpisodeMetrics",
+      "source_file": "drone_control/evaluation_protocol.py",
+      "degree": 6
+    },
+    {
+      "id": "tests_common_test_evaluation_protocol",
+      "label": "test_evaluation_protocol.py",
+      "source_file": "tests/common/test_evaluation_protocol.py",
+      "degree": 6
+    },
+    {
+      "id": "tests_common_test_evaluation_protocol_testevaluationprotocol",
+      "label": "TestEvaluationProtocol",
+      "source_file": "tests/common/test_evaluation_protocol.py",
+      "degree": 6
+    },
+    {
+      "id": "tests_common_test_evaluation_protocol_testevaluationprotocol_make_record",
+      "label": ".make_record()",
+      "source_file": "tests/common/test_evaluation_protocol.py",
+      "degree": 3
+    },
+    {
+      "id": "tests_common_test_evaluation_protocol_testevaluationprotocol_test_aggregate_reports_completion_safety_and_control",
+      "label": ".test_aggregate_reports_completion_safety_and_control()",
+      "source_file": "tests/common/test_evaluation_protocol.py",
+      "degree": 3
+    },
+    {
+      "id": "drone_control_evaluation_protocol_py_any",
+      "label": "Any",
+      "source_file": "",
+      "degree": 2
+    },
+    {
+      "id": "tests_common_test_evaluation_protocol_testevaluationprotocol_test_duplicate_seeds_are_rejected",
+      "label": ".test_duplicate_seeds_are_rejected()",
+      "source_file": "tests/common/test_evaluation_protocol.py",
+      "degree": 2
+    },
+    {
+      "id": "tests_common_test_evaluation_protocol_testevaluationprotocol_test_manifest_freezes_tests_a_to_d_and_multiple_seeds",
+      "label": ".test_manifest_freezes_tests_a_to_d_and_multiple_seeds()",
+      "source_file": "tests/common/test_evaluation_protocol.py",
+      "degree": 2
+    },
+    {
+      "id": "drone_control_evaluation_protocol_aggregate_metrics_mean",
+      "label": "mean()",
+      "source_file": "drone_control/evaluation_protocol.py",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_evaluation_protocol_episodemetrics_validate",
+      "label": ".validate()",
+      "source_file": "drone_control/evaluation_protocol.py",
+      "degree": 1
+    }
+  ],
+  "35": [
+    {
+      "id": "analysis_legacy_phantichketqua_goc",
+      "label": "legacy/phantichketqua_goc.py",
+      "source_file": "analysis/legacy/phantichketqua_goc.py",
+      "degree": 11
+    },
+    {
+      "id": "analysis_legacy_phantichketqua_goc_compute_peak",
+      "label": "compute_peak()",
+      "source_file": "analysis/legacy/phantichketqua_goc.py",
+      "degree": 3
+    },
+    {
+      "id": "analysis_legacy_phantichketqua_goc_compute_time_in_band",
+      "label": "compute_time_in_band()",
+      "source_file": "analysis/legacy/phantichketqua_goc.py",
+      "degree": 3
+    },
+    {
+      "id": "analysis_legacy_phantichketqua_goc_shade_band",
+      "label": "_shade_band()",
+      "source_file": "analysis/legacy/phantichketqua_goc.py",
+      "degree": 3
+    },
+    {
+      "id": "analysis_legacy_phantichketqua_goc_mark_peak",
+      "label": "_mark_peak()",
+      "source_file": "analysis/legacy/phantichketqua_goc.py",
+      "degree": 2
+    },
+    {
+      "id": "analysis_legacy_phantichketqua_goc_band_str",
+      "label": "_band_str()",
+      "source_file": "analysis/legacy/phantichketqua_goc.py",
+      "degree": 1
+    },
+    {
+      "id": "analysis_legacy_phantichketqua_goc_rationale_1",
+      "label": "KẾT QUẢ 2: PHÂN TÍCH QUỸĐẠO GÓC (ROLL, PITCH, YAW) Các chỉ số được tính (RIÊNG…",
+      "source_file": "analysis/legacy/phantichketqua_goc.py",
+      "degree": 1
+    },
+    {
+      "id": "analysis_legacy_phantichketqua_goc_rationale_113",
+      "label": "Tô nền các khoảng thời gian mà |góc| nằm trong vùng cân bằng.",
+      "source_file": "analysis/legacy/phantichketqua_goc.py",
+      "degree": 1
+    },
+    {
+      "id": "analysis_legacy_phantichketqua_goc_rationale_129",
+      "label": "Đánh dấu điểm đỉnh (giá trị cực trị) trên đồ thị.",
+      "source_file": "analysis/legacy/phantichketqua_goc.py",
+      "degree": 1
+    },
+    {
+      "id": "analysis_legacy_phantichketqua_goc_rationale_34",
+      "label": "Tính tổng thời gian |signal| nằm trong ngưỡng cân bằng cố định. - mask : mảng…",
+      "source_file": "analysis/legacy/phantichketqua_goc.py",
+      "degree": 1
+    },
+    {
+      "id": "analysis_legacy_phantichketqua_goc_rationale_72",
+      "label": "Trả về (giá trị đỉnh có dấu, |đỉnh|, thời điểm xảy ra đỉnh).",
+      "source_file": "analysis/legacy/phantichketqua_goc.py",
+      "degree": 1
+    }
+  ],
+  "36": [
+    {
+      "id": "analysis_legacy_without_disturbance_phantichketqua_goc",
+      "label": "without_disturbance/phantichketqua_goc.py",
+      "source_file": "analysis/legacy/without_disturbance/phantichketqua_goc.py",
+      "degree": 11
+    },
+    {
+      "id": "analysis_legacy_without_disturbance_phantichketqua_goc_compute_peak",
+      "label": "compute_peak()",
+      "source_file": "analysis/legacy/without_disturbance/phantichketqua_goc.py",
+      "degree": 3
+    },
+    {
+      "id": "analysis_legacy_without_disturbance_phantichketqua_goc_compute_time_in_band",
+      "label": "compute_time_in_band()",
+      "source_file": "analysis/legacy/without_disturbance/phantichketqua_goc.py",
+      "degree": 3
+    },
+    {
+      "id": "analysis_legacy_without_disturbance_phantichketqua_goc_shade_band",
+      "label": "_shade_band()",
+      "source_file": "analysis/legacy/without_disturbance/phantichketqua_goc.py",
+      "degree": 3
+    },
+    {
+      "id": "analysis_legacy_without_disturbance_phantichketqua_goc_mark_peak",
+      "label": "_mark_peak()",
+      "source_file": "analysis/legacy/without_disturbance/phantichketqua_goc.py",
+      "degree": 2
+    },
+    {
+      "id": "analysis_legacy_without_disturbance_phantichketqua_goc_band_str",
+      "label": "_band_str()",
+      "source_file": "analysis/legacy/without_disturbance/phantichketqua_goc.py",
+      "degree": 1
+    },
+    {
+      "id": "analysis_legacy_without_disturbance_phantichketqua_goc_rationale_1",
+      "label": "KẾT QUẢ 2: PHÂN TÍCH QUỸĐẠO GÓC (ROLL, PITCH, YAW) Các chỉ số được tính (RIÊNG…",
+      "source_file": "analysis/legacy/without_disturbance/phantichketqua_goc.py",
+      "degree": 1
+    },
+    {
+      "id": "analysis_legacy_without_disturbance_phantichketqua_goc_rationale_113",
+      "label": "Tô nền các khoảng thời gian mà |góc| nằm trong vùng cân bằng.",
+      "source_file": "analysis/legacy/without_disturbance/phantichketqua_goc.py",
+      "degree": 1
+    },
+    {
+      "id": "analysis_legacy_without_disturbance_phantichketqua_goc_rationale_129",
+      "label": "Đánh dấu điểm đỉnh (giá trị cực trị) trên đồ thị.",
+      "source_file": "analysis/legacy/without_disturbance/phantichketqua_goc.py",
+      "degree": 1
+    },
+    {
+      "id": "analysis_legacy_without_disturbance_phantichketqua_goc_rationale_34",
+      "label": "Tính tổng thời gian |signal| nằm trong ngưỡng cân bằng cố định. - mask : mảng…",
+      "source_file": "analysis/legacy/without_disturbance/phantichketqua_goc.py",
+      "degree": 1
+    },
+    {
+      "id": "analysis_legacy_without_disturbance_phantichketqua_goc_rationale_72",
+      "label": "Trả về (giá trị đỉnh có dấu, |đỉnh|, thời điểm xảy ra đỉnh).",
+      "source_file": "analysis/legacy/without_disturbance/phantichketqua_goc.py",
+      "degree": 1
+    }
+  ],
+  "37": [
+    {
+      "id": "drone_control_task_contract_successtracker",
+      "label": "SuccessTracker",
+      "source_file": "drone_control/task_contract.py",
+      "degree": 15
+    },
+    {
+      "id": "tests_common_test_task_contract_testsuccesstracker",
+      "label": "TestSuccessTracker",
+      "source_file": "tests/common/test_task_contract.py",
+      "degree": 8
+    },
+    {
+      "id": "tests_common_test_task_contract",
+      "label": "test_task_contract.py",
+      "source_file": "tests/common/test_task_contract.py",
+      "degree": 7
+    },
+    {
+      "id": "drone_control_task_contract_successtracker_update",
+      "label": ".update()",
+      "source_file": "drone_control/task_contract.py",
+      "degree": 6
+    },
+    {
+      "id": "tests_common_test_task_contract_testsuccesstracker_test_yaw_can_be_excluded_from_contract",
+      "label": ".test_yaw_can_be_excluded_from_contract()",
+      "source_file": "tests/common/test_task_contract.py",
+      "degree": 4
+    },
+    {
+      "id": "tests_common_test_task_contract_testsuccesstracker_update",
+      "label": ".update()",
+      "source_file": "tests/common/test_task_contract.py",
+      "degree": 4
+    },
+    {
+      "id": "tests_common_test_task_contract_testsuccesstracker_setup",
+      "label": ".setUp()",
+      "source_file": "tests/common/test_task_contract.py",
+      "degree": 3
+    },
+    {
+      "id": "tests_common_test_task_contract_testsuccesstracker_test_success_requires_continuous_qualified_steps_and_emits_once",
+      "label": ".test_success_requires_continuous_qualified_steps_and_emits_once()",
+      "source_file": "tests/common/test_task_contract.py",
+      "degree": 2
+    },
+    {
+      "id": "tests_common_test_task_contract_testsuccesstracker_test_violation_resets_sustain_but_not_reached_history",
+      "label": ".test_violation_resets_sustain_but_not_reached_history()",
+      "source_file": "tests/common/test_task_contract.py",
+      "degree": 2
+    },
+    {
+      "id": "drone_control_task_contract_rationale_85",
+      "label": "Tracks reaching and continuous hover independently from reward.",
+      "source_file": "drone_control/task_contract.py",
+      "degree": 1
+    }
+  ],
+  "38": [
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_betaaviary",
+      "label": "BetaAviary.py",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BetaAviary.py",
+      "degree": 16
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_ctbrcontrol",
+      "label": "CTBRControl.py",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/control/CTBRControl.py",
+      "degree": 12
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_basecontrol",
+      "label": "BaseControl.py",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/control/BaseControl.py",
+      "degree": 8
+    },
+    {
+      "id": "pkg_resources",
+      "label": "pkg_resources",
+      "source_file": "",
+      "degree": 4
+    },
+    {
+      "id": "transforms3d_quaternions",
+      "label": "transforms3d_quaternions",
+      "source_file": "",
+      "degree": 3
+    },
+    {
+      "id": "xml_etree_elementtree",
+      "label": "xml_etree_elementtree",
+      "source_file": "",
+      "degree": 3
+    },
+    {
+      "id": "socket",
+      "label": "socket",
+      "source_file": "",
+      "degree": 2
+    },
+    {
+      "id": "struct",
+      "label": "struct",
+      "source_file": "",
+      "degree": 2
+    },
+    {
+      "id": "transforms3d_utils",
+      "label": "transforms3d_utils",
+      "source_file": "",
+      "degree": 2
+    },
+    {
+      "id": "subprocess",
+      "label": "subprocess",
+      "source_file": "",
+      "degree": 1
+    }
+  ],
+  "39": [
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_reset",
+      "label": ".reset()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseAviary.py",
+      "degree": 7
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_updateandstorekinematicinformation",
+      "label": "._updateAndStoreKinematicInformation()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseAviary.py",
+      "degree": 5
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_computeinfo",
+      "label": "._computeInfo()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseAviary.py",
+      "degree": 4
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_computeobs",
+      "label": "._computeObs()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseAviary.py",
+      "degree": 4
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_startvideorecording",
+      "label": "._startVideoRecording()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseAviary.py",
+      "degree": 4
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_rationale_1041",
+      "label": "Returns the current observation of the environment. Must be implemented in a…",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseAviary.py",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_rationale_1098",
+      "label": "Computes the current info dict(s). Must be implemented in a subclass.",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseAviary.py",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_rationale_223",
+      "label": "Resets the environment. Parameters ---------- seed : int, optional Random seed.…",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseAviary.py",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_rationale_510",
+      "label": "Updates and stores the drones kinemaatic information. This method is meant to…",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseAviary.py",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_rationale_524",
+      "label": "Starts the recording of a video output. The format of the video output is .mp4,…",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseAviary.py",
+      "degree": 1
+    }
+  ],
+  "40": [
+    {
+      "id": "agents_project_instructions",
+      "label": "Project Agent Instructions",
+      "source_file": "AGENTS.md",
+      "degree": 3
+    },
+    {
+      "id": "readme_quadrotor_control_with_ppo",
+      "label": "Quadrotor Control with PPO",
+      "source_file": "README.md",
+      "degree": 3
+    },
+    {
+      "id": "agents_project_architecture",
+      "label": "Action-space-oriented Project Architecture",
+      "source_file": "AGENTS.md",
+      "degree": 2
+    },
+    {
+      "id": "agents_safety_constraints",
+      "label": "Training Simulator and Artifact Safety Constraints",
+      "source_file": "AGENTS.md",
+      "degree": 2
+    },
+    {
+      "id": "readme_ned_velocity_action_space",
+      "label": "3D NED Velocity Action Space",
+      "source_file": "README.md",
+      "degree": 2
+    },
+    {
+      "id": "readme_residual_motor_action_space",
+      "label": "4D Residual Motor Action Space",
+      "source_file": "README.md",
+      "degree": 2
+    },
+    {
+      "id": "readme_shared_ppo_implementation",
+      "label": "Shared PPO Implementation",
+      "source_file": "README.md",
+      "degree": 2
+    },
+    {
+      "id": "agents_graphify_workflow",
+      "label": "Graphify-first Codebase Workflow",
+      "source_file": "AGENTS.md",
+      "degree": 1
+    },
+    {
+      "id": "readme_preserve_experiment_artifacts",
+      "label": "Preserve Historical Experiment Paths",
+      "source_file": "README.md",
+      "degree": 1
+    }
+  ],
+  "41": [
+    {
+      "id": "analysis_legacy_without_disturbance_phantichketqua_vitri",
+      "label": "without_disturbance/phantichketqua_vitri.py",
+      "source_file": "analysis/legacy/without_disturbance/phantichketqua_vitri.py",
+      "degree": 10
+    },
+    {
+      "id": "analysis_legacy_without_disturbance_phantichketqua_vitri_compute_time_in_band",
+      "label": "compute_time_in_band()",
+      "source_file": "analysis/legacy/without_disturbance/phantichketqua_vitri.py",
+      "degree": 3
+    },
+    {
+      "id": "analysis_legacy_without_disturbance_phantichketqua_vitri_shade_band",
+      "label": "_shade_band()",
+      "source_file": "analysis/legacy/without_disturbance/phantichketqua_vitri.py",
+      "degree": 3
+    },
+    {
+      "id": "analysis_legacy_without_disturbance_phantichketqua_vitri_vline_pos",
+      "label": "_vline_pos()",
+      "source_file": "analysis/legacy/without_disturbance/phantichketqua_vitri.py",
+      "degree": 2
+    },
+    {
+      "id": "analysis_legacy_without_disturbance_phantichketqua_vitri_band_str",
+      "label": "_band_str()",
+      "source_file": "analysis/legacy/without_disturbance/phantichketqua_vitri.py",
+      "degree": 1
+    },
+    {
+      "id": "analysis_legacy_without_disturbance_phantichketqua_vitri_rationale_1",
+      "label": "KẾT QUẢ 1: PHÂN TÍCH QUỸĐẠO VỊ TRÍ (X, Y, Z) Các chỉ số được tính: - Thời gian…",
+      "source_file": "analysis/legacy/without_disturbance/phantichketqua_vitri.py",
+      "degree": 1
+    },
+    {
+      "id": "analysis_legacy_without_disturbance_phantichketqua_vitri_rationale_145",
+      "label": "Đường thẳng tại settling vị trí.",
+      "source_file": "analysis/legacy/without_disturbance/phantichketqua_vitri.py",
+      "degree": 1
+    },
+    {
+      "id": "analysis_legacy_without_disturbance_phantichketqua_vitri_rationale_151",
+      "label": "Tô nền các khoảng thời gian mà vị trí nằm trong vùng mục tiêu.",
+      "source_file": "analysis/legacy/without_disturbance/phantichketqua_vitri.py",
+      "degree": 1
+    },
+    {
+      "id": "analysis_legacy_without_disturbance_phantichketqua_vitri_rationale_82",
+      "label": "Tính tổng thời gian |signal - target| nằm trong ngưỡng quanh mục tiêu. - mask :…",
+      "source_file": "analysis/legacy/without_disturbance/phantichketqua_vitri.py",
+      "degree": 1
+    }
+  ],
+  "42": [
+    {
+      "id": "tests_common_test_ppo_source_contract_testppoactionboundssourcecontract",
+      "label": "TestPPOActionBoundsSourceContract",
+      "source_file": "tests/common/test_ppo_source_contract.py",
+      "degree": 8
+    },
+    {
+      "id": "tests_common_test_ppo_source_contract_testppoactionboundssourcecontract_get_class",
+      "label": ".get_class()",
+      "source_file": "tests/common/test_ppo_source_contract.py",
+      "degree": 4
+    },
+    {
+      "id": "tests_common_test_ppo_source_contract_testppoactionboundssourcecontract_get_init_argument_names",
+      "label": ".get_init_argument_names()",
+      "source_file": "tests/common/test_ppo_source_contract.py",
+      "degree": 4
+    },
+    {
+      "id": "tests_common_test_ppo_source_contract_testppoactionboundssourcecontract_test_actor_critic_exposes_configurable_bounds",
+      "label": ".test_actor_critic_exposes_configurable_bounds()",
+      "source_file": "tests/common/test_ppo_source_contract.py",
+      "degree": 2
+    },
+    {
+      "id": "tests_common_test_ppo_source_contract_testppoactionboundssourcecontract_test_bounds_do_not_register_new_checkpoint_buffers",
+      "label": ".test_bounds_do_not_register_new_checkpoint_buffers()",
+      "source_file": "tests/common/test_ppo_source_contract.py",
+      "degree": 2
+    },
+    {
+      "id": "tests_common_test_ppo_source_contract_testppoactionboundssourcecontract_test_ppo_appends_distribution_after_configurable_bounds",
+      "label": ".test_ppo_appends_distribution_after_configurable_bounds()",
+      "source_file": "tests/common/test_ppo_source_contract.py",
+      "degree": 2
+    },
+    {
+      "id": "classdef",
+      "label": "ClassDef",
+      "source_file": "",
+      "degree": 1
+    },
+    {
+      "id": "tests_common_test_ppo_source_contract_testppoactionboundssourcecontract_setupclass",
+      "label": ".setUpClass()",
+      "source_file": "tests/common/test_ppo_source_contract.py",
+      "degree": 1
+    },
+    {
+      "id": "tests_common_test_ppo_source_contract_testppoactionboundssourcecontract_test_old_hardcoded_scaling_and_clamp_are_removed",
+      "label": ".test_old_hardcoded_scaling_and_clamp_are_removed()",
+      "source_file": "tests/common/test_ppo_source_contract.py",
+      "degree": 1
+    }
+  ],
+  "43": [
+    {
+      "id": "drone_control_using_reinforcement_learning_ppo_actorcritic",
+      "label": "ActorCritic",
+      "source_file": "drone-control-using-reinforcement-learning/ppo.py",
+      "degree": 6
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_ppo_rolloutbuffer",
+      "label": "RolloutBuffer",
+      "source_file": "drone-control-using-reinforcement-learning/ppo.py",
+      "degree": 4
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_ppo_ppo_init",
+      "label": ".__init__()",
+      "source_file": "drone-control-using-reinforcement-learning/ppo.py",
+      "degree": 3
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_ppo_actorcritic_act",
+      "label": ".act()",
+      "source_file": "drone-control-using-reinforcement-learning/ppo.py",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_ppo_actorcritic_evaluate",
+      "label": ".evaluate()",
+      "source_file": "drone-control-using-reinforcement-learning/ppo.py",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_ppo_actorcritic_init",
+      "label": ".__init__()",
+      "source_file": "drone-control-using-reinforcement-learning/ppo.py",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_ppo_actorcritic_set_action_std",
+      "label": ".set_action_std()",
+      "source_file": "drone-control-using-reinforcement-learning/ppo.py",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_ppo_rolloutbuffer_clear",
+      "label": ".clear()",
+      "source_file": "drone-control-using-reinforcement-learning/ppo.py",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_ppo_rolloutbuffer_init",
+      "label": ".__init__()",
+      "source_file": "drone-control-using-reinforcement-learning/ppo.py",
+      "degree": 1
+    }
+  ],
+  "44": [
+    {
+      "id": "analysis_legacy_with_disturbance_phantichketqua_vitri",
+      "label": "with_disturbance/phantichketqua_vitri.py",
+      "source_file": "analysis/legacy/with_disturbance/phantichketqua_vitri.py",
+      "degree": 9
+    },
+    {
+      "id": "analysis_legacy_with_disturbance_phantichketqua_vitri_vline_collision",
+      "label": "_vline_collision()",
+      "source_file": "analysis/legacy/with_disturbance/phantichketqua_vitri.py",
+      "degree": 2
+    },
+    {
+      "id": "analysis_legacy_with_disturbance_phantichketqua_vitri_vline_pos",
+      "label": "_vline_pos()",
+      "source_file": "analysis/legacy/with_disturbance/phantichketqua_vitri.py",
+      "degree": 2
+    },
+    {
+      "id": "analysis_legacy_with_disturbance_phantichketqua_vitri_vline_settled",
+      "label": "_vline_settled()",
+      "source_file": "analysis/legacy/with_disturbance/phantichketqua_vitri.py",
+      "degree": 2
+    },
+    {
+      "id": "analysis_legacy_with_disturbance_phantichketqua_vitri_rationale_1",
+      "label": "KẾT QUẢ 1: PHÂN TÍCH QUỸĐẠO VỊ TRÍ (X, Y, Z) Các chỉ số được tính: - Thời gian…",
+      "source_file": "analysis/legacy/with_disturbance/phantichketqua_vitri.py",
+      "degree": 1
+    },
+    {
+      "id": "analysis_legacy_with_disturbance_phantichketqua_vitri_rationale_183",
+      "label": "Đường thẳng tại settling vị trí.",
+      "source_file": "analysis/legacy/with_disturbance/phantichketqua_vitri.py",
+      "degree": 1
+    },
+    {
+      "id": "analysis_legacy_with_disturbance_phantichketqua_vitri_rationale_189",
+      "label": "Đường thẳng tại thời điểm va chạm.",
+      "source_file": "analysis/legacy/with_disturbance/phantichketqua_vitri.py",
+      "degree": 1
+    },
+    {
+      "id": "analysis_legacy_with_disturbance_phantichketqua_vitri_rationale_194",
+      "label": "Đường thẳng tại thời điểm phục hồi xong (sau va chạm).",
+      "source_file": "analysis/legacy/with_disturbance/phantichketqua_vitri.py",
+      "degree": 1
+    }
+  ],
+  "45": [
+    {
+      "id": "drone_control_task_contract_taskcontract",
+      "label": "TaskContract",
+      "source_file": "drone_control/task_contract.py",
+      "degree": 19
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_env_dronehoveringenv_init",
+      "label": ".__init__()",
+      "source_file": "drone_control/action_spaces/velocity_ned/env.py",
+      "degree": 7
+    },
+    {
+      "id": "drone_control_task_contract_taskcontract_validate",
+      "label": ".validate()",
+      "source_file": "drone_control/task_contract.py",
+      "degree": 7
+    },
+    {
+      "id": "drone_control_task_contract_taskcontract_to_metadata",
+      "label": ".to_metadata()",
+      "source_file": "drone_control/task_contract.py",
+      "degree": 5
+    },
+    {
+      "id": "drone_control_task_contract_successtracker_init",
+      "label": ".__init__()",
+      "source_file": "drone_control/task_contract.py",
+      "degree": 4
+    },
+    {
+      "id": "tests_common_test_task_contract_testtaskcontract",
+      "label": "TestTaskContract",
+      "source_file": "tests/common/test_task_contract.py",
+      "degree": 4
+    },
+    {
+      "id": "tests_common_test_task_contract_testtaskcontract_test_default_contract_is_valid_and_serializable",
+      "label": ".test_default_contract_is_valid_and_serializable()",
+      "source_file": "tests/common/test_task_contract.py",
+      "degree": 4
+    },
+    {
+      "id": "tests_common_test_task_contract_testtaskcontract_test_invalid_duration_is_rejected",
+      "label": ".test_invalid_duration_is_rejected()",
+      "source_file": "tests/common/test_task_contract.py",
+      "degree": 2
+    }
+  ],
+  "46": [
+    {
+      "id": "drone_control_algorithms_ppo_compute_gae",
+      "label": "compute_gae()",
+      "source_file": "drone_control/algorithms/ppo.py",
+      "degree": 8
+    },
+    {
+      "id": "tests_common_test_ppo_gae",
+      "label": "test_ppo_gae.py",
+      "source_file": "tests/common/test_ppo_gae.py",
+      "degree": 5
+    },
+    {
+      "id": "tests_common_test_ppo_gae_testgaesemantics",
+      "label": "TestGAESemantics",
+      "source_file": "tests/common/test_ppo_gae.py",
+      "degree": 5
+    },
+    {
+      "id": "tests_common_test_ppo_gae_testgaesemantics_test_non_boundary_transition_propagates_next_advantage",
+      "label": ".test_non_boundary_transition_propagates_next_advantage()",
+      "source_file": "tests/common/test_ppo_gae.py",
+      "degree": 2
+    },
+    {
+      "id": "tests_common_test_ppo_gae_testgaesemantics_test_physical_terminal_does_not_bootstrap",
+      "label": ".test_physical_terminal_does_not_bootstrap()",
+      "source_file": "tests/common/test_ppo_gae.py",
+      "degree": 2
+    },
+    {
+      "id": "tests_common_test_ppo_gae_testgaesemantics_test_time_limit_bootstraps_but_stops_episode_recursion",
+      "label": ".test_time_limit_bootstraps_but_stops_episode_recursion()",
+      "source_file": "tests/common/test_ppo_gae.py",
+      "degree": 2
+    },
+    {
+      "id": "drone_control_algorithms_ppo_rationale_41",
+      "label": "Tính GAE; truncation bootstrap value nhưng chặn recursion qua episode.",
+      "source_file": "drone_control/algorithms/ppo.py",
+      "degree": 1
+    },
+    {
+      "id": "tests_common_test_ppo_gae_py_skipunless",
+      "label": "skipUnless",
+      "source_file": "",
+      "degree": 1
+    }
+  ],
+  "47": [
+    {
+      "id": "drone_control_action_spaces_motor_residual_env_dronemotorhoverenv_close",
+      "label": ".close()",
+      "source_file": "drone_control/action_spaces/motor_residual/env.py",
+      "degree": 12
+    },
+    {
+      "id": "tests_action_spaces_motor_residual_test_env_testmotoractionmapping_teardown",
+      "label": ".tearDown()",
+      "source_file": "tests/action_spaces/motor_residual/test_env.py",
+      "degree": 2
+    },
+    {
+      "id": "tests_action_spaces_motor_residual_test_env_testmotorruntimesafety_teardown",
+      "label": ".tearDown()",
+      "source_file": "tests/action_spaces/motor_residual/test_env.py",
+      "degree": 2
+    },
+    {
+      "id": "tests_action_spaces_motor_residual_test_env_testmotorruntimesafety_test_close_stops_all_rotors",
+      "label": ".test_close_stops_all_rotors()",
+      "source_file": "tests/action_spaces/motor_residual/test_env.py",
+      "degree": 2
+    },
+    {
+      "id": "tests_action_spaces_motor_residual_test_reward_testmotorreward_teardown",
+      "label": ".tearDown()",
+      "source_file": "tests/action_spaces/motor_residual/test_reward.py",
+      "degree": 2
+    },
+    {
+      "id": "tests_action_spaces_motor_residual_test_train_testmotortrainingentrypoint_teardown",
+      "label": ".tearDown()",
+      "source_file": "tests/action_spaces/motor_residual/test_train.py",
+      "degree": 2
+    }
+  ],
+  "48": [
+    {
+      "id": "drone_control_action_spaces_motor_residual_readme_residual_motor_action_space",
+      "label": "Residual Motor Action Space",
+      "source_file": "drone_control/action_spaces/motor_residual/README.md",
+      "degree": 5
+    },
+    {
+      "id": "drone_control_action_spaces_motor_residual_readme_checkpoint_metadata",
+      "label": "Motor Checkpoint Metadata",
+      "source_file": "drone_control/action_spaces/motor_residual/README.md",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_action_spaces_motor_residual_readme_hover_centered_mapping",
+      "label": "Hover-centered Residual-to-motor Mapping",
+      "source_file": "drone_control/action_spaces/motor_residual/README.md",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_action_spaces_motor_residual_readme_motor_curriculum",
+      "label": "Motor Training Curriculum and Domain Randomization",
+      "source_file": "drone_control/action_spaces/motor_residual/README.md",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_action_spaces_motor_residual_readme_safe_actuator_tools",
+      "label": "Dry-run Calibration and Explicit Actuator Execution",
+      "source_file": "drone_control/action_spaces/motor_residual/README.md",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_action_spaces_motor_residual_readme_training_monitor",
+      "label": "Motor Training Monitor Artifacts",
+      "source_file": "drone_control/action_spaces/motor_residual/README.md",
+      "degree": 1
+    }
+  ],
+  "49": [
+    {
+      "id": "drone_control_action_spaces_velocity_ned_env_dronehoveringenv_init_episode_state",
+      "label": "._init_episode_state()",
+      "source_file": "drone_control/action_spaces/velocity_ned/env.py",
+      "degree": 5
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_env_dronehoveringenv_get_observation",
+      "label": ".get_observation()",
+      "source_file": "drone_control/action_spaces/velocity_ned/env.py",
+      "degree": 4
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_env_dronehoveringenv_pose_callback",
+      "label": ".pose_callback()",
+      "source_file": "drone_control/action_spaces/velocity_ned/env.py",
+      "degree": 4
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_env_dronehoveringenv_reset",
+      "label": ".reset()",
+      "source_file": "drone_control/action_spaces/velocity_ned/env.py",
+      "degree": 4
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_env_rationale_228",
+      "label": "Callback cập nhật vị trí, tư thế và ước lượng vận tốc bằng đạo hàm hữu hạn.",
+      "source_file": "drone_control/action_spaces/velocity_ned/env.py",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_env_rationale_60",
+      "label": "Khởi tạo/reset toàn bộ biến trạng thái của một episode.",
+      "source_file": "drone_control/action_spaces/velocity_ned/env.py",
+      "degree": 1
+    }
+  ],
+  "50": [
+    {
+      "id": "drone_control_algorithms_ppo",
+      "label": "algorithms/ppo.py",
+      "source_file": "drone_control/algorithms/ppo.py",
+      "degree": 19
+    },
+    {
+      "id": "tools_visualization_visualize_neuron",
+      "label": "visualize_neuron.py",
+      "source_file": "tools/visualization/visualize_neuron.py",
+      "degree": 10
+    },
+    {
+      "id": "torch_nn",
+      "label": "torch_nn",
+      "source_file": "",
+      "degree": 3
+    },
+    {
+      "id": "torch_distributions",
+      "label": "torch_distributions",
+      "source_file": "",
+      "degree": 2
+    },
+    {
+      "id": "matplotlib_patches",
+      "label": "matplotlib_patches",
+      "source_file": "",
+      "degree": 1
+    },
+    {
+      "id": "torch_nn_functional",
+      "label": "torch_nn_functional",
+      "source_file": "",
+      "degree": 1
+    }
+  ],
+  "51": [
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_dslpidcontrol_dslpidcontrol_computecontrol",
+      "label": ".computeControl()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/control/DSLPIDControl.py",
+      "degree": 4
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_dslpidcontrol_dslpidcontrol_dslpidattitudecontrol",
+      "label": "._dslPIDAttitudeControl()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/control/DSLPIDControl.py",
+      "degree": 3
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_dslpidcontrol_dslpidcontrol_dslpidpositioncontrol",
+      "label": "._dslPIDPositionControl()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/control/DSLPIDControl.py",
+      "degree": 3
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_dslpidcontrol_rationale_158",
+      "label": "DSL's CF2.x PID position control. Parameters ---------- control_timestep :…",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/control/DSLPIDControl.py",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_dslpidcontrol_rationale_219",
+      "label": "DSL's CF2.x PID attitude control. Parameters ---------- control_timestep :…",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/control/DSLPIDControl.py",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_dslpidcontrol_rationale_93",
+      "label": "Computes the PID control action (as RPMs) for a single drone. This methods…",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/control/DSLPIDControl.py",
+      "degree": 1
+    }
+  ],
+  "52": [
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_housekeeping",
+      "label": "._housekeeping()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseAviary.py",
+      "degree": 6
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_addobstacles",
+      "label": "._addObstacles()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseAviary.py",
+      "degree": 3
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_showdronelocalaxes",
+      "label": "._showDroneLocalAxes()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseAviary.py",
+      "degree": 3
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_rationale_452",
+      "label": "Housekeeping function. Allocation and zero-ing of the variables and PyBullet's…",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseAviary.py",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_rationale_920",
+      "label": "Draws the local frame of the n-th drone in PyBullet's GUI. Parameters…",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseAviary.py",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_rationale_958",
+      "label": "Add obstacles to the environment. These obstacles are loaded from standard URDF…",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseAviary.py",
+      "degree": 1
+    }
+  ],
+  "53": [
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_exportimage",
+      "label": "._exportImage()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseAviary.py",
+      "degree": 5
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baserlaviary_baserlaviary_computeobs",
+      "label": "._computeObs()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseRLAviary.py",
+      "degree": 5
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_getdroneimages",
+      "label": "._getDroneImages()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseAviary.py",
+      "degree": 4
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_rationale_571",
+      "label": "Returns camera captures from the n-th drone POV. Parameters ----------…",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseAviary.py",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_rationale_629",
+      "label": "Returns camera captures from the n-th drone POV. Parameters ---------- img_type…",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseAviary.py",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baserlaviary_rationale_291",
+      "label": "Returns the current observation of the environment. Returns ------- ndarray A…",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseRLAviary.py",
+      "degree": 1
+    }
+  ],
+  "54": [
+    {
+      "id": "drone_control_using_reinforcement_learning_readme_ppo_hover_project",
+      "label": "PPO Quadcopter Hover Project",
+      "source_file": "drone-control-using-reinforcement-learning/README.md",
+      "degree": 4
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_readme_ppo_pytorch",
+      "label": "PPO-PyTorch Algorithm",
+      "source_file": "drone-control-using-reinforcement-learning/README.md",
+      "degree": 2
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_readme_action_std_exploration",
+      "label": "Action Standard Deviation Exploration",
+      "source_file": "drone-control-using-reinforcement-learning/README.md",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_readme_fly_through_gate",
+      "label": "PPO Fly-through-gate Task",
+      "source_file": "drone-control-using-reinforcement-learning/README.md",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_readme_gym_pybullet_drones",
+      "label": "gym-pybullet-drones Environment",
+      "source_file": "drone-control-using-reinforcement-learning/README.md",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_readme_hover_reward_constraints",
+      "label": "Hover Reward Constraints",
+      "source_file": "drone-control-using-reinforcement-learning/README.md",
+      "degree": 1
+    }
+  ],
+  "55": [
+    {
+      "id": "tools_create_evaluation_manifest",
+      "label": "create_evaluation_manifest.py",
+      "source_file": "tools/create_evaluation_manifest.py",
+      "degree": 9
+    },
+    {
+      "id": "tools_create_evaluation_manifest_main",
+      "label": "main()",
+      "source_file": "tools/create_evaluation_manifest.py",
+      "degree": 4
+    },
+    {
+      "id": "tools_create_evaluation_manifest_parse_args",
+      "label": "parse_args()",
+      "source_file": "tools/create_evaluation_manifest.py",
+      "degree": 4
+    },
+    {
+      "id": "tools_create_evaluation_manifest_py_namespace",
+      "label": "Namespace",
+      "source_file": "",
+      "degree": 1
+    },
+    {
+      "id": "tools_create_evaluation_manifest_rationale_1",
+      "label": "Create a frozen evaluation manifest without starting ProjectAirSim.",
+      "source_file": "tools/create_evaluation_manifest.py",
+      "degree": 1
+    }
+  ],
+  "56": [
+    {
+      "id": "actor_architecture_hidden_layers_64_tanh",
+      "label": "Two 64-neuron Tanh Hidden Layers",
+      "source_file": "actor_architecture.png",
+      "degree": 2
+    },
+    {
+      "id": "actor_architecture_input_state_13",
+      "label": "13-neuron Input State",
+      "source_file": "actor_architecture.png",
+      "degree": 2
+    },
+    {
+      "id": "actor_architecture_actor_network",
+      "label": "Actor Network Architecture",
+      "source_file": "actor_architecture.png",
+      "degree": 1
+    },
+    {
+      "id": "actor_architecture_output_action_3",
+      "label": "3-neuron Action Output",
+      "source_file": "actor_architecture.png",
+      "degree": 1
+    }
+  ],
+  "57": [
+    {
+      "id": "balance_eval_results_balance_eval_summary_post_collision_balance_evaluation",
+      "label": "Post-collision Balance Evaluation",
+      "source_file": "balance_eval_results/balance_eval_summary.png",
+      "degree": 2
+    },
+    {
+      "id": "balance_eval_results_balance_eval_summary_survival_rate",
+      "label": "Low Survival Across Disturbances",
+      "source_file": "balance_eval_results/balance_eval_summary.png",
+      "degree": 2
+    },
+    {
+      "id": "balance_eval_results_balance_eval_summary_disturbance_directions",
+      "label": "Eight Disturbance Configurations",
+      "source_file": "balance_eval_results/balance_eval_summary.png",
+      "degree": 1
+    },
+    {
+      "id": "balance_eval_results_balance_eval_summary_position_error_threshold",
+      "label": "0.3 m Position Error Threshold",
+      "source_file": "balance_eval_results/balance_eval_summary.png",
+      "degree": 1
+    }
+  ],
+  "58": [
+    {
+      "id": "drone_control_action_spaces_velocity_ned_env_short_episode",
+      "label": "env_short_episode.py",
+      "source_file": "drone_control/action_spaces/velocity_ned/env_short_episode.py",
+      "degree": 4
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_env_short_episode_dronehoveringenv",
+      "label": "DroneHoveringEnv",
+      "source_file": "drone_control/action_spaces/velocity_ned/env_short_episode.py",
+      "degree": 3
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_env_short_episode_dronehoveringenv_init",
+      "label": ".__init__()",
+      "source_file": "drone_control/action_spaces/velocity_ned/env_short_episode.py",
+      "degree": 2
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_env_short_episode_rationale_1",
+      "label": "Compatibility wrapper for the 10-second velocity-NED profile. The environment…",
+      "source_file": "drone_control/action_spaces/velocity_ned/env_short_episode.py",
+      "degree": 1
+    }
+  ],
+  "59": [
+    {
+      "id": "drone_control_action_spaces_velocity_ned_readme_ned_velocity_action_space",
+      "label": "Three-dimensional NED velocity action space",
+      "source_file": "drone_control/action_spaces/velocity_ned/README.md",
+      "degree": 2
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_readme_training_and_deployment",
+      "label": "Velocity policy training deployment and disturbance evaluation modules",
+      "source_file": "drone_control/action_spaces/velocity_ned/README.md",
+      "degree": 2
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_readme_module_invocation",
+      "label": "Run velocity NED entry points as Python modules from repository root",
+      "source_file": "drone_control/action_spaces/velocity_ned/README.md",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_readme_velocity_policy_bounds",
+      "label": "NED velocity policy bounds [-1.5, 1.5]^3 m/s",
+      "source_file": "drone_control/action_spaces/velocity_ned/README.md",
+      "degree": 1
+    }
+  ],
+  "60": [
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_assets_beta_presets_bak_betaflight_sitl",
+      "label": "Betaflight SITL 4.5 configuration",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/assets/beta-presets-bak.txt",
+      "degree": 3
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_assets_beta_presets_bak_pid_profile",
+      "label": "Betaflight pitch roll yaw PID profile",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/assets/beta-presets-bak.txt",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_assets_beta_presets_bak_pwm_motor_protocol",
+      "label": "PWM motor protocol",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/assets/beta-presets-bak.txt",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_assets_beta_presets_bak_rate_profile",
+      "label": "Betaflight RC rate profile",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/assets/beta-presets-bak.txt",
+      "degree": 1
+    }
+  ],
+  "61": [
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baserlaviary_baserlaviary_preprocessaction",
+      "label": "._preprocessAction()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseRLAviary.py",
+      "degree": 4
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_baseaviary_calculatenextstep",
+      "label": "._calculateNextStep()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseAviary.py",
+      "degree": 3
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baseaviary_rationale_1108",
+      "label": "Calculates intermediate waypoint towards drone's destination from drone's…",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseAviary.py",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baserlaviary_rationale_163",
+      "label": "Pre-processes the action passed to `.step()` into motors' RPMs. Parameter…",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseRLAviary.py",
+      "degree": 1
+    }
+  ],
+  "62": [
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baserlaviary_baserlaviary_addobstacles",
+      "label": "._addObstacles()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseRLAviary.py",
+      "degree": 3
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_flythrugateavitary_flythrugateavitary_addobstacles",
+      "label": "._addObstacles()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/FlyThruGateAvitary.py",
+      "degree": 3
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baserlaviary_rationale_100",
+      "label": "Add obstacles to the environment. Only if the observation is of type RGB, 4…",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseRLAviary.py",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_flythrugateavitary_rationale_72",
+      "label": "Add obstacles to the environment. Extends the superclass method and add the…",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/FlyThruGateAvitary.py",
+      "degree": 1
+    }
+  ],
+  "63": [
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_flythrugateavitary_flythrugateavitary_clipandnormalizestate",
+      "label": "._clipAndNormalizeState()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/FlyThruGateAvitary.py",
+      "degree": 3
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_flythrugateavitary_flythrugateavitary_clipandnormalizestatewarning",
+      "label": "._clipAndNormalizeStateWarning()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/FlyThruGateAvitary.py",
+      "degree": 3
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_flythrugateavitary_rationale_175",
+      "label": "Normalizes a drone's state to the [-1,1] range. Parameters ---------- state :…",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/FlyThruGateAvitary.py",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_flythrugateavitary_rationale_242",
+      "label": "Debugging printouts associated to `_clipAndNormalizeState`. Print a warning if…",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/FlyThruGateAvitary.py",
+      "degree": 1
+    }
+  ],
+  "64": [
+    {
+      "id": "balance_eval_results_recovery_curves_recovery_push_east_push_east_recovery",
+      "label": "Push-east Recovery Curves",
+      "source_file": "balance_eval_results/recovery_curves/recovery_push_east.png",
+      "degree": 2
+    },
+    {
+      "id": "balance_eval_results_recovery_curves_recovery_push_east_attitude_response",
+      "label": "Bounded Roll and Pitch Response",
+      "source_file": "balance_eval_results/recovery_curves/recovery_push_east.png",
+      "degree": 1
+    },
+    {
+      "id": "balance_eval_results_recovery_curves_recovery_push_east_position_failure",
+      "label": "Large Post-impact Position Error",
+      "source_file": "balance_eval_results/recovery_curves/recovery_push_east.png",
+      "degree": 1
+    }
+  ],
+  "65": [
+    {
+      "id": "balance_eval_results_recovery_curves_recovery_push_strong_strong_push_recovery",
+      "label": "Strong-push Recovery Curves",
+      "source_file": "balance_eval_results/recovery_curves/recovery_push_strong.png",
+      "degree": 2
+    },
+    {
+      "id": "balance_eval_results_recovery_curves_recovery_push_strong_attitude_response",
+      "label": "Strong Roll and Pitch Excursion",
+      "source_file": "balance_eval_results/recovery_curves/recovery_push_strong.png",
+      "degree": 1
+    },
+    {
+      "id": "balance_eval_results_recovery_curves_recovery_push_strong_position_failure",
+      "label": "Severe Post-impact Position Error",
+      "source_file": "balance_eval_results/recovery_curves/recovery_push_strong.png",
+      "degree": 1
+    }
+  ],
+  "66": [
+    {
+      "id": "analysis_readme_artifact_preservation",
+      "label": "Preserve historical experiment artifacts for reproducibility",
+      "source_file": "analysis/README.md",
+      "degree": 1
+    },
+    {
+      "id": "analysis_readme_legacy_analysis",
+      "label": "Legacy result analysis scripts",
+      "source_file": "analysis/README.md",
+      "degree": 1
+    }
+  ],
+  "67": [
+    {
+      "id": "control_results_co_nhieu_ppo_3r_overlay_summary_late_altitude_divergence",
+      "label": "Late Altitude Divergence Under Disturbance",
+      "source_file": "control_results/Co_Nhieu/PPO_3R/overlay_summary.png",
+      "degree": 1
+    },
+    {
+      "id": "control_results_co_nhieu_ppo_3r_overlay_summary_trajectory_overlay",
+      "label": "Disturbed PPO 3R Position Overlay",
+      "source_file": "control_results/Co_Nhieu/PPO_3R/overlay_summary.png",
+      "degree": 1
+    }
+  ],
+  "68": [
+    {
+      "id": "control_results_co_nhieu_ppo_4r_overlay_summary_bounded_hover_tracking",
+      "label": "Bounded Hover Tracking Under Disturbance",
+      "source_file": "control_results/Co_Nhieu/PPO_4R/overlay_summary.png",
+      "degree": 1
+    },
+    {
+      "id": "control_results_co_nhieu_ppo_4r_overlay_summary_trajectory_overlay",
+      "label": "Disturbed PPO 4R Position Overlay",
+      "source_file": "control_results/Co_Nhieu/PPO_4R/overlay_summary.png",
+      "degree": 1
+    }
+  ],
+  "69": [
+    {
+      "id": "control_results_khong_co_nhieu_ppo3r_overlay_summary_steady_state_offset",
+      "label": "Persistent Position Offsets",
+      "source_file": "control_results/Khong_co_nhieu/PPO3R/overlay_summary.png",
+      "degree": 1
+    },
+    {
+      "id": "control_results_khong_co_nhieu_ppo3r_overlay_summary_trajectory_overlay",
+      "label": "Undisturbed PPO 3R Position Overlay",
+      "source_file": "control_results/Khong_co_nhieu/PPO3R/overlay_summary.png",
+      "degree": 1
+    }
+  ],
+  "70": [
+    {
+      "id": "control_results_khong_co_nhieu_ppo4r_overlay_summary_stable_altitude_tracking",
+      "label": "Stable Altitude with Small Lateral Offsets",
+      "source_file": "control_results/Khong_co_nhieu/PPO4R/overlay_summary.png",
+      "degree": 1
+    },
+    {
+      "id": "control_results_khong_co_nhieu_ppo4r_overlay_summary_trajectory_overlay",
+      "label": "Undisturbed PPO 4R Position Overlay",
+      "source_file": "control_results/Khong_co_nhieu/PPO4R/overlay_summary.png",
+      "degree": 1
+    }
+  ],
+  "71": [
+    {
+      "id": "docs_danh_gia_cau_hinh_ppo_quadcopter_configuration_assessment",
+      "label": "PPO Quadcopter Configuration Assessment",
+      "source_file": "docs/DANH_GIA_CAU_HINH_PPO_QUADCOPTER.md",
+      "degree": 1
+    },
+    {
+      "id": "docs_ke_hoach_khac_phuc_danh_gia_cau_hinh_ppo_remediation_plan",
+      "label": "PPO Configuration Remediation Plan",
+      "source_file": "docs/KE_HOACH_KHAC_PHUC_DANH_GIA_CAU_HINH_PPO.md",
+      "degree": 1
+    }
+  ],
+  "72": [
+    {
+      "id": "docs_pi2020_direct_motor_rl_controller",
+      "label": "Direct Four-actuator Reinforcement-learning Controller",
+      "source_file": "docs/pi2020.pdf",
+      "degree": 1
+    },
+    {
+      "id": "docs_pi2020_low_level_autonomous_quadrotor_control",
+      "label": "Low-level Autonomous Control and Tracking of Quadrotor Using Reinforcement Learning",
+      "source_file": "docs/pi2020.pdf",
+      "degree": 1
+    }
+  ],
+  "73": [
+    {
+      "id": "docs_ppo_config_table_ppo_configuration_reference",
+      "label": "PPO Configuration Reference",
+      "source_file": "docs/PPO_CONFIG_TABLE.md",
+      "degree": 1
+    },
+    {
+      "id": "docs_ppo_reward_function_reward_reference",
+      "label": "PPO Reward Function Reference",
+      "source_file": "docs/PPO_REWARD_FUNCTION.md",
+      "degree": 1
+    }
+  ],
+  "74": [
+    {
+      "id": "drone_control_action_spaces_init",
+      "label": "drone_control/action_spaces/__init__.py",
+      "source_file": "drone_control/action_spaces/__init__.py",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_action_spaces_init_rationale_1",
+      "label": "Các phương pháp biểu diễn và ánh xạ action cho quadrotor.",
+      "source_file": "drone_control/action_spaces/__init__.py",
+      "degree": 1
+    }
+  ],
+  "75": [
+    {
+      "id": "drone_control_action_spaces_motor_residual_init",
+      "label": "drone_control/action_spaces/motor_residual/__init__.py",
+      "source_file": "drone_control/action_spaces/motor_residual/__init__.py",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_action_spaces_motor_residual_init_rationale_1",
+      "label": "Action space residual RPM độc lập cho bốn rotor.",
+      "source_file": "drone_control/action_spaces/motor_residual/__init__.py",
+      "degree": 1
+    }
+  ],
+  "76": [
+    {
+      "id": "drone_control_action_spaces_velocity_ned_init",
+      "label": "velocity_ned/__init__.py",
+      "source_file": "drone_control/action_spaces/velocity_ned/__init__.py",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_action_spaces_velocity_ned_init_rationale_1",
+      "label": "Action space vận tốc NED: ``[v_north, v_east, v_down]``.",
+      "source_file": "drone_control/action_spaces/velocity_ned/__init__.py",
+      "degree": 1
+    }
+  ],
+  "77": [
+    {
+      "id": "drone_control_algorithms_init",
+      "label": "algorithms/__init__.py",
+      "source_file": "drone_control/algorithms/__init__.py",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_algorithms_init_rationale_1",
+      "label": "Thuật toán reinforcement learning dùng chung giữa các action space.",
+      "source_file": "drone_control/algorithms/__init__.py",
+      "degree": 1
+    }
+  ],
+  "78": [
+    {
+      "id": "drone_control_init",
+      "label": "drone_control/__init__.py",
+      "source_file": "drone_control/__init__.py",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_init_rationale_1",
+      "label": "Mã nguồn chính cho các thí nghiệm điều khiển quadrotor bằng PPO.",
+      "source_file": "drone_control/__init__.py",
+      "degree": 1
+    }
+  ],
+  "79": [
+    {
+      "id": "drone_control_using_reinforcement_learning_build_project",
+      "label": "build_project.sh",
+      "source_file": "drone-control-using-reinforcement-learning/build_project.sh",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_build_project_sh__entry",
+      "label": "build_project.sh script",
+      "source_file": "drone-control-using-reinforcement-learning/build_project.sh",
+      "degree": 1
+    }
+  ],
+  "80": [
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_assets_clone_bfs",
+      "label": "clone_bfs.sh",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/assets/clone_bfs.sh",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_assets_clone_bfs_sh__entry",
+      "label": "clone_bfs.sh script",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/assets/clone_bfs.sh",
+      "degree": 1
+    }
+  ],
+  "81": [
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_assets_ffmpeg_png2mp4",
+      "label": "ffmpeg_png2mp4.sh",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/assets/ffmpeg_png2mp4.sh",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_assets_ffmpeg_png2mp4_sh__entry",
+      "label": "ffmpeg_png2mp4.sh script",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/assets/ffmpeg_png2mp4.sh",
+      "degree": 1
+    }
+  ],
+  "82": [
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_assets_helix_multi_drone_helix_demo",
+      "label": "Multi-drone Helix Simulation Demo",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/assets/helix.gif",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_assets_helix_propeller_rpm_controls",
+      "label": "Per-propeller RPM Controls",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/assets/helix.gif",
+      "degree": 1
+    }
+  ],
+  "83": [
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_assets_rl_pybullet_environment",
+      "label": "PyBullet Grid Environment",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/assets/rl.gif",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_assets_rl_reinforcement_learning_flight_demo",
+      "label": "Reinforcement-learning Drone Flight Demo",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/assets/rl.gif",
+      "degree": 1
+    }
+  ],
+  "84": [
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baserlaviary_baserlaviary_actionspace",
+      "label": "._actionSpace()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseRLAviary.py",
+      "degree": 2
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baserlaviary_rationale_133",
+      "label": "Returns the action space of the environment. Returns ------- spaces.Box A Box…",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseRLAviary.py",
+      "degree": 1
+    }
+  ],
+  "85": [
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baserlaviary_baserlaviary_observationspace",
+      "label": "._observationSpace()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseRLAviary.py",
+      "degree": 2
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_baserlaviary_rationale_250",
+      "label": "Returns the observation space of the environment. Returns ------- ndarray A…",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/BaseRLAviary.py",
+      "degree": 1
+    }
+  ],
+  "86": [
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_flythrugateavitary_flythrugateavitary_computeinfo",
+      "label": "._computeInfo()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/FlyThruGateAvitary.py",
+      "degree": 2
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_flythrugateavitary_rationale_158",
+      "label": "Computes the current info dict(s). Unused. Returns ------- dict[str, int] Dummy…",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/FlyThruGateAvitary.py",
+      "degree": 1
+    }
+  ],
+  "87": [
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_flythrugateavitary_flythrugateavitary_computeterminated",
+      "label": "._computeTerminated()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/FlyThruGateAvitary.py",
+      "degree": 2
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_flythrugateavitary_rationale_142",
+      "label": "Computes the current done value. Returns ------- bool Whether the current…",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/FlyThruGateAvitary.py",
+      "degree": 1
+    }
+  ],
+  "88": [
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_hoveraviary_hoveraviary_computeinfo",
+      "label": "._computeInfo()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/HoverAviary.py",
+      "degree": 2
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_hoveraviary_rationale_133",
+      "label": "Computes the current info dict(s). Unused. Returns ------- dict[str, int] Dummy…",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/HoverAviary.py",
+      "degree": 1
+    }
+  ],
+  "89": [
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_multihoveraviary_multihoveraviary_computeinfo",
+      "label": "._computeInfo()",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/MultiHoverAviary.py",
+      "degree": 2
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_envs_multihoveraviary_rationale_135",
+      "label": "Computes the current info dict(s). Unused. Returns ------- dict[str, int] Dummy…",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/envs/MultiHoverAviary.py",
+      "degree": 1
+    }
+  ],
+  "90": [
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_init",
+      "label": "gym_pybullet_drones/__init__.py",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/__init__.py",
+      "degree": 1
+    },
+    {
+      "id": "gymnasium_envs_registration",
+      "label": "gymnasium_envs_registration",
+      "source_file": "",
+      "degree": 1
+    }
+  ],
+  "91": [
+    {
+      "id": "drone_control_using_reinforcement_learning_tests_test_build",
+      "label": "test_build.py",
+      "source_file": "drone-control-using-reinforcement-learning/tests/test_build.py",
+      "degree": 1
+    },
+    {
+      "id": "drone_control_using_reinforcement_learning_tests_test_build_test_imports",
+      "label": "test_imports()",
+      "source_file": "drone-control-using-reinforcement-learning/tests/test_build.py",
+      "degree": 1
+    }
+  ],
+  "92": [
+    {
+      "id": "log_dir_hover_motor_motor_20261115_194017_788604_training_analysis_report_attitude_instability",
+      "label": "Likely Attitude Instability",
+      "source_file": "log_dir/hover_motor/motor_20261115_194017_788604/TRAINING_ANALYSIS_REPORT.md",
+      "degree": 1
+    },
+    {
+      "id": "log_dir_hover_motor_motor_20261115_194017_788604_training_analysis_report_motor_training_analysis",
+      "label": "Four-motor PPO Training Analysis Report",
+      "source_file": "log_dir/hover_motor/motor_20261115_194017_788604/TRAINING_ANALYSIS_REPORT.md",
+      "degree": 1
+    }
+  ],
+  "93": [
+    {
+      "id": "test_results_4r_co_nhieu_plots_kq1_quytrinh_vitri_ep002_4r_disturbed_position_analysis",
+      "label": "4R Disturbed Position Analysis",
+      "source_file": "test_results_4R/Co_nhieu/plots/KQ1_quytrinh_vitri_ep002.png",
+      "degree": 1
+    },
+    {
+      "id": "test_results_4r_co_nhieu_plots_kq1_quytrinh_vitri_ep002_position_metrics",
+      "label": "Altitude Overshoot and XYZ RMSE Metrics",
+      "source_file": "test_results_4R/Co_nhieu/plots/KQ1_quytrinh_vitri_ep002.png",
+      "degree": 1
+    }
+  ],
+  "94": [
+    {
+      "id": "test_results_4r_co_nhieu_plots_phan_tich_ep002_4r_disturbed_flight_analysis",
+      "label": "4R Disturbed Flight Analysis",
+      "source_file": "test_results_4R/Co_nhieu/plots/phan_tich_ep002.png",
+      "degree": 1
+    },
+    {
+      "id": "test_results_4r_co_nhieu_plots_phan_tich_ep002_six_dof_metrics",
+      "label": "Position and Roll-Pitch-Yaw Metrics",
+      "source_file": "test_results_4R/Co_nhieu/plots/phan_tich_ep002.png",
+      "degree": 1
+    }
+  ],
+  "95": [
+    {
+      "id": "test_results_4r_co_nhieu_plots_trajectory_ep003_plot_descent_and_attitude_response",
+      "label": "Descent with Small Lateral and Attitude Motion",
+      "source_file": "test_results_4R/Co_nhieu/plots/trajectory_ep003_plot.png",
+      "degree": 1
+    },
+    {
+      "id": "test_results_4r_co_nhieu_plots_trajectory_ep003_plot_episode_3_flight_path",
+      "label": "Disturbed 4R Episode 3 Flight Path",
+      "source_file": "test_results_4R/Co_nhieu/plots/trajectory_ep003_plot.png",
+      "degree": 1
+    }
+  ],
+  "96": [
+    {
+      "id": "test_results_4r_co_nhieu_plots_trajectory_ep006_plot_descent_and_attitude_response",
+      "label": "Descent with Bounded Lateral and Attitude Motion",
+      "source_file": "test_results_4R/Co_nhieu/plots/trajectory_ep006_plot.png",
+      "degree": 1
+    },
+    {
+      "id": "test_results_4r_co_nhieu_plots_trajectory_ep006_plot_episode_6_flight_path",
+      "label": "Disturbed 4R Episode 6 Flight Path",
+      "source_file": "test_results_4R/Co_nhieu/plots/trajectory_ep006_plot.png",
+      "degree": 1
+    }
+  ],
+  "97": [
+    {
+      "id": "test_results_4r_co_nhieu_plots_trajectory_ep009_plot_descent_and_yaw_drift",
+      "label": "Descent with Positive Yaw Drift",
+      "source_file": "test_results_4R/Co_nhieu/plots/trajectory_ep009_plot.png",
+      "degree": 1
+    },
+    {
+      "id": "test_results_4r_co_nhieu_plots_trajectory_ep009_plot_episode_9_flight_path",
+      "label": "Disturbed 4R Episode 9 Flight Path",
+      "source_file": "test_results_4R/Co_nhieu/plots/trajectory_ep009_plot.png",
+      "degree": 1
+    }
+  ],
+  "98": [
+    {
+      "id": "test_results_4r_co_nhieu_trajectory_ep002_altitude_goal_tracking",
+      "label": "Altitude Goal Tracking with Transient Dip",
+      "source_file": "test_results_4R/Co_nhieu/trajectory_ep002.png",
+      "degree": 1
+    },
+    {
+      "id": "test_results_4r_co_nhieu_trajectory_ep002_episode_2_hover_trajectory",
+      "label": "Disturbed 4R Episode 2 Hover Trajectory",
+      "source_file": "test_results_4R/Co_nhieu/trajectory_ep002.png",
+      "degree": 1
+    }
+  ],
+  "99": [
+    {
+      "id": "test_results_4r_co_nhieu_trajectory_ep005_altitude_goal_tracking",
+      "label": "Altitude Goal Tracking with Repeated Dips",
+      "source_file": "test_results_4R/Co_nhieu/trajectory_ep005.png",
+      "degree": 1
+    },
+    {
+      "id": "test_results_4r_co_nhieu_trajectory_ep005_episode_5_hover_trajectory",
+      "label": "Disturbed 4R Episode 5 Hover Trajectory",
+      "source_file": "test_results_4R/Co_nhieu/trajectory_ep005.png",
+      "degree": 1
+    }
+  ],
+  "100": [
+    {
+      "id": "test_results_4r_co_nhieu_trajectory_ep008_altitude_goal_tracking",
+      "label": "Altitude Goal Tracking with Multiple Disturbance Dips",
+      "source_file": "test_results_4R/Co_nhieu/trajectory_ep008.png",
+      "degree": 1
+    },
+    {
+      "id": "test_results_4r_co_nhieu_trajectory_ep008_episode_8_hover_trajectory",
+      "label": "Disturbed 4R Episode 8 Hover Trajectory",
+      "source_file": "test_results_4R/Co_nhieu/trajectory_ep008.png",
+      "degree": 1
+    }
+  ],
+  "101": [
+    {
+      "id": "test_results_4r_khong_co_nhieu_overlay_summary_repeatable_hover_response",
+      "label": "Repeatable Hover Response Across Episodes",
+      "source_file": "test_results_4R/Khong_co_nhieu/overlay_summary.png",
+      "degree": 1
+    },
+    {
+      "id": "test_results_4r_khong_co_nhieu_overlay_summary_undisturbed_trajectory_overlay",
+      "label": "Undisturbed 4R Ten-episode Position Overlay",
+      "source_file": "test_results_4R/Khong_co_nhieu/overlay_summary.png",
+      "degree": 1
+    }
+  ],
+  "102": [
+    {
+      "id": "test_results_4r_khong_co_nhieu_plots_kq2_quytrinh_goc_ep002_attitude_analysis",
+      "label": "Undisturbed 4R Attitude Analysis",
+      "source_file": "test_results_4R/Khong_co_nhieu/plots/KQ2_quytrinh_goc_ep002.png",
+      "degree": 1
+    },
+    {
+      "id": "test_results_4r_khong_co_nhieu_plots_kq2_quytrinh_goc_ep002_attitude_rmse",
+      "label": "Roll Pitch Yaw RMSE Metrics",
+      "source_file": "test_results_4R/Khong_co_nhieu/plots/KQ2_quytrinh_goc_ep002.png",
+      "degree": 1
+    }
+  ],
+  "103": [
+    {
+      "id": "test_results_4r_khong_co_nhieu_trajectory_ep003_episode_3_hover_trajectory",
+      "label": "Undisturbed 4R Episode 3 Hover Trajectory",
+      "source_file": "test_results_4R/Khong_co_nhieu/trajectory_ep003.png",
+      "degree": 1
+    },
+    {
+      "id": "test_results_4r_khong_co_nhieu_trajectory_ep003_smooth_hover_convergence",
+      "label": "Smooth Altitude and Attitude Convergence",
+      "source_file": "test_results_4R/Khong_co_nhieu/trajectory_ep003.png",
+      "degree": 1
+    }
+  ],
+  "104": [
+    {
+      "id": "test_results_4r_khong_co_nhieu_trajectory_ep006_episode_6_hover_trajectory",
+      "label": "Undisturbed 4R Episode 6 Hover Trajectory",
+      "source_file": "test_results_4R/Khong_co_nhieu/trajectory_ep006.png",
+      "degree": 1
+    },
+    {
+      "id": "test_results_4r_khong_co_nhieu_trajectory_ep006_smooth_hover_convergence",
+      "label": "Smooth Hover Convergence with Small Yaw Error",
+      "source_file": "test_results_4R/Khong_co_nhieu/trajectory_ep006.png",
+      "degree": 1
+    }
+  ],
+  "105": [
+    {
+      "id": "test_results_4r_khong_co_nhieu_trajectory_ep009_episode_9_hover_trajectory",
+      "label": "Undisturbed 4R Episode 9 Hover Trajectory",
+      "source_file": "test_results_4R/Khong_co_nhieu/trajectory_ep009.png",
+      "degree": 1
+    },
+    {
+      "id": "test_results_4r_khong_co_nhieu_trajectory_ep009_smooth_hover_convergence",
+      "label": "Smooth Hover Convergence with Bounded Attitude",
+      "source_file": "test_results_4R/Khong_co_nhieu/trajectory_ep009.png",
+      "degree": 1
+    }
+  ],
+  "106": [
+    {
+      "id": "test_results_co_nhieu_plots_kq1_quytrinh_vitri_ep002_disturbed_position_analysis",
+      "label": "Disturbed Episode Position Analysis",
+      "source_file": "test_results/Co_nhieu/plots/KQ1_quytrinh_vitri_ep002.png",
+      "degree": 1
+    },
+    {
+      "id": "test_results_co_nhieu_plots_kq1_quytrinh_vitri_ep002_tracking_metrics",
+      "label": "Position RMSE, Overshoot, and Settling Metrics",
+      "source_file": "test_results/Co_nhieu/plots/KQ1_quytrinh_vitri_ep002.png",
+      "degree": 1
+    }
+  ],
+  "107": [
+    {
+      "id": "test_results_co_nhieu_plots_phan_tich_ep002_attitude_and_position_metrics",
+      "label": "Position and Attitude Response Metrics",
+      "source_file": "test_results/Co_nhieu/plots/phan_tich_ep002.png",
+      "degree": 1
+    },
+    {
+      "id": "test_results_co_nhieu_plots_phan_tich_ep002_disturbed_trajectory_analysis",
+      "label": "Disturbed Episode Trajectory Analysis",
+      "source_file": "test_results/Co_nhieu/plots/phan_tich_ep002.png",
+      "degree": 1
+    }
+  ],
+  "108": [
+    {
+      "id": "tests_action_spaces_init",
+      "label": "tests/action_spaces/__init__.py",
+      "source_file": "tests/action_spaces/__init__.py",
+      "degree": 1
+    },
+    {
+      "id": "tests_action_spaces_init_rationale_1",
+      "label": "Tests cho các action space.",
+      "source_file": "tests/action_spaces/__init__.py",
+      "degree": 1
+    }
+  ],
+  "109": [
+    {
+      "id": "tests_action_spaces_motor_residual_init",
+      "label": "tests/action_spaces/motor_residual/__init__.py",
+      "source_file": "tests/action_spaces/motor_residual/__init__.py",
+      "degree": 1
+    },
+    {
+      "id": "tests_action_spaces_motor_residual_init_rationale_1",
+      "label": "Tests cho residual motor action space.",
+      "source_file": "tests/action_spaces/motor_residual/__init__.py",
+      "degree": 1
+    }
+  ],
+  "110": [
+    {
+      "id": "tests_common_init",
+      "label": "common/__init__.py",
+      "source_file": "tests/common/__init__.py",
+      "degree": 1
+    },
+    {
+      "id": "tests_common_init_rationale_1",
+      "label": "Tests cho thành phần dùng chung.",
+      "source_file": "tests/common/__init__.py",
+      "degree": 1
+    }
+  ],
+  "111": [
+    {
+      "id": "tests_init",
+      "label": "tests/__init__.py",
+      "source_file": "tests/__init__.py",
+      "degree": 1
+    },
+    {
+      "id": "tests_init_rationale_1",
+      "label": "Unit tests của dự án.",
+      "source_file": "tests/__init__.py",
+      "degree": 1
+    }
+  ],
+  "112": [
+    {
+      "id": "tools_diagnostics_init",
+      "label": "diagnostics/__init__.py",
+      "source_file": "tools/diagnostics/__init__.py",
+      "degree": 1
+    },
+    {
+      "id": "tools_diagnostics_init_rationale_1",
+      "label": "Script chẩn đoán simulator và MAVSDK.",
+      "source_file": "tools/diagnostics/__init__.py",
+      "degree": 1
+    }
+  ],
+  "113": [
+    {
+      "id": "tools_init",
+      "label": "tools/__init__.py",
+      "source_file": "tools/__init__.py",
+      "degree": 1
+    },
+    {
+      "id": "tools_init_rationale_1",
+      "label": "Công cụ phân tích, trực quan hóa và chẩn đoán.",
+      "source_file": "tools/__init__.py",
+      "degree": 1
+    }
+  ],
+  "114": [
+    {
+      "id": "tools_visualization_init",
+      "label": "visualization/__init__.py",
+      "source_file": "tools/visualization/__init__.py",
+      "degree": 1
+    },
+    {
+      "id": "tools_visualization_init_rationale_1",
+      "label": "Công cụ trực quan hóa offline.",
+      "source_file": "tools/visualization/__init__.py",
+      "degree": 1
+    }
+  ],
+  "115": [
+    {
+      "id": "actor_activations_actor_network_activations",
+      "label": "Actor Network Activations",
+      "source_file": "actor_activations.png",
+      "degree": 0
+    }
+  ],
+  "116": [
+    {
+      "id": "actor_weight_distribution_actor_network_weight_distributions",
+      "label": "Actor network weight distributions across three layers",
+      "source_file": "actor_weight_distribution.png",
+      "degree": 0
+    }
+  ],
+  "117": [
+    {
+      "id": "actor_weights_heatmap_actor_weights",
+      "label": "Actor Weight Heatmaps",
+      "source_file": "actor_weights_heatmap.png",
+      "degree": 0
+    }
+  ],
+  "118": [
+    {
+      "id": "balance_eval_results_recovery_curves_recovery_push_diag_diagonal_push_recovery",
+      "label": "Diagonal push recovery trials with distance roll and pitch",
+      "source_file": "balance_eval_results/recovery_curves/recovery_push_diag.png",
+      "degree": 0
+    }
+  ],
+  "119": [
+    {
+      "id": "balance_eval_results_recovery_curves_recovery_push_down_push_down_recovery",
+      "label": "Push-down Recovery Evaluation",
+      "source_file": "balance_eval_results/recovery_curves/recovery_push_down.png",
+      "degree": 0
+    }
+  ],
+  "120": [
+    {
+      "id": "balance_eval_results_recovery_curves_recovery_push_north_north_push_recovery",
+      "label": "North push recovery trials with target distance and attitude",
+      "source_file": "balance_eval_results/recovery_curves/recovery_push_north.png",
+      "degree": 0
+    }
+  ],
+  "121": [
+    {
+      "id": "balance_eval_results_recovery_curves_recovery_push_south_push_south_recovery",
+      "label": "Push-south Recovery Evaluation",
+      "source_file": "balance_eval_results/recovery_curves/recovery_push_south.png",
+      "degree": 0
+    }
+  ],
+  "122": [
+    {
+      "id": "balance_eval_results_recovery_curves_recovery_push_up_upward_push_recovery",
+      "label": "Upward push recovery trials with distance roll and pitch",
+      "source_file": "balance_eval_results/recovery_curves/recovery_push_up.png",
+      "degree": 0
+    }
+  ],
+  "123": [
+    {
+      "id": "balance_eval_results_recovery_curves_recovery_push_west_push_west_recovery",
+      "label": "Push-west Recovery Evaluation",
+      "source_file": "balance_eval_results/recovery_curves/recovery_push_west.png",
+      "degree": 0
+    }
+  ],
+  "124": [
+    {
+      "id": "control_results_co_nhieu_ppo_3r_overlay_summary_attitude_ppo_3r_disturbed_attitude",
+      "label": "PPO 3R disturbed roll pitch yaw response",
+      "source_file": "control_results/Co_Nhieu/PPO_3R/overlay_summary_attitude.png",
+      "degree": 0
+    }
+  ],
+  "125": [
+    {
+      "id": "control_results_co_nhieu_ppo_3r_trajectory_ep001_noisy_3r_episode_1",
+      "label": "Noisy PPO 3R Trajectory Episode 1",
+      "source_file": "control_results/Co_Nhieu/PPO_3R/trajectory_ep001.png",
+      "degree": 0
+    }
+  ],
+  "126": [
+    {
+      "id": "control_results_co_nhieu_ppo_4r_overlay_summary_attitude_ppo_4r_disturbed_attitude",
+      "label": "PPO 4R disturbed roll pitch yaw response",
+      "source_file": "control_results/Co_Nhieu/PPO_4R/overlay_summary_attitude.png",
+      "degree": 0
+    }
+  ],
+  "127": [
+    {
+      "id": "control_results_co_nhieu_ppo_4r_trajectory_ep001_noisy_4r_episode_1",
+      "label": "Noisy PPO 4R Trajectory Episode 1",
+      "source_file": "control_results/Co_Nhieu/PPO_4R/trajectory_ep001.png",
+      "degree": 0
+    }
+  ],
+  "128": [
+    {
+      "id": "control_results_khong_co_nhieu_ppo3r_overlay_summary_attitude_ppo3r_clean_attitude",
+      "label": "PPO 3R no-disturbance attitude response",
+      "source_file": "control_results/Khong_co_nhieu/PPO3R/overlay_summary_attitude.png",
+      "degree": 0
+    }
+  ],
+  "129": [
+    {
+      "id": "control_results_khong_co_nhieu_ppo3r_trajectory_ep001_clean_3r_episode_1",
+      "label": "Noise-free PPO 3R Trajectory Episode 1",
+      "source_file": "control_results/Khong_co_nhieu/PPO3R/trajectory_ep001.png",
+      "degree": 0
+    }
+  ],
+  "130": [
+    {
+      "id": "control_results_khong_co_nhieu_ppo4r_overlay_summary_attitude_ppo4r_clean_attitude",
+      "label": "PPO 4R no-disturbance attitude response",
+      "source_file": "control_results/Khong_co_nhieu/PPO4R/overlay_summary_attitude.png",
+      "degree": 0
+    }
+  ],
+  "131": [
+    {
+      "id": "control_results_khong_co_nhieu_ppo4r_trajectory_ep001_clean_4r_episode_1",
+      "label": "Noise-free PPO 4R Trajectory Episode 1",
+      "source_file": "control_results/Khong_co_nhieu/PPO4R/trajectory_ep001.png",
+      "degree": 0
+    }
+  ],
+  "132": [
+    {
+      "id": "docs_envs_explanation_drone_hovering_environment",
+      "label": "Drone Hovering Environment Explanation",
+      "source_file": "docs/ENVS_EXPLANATION.md",
+      "degree": 0
+    }
+  ],
+  "133": [
+    {
+      "id": "docs_huong_dan_su_dung_project_usage_guide",
+      "label": "Project Usage Guide",
+      "source_file": "docs/HUONG_DAN_SU_DUNG.md",
+      "degree": 0
+    }
+  ],
+  "134": [
+    {
+      "id": "docs_ke_hoach_trien_khai_dieu_khien_motor_motor_control_plan",
+      "label": "Motor-level Control Implementation Plan",
+      "source_file": "docs/KE_HOACH_TRIEN_KHAI_DIEU_KHIEN_MOTOR.md",
+      "degree": 0
+    }
+  ],
+  "135": [
+    {
+      "id": "docs_readme_mavsdk_ppo_mavsdk_guide",
+      "label": "PPO with MAVSDK Guide",
+      "source_file": "docs/README_MAVSDK_PPO.md",
+      "degree": 0
+    }
+  ],
+  "136": [
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_assets_helix_multi_drone_helix_simulation",
+      "label": "Multi-drone helix simulation state and motor traces",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/assets/helix.png",
+      "degree": 0
+    }
+  ],
+  "137": [
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_assets_marl_multi_agent_drone_animation",
+      "label": "Multi-agent Drone Simulation Animation",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/assets/marl.gif",
+      "degree": 0
+    }
+  ],
+  "138": [
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_control_init",
+      "label": "control/__init__.py",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/control/__init__.py",
+      "degree": 0
+    }
+  ],
+  "139": [
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_examples_init",
+      "label": "examples/__init__.py",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/examples/__init__.py",
+      "degree": 0
+    }
+  ],
+  "140": [
+    {
+      "id": "drone_control_using_reinforcement_learning_gym_pybullet_drones_utils_init",
+      "label": "utils/__init__.py",
+      "source_file": "drone-control-using-reinforcement-learning/gym_pybullet_drones/utils/__init__.py",
+      "degree": 0
+    }
+  ],
+  "141": [
+    {
+      "id": "drone_control_using_reinforcement_learning_pypi_description_gym_pybullet_drones",
+      "label": "gym-pybullet-drones Package Description",
+      "source_file": "drone-control-using-reinforcement-learning/pypi_description.md",
+      "degree": 0
+    }
+  ],
+  "142": [
+    {
+      "id": "log_dir_hover_projectairsim_learning_curve_hover_learning_curve",
+      "label": "Hover training reward learning curve with 20-episode moving average",
+      "source_file": "log_dir/hover_projectairsim/learning_curve.png",
+      "degree": 0
+    }
+  ],
+  "143": [
+    {
+      "id": "pkg_gym_pybullet_drones",
+      "label": "gym-pybullet-drones",
+      "source_file": "drone-control-using-reinforcement-learning/pyproject.toml",
+      "degree": 0
+    }
+  ],
+  "144": [
+    {
+      "id": "test_results_4r_co_nhieu_overlay_summary_disturbed_position_overlay",
+      "label": "Ten disturbed 4R episode position overlays against goal",
+      "source_file": "test_results_4R/Co_nhieu/overlay_summary.png",
+      "degree": 0
+    }
+  ],
+  "145": [
+    {
+      "id": "test_results_4r_co_nhieu_plots_kq1_quytrinh_vitri_position_analysis",
+      "label": "Noisy 4R Position Analysis",
+      "source_file": "test_results_4R/Co_nhieu/plots/KQ1_quytrinh_vitri.png",
+      "degree": 0
+    }
+  ],
+  "146": [
+    {
+      "id": "test_results_4r_co_nhieu_plots_kq2_quytrinh_goc_ep002_episode_2_attitude_rmse",
+      "label": "Disturbed 4R episode 2 roll pitch yaw RMSE traces",
+      "source_file": "test_results_4R/Co_nhieu/plots/KQ2_quytrinh_goc_ep002.png",
+      "degree": 0
+    }
+  ],
+  "147": [
+    {
+      "id": "test_results_4r_co_nhieu_plots_overlay_summary_episode_overlay",
+      "label": "Noisy 4R Episode Overlay",
+      "source_file": "test_results_4R/Co_nhieu/plots/overlay_summary.png",
+      "degree": 0
+    }
+  ],
+  "148": [
+    {
+      "id": "test_results_4r_co_nhieu_plots_trajectory_ep001_plot_disturbed_episode_1_trajectory",
+      "label": "Disturbed 4R episode 1 flight path position and attitude",
+      "source_file": "test_results_4R/Co_nhieu/plots/trajectory_ep001_plot.png",
+      "degree": 0
+    }
+  ],
+  "149": [
+    {
+      "id": "test_results_4r_co_nhieu_plots_trajectory_ep002_plot_episode_2",
+      "label": "Noisy 4R Trajectory Episode 2",
+      "source_file": "test_results_4R/Co_nhieu/plots/trajectory_ep002_plot.png",
+      "degree": 0
+    }
+  ],
+  "150": [
+    {
+      "id": "test_results_4r_co_nhieu_plots_trajectory_ep004_plot_disturbed_episode_4_trajectory",
+      "label": "Disturbed 4R episode 4 flight path position and attitude",
+      "source_file": "test_results_4R/Co_nhieu/plots/trajectory_ep004_plot.png",
+      "degree": 0
+    }
+  ],
+  "151": [
+    {
+      "id": "test_results_4r_co_nhieu_plots_trajectory_ep005_plot_episode_5",
+      "label": "Noisy 4R Trajectory Episode 5",
+      "source_file": "test_results_4R/Co_nhieu/plots/trajectory_ep005_plot.png",
+      "degree": 0
+    }
+  ],
+  "152": [
+    {
+      "id": "test_results_4r_co_nhieu_plots_trajectory_ep007_plot_disturbed_episode_7_trajectory",
+      "label": "Disturbed 4R episode 7 flight path position and attitude",
+      "source_file": "test_results_4R/Co_nhieu/plots/trajectory_ep007_plot.png",
+      "degree": 0
+    }
+  ],
+  "153": [
+    {
+      "id": "test_results_4r_co_nhieu_plots_trajectory_ep008_plot_episode_8",
+      "label": "Noisy 4R Trajectory Episode 8",
+      "source_file": "test_results_4R/Co_nhieu/plots/trajectory_ep008_plot.png",
+      "degree": 0
+    }
+  ],
+  "154": [
+    {
+      "id": "test_results_4r_co_nhieu_plots_trajectory_ep010_plot_disturbed_episode_10_trajectory",
+      "label": "Disturbed 4R episode 10 flight path position and attitude",
+      "source_file": "test_results_4R/Co_nhieu/plots/trajectory_ep010_plot.png",
+      "degree": 0
+    }
+  ],
+  "155": [
+    {
+      "id": "test_results_4r_co_nhieu_trajectory_ep001_episode_1",
+      "label": "Noisy 4R Raw Trajectory Episode 1",
+      "source_file": "test_results_4R/Co_nhieu/trajectory_ep001.png",
+      "degree": 0
+    }
+  ],
+  "156": [
+    {
+      "id": "test_results_4r_co_nhieu_trajectory_ep003_disturbed_episode_3_goal_tracking",
+      "label": "Disturbed 4R episode 3 three-dimensional goal tracking",
+      "source_file": "test_results_4R/Co_nhieu/trajectory_ep003.png",
+      "degree": 0
+    }
+  ],
+  "157": [
+    {
+      "id": "test_results_4r_co_nhieu_trajectory_ep004_episode_4",
+      "label": "Noisy 4R Raw Trajectory Episode 4",
+      "source_file": "test_results_4R/Co_nhieu/trajectory_ep004.png",
+      "degree": 0
+    }
+  ],
+  "158": [
+    {
+      "id": "test_results_4r_co_nhieu_trajectory_ep006_disturbed_episode_6_goal_tracking",
+      "label": "Disturbed 4R episode 6 three-dimensional goal tracking",
+      "source_file": "test_results_4R/Co_nhieu/trajectory_ep006.png",
+      "degree": 0
+    }
+  ],
+  "159": [
+    {
+      "id": "test_results_4r_co_nhieu_trajectory_ep007_episode_7",
+      "label": "Noisy 4R Raw Trajectory Episode 7",
+      "source_file": "test_results_4R/Co_nhieu/trajectory_ep007.png",
+      "degree": 0
+    }
+  ],
+  "160": [
+    {
+      "id": "test_results_4r_co_nhieu_trajectory_ep009_disturbed_episode_9_goal_tracking",
+      "label": "Disturbed 4R episode 9 three-dimensional goal tracking",
+      "source_file": "test_results_4R/Co_nhieu/trajectory_ep009.png",
+      "degree": 0
+    }
+  ],
+  "161": [
+    {
+      "id": "test_results_4r_co_nhieu_trajectory_ep010_episode_10",
+      "label": "Noisy 4R Raw Trajectory Episode 10",
+      "source_file": "test_results_4R/Co_nhieu/trajectory_ep010.png",
+      "degree": 0
+    }
+  ],
+  "162": [
+    {
+      "id": "test_results_4r_khong_co_nhieu_overlay_summary_attitude_clean_attitude_overlay",
+      "label": "Ten no-disturbance 4R episode attitude overlays",
+      "source_file": "test_results_4R/Khong_co_nhieu/overlay_summary_attitude.png",
+      "degree": 0
+    }
+  ],
+  "163": [
+    {
+      "id": "test_results_4r_khong_co_nhieu_plots_kq1_quytrinh_vitri_ep002_position_analysis",
+      "label": "Noise-free 4R Position Analysis",
+      "source_file": "test_results_4R/Khong_co_nhieu/plots/KQ1_quytrinh_vitri_ep002.png",
+      "degree": 0
+    }
+  ],
+  "164": [
+    {
+      "id": "test_results_4r_khong_co_nhieu_trajectory_ep001_clean_episode_1_goal_tracking",
+      "label": "No-disturbance 4R episode 1 flight and attitude response",
+      "source_file": "test_results_4R/Khong_co_nhieu/trajectory_ep001.png",
+      "degree": 0
+    }
+  ],
+  "165": [
+    {
+      "id": "test_results_4r_khong_co_nhieu_trajectory_ep002_episode_2",
+      "label": "Noise-free 4R Trajectory Episode 2",
+      "source_file": "test_results_4R/Khong_co_nhieu/trajectory_ep002.png",
+      "degree": 0
+    }
+  ],
+  "166": [
+    {
+      "id": "test_results_4r_khong_co_nhieu_trajectory_ep004_clean_episode_4_goal_tracking",
+      "label": "No-disturbance 4R episode 4 flight and attitude response",
+      "source_file": "test_results_4R/Khong_co_nhieu/trajectory_ep004.png",
+      "degree": 0
+    }
+  ],
+  "167": [
+    {
+      "id": "test_results_4r_khong_co_nhieu_trajectory_ep005_episode_5",
+      "label": "Noise-free 4R Trajectory Episode 5",
+      "source_file": "test_results_4R/Khong_co_nhieu/trajectory_ep005.png",
+      "degree": 0
+    }
+  ],
+  "168": [
+    {
+      "id": "test_results_4r_khong_co_nhieu_trajectory_ep007_clean_episode_7_goal_tracking",
+      "label": "No-disturbance 4R episode 7 flight and attitude response",
+      "source_file": "test_results_4R/Khong_co_nhieu/trajectory_ep007.png",
+      "degree": 0
+    }
+  ],
+  "169": [
+    {
+      "id": "test_results_4r_khong_co_nhieu_trajectory_ep008_episode_8",
+      "label": "Noise-free 4R Trajectory Episode 8",
+      "source_file": "test_results_4R/Khong_co_nhieu/trajectory_ep008.png",
+      "degree": 0
+    }
+  ],
+  "170": [
+    {
+      "id": "test_results_4r_khong_co_nhieu_trajectory_ep010_clean_episode_10_goal_tracking",
+      "label": "No-disturbance 4R episode 10 flight and attitude response",
+      "source_file": "test_results_4R/Khong_co_nhieu/trajectory_ep010.png",
+      "degree": 0
+    }
+  ],
+  "171": [
+    {
+      "id": "test_results_co_nhieu_plots_kq1_quytrinh_vitri_position_analysis",
+      "label": "Noisy Position Analysis",
+      "source_file": "test_results/Co_nhieu/plots/KQ1_quytrinh_vitri.png",
+      "degree": 0
+    }
+  ],
+  "172": [
+    {
+      "id": "test_results_co_nhieu_plots_kq2_quytrinh_goc_disturbed_attitude_metrics",
+      "label": "Disturbed trajectory attitude RMSE peaks and settling analysis",
+      "source_file": "test_results/Co_nhieu/plots/KQ2_quytrinh_goc.png",
+      "degree": 0
+    }
+  ],
+  "173": [
+    {
+      "id": "test_results_co_nhieu_plots_kq2_quytrinh_goc_ep002_attitude_analysis",
+      "label": "Noisy Attitude Analysis Episode 2",
+      "source_file": "test_results/Co_nhieu/plots/KQ2_quytrinh_goc_ep002.png",
+      "degree": 0
+    }
+  ]
+}
