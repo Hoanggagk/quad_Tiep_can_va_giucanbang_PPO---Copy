@@ -125,7 +125,7 @@ class TestMotorReward(unittest.TestCase):
         self.assertTrue(self.env.done)
         self.assertEqual(self.env.termination_reason, "attitude_limit")
 
-    def test_reward_is_per_step_like_velocity_ned(self) -> None:
+    def test_continuous_reward_terms_are_scaled_to_control_period(self) -> None:
         total_50hz, _ = self.reward()
         env_100hz = DroneMotorHoverEnv(connect=False, dt=0.01)
         try:
@@ -133,8 +133,13 @@ class TestMotorReward(unittest.TestCase):
             env_100hz.linear_velocity = self.env.linear_velocity.copy()
             env_100hz.angular_velocity = self.env.angular_velocity.copy()
             signal = np.full(4, env_100hz.hover_control_signal)
-            total_100hz, _ = env_100hz.calculate_reward(signal, signal)
-            self.assertAlmostEqual(total_100hz, total_50hz, places=6)
+            total_100hz, terms = env_100hz.calculate_reward(signal, signal)
+            self.assertAlmostEqual(total_100hz, total_50hz * 0.5, places=6)
+
+            env_100hz.prev_state = np.array([1.0, 0.0, -2.0])
+            env_100hz.actor_pose[0] = 0.5
+            _, terms = env_100hz.calculate_reward(signal, signal)
+            self.assertAlmostEqual(terms["approach"], 1.0)
         finally:
             env_100hz.close()
 

@@ -203,9 +203,14 @@ python -m drone_control.action_spaces.motor_residual.calibrate --help
 
 ```powershell
 python -m drone_control.action_spaces.motor_residual.train `
-  --max-timesteps 500000 `
+  --max-timesteps 1000000 `
   --seed 42
 ```
+
+Profile mặc định dùng control 100 Hz (`dt=0.01 s`), episode tối đa 1.000 bước
+(10 giây), PPO update mỗi 4.000 transition và lưu checkpoint mỗi 100.000
+transition. Exploration bắt đầu với `action_std=0.10` và giảm tới tối thiểu
+`0.03`.
 
 Mỗi lần chạy tạo `run_id` duy nhất:
 
@@ -224,8 +229,9 @@ python -m drone_control.action_spaces.motor_residual.train `
   --seed 42
 ```
 
-Checkpoint bắt buộc có sidecar `.pth.json` hợp lệ, `state_dim=17`,
-`action_dim=4` và đúng thứ tự actuator.
+Checkpoint bắt buộc có sidecar `.pth.json` hợp lệ, schema v5,
+`reward_version=3`, `state_dim=13`, `action_dim=4` và đúng thứ tự actuator.
+Không resume checkpoint 50 Hz hoặc reward version cũ cho profile này.
 
 ## 6. Vẽ và phân tích kết quả
 

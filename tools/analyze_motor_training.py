@@ -33,8 +33,8 @@ OPTIONAL_FLOAT_COLUMNS = {
     "ppo_epochs_completed",
     "action_near_bound_fraction",
 }
-MAX_EPISODE_STEPS = 500
-TARGET_KL = 0.02
+MAX_EPISODE_STEPS = 1_000
+TARGET_KL = 0.01
 CURRICULUM_POSITION_RMSE_M = 0.30
 CURRICULUM_ATTITUDE_RMSE_RAD = math.radians(12.0)
 

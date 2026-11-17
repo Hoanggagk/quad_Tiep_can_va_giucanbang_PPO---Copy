@@ -159,7 +159,8 @@ def load_motor_calibration(path: Path = MOTOR_CONFIG_PATH) -> dict[str, Any]:
 class DroneMotorHoverEnv(Env):
     """Environment hover với residual action của bốn rotor độc lập."""
 
-    REWARD_VERSION = 2
+    REWARD_VERSION = 3
+    REWARD_REFERENCE_DT_SECONDS = 0.02
     metadata = {"render_modes": ["human"]}
     MAX_STEPS_PER_EPISODE = round(
         DEFAULT_TASK_CONTRACT.motor_episode_seconds / 0.02
@@ -773,6 +774,7 @@ class DroneMotorHoverEnv(Env):
             raise ValueError("Motor signal dùng tính reward phải hữu hạn")
 
         config = self.reward_config
+        time_scale = self.dt / self.REWARD_REFERENCE_DT_SECONDS
         pose = np.asarray(self.actor_pose, dtype=np.float64)
         position_error = float(np.linalg.norm(pose[:3] - self.goal_pose))
         velocity_norm = float(np.linalg.norm(self.linear_velocity))
@@ -792,14 +794,17 @@ class DroneMotorHoverEnv(Env):
             )
         task_status = self.last_task_status
         terms = {
-            "position": max(0.0, 1.0 - position_error / config.position_radius_m),
+            "position": time_scale
+            * max(0.0, 1.0 - position_error / config.position_radius_m),
             "approach": config.approach_weight
             * (previous_position_error - position_error),
             "velocity": 0.0,
-            "attitude": -config.attitude_weight * (abs(roll) + abs(pitch)),
-            "alive": config.alive_bonus,
+            "attitude": -time_scale
+            * config.attitude_weight
+            * (abs(roll) + abs(pitch)),
+            "alive": time_scale * config.alive_bonus,
             "hover_bonus": (
-                config.hover_bonus
+                time_scale * config.hover_bonus
                 if task_status is not None and task_status.sustaining
                 else 0.0
             ),

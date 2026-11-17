@@ -16,10 +16,23 @@ from drone_control.action_spaces.motor_residual.train import (
     ACTION_DIM,
     CHECKPOINT_SCHEMA_VERSION,
     CHECKPOINT_ROOT,
+    CONTROL_DT,
+    CONTROL_FREQUENCY_HZ,
+    EPS_CLIP,
+    GAE_LAMBDA,
+    GAMMA,
+    K_EPOCHS,
     LOG_ROOT,
+    LR_ACTOR,
+    LR_CRITIC,
+    MAX_TRAINING_TIMESTEPS,
     MIN_ACTION_STD,
     OBSERVATION_LAYOUT,
+    SAVE_MODEL_FREQ,
     STATE_DIM,
+    STEPS_PER_EPISODE,
+    TARGET_KL,
+    UPDATE_TIMESTEP,
     build_checkpoint_metadata,
     make_run_id,
     metadata_path_for,
@@ -44,6 +57,10 @@ class TestMotorTrainingEntryPoint(unittest.TestCase):
     def test_motor_dimensions_and_observation_layout(self) -> None:
         self.assertEqual(STATE_DIM, 13)
         self.assertEqual(ACTION_DIM, 4)
+        self.assertEqual(CONTROL_FREQUENCY_HZ, 100.0)
+        self.assertEqual(CONTROL_DT, 0.01)
+        self.assertEqual(STEPS_PER_EPISODE, 1_000)
+        self.assertEqual(STEPS_PER_EPISODE * CONTROL_DT, 10.0)
         self.assertEqual(len(OBSERVATION_LAYOUT), STATE_DIM)
         self.assertEqual(
             OBSERVATION_LAYOUT,
@@ -94,7 +111,7 @@ class TestMotorTrainingEntryPoint(unittest.TestCase):
         self.assertEqual(metadata["actuator_order"], list(ACTUATOR_ORDER))
         self.assertEqual(metadata["state_dim"], 13)
         self.assertEqual(metadata["action_dim"], 4)
-        self.assertEqual(metadata["schema_version"], 4)
+        self.assertEqual(metadata["schema_version"], 5)
         self.assertEqual(metadata["observation_schema_version"], 3)
         self.assertEqual(metadata["action_mapping_version"], 2)
         self.assertEqual(metadata["policy_distribution"], "tanh_squashed_gaussian")
@@ -104,11 +121,21 @@ class TestMotorTrainingEntryPoint(unittest.TestCase):
         metadata = build_checkpoint_metadata(
             self.env, self.curriculum, run_id="motor_test", episode=0, timestep=0
         )
-        self.assertEqual(CHECKPOINT_SCHEMA_VERSION, 4)
-        self.assertEqual(ACTION_STD_INIT, 0.50)
+        self.assertEqual(CHECKPOINT_SCHEMA_VERSION, 5)
+        self.assertEqual(ACTION_STD_INIT, 0.10)
         self.assertEqual(ACTION_STD_DECAY_RATE, 0.005)
         self.assertEqual(ACTION_STD_DECAY_FREQ_EPISODES, 100)
-        self.assertEqual(MIN_ACTION_STD, 0.10)
+        self.assertEqual(MIN_ACTION_STD, 0.03)
+        self.assertEqual(MAX_TRAINING_TIMESTEPS, 1_000_000)
+        self.assertEqual(UPDATE_TIMESTEP, 4_000)
+        self.assertEqual(SAVE_MODEL_FREQ, 100_000)
+        self.assertEqual(K_EPOCHS, 10)
+        self.assertEqual(EPS_CLIP, 0.1)
+        self.assertEqual(GAMMA, 0.995)
+        self.assertEqual(GAE_LAMBDA, 0.975)
+        self.assertEqual(LR_ACTOR, 3e-5)
+        self.assertEqual(LR_CRITIC, 3e-4)
+        self.assertEqual(TARGET_KL, 0.01)
         self.assertEqual(
             metadata["ppo_config"]["action_std_init"], ACTION_STD_INIT
         )

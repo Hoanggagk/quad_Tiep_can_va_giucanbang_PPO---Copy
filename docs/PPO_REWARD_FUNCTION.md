@@ -8,7 +8,7 @@ nhau. Mỗi lần huấn luyện chỉ sử dụng reward của environment đư
 | Cấu hình | Không gian hành động | Hàm reward trong source | Reward version |
 |---|---|---|---:|
 | `velocity_ned` | 3 velocity setpoint NED | `DroneHoveringEnv.get_reward()` | 2 |
-| `motor_residual` | 4 lệnh residual motor `[FL, FR, RL, RR]` | `DroneMotorHoverEnv.calculate_reward()` | 2 |
+| `motor_residual` | 4 lệnh residual motor `[FL, FR, RL, RR]` | `DroneMotorHoverEnv.calculate_reward()` | 3 |
 
 Hai reward function **không được cộng với nhau**. PPO chỉ nhận scalar reward
 $R_t$ từ environment và tối ưu discounted return:
@@ -136,10 +136,12 @@ không tạo một reward $-2$ thông thường.
 
 ## 4. Reward của `motor_residual`
 
-Từ `REWARD_VERSION = 2`, `motor_residual` dùng cùng công thức shaping ở Mục 3:
+Từ `REWARD_VERSION = 3`, đặt $s_t=dt/0.02$. Với profile 100 Hz hiện tại,
+$dt=0.01$ s và $s_t=0.5$. Các reward liên tục được chuẩn hóa theo control
+period:
 
 $$
-r_{pos,t}=\max\left(0,1-\frac{d_t}{3}\right),
+r_{pos,t}=s_t\max\left(0,1-\frac{d_t}{3}\right),
 \qquad
 r_{approach,t}=2(d_{t-1}-d_t),
 $$
@@ -147,15 +149,16 @@ $$
 $$
 r_{vel,t}=0,
 \qquad
-r_{att,t}=-0.1(|\phi_t|+|\theta_t|),
+r_{att,t}=-0.1s_t(|\phi_t|+|\theta_t|),
 \qquad
-r_{alive,t}=0.01.
+r_{alive,t}=0.01s_t.
 $$
 
-Ở bước đầu tiên, `approach = 0`. `hover_bonus = 0.5` khi
+Ở bước đầu tiên, `approach = 0`. `hover_bonus = 0.5s_t` khi
 `SuccessTracker.sustaining`; `success_bonus = 5.0` chỉ xuất hiện một lần tại
 `success_event`. Nếu environment đã đánh dấu `crashed`, hàm trả đúng $-2$.
-Reward được tính theo bước, không scale theo `dt`.
+`approach`, `success_bonus` và crash penalty không scale theo `dt` vì chúng là
+thay đổi trạng thái hoặc sự kiện, không phải reward rate liên tục.
 
 Các penalty motor cũ (`motor_effort`, `motor_smoothness`, `saturation`) cùng
 penalty yaw và angular rate đã được bỏ khỏi tổng reward. Environment vẫn log
@@ -167,14 +170,14 @@ penalty yaw và angular rate đã được bỏ khỏi tổng reward. Environmen
 | Đặc điểm | `velocity_ned` | `motor_residual` |
 |---|---|---|
 | Mức điều khiển | Velocity setpoint | Control signal của từng rotor |
-| Position shaping | Tuyến tính có chặn tại 0 | Giống `velocity_ned` |
+| Position shaping | Tuyến tính có chặn tại 0 | Nhân `dt/0.02` |
 | Approach reward | Có | Có |
 | Velocity penalty | Không | Không |
 | Motor effort/smoothness | Không | Không; chỉ log saturation fraction |
-| Hover bonus | Theo `SuccessTracker.sustaining` | Giống `velocity_ned` |
+| Hover bonus | Theo `SuccessTracker.sustaining` | Nhân `dt/0.02` |
 | Success bonus | 5.0, chỉ một lần | 5.0, chỉ một lần |
 | Crash handling | Trả ngay $-2$ | Trả ngay $-2$ |
-| Scale theo control period | Không | Không |
+| Scale theo control period | Không | Có cho các reward liên tục |
 
 ## 6. Nguồn chuẩn và quy tắc cập nhật
 

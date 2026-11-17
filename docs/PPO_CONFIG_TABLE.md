@@ -302,23 +302,23 @@ lượng, thrust model hoặc scene vật lý.
 
 | Tham số | Giá trị | Ý nghĩa |
 |---|---:|---|
-| `ACTION_STD_INIT` | 0.50 | Tăng độ lệch chuẩn khám phá ban đầu trên latent action |
+| `ACTION_STD_INIT` | 0.10 | Exploration ban đầu bảo thủ quanh operating point hover |
 | `ACTION_STD_DECAY_RATE` | 0.005 | Giảm chậm để duy trì exploration lâu hơn |
 | `ACTION_STD_DECAY_FREQ_EPISODES` | 100 episode | Giãn chu kỳ giảm độ lệch chuẩn |
-| `MIN_ACTION_STD` | 0.10 | Duy trì mức exploration tối thiểu cao hơn |
-| `MAX_TRAINING_TIMESTEPS` | 500,000 | Tổng số bước huấn luyện mặc định |
-| `STEPS_PER_EPISODE` | 500 | Horizon tối đa của một episode |
-| `UPDATE_TIMESTEP` | 2,000 | Số transition giữa hai lần PPO update |
-| `K_EPOCHS` | 30 | Số epoch tối ưu trên mỗi rollout batch |
-| `EPS_CLIP` | 0.2 | Ngưỡng PPO clipped objective |
-| `GAMMA` | 0.99 | Hệ số chiết khấu |
-| `LR_ACTOR` | 3×10⁻⁴ | Learning rate của Actor |
-| `LR_CRITIC` | 1×10⁻³ | Learning rate của Critic |
-| `GAE_LAMBDA` | 0.95 | GAE có bootstrap đúng ở time-limit truncation |
-| `TARGET_KL` | 0.02 | Early-stop epoch nếu approximate KL vượt ngưỡng |
-| `SAVE_MODEL_FREQ` | 50,000 timestep | Chu kỳ lưu checkpoint |
+| `MIN_ACTION_STD` | 0.03 | Cho phép policy hội tụ tới residual nhỏ |
+| `MAX_TRAINING_TIMESTEPS` | 1,000,000 | Giữ 10,000 giây mô phỏng như profile 50 Hz cũ |
+| `STEPS_PER_EPISODE` | 1,000 | Horizon tối đa của một episode |
+| `UPDATE_TIMESTEP` | 4,000 | Giữ 40 giây mô phỏng giữa hai PPO update |
+| `K_EPOCHS` | 10 | Giới hạn số lần tối ưu trên một rollout batch |
+| `EPS_CLIP` | 0.1 | Clipped objective bảo thủ hơn cho motor-level control |
+| `GAMMA` | 0.995 | Giữ discount horizon theo thời gian vật lý ở 100 Hz |
+| `LR_ACTOR` | 3×10⁻⁵ | Hạn chế policy mean dịch chuyển quá nhanh khi std nhỏ |
+| `LR_CRITIC` | 3×10⁻⁴ | Giảm độ mạnh của value update |
+| `GAE_LAMBDA` | 0.975 | Giữ GAE horizon theo thời gian vật lý ở 100 Hz |
+| `TARGET_KL` | 0.01 | Early-stop epoch nếu approximate KL vượt ngưỡng |
+| `SAVE_MODEL_FREQ` | 100,000 timestep | Giữ chu kỳ 1,000 giây mô phỏng/checkpoint |
 
-Với `CONTROL_FREQUENCY_HZ = 50`, ta có `dt = 0.02 s`; horizon 500 bước tương
+Với `CONTROL_FREQUENCY_HZ = 100`, ta có `dt = 0.01 s`; horizon 1,000 bước tương
 đương tối đa 10 giây mô phỏng. Một PPO update nhận tối đa khoảng bốn episode
 đủ horizon, nhưng số episode thực tế có thể lớn hơn do termination sớm.
 
@@ -339,15 +339,16 @@ tại của pipeline vận tốc.
 ### 10.6. Reward function của `motor_residual` (4 action động cơ)
 
 > Phần này **chỉ áp dụng cho
-> `drone_control.action_spaces.motor_residual.train`**. Từ `REWARD_VERSION = 2`,
-> công thức shaping được đồng nhất với `velocity_ned`; khác biệt chỉ còn ở
-> action space, observation và tần số điều khiển.
+> `drone_control.action_spaces.motor_residual.train`**. Từ `REWARD_VERSION = 3`,
+> các reward liên tục được chuẩn hóa theo control period để 50 Hz và 100 Hz có
+> cùng mức tích lũy trên một giây mô phỏng.
 
-Ký hiệu $d_t=\lVert\mathbf{p}_t-\mathbf{g}\rVert_2$, và
-$\phi_t,\theta_t$ là roll, pitch. Các thành phần reward theo từng bước là:
+Ký hiệu $d_t=\lVert\mathbf{p}_t-\mathbf{g}\rVert_2$,
+$\phi_t,\theta_t$ là roll, pitch và $s_t=dt/0.02$. Ở 100 Hz,
+$s_t=0.5$. Các thành phần reward theo từng bước là:
 
 $$
-r_{pos,t}=\max\left(0,1-\frac{d_t}{3}\right),
+r_{pos,t}=s_t\max\left(0,1-\frac{d_t}{3}\right),
 $$
 
 $$
@@ -359,15 +360,15 @@ r_{approach,t}=
 $$
 
 $$
-r_{att,t}=-0.1(|\phi_t|+|\theta_t|),
+r_{att,t}=-0.1s_t(|\phi_t|+|\theta_t|),
 \qquad r_{vel,t}=0,
-\qquad r_{alive,t}=0.01.
+\qquad r_{alive,t}=0.01s_t.
 $$
 
 `SuccessTracker` dùng chung quyết định hover và success:
 
 $$
-r_{hover,t}=0.5\,\mathbb{1}[\text{sustaining}_t],
+r_{hover,t}=0.5s_t\,\mathbb{1}[\text{sustaining}_t],
 \qquad
 r_{success,t}=5\,\mathbb{1}[\text{success\_event}_t].
 $$
@@ -379,7 +380,8 @@ R_t=r_{pos,t}+r_{approach,t}+r_{vel,t}+r_{att,t}
     +r_{alive,t}+r_{hover,t}+r_{success,t}.
 $$
 
-Reward không còn scale theo `dt` và không còn các penalty `yaw`,
+`approach`, `success_bonus` và crash penalty là các sự kiện nên không scale
+theo `dt`. Reward không còn các penalty `yaw`,
 `angular_rate`, `motor_effort`, `motor_smoothness` hay `saturation`. Các trường
 `position_error_m`, `velocity_norm_mps`, `angular_rate_norm_radps` và
 `saturation_fraction` vẫn được ghi trong `reward_terms` để giám sát; chúng
@@ -421,14 +423,14 @@ Mỗi lần chạy tạo `run_id` riêng:
 | Checkpoint | `checkpoints_motor/<run_id>/*.pth` |
 | Metadata checkpoint | file `*.pth.json` nằm cạnh checkpoint |
 
-Metadata schema v4 ghi lại `state_dim`, `action_dim`, action bounds, actuator order,
+Metadata schema v5 ghi lại `state_dim`, `action_dim`, action bounds, actuator order,
 observation schema/layout, task contract v1, reward version, PPO/GAE config,
 action-std schedule, calibration RPM, tần số điều khiển và curriculum.
 Resume chỉ được chấp nhận khi sidecar tồn tại và tối thiểu khớp:
 
 ```text
 policy_type = motor_level_ppo
-schema_version = 4
+schema_version = 5
 state_dim = 13
 action_dim = 4
 observation_schema_version = 3
@@ -454,7 +456,7 @@ Chạy từ repository root:
 python -m drone_control.action_spaces.motor_residual.train --help
 
 python -m drone_control.action_spaces.motor_residual.train `
-  --max-timesteps 500000 `
+  --max-timesteps 1000000 `
   --seed 42 `
   --monitor-every 10 `
   --monitor-window 20
